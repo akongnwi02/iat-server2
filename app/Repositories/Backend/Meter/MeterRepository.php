@@ -19,8 +19,8 @@ class MeterRepository
     {
         $services = QueryBuilder::for(Meter::class)
             ->allowedFilters([AllowedFilter::exact('is_active')])
-            ->allowedSorts('services.is_active', 'services.created_at', 'services.name')
-            ->defaultSort( '-services.is_active', '-services.created_at', 'services.name');
+            ->allowedSorts('meters.is_active', 'meters.created_at')
+            ->defaultSort( '-meters.is_active', '-meters.created_at');
         return $services;
     }
 }

@@ -50,9 +50,9 @@ return [
         'meter' => [
             'main' => 'Meters',
             'electricity' => [
-                'management' => 'Electricity',
-                'create' => 'Register Meter',
-                'edit' => 'Edit Meter',
+                'management' => 'Electricity Meters',
+                'create' => 'Register Electricity Meter',
+                'edit' => 'Edit Electricity Meter',
             ],
         ],
         'log-viewer' => [
@@ -82,7 +82,7 @@ return [
                 'edit'       => 'Edit Company',
             ],
         ],
-
+        
         'services' => [
             'title' => 'Service',
     

@@ -20,7 +20,7 @@ class CreateMetersTable extends Migration
             $table->uuid('provider_id');
             $table->string('meter_code')->unique();
             $table->enum('type', ['water', 'electricity']);
-            $table->boolean('active')->default(1);
+            $table->boolean('is_active')->default(1);
             $table->text('blocked_reason')->nullable();
             $table->dateTime('last_vending_date')->nullable();
             $table->softDeletes();

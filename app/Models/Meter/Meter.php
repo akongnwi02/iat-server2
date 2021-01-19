@@ -9,6 +9,8 @@
 namespace App\Models\Meter;
 
 
+use App\Models\Traits\Attributes\MeterAttribute;
+use App\Models\Traits\Relationships\MeterRelationship;
 use App\Models\Traits\Uuid;
 use Arcanedev\Support\Database\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,6 +32,8 @@ class Meter extends Model
     public $incrementing = false;
     
     use Uuid,
+        MeterRelationship,
+        MeterAttribute,
         SoftDeletes,
         Userstamps;
     

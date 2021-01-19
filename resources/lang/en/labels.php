@@ -42,7 +42,7 @@ return [
         'select'             => 'Select One'
     ],
     'backend'  => [
-        'access'     => [
+        'access'         => [
             'roles' => [
                 'create'     => 'Create Role',
                 'edit'       => 'Edit Role',
@@ -120,7 +120,7 @@ return [
                 'view'                => 'View User',
             ],
         ],
-        'companies'  => [
+        'companies'      => [
             'company' => [
                 'management'      => 'Company Management',
                 'create'          => 'Create Company',
@@ -159,16 +159,16 @@ return [
                             'default'    => 'Use service default',
                             'custom'     => 'Set custom',
                             'table'      => [
-                                'name'               => 'Service Name',
-                                'category'           => 'Service Category',
-                                'gateway'            => 'Gateway Configuration',
-                                'active'             => 'Active',
-                                'code'               => 'Code',
-                                'logo'               => 'Logo',
-                                'customercommission' => 'Customer Service Charge',
-                                'providercommission' => 'Provider Service Charge',
+                                'name'                   => 'Service Name',
+                                'category'               => 'Service Category',
+                                'gateway'                => 'Gateway Configuration',
+                                'active'                 => 'Active',
+                                'code'                   => 'Code',
+                                'logo'                   => 'Logo',
+                                'customercommission'     => 'Customer Service Charge',
+                                'providercommission'     => 'Provider Service Charge',
                                 'commissiondistribution' => 'Commission Distribution Strategy',
-                                'total'              => 'service|services'
+                                'total'                  => 'service|services'
                             ]
                         ],
                         'paymentmethod' => [
@@ -191,8 +191,8 @@ return [
                 ],
             ],
         ],
-        'services'   => [
-            'service'    => [
+        'services'       => [
+            'service'      => [
                 'management'      => 'Service Management',
                 'assign'          => 'Assign :service to companies',
                 'create'          => 'Create Service',
@@ -201,31 +201,31 @@ return [
                 'service_actions' => 'Service Actions',
                 
                 'table' => [
-                    'name'               => 'Service Name',
-                    'code'               => 'Service Code',
-                    'active'             => 'Active',
-                    'logo'               => 'Logo',
-                    'gateway'            => 'Gateway',
-                    'category'           => 'Category',
-                    'agent_rate'         => 'Default Agent Rate',
-                    'company_rate'       => 'Default Company Rate',
-                    'external_rate'      => 'Default External Rate',
-                    'min_amount'         => 'Min Amount',
-                    'max_amount'         => 'Max Amount',
-                    'customercommission' => 'Default Supply Point Service Charge',
-                    'providercommission' => 'Default Provider Service Charge',
+                    'name'                  => 'Service Name',
+                    'code'                  => 'Service Code',
+                    'active'                => 'Active',
+                    'logo'                  => 'Logo',
+                    'gateway'               => 'Gateway',
+                    'category'              => 'Category',
+                    'agent_rate'            => 'Default Agent Rate',
+                    'company_rate'          => 'Default Company Rate',
+                    'external_rate'         => 'Default External Rate',
+                    'min_amount'            => 'Min Amount',
+                    'max_amount'            => 'Max Amount',
+                    'customercommission'    => 'Default Supply Point Service Charge',
+                    'providercommission'    => 'Default Provider Service Charge',
                     'commissionditribution' => 'Commission Distribution',
-                    'total'              => 'service|services',
+                    'total'                 => 'service|services',
                 ],
                 'tabs'  => [
                     'titles' => [
-                        'profile'   => 'Profile',
-                        'companies' => 'Companies',
+                        'profile'       => 'Profile',
+                        'companies'     => 'Companies',
                         'supply_points' => 'Supply Points'
                     ]
                 ]
             ],
-            'category'   => [
+            'category'     => [
                 'management' => 'Service Category',
                 'edit'       => 'Edit Category',
                 'active'     => 'Active Categories',
@@ -239,7 +239,7 @@ return [
                     'total'   => 'category|categories',
                 ]
             ],
-            'commission' => [
+            'commission'   => [
                 'management'         => 'Service Charge',
                 'create'             => 'Create Service Charge',
                 'edit'               => 'Edit Service Charge',
@@ -263,19 +263,19 @@ return [
                 ],
             ],
             'distribution' => [
-                'management'         => 'Commission Distribution',
-                'create'             => 'Create Commission Distribution',
-                'edit'               => 'Edit Commission Distribution',
-                'table' => [
-                    'agent_rate'         => 'Default Agent Rate',
-                    'company_rate'       => 'Default Company Rate',
-                    'external_rate'      => 'Default External Rate',
-                    'name'        => 'Name',
-                    'description' => 'Description',
-                    'total' => 'distribution|distributions'
+                'management' => 'Commission Distribution',
+                'create'     => 'Create Commission Distribution',
+                'edit'       => 'Edit Commission Distribution',
+                'table'      => [
+                    'agent_rate'    => 'Default Agent Rate',
+                    'company_rate'  => 'Default Company Rate',
+                    'external_rate' => 'Default External Rate',
+                    'name'          => 'Name',
+                    'description'   => 'Description',
+                    'total'         => 'distribution|distributions'
                 ]
             ],
-            'method'     => [
+            'method'       => [
                 'management' => 'Payment Methods',
                 'create'     => 'Create Payment Method',
                 'assign'     => 'Assign :method to companies',
@@ -301,7 +301,24 @@ return [
                 ]
             ],
         ],
-        'sales'      => [
+        'meters'         => [
+            'electricity' => 'Electricity Meters',
+            'water'       => 'Water Meters',
+            'create'      => 'Create Meter',
+            'edit'        => 'Edit Meter',
+            'active'      => 'Active Meters',
+            
+            'table' => [
+                'meter_code'        => 'Meter Code',
+                'supply_point'      => 'Supply Point',
+                'provider'          => 'Provider',
+                'type'              => 'Type',
+                'active'            => 'Active',
+                'last_vending_date' => 'Last Recharge Date',
+                'total'             => 'meter|Meters',
+            ],
+        ],
+        'sales'          => [
             'management' => 'Sales',
             'filter'     => [
                 'title'     => 'Filter Sales',
@@ -339,7 +356,7 @@ return [
                 'total_sales'           => 'sale|sales',
             ]
         ],
-        'orders'     => [
+        'orders'         => [
             'management' => 'Orders',
             'filter'     => [
                 'title'     => 'Filter Orders',
@@ -373,10 +390,10 @@ return [
                 'payment_account'       => 'Payment Account',
                 'completed_at'          => 'Completed At',
                 'status'                => 'Status',
-                'total_orders'           => 'order|orders',
+                'total_orders'          => 'order|orders',
             ]
         ],
-        'account'    => [
+        'account'        => [
             'management'            => 'Account',
             'company_balance'       => 'Company Balance',
             'umbrella_balance'      => 'Umbrella Balance',
@@ -395,7 +412,7 @@ return [
                     'code'    => 'Account Number',
                     'type'    => 'Account Type',
                     'owner'   => 'Owner',
-                    'company'   => 'Company',
+                    'company' => 'Company',
                     'active'  => 'Active',
                     'balance' => 'Account Balance',
                     'total'   => 'account|accounts'
@@ -514,7 +531,7 @@ return [
                 ],
             ],
         ],
-        'accounting' => [
+        'accounting'     => [
             'pay'        => 'Payout Collection',
             'request'    => 'Request Provision',
             'provision'  => [
@@ -581,7 +598,7 @@ return [
             ],
         ],
         'administration' => [
-            'currency'   => [
+            'currency' => [
                 'management' => 'Currency',
                 'edit'       => 'Edit Currency',
                 'create'     => 'Create Currency',

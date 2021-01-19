@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.services.service.management'))
+@section('title', app_name() . ' | ' . __('labels.backend.meters.electricity'))
 
 @section('breadcrumb-links')
     {{--@include('backend.services.service.includes.breadcrumb-links')--}}
@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        {{ __('labels.backend.services.service.management') }}
+                        {{ __('labels.backend.meters.electricity') }}
                     </h4>
                 </div><!--col-->
 
                 <div class="col-sm-7">
-                    {{--@include('backend.services.service.includes.header-buttons')--}}
+                    @include('backend.meters.electricity.includes.header-buttons')
                 </div><!--col-->
             </div><!--row-->
 
@@ -27,31 +27,27 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>@lang('labels.backend.services.service.table.name')</th>
-                                <th>@lang('labels.backend.services.service.table.code')</th>
-                                <th>@lang('labels.backend.services.service.table.active')</th>
-                                <th>@lang('labels.backend.services.service.table.min_amount')</th>
-                                <th>@lang('labels.backend.services.service.table.max_amount')</th>
-                                <th>@lang('labels.backend.services.service.table.customercommission')</th>
-                                {{--<th>@lang('labels.backend.services.service.table.providercommission')</th>--}}
-                                {{--<th>@lang('labels.backend.services.service.table.commissionditribution')</th>--}}
-                                {{--<th>@lang('labels.backend.services.service.table.category')</th>--}}
+                                <th>@lang('labels.backend.meters.table.meter_code')</th>
+                                <th>@lang('labels.backend.meters.table.supply_point')</th>
+                                <th>@lang('labels.backend.meters.table.provider')</th>
+                                <th>@lang('labels.backend.meters.table.type')</th>
+                                <th>@lang('labels.backend.meters.table.active')</th>
+                                <th>@lang('labels.backend.meters.table.last_vending_date')</th>
+
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($services as $service)
+                            @foreach($meters as $meter)
                                 <tr>
-                                    <td>{!! $service->logo_label !!} {{ $service->name }}</td>
-                                    <td>{{ $service->code }}</td>
-                                    <td>{!! $service->active_label !!}</td>
-                                    <td>{!! $service->min_amount_label !!}</td>
-                                    <td>{!! $service->max_amount_label !!}</td>
-                                    <td>{{ @$service->customer_commission->name }}</td>
-                                    {{--<td>{{ @$service->provider_commission->name }}</td>--}}
-                                    {{--<td>{{ @$service->commission_distribution->name }}</td>--}}
-                                    {{--<td>{{ $service->category->name }}</td>--}}
-                                    <td>{!! $service->action_buttons  !!}</td>
+                                    <td>{{ $meter->meter_code }}</td>
+                                    <td>{{ @$meter->supply_point->name }}</td>
+                                    <td>{{ @$meter->provider->name }}</td>
+                                    <td>{{ __($meter->type) }}</td>
+                                    <td>{!! @$meter->active_label !!}</td>
+                                    <td>{{ @$meter->last_vending_date }}</td>
+
+                                    <td>{!! $meter->action_buttons  !!}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -62,13 +58,13 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        {!! $services->total() !!} {{ trans_choice('labels.backend.services.service.table.total', $services->total()) }}
+                        {!! $meters->total() !!} {{ trans_choice('labels.backend.meters.table.total', $meters->total()) }}
                     </div>
                 </div><!--col-->
 
                 <div class="col-5">
                     <div class="float-right">
-                        {!! $services->render() !!}
+                        {!! $meters->render() !!}
                     </div>
                 </div><!--col-->
             </div><!--row-->

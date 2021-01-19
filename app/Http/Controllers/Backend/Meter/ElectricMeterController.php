@@ -18,7 +18,7 @@ class ElectricMeterController extends Controller
     public function index(MeterRepository $meterRepository)
     {
         return view('backend.meters.electricity.index')
-            ->withServices($meterRepository->getAllMeters()
+            ->withMeters($meterRepository->getAllMeters()
                 ->where('type', config('business.meter.type.electricity'))
                 ->paginate());
     

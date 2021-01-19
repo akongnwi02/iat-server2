@@ -29,5 +29,9 @@ class DumpTableSeeder extends Seeder
         $this->call(CompanyAccountSeeder::class);
         $this->call(PaymentMethodTableSeeder::class);
         $this->call(CompanyStrongboxTableSeeder::class);
+        $this->call(ProviderTableSeeder::class);
+        $this->call(PriceTableSeeder::class);
+        $this->call(SupplyPointTableSeeder::class);
+        $this->call(MeterTableSeeder::class);
     }
 }

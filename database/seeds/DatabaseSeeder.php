@@ -31,6 +31,10 @@ class DatabaseSeeder extends Seeder
             'movements',
             'payouts',
             'paymentmethods',
+            'providers',
+            'prices',
+            'supply_points',
+            'meters'
         ]);
     
         Model::unguard();
