@@ -1,0 +1,243 @@
+{
+    "dashboard": {
+        "pages": {
+            "titles": {
+                "purchase": "Achat",
+                "transactions": "Transactions",
+                "account": "Compte"
+            },
+            "tabs": {
+                "titles": {
+                    "prepaid": "Factures prépayées",
+                    "postpaid": "Factures postpayées",
+                    "momo": "Mobile Money",
+                    "airtime": "Recharge de crédit"
+                },
+                "content": {
+                    "electricity": {
+                        "title": "Achat d'électricité",
+                        "prepaid": "Prepayée",
+                        "postpaid": "Postpayée",
+                        "vendor": "Fournisseur",
+                        "meter_code": "Indicatif du compteur",
+                        "bill_number": "Numéro de facture",
+                        "bill_due_date": "Date limite de paiement de la facture",
+                        "asset": "Atout",
+                        "contract_number": "Numéro de contrat",
+                        "quote": {
+                            "title": "Détails du compteur"
+                        }
+                    },
+                    "mobile_money": {
+                        "source_account": "Identifiant du compte",
+                        "name": "Détenteur de compte",
+                        "cashin": "Dépôt",
+                        "cashout": "Retrait"
+                    }
+                }
+            },
+            "transactions": {
+                "table": {
+                    "entriesTitle": "Transactions récentes",
+                    "showingText": "Afficher",
+                    "noFoundMessage": "Aucune transaction correspondante trouvée",
+                    "header": {
+                        "code": "Reférence",
+                        "items": "Article",
+                        "destination": "Numéro de service",
+                        "amount": "Montant",
+                        "fee": "Frais",
+                        "service": "Service",
+                        "total": "Total",
+                        "commission": "Commissions",
+                        "paymentmethod": "Mode de paiement",
+                        "status": "Statut",
+                        "asset": "Ressource",
+                        "completed_at": "Terminée à"
+                    },
+                    "total": "Total",
+                    "status": {
+                        "created": "Crée",
+                        "pending": "En attente",
+                        "processing": "En cours de traitement",
+                        "success": "Succès",
+                        "failed": "Echouée",
+                        "reversed": "Reversée",
+                        "cancelled": "Annulée",
+                        "errored": "Erreur"
+                    }
+                },
+                "transaction": {
+                    "modal": {
+                        "code": "Reférence",
+                        "destination": "Numéro de service",
+                        "agent": "Agent",
+                        "company": "Entreprise",
+                        "amount": "Montant",
+                        "fee": "Frais",
+                        "service": "Service",
+                        "asset": "Ressource",
+                        "items": "Articles",
+                        "status": "Statut",
+                        "completed_at": "Terminée à",
+                        "total": "Total"
+                    }
+                }
+            },
+            "account": {
+                "account_number": "Numéro de compte",
+                "account_number_help": "Votre numéro de compte de dépôt.",
+                "account_balance": "Solde du compte",
+                "account_balance_help": "Le solde de votre compte actuel.",
+                "commission_balance": "Solde de commissions",
+                "commission_balance_help": "Votre solde de commissions",
+                "payout_method": "Mode de paiement",
+                "topup_method": "Mode de recharge",
+                "name": "Nom du compte",
+                "request_payout": "Demande de paiement",
+                "topup_account": "Recharge du compte",
+                "table": {
+                    "entriesTitle": "Dernières requêtes",
+                    "header": {
+                        "code": "Ref",
+                        "amount": "Montant",
+                        "method": "Mode de paiement",
+                        "account_number": "Numéro de compte",
+                        "account_name": "Nom du compte",
+                        "user": "Demandé par",
+                        "date": "Demandé le",
+                        "status": "Statut",
+                        "decision_at": "Décision à"
+                    },
+                    "status": {
+                        "pending": "En attente",
+                        "approved": "Approuvée",
+                        "rejected": "Rejettée",
+                        "cancelled": "Annulée"
+                    },
+                    "actions": {
+                        "cancel": "Annuler",
+                        "action": "Procédure de paiement"
+                    }
+                }
+            },
+            "general": {
+                "actions": "Actions",
+                "close": "Fermer",
+                "confirm": "Confirmer",
+                "next": "Suivant",
+                "loading": "Chargement",
+                "refresh": "Actualiser",
+                "search": "Rechercher",
+                "summary": "Détails de la demande",
+                "amount": "Montant",
+                "otp": "OTP",
+                "pin": "PIN",
+                "method": "Mode de paiement",
+                "account": "Numéro de compte",
+                "reference": "Reférence",
+                "pincode": "Code Pin",
+                "phone": "Numéro de téléphone",
+                "fee": "Frais",
+                "destination": "Identifiants",
+                "total": "Total",
+                "logo": "Logo",
+                "description": "Informations sur le paiement",
+                "customer": {
+                    "name": "Nom du client",
+                    "address": "Adresse"
+                },
+                "add_money": "AUGMENTER L'ARGENT",
+                "balance": "Solde"
+            }
+        }
+    },
+    "validations": {
+        "purchase": {
+            "electricity": {
+                "meter_code": "Veuillez entrer un numéro de compteur au format valid {format}",
+                "bill_number": "Veuillez entrer un numéro de facture au format valid {format}"
+            },
+            "mobile_money": {
+                "account_number": "Veuillez entrer un numéro de compte au format valid {format}"
+            },
+            "reference": "La reférence n'est valide",
+            "pincode": "Le code PIN n'est pas valide",
+            "otp": "Le domaine OTP n'est pas valide",
+            "phone": "Le numéro de téléphone n'est pas valide",
+            "account": "Le numéro de compte de paiement n'est pas valide",
+            "amount": "Veuillez entrer un montant valide",
+            "paymentmethod": "Sélectionnez un mode de paiement dans la liste",
+            "empty_paymentmethod": "Aucun mode de paiement n'est actuellement disponible pour vous",
+            "service": "Veuillez sélectionner un service dans la liste",
+            "empty_service": "Aucun service disponible pour cette catégorie pour le moment"
+        },
+        "account": {
+            "insufficient_balance": "Votre solde est insuffisant",
+            "empty_payout_method": "Veuillez sélectionner un mode de paiement",
+            "topup_account_not_configured": "Vous n'avez pas défini de compte pour cette méthode de recharge",
+            "account_number": "Veuillez configurer un numéro de compte pour cette méthode de recharge dans les paramètres de votre profil",
+            "invalid_amount": "Veuillez entrer un montant valide",
+            "account_name": "Veuillez entrer un nom valide"
+        },
+        "general": {
+            "maintenance": "Nous assurons actuellement la maintenance de notre système. Veuillez revenir plus tard",
+            "network": "Erreur réseau. Veuillez vérifier votre connexion internet",
+            "unexpected": "Une erreur inattendue s'est produite"
+        }
+    },
+    "notifications": {
+        "successful": "Transaction réussie",
+        "transactions_loaded": "Transactions mises à jour avec succès",
+        "payouts_loaded": "Les derniers paiements ont été mis à jour avec succès",
+        "failed": "L'opération a échoué",
+        "late_bill": "Attention ! La facture a du retard"
+    },
+    "exceptions": {
+        "00000": "Une erreur inattendue s'est produite",
+        "10000": "Le service demandé n'est pas disponible",
+        "10001": "Le mode de paiement demandé n'est pas disponible",
+        "10002": "La demande envoyée contient quelques erreurs de saisie",
+        "10003": "Vous avez été déconnecté. Connectez-vous pour continuer",
+        "10004": "Vous n'êtes pas autorisé à soumettre cette requête",
+        "10006": "Le lien recherché n'a pas été trouvé",
+        "10007": "Vous envoyez un trop grand nombre de demandes au serveur",
+        "10008": "La transaction n'a pas pu être enregistrée dans la mémoire cache",
+        "10009": "Il y a eu une erreur pendant de la transaction",
+        "10010": "Cette transaction n'a pas été trouvée. La transaction a peut-être déjà été traitée ou expirée",
+        "10011": "Une erreur de cconnexion est survenue à l'un de nos serveurs",
+        "10012": "Un problème s'est produit lors du calcul des frais pour cette transaction. Aucun frais n'a été fixé pour ce montant",
+        "10013": "La liste des services n'est pas disponible pour le moment",
+        "10014": "Une clé non valide a été transmise avec la requête",
+        "10015": "The language selected is currently not supported",
+        "10016": "Le paramètre acceptance en-tête ne contient pas l'application/json",
+        "10018": "Cette transaction n'a pas été trouvée",
+        "10019": "Un problème de connexion avec le fournisseur de services s'est produit",
+        "10020": "Le numéro de compteur n'existe pas",
+        "10021": "Un problème est survenu lors de l'envoi d'une demande de relance",
+        "10022": "Ce service est indisponible pour le moment",
+        "10023": "Le solde de votre compte CorlaPay est insuffisant pour effectuer cette transaction",
+        "10024": "Vous n'êtes pas autorisé à effectuer cette transaction. Votre compte a été soumis à des restrictions",
+        "10025": "Votre session a expiré. Veuillez actualiser votre navigateur",
+        "10026": "Le mode de paiement n'est pas activé",
+        "10027": "Une erreur s'est produite lors de la demande de paiement. Veuillez réessayer plus tard",
+        "10028": "Votre solde de commission est insuffisant",
+        "10029": "Une erreur a annulé le paiement. Veuillez réessayer plus tard",
+        "10030": "Attention ! Vous avez saisi un code pin incorrect",
+        "10031": "The meter with the provided has been deactivated",
+        "10032": "Le numéro de compteur fourni n'est pas valide",
+        "10033": "Le statut de la transaction ne peut pas être mis à jour",
+        "10034": "The amount provided is less than the minimum amount required for this service",
+        "10035": "Le client ne peut effectuer cette transaction avec le fournisseur de services",
+        "10036": "Le client n'a pas été trouvé",
+        "10037": "Solde insuffisant dans le compte du client",
+        "10038": "Transaction annulée par le client",
+        "10039": "Le client n'a pas approuvé la transaction",
+        "10040": "Le service n'est pas convenablement configuré",
+        "10041": "Le client a atteint la limite de transaction",
+        "10042": "Vous n'êtes pas autorisé à utiliser ce service pour le moment",
+        "10043": "Aucucne facture n'a été trouvée",
+        "10044": "Le montant indiqué est supérieur au montant maximum requis pour ce service",
+        "10045": "Le numéro de service fourni n'est pas dans le format requis"
+    }
+}
