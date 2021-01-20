@@ -15,20 +15,27 @@ trait MeterAttribute
     {
         if ($this->is_active) {
             if (auth()->user()->can(config('permission.permissions.deactivate_meters'))) {
-                return '<a href="'.route('admin.meter.electricity.mark', [
-                        $this,
-                        0
-                    ]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.services.service.deactivate').'" name="confirm_item"><span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
+                return '<a href="'.route('admin.meter.electricity.deactivate', [
+                            $this
+                        ]).'" data-toggle="tooltip"
+                        data-placement="top"
+                        title="'.__('buttons.backend.meters.electricity.deactivate').'">
+                    <span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
             }
             return '<span class="badge badge-success">'.__('labels.general.yes').'</span>';
         }
         
         if (auth()->user()->can(config('permission.permissions.deactivate_meters'))) {
-            return '<a href="'.route('admin.meter.electricity.mark', [
-                    $this,
-                    1
-                ]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.services.service.activate').'" name="confirm_item"><span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span></a>';
+            return
+                '<a href="'.route('admin.meter.electricity.activate', $this).'"
+                        data-toggle="tooltip" data-placement="top"
+                        title="'.__('buttons.backend.meters.electricity.activate').'"
+                        name="confirm_item">
+                    <span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span>
+                </a>' .
+                '<span class="badge badge-info" data-container="body" data-toggle="popover" data-placement="bottom" data-content="'.$this->blocked_reason.'" style="cursor:pointer">info</span>';
         }
-        return '<span class="badge badge-danger">'.__('labels.general.no').'</span>';
+        return '<span class="badge badge-danger">'.__('labels.general.no').'</span>' .
+            '<span class="badge badge-info" data-container="body" data-toggle="popover" data-placement="bottom" data-content="'.$this->blocked_reason.'" style="cursor:pointer">info</span>';
     }
 }

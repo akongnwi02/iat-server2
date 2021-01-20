@@ -53,6 +53,8 @@ return [
                 'management' => 'Electricity Meters',
                 'create' => 'Register Electricity Meter',
                 'edit' => 'Edit Electricity Meter',
+                'activate' => 'Activate Meter',
+                'deactivate' => 'Deactivate Meter'
             ],
         ],
         'log-viewer' => [

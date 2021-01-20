@@ -226,6 +226,12 @@ return [
                     'default_setting'    => 'Use Default Service Charge'
                 ]
             ],
+            'meters' => [
+                'electricity' => [
+                    'meter_code' => 'Meter Code',
+                    'comment' => 'Comment',
+                ]
+            ],
             'services'   => [
                 'service'    => [
                     'name'                    => 'Service Name',

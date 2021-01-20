@@ -9,6 +9,7 @@
 namespace App\Repositories\Backend\Meter;
 
 
+use App\Exceptions\GeneralException;
 use App\Models\Meter\Meter;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -22,5 +23,28 @@ class MeterRepository
             ->allowedSorts('meters.is_active', 'meters.created_at')
             ->defaultSort( '-meters.is_active', '-meters.created_at');
         return $services;
+    }
+    
+    public function updateStatus($meter, $status, $comment = null)
+    {
+        $meter->is_active = $status;
+        $meter->blocked_reason = $comment;
+    
+        if ($meter->save()) {
+        
+//            switch ($status) {
+//                case 0:
+//                    event(new ServiceDeactivated($service));
+//                    break;
+//
+//                case 1:
+//                    event(new ServiceReactivated($service));
+//                    break;
+//            }
+        
+            return $meter;
+        }
+    
+        throw new GeneralException(__('exceptions.backend.meters.electricity.activate'));
     }
 }

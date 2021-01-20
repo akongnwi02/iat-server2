@@ -31,6 +31,7 @@ class CreateSupplyPointsTable extends Migration
             $table->float('gps_lat')->nullable();
             $table->uuid('service_charge_id')->nullable();
             $table->uuid('price_id')->nullable();
+            $table->uuid('company_id')->nullable();
     
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -39,6 +40,7 @@ class CreateSupplyPointsTable extends Migration
             $table->timestamps();
     
             $table->foreign('service_charge_id')->references('uuid')->on('commissions');
+            $table->foreign('company_id')->references('uuid')->on('companies');
             $table->foreign('price_id')->references('uuid')->on('prices');
         });
     }

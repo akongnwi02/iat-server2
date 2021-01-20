@@ -95,6 +95,12 @@ return [
         'movement' => [
             'create_error' => 'There was a problem performing this operation. Please try again.',
         ],
+        'meters' => [
+            'electricity' => [
+                'activate' => 'There was a problem activating this meter. Please try again.',
+                'deactivate' => 'There was a problem deactivating this meter. Please try again.',
+            ]
+        ],
         'services' => [
             'service'    => [
                 'create_error'  => 'There was a problem creating this service. Please try again.',

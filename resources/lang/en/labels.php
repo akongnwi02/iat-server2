@@ -307,6 +307,7 @@ return [
             'create'      => 'Create Meter',
             'edit'        => 'Edit Meter',
             'active'      => 'Active Meters',
+            'deactivate' => 'Deactivate Meter',
             
             'table' => [
                 'meter_code'        => 'Meter Code',

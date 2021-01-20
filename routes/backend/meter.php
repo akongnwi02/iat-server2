@@ -15,7 +15,7 @@ Route::group([
 ], function () {
     
     /*
-     * Service CRUD
+     * Electric Meter CRUD
      */
     Route::get('electricity', [ElectricMeterController::class, 'index'])
         ->name('electricity.index')
@@ -29,4 +29,22 @@ Route::group([
         ->name('electricity.store')
         ->middleware('permission:'.config('permission.permissions.create_meters'));
     
+    /*
+     * Specific Electricity Meter
+     */
+    Route::group(['prefix' => 'electricity/{meter}'], function () {
+        
+        Route::get('/activate', [ElectricMeterController::class, 'activate'])
+            ->name('electricity.activate')
+            ->middleware('permission:'.config('permission.permissions.deactivate_meters'));
+        
+        Route::get('/deactivate', [ElectricMeterController::class, 'deactivateForm'])
+            ->name('electricity.deactivate.form')
+            ->middleware('permission:'.config('permission.permissions.deactivate_meters'));
+        
+        Route::patch('/deactivate', [ElectricMeterController::class, 'deactivate'])
+            ->name('electricity.deactivate')
+            ->middleware('permission:'.config('permission.permissions.deactivate_meters'));
+        
+    });
 });

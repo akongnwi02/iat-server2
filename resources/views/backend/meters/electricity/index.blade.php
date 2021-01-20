@@ -71,3 +71,13 @@
         </div><!--card-body-->
     </div><!--card-->
 @endsection
+@push('after-scripts')
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+
+
+
+    </script>
+@endpush

@@ -9,6 +9,7 @@
 namespace App\Models\SupplyPoint;
 
 
+use App\Models\Traits\Relationships\SupplyPointRelationship;
 use App\Models\Traits\Uuid;
 use Arcanedev\Support\Database\Model;
 use Wildside\Userstamps\Userstamps;
@@ -16,6 +17,7 @@ use Wildside\Userstamps\Userstamps;
 class SupplyPoint extends Model
 {
     use Uuid,
+        SupplyPointRelationship,
         Userstamps;
     
     /**

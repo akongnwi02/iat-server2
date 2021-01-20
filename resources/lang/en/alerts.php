@@ -82,6 +82,12 @@ return [
                 'company_updated' => 'The companies for this payment method was updated successfully',
             ]
         ],
+        'meters' => [
+            'electricity' => [
+                'activated' => 'The meter was activated successfully.',
+                'deactivated' => 'The meter was deactivated successfully',
+            ]
+        ],
         'administration' => [
             'currency' => [
                 'created' => 'The currency was successfully created.',

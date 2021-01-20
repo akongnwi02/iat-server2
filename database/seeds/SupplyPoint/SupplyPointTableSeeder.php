@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Business\Commission;
+use App\Models\Company\Company;
 use App\Models\SupplyPoint\Price;
 use App\Models\SupplyPoint\SupplyPoint;
 
@@ -29,6 +30,7 @@ class SupplyPointTableSeeder extends \Illuminate\Database\Seeder
             'provider_price' => 13,
             'gps_long' => 125.25,
             'gps_lat' => 85.4,
+            'company_id' => Company::first()->uuid,
             'service_charge_id' => Commission::first()->uuid,
             'price_id' => Price::first()->uuid
             

@@ -46,6 +46,12 @@ return [
                 'deactivate' => 'Deactivate Category',
             ]
         ],
+        'meters' => [
+            'electricity' => [
+                'activate' => 'Activate Meter',
+                'deactivate' => 'Deactivate Meter',
+            ]
+        ],
         'administration' => [
             'currency' => [
                 'activate' => 'Activate Currency',
