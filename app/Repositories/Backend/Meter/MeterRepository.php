@@ -28,7 +28,12 @@ class MeterRepository
     public function updateStatus($meter, $status, $comment = null)
     {
         $meter->is_active = $status;
-        $meter->blocked_reason = $comment;
+        if ($comment) {
+            $meter->blocked_reason = $comment;
+        }
+        if ($status == 0) {
+            $meter->blocker_id = auth()->user()->uuid;
+        }
     
         if ($meter->save()) {
         

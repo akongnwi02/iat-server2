@@ -9,6 +9,7 @@
 namespace App\Models\Traits\Relationships;
 
 
+use App\Models\Auth\User;
 use App\Models\Meter\Provider;
 use App\Models\SupplyPoint\SupplyPoint;
 
@@ -25,4 +26,8 @@ trait MeterRelationship
         return $this->belongsTo(SupplyPoint::class, 'supply_point_id', 'uuid');
     }
     
+    public function blocker()
+    {
+        return $this->belongsTo(User::class, 'blocker_id', 'uuid');
+    }
 }

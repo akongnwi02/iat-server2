@@ -30,7 +30,7 @@
                                 <th>@lang('labels.backend.meters.table.meter_code')</th>
                                 <th>@lang('labels.backend.meters.table.supply_point')</th>
                                 <th>@lang('labels.backend.meters.table.provider')</th>
-                                <th>@lang('labels.backend.meters.table.type')</th>
+                                {{--<th>@lang('labels.backend.meters.table.type')</th>--}}
                                 <th>@lang('labels.backend.meters.table.active')</th>
                                 <th>@lang('labels.backend.meters.table.last_vending_date')</th>
 
@@ -43,7 +43,7 @@
                                     <td>{{ $meter->meter_code }}</td>
                                     <td>{{ @$meter->supply_point->name }}</td>
                                     <td>{{ @$meter->provider->name }}</td>
-                                    <td>{{ __($meter->type) }}</td>
+                                    {{--<td>{{ __($meter->type) }}</td>--}}
                                     <td>{!! @$meter->active_label !!}</td>
                                     <td>{{ @$meter->last_vending_date }}</td>
 
@@ -77,7 +77,9 @@
             $('[data-toggle="popover"]').popover();
         });
 
-
+        $('.popover-dismiss').popover({
+            trigger: 'focus'
+        })
 
     </script>
 @endpush

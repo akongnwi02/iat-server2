@@ -33,9 +33,9 @@ trait MeterAttribute
                         name="confirm_item">
                     <span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span>
                 </a>' .
-                '<span class="badge badge-info" data-container="body" data-toggle="popover" data-placement="bottom" data-content="'.$this->blocked_reason.'" style="cursor:pointer">info</span>';
+                '<a tabindex="0" class="badge badge-info" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="'.@$this->blocker->full_name.'" data-content="'.$this->blocked_reason.'" style="cursor:pointer">info</span>';
         }
         return '<span class="badge badge-danger">'.__('labels.general.no').'</span>' .
-            '<span class="badge badge-info" data-container="body" data-toggle="popover" data-placement="bottom" data-content="'.$this->blocked_reason.'" style="cursor:pointer">info</span>';
+            '<a tabindex="0" class="badge badge-info" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="'.@$this->blocker->full_name.'" data-content="'.$this->blocked_reason.'" style="cursor:pointer">info</span>';
     }
 }

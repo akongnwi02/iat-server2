@@ -22,6 +22,7 @@ class CreateMetersTable extends Migration
             $table->enum('type', ['water', 'electricity']);
             $table->boolean('is_active')->default(1);
             $table->text('blocked_reason')->nullable();
+            $table->uuid('blocker_id')->nullable();
             $table->dateTime('last_vending_date')->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -32,6 +33,8 @@ class CreateMetersTable extends Migration
     
             $table->foreign('supply_point_id')->references('uuid')->on('supply_points');
             $table->foreign('provider_id')->references('uuid')->on('providers');
+            $table->foreign('blocker_id')->references('uuid')->on('users');
+            
     
         });
     }
