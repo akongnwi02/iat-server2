@@ -230,6 +230,8 @@ return [
                 'electricity' => [
                     'meter_code' => 'Meter Code',
                     'comment' => 'Comment',
+                    'supply_point' => 'Supply Point',
+                    'provider' => 'Provider',
                 ]
             ],
             'services'   => [

@@ -11,7 +11,7 @@
     <title>@yield('title', app_name())</title>
     <meta name="description" content="@yield('meta_description', 'Corlang Core')">
     <meta name="author" content="@yield('meta_author', 'Che Devert')">
-    <link rel="icon" href="{!! asset('img/backend/brand/logo_IAT.png') !!}"/>
+    <link rel="icon" href="{!! asset('img/backend/brand/pp-ConvertImage.ico') !!}"/>
 @yield('meta')
 
     {{-- See https://laravel.com/docs/5.5/blade#stacks for usage --}}

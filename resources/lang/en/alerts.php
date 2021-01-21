@@ -86,6 +86,7 @@ return [
             'electricity' => [
                 'activated' => 'The meter was activated successfully.',
                 'deactivated' => 'The meter was deactivated successfully',
+                'updated' => 'The meter was updated successfully',
             ]
         ],
         'administration' => [

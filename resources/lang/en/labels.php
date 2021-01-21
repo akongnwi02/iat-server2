@@ -307,11 +307,13 @@ return [
             'create'      => 'Create Meter',
             'edit'        => 'Edit Meter',
             'active'      => 'Active Meters',
-            'deactivate' => 'Deactivate Meter',
+            'deactivate'  => 'Deactivate Meter',
+            'filter'      => 'Filter Meters',
             
             'table' => [
                 'meter_code'        => 'Meter Code',
                 'supply_point'      => 'Supply Point',
+                'company'           => 'Company',
                 'provider'          => 'Provider',
                 'type'              => 'Type',
                 'active'            => 'Active',

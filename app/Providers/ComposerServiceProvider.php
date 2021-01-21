@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Composers\Backend\DashboardComposer;
+use App\Http\Composers\Backend\Meter\FilterMeterComposer;
 use App\Http\Composers\Frontend\TopupAccountComposer;
 use Illuminate\Support\Facades\View;
 use App\Http\Composers\GlobalComposer;
@@ -51,6 +52,11 @@ class ComposerServiceProvider extends ServiceProvider
         // This binds items like number of users pending approval when account approval is set to true
             'backend.dashboard',
             DashboardComposer::class
+        );
+    
+        View::composer(
+            ['backend.meters.electricity.includes.header-buttons'],
+            FilterMeterComposer::class
         );
     }
 

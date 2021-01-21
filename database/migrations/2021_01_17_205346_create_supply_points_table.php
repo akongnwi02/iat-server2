@@ -21,7 +21,7 @@ class CreateSupplyPointsTable extends Migration
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('contract_number')->nullable();
-            
+            $table->enum('type', ['water', 'electricity']);
             $table->boolean('is_auto_price')->default(false);
             $table->float('auto_price')->nullable();
             $table->float('auto_price_margin')->nullable();

@@ -99,6 +99,9 @@ return [
             'electricity' => [
                 'activate' => 'There was a problem activating this meter. Please try again.',
                 'deactivate' => 'There was a problem deactivating this meter. Please try again.',
+                'update_error' => 'There was a problem updating this meter. Please try again.',
+                'already_active' => 'The meter is already active.',
+                'already_inactive' => 'The meter is already inactive.',
             ]
         ],
         'services' => [

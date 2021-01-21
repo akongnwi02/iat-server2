@@ -49,12 +49,14 @@ return [
         
         'meter' => [
             'main' => 'Meters',
+            'all' => 'All Meters',
             'electricity' => [
                 'management' => 'Electricity Meters',
                 'create' => 'Register Electricity Meter',
                 'edit' => 'Edit Electricity Meter',
                 'activate' => 'Activate Meter',
-                'deactivate' => 'Deactivate Meter'
+                'deactivate' => 'Deactivate Meter',
+                'unassigned' => 'Unassigned Meters'
             ],
         ],
         'log-viewer' => [

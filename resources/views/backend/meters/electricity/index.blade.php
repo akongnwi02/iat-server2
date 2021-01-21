@@ -3,7 +3,7 @@
 @section('title', app_name() . ' | ' . __('labels.backend.meters.electricity'))
 
 @section('breadcrumb-links')
-    {{--@include('backend.services.service.includes.breadcrumb-links')--}}
+    @include('backend.meters.electricity.includes.breadcrumb-links')
 @endsection
 
 @section('content')
@@ -29,6 +29,7 @@
                             <tr>
                                 <th>@lang('labels.backend.meters.table.meter_code')</th>
                                 <th>@lang('labels.backend.meters.table.supply_point')</th>
+                                <th>@lang('labels.backend.meters.table.company')</th>
                                 <th>@lang('labels.backend.meters.table.provider')</th>
                                 {{--<th>@lang('labels.backend.meters.table.type')</th>--}}
                                 <th>@lang('labels.backend.meters.table.active')</th>
@@ -41,7 +42,8 @@
                             @foreach($meters as $meter)
                                 <tr>
                                     <td>{{ $meter->meter_code }}</td>
-                                    <td>{{ @$meter->supply_point->name }}</td>
+                                    <td>{{ @$meter->supplyPoint->name }}</td>
+                                    <td>{{ @$meter->supplyPoint->company->name }}</td>
                                     <td>{{ @$meter->provider->name }}</td>
                                     {{--<td>{{ __($meter->type) }}</td>--}}
                                     <td>{!! @$meter->active_label !!}</td>
@@ -64,7 +66,7 @@
 
                 <div class="col-5">
                     <div class="float-right">
-                        {!! $meters->render() !!}
+                        {!! $meters->appends(request()->except('page'))->render() !!}
                     </div>
                 </div><!--col-->
             </div><!--row-->

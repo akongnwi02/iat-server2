@@ -30,6 +30,7 @@ class SupplyPointTableSeeder extends \Illuminate\Database\Seeder
             'provider_price' => 13,
             'gps_long' => 125.25,
             'gps_lat' => 85.4,
+            'type' => config('business.meter.type.electricity'),
             'company_id' => Company::first()->uuid,
             'service_charge_id' => Commission::first()->uuid,
             'price_id' => Price::first()->uuid

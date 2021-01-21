@@ -21,6 +21,10 @@ Route::group([
         ->name('electricity.index')
         ->middleware('permission:'.config('permission.permissions.read_meters'));
     
+    Route::get('electricity/unassigned', [ElectricMeterController::class, 'unassigned'])
+        ->name('electricity.unassigned')
+        ->middleware('permission:'.config('permission.permissions.read_meters'));
+    
     Route::get('electricity/create', [ElectricMeterController::class, 'create'])
         ->name('electricity.create')
         ->middleware('permission:'.config('permission.permissions.create_meters'));
@@ -45,6 +49,13 @@ Route::group([
         Route::patch('/deactivate', [ElectricMeterController::class, 'deactivate'])
             ->name('electricity.deactivate')
             ->middleware('permission:'.config('permission.permissions.deactivate_meters'));
-        
+    
+        Route::get('/edit', [ElectricMeterController::class, 'edit'])
+            ->name('electricity.edit')
+            ->middleware('permission:'.config('permission.permissions.update_meters'));
+    
+        Route::put('/', [ElectricMeterController::class, 'update'])
+            ->name('electricity.update')
+            ->middleware('permission:'.config('permission.permissions.update_meters'));
     });
 });

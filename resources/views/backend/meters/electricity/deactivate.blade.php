@@ -2,6 +2,10 @@
 
 @section('title', __('labels.backend.meters.deactivate'))
 
+@section('breadcrumb-links')
+    @include('backend.meters.electricity.includes.breadcrumb-links')
+@endsection
+
 @section('content')
     <div class="row justify-content-center align-items-center">
         <div class="col col-sm-8 align-self-center">

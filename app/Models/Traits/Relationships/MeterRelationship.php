@@ -21,7 +21,7 @@ trait MeterRelationship
         return $this->belongsTo(Provider::class, 'provider_id', 'uuid');
     }
     
-    public function supply_point()
+    public function supplyPoint()
     {
         return $this->belongsTo(SupplyPoint::class, 'supply_point_id', 'uuid');
     }

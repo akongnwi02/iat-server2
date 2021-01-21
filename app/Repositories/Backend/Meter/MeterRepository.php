@@ -18,11 +18,26 @@ class MeterRepository
 {
     public function getAllMeters()
     {
-        $services = QueryBuilder::for(Meter::class)
-            ->allowedFilters([AllowedFilter::exact('is_active')])
+        $meters = QueryBuilder::for(Meter::class)
+            ->allowedFilters([
+                AllowedFilter::partial('meter_code'),
+                AllowedFilter::partial('supply_point.company.name'),
+                AllowedFilter::partial('supply_point.name'),
+                AllowedFilter::exact('provider_id'),
+                AllowedFilter::exact('is_active'),
+                AllowedFilter::scope('vend_start_date'),
+                AllowedFilter::scope('vend_end_date'),
+            ])
             ->allowedSorts('meters.is_active', 'meters.created_at')
             ->defaultSort( '-meters.is_active', '-meters.created_at');
-        return $services;
+        
+        if (! auth()->user()->company->is_default) {
+            $meters->whereHas('supply_point', function($query){
+                $query->where('company_id', auth()->user()->company->uuid);
+            });
+        }
+        
+        return $meters;
     }
     
     public function updateStatus($meter, $status, $comment = null)
@@ -51,5 +66,25 @@ class MeterRepository
         }
     
         throw new GeneralException(__('exceptions.backend.meters.electricity.activate'));
+    }
+    
+    /**
+     * @param $meter
+     * @param $data
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function update($meter, $data)
+    {
+        $meter->supply_point_id = @$data['supply_point_id'];
+    
+        if ($meter->update()) {
+        
+//            event(new MeterUpdated($meter));
+        
+            return $meter;
+        }
+    
+        throw new GeneralException(__('exceptions.backend.meters.electricity.update_error'));
     }
 }
