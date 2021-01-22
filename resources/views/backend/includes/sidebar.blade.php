@@ -194,6 +194,22 @@
                 </ul>
             </li>
             @endcan
+
+            @can(config('permission.permissions.read_supply_points'))
+            <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/point*'), 'open') }}">
+                <a class="nav-link nav-dropdown-toggle {{ active_class(Active::checkUriPattern('admin/point*')) }}" href="{{ route('admin.point.electricity.index') }}">
+                    <i class="nav-icon icon-list"></i> @lang('menus.backend.point.main')
+                </a>
+
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/point/electricity*')) }}" href="{{ route('admin.point.electricity.index') }}">
+                            @lang('menus.backend.point.electricity.management')
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endcan
             <li class="nav-title">
                 <h6><b>@lang('menus.backend.sidebar.system')</b></h6>
             </li>

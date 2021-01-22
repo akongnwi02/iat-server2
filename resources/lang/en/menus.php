@@ -59,6 +59,16 @@ return [
                 'unassigned' => 'Unassigned Meters'
             ],
         ],
+        'point' => [
+            'main' => 'Supply Points',
+            'all' => 'All Supply Points',
+            'electricity' => [
+                'management' => 'Electricity Points',
+                'create' => 'Register Point',
+                'edit' => 'Edit Point',
+            ],
+        ],
+        
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',
