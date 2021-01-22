@@ -5,6 +5,11 @@ Breadcrumbs::for('admin.meter.electricity.index', function ($trail) {
     $trail->push(__('menus.backend.meter.electricity.management'), route('admin.meter.electricity.index'));
 });
 
+Breadcrumbs::for('admin.meter.electricity.create', function ($trail) {
+    $trail->parent('admin.meter.electricity.index');
+    $trail->push(__('menus.backend.meter.electricity.create'), route('admin.meter.electricity.create'));
+});
+
 Breadcrumbs::for('admin.meter.electricity.unassigned', function ($trail) {
     $trail->parent('admin.meter.electricity.index');
     $trail->push(__('menus.backend.meter.electricity.unassigned'), route('admin.meter.electricity.unassigned'));

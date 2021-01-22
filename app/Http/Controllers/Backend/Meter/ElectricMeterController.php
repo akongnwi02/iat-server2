@@ -14,8 +14,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Meter\ActivateMeterRequest;
 use App\Http\Requests\Backend\Meter\DeactivateMeterRequest;
 use App\Http\Requests\Backend\Meter\UpdateMeterRequest;
+use App\Http\Requests\Backend\Meter\StoreMeterRequest;
 use App\Models\Meter\Meter;
 use App\Repositories\Backend\Meter\MeterRepository;
+use App\Repositories\Backend\Meter\ProviderRepository;
 use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
 
 class ElectricMeterController extends Controller
@@ -55,9 +57,13 @@ class ElectricMeterController extends Controller
      * @param ActivateMeterRequest $request
      * @param Meter $meter
      * @return mixed
+     * @throws GeneralException
      */
     public function deactivateForm(ActivateMeterRequest $request, Meter $meter)
     {
+        if (!$meter->is_active) {
+            throw new GeneralException(__('exceptions.backend.meters.electricity.already_inactive'));
+        }
         return view('backend.meters.electricity.deactivate')
             ->withMeter($meter);
     }
@@ -71,9 +77,6 @@ class ElectricMeterController extends Controller
      */
     public function deactivate(MeterRepository $meterRepository, DeactivateMeterRequest $request, Meter $meter)
     {
-        if (!$meter->is_active) {
-            throw new GeneralException(__('exceptions.backend.meters.electricity.already_inactive'));
-        }
         $meterRepository->updateStatus($meter, 0, request('comment'));
     
         return redirect()->route('admin.meter.electricity.index')
@@ -102,25 +105,24 @@ class ElectricMeterController extends Controller
         return view('backend.meters.electricity.edit')
             ->withMeter($meter)
             ->withSupplyPoints($supplyPointRepository->getAllSupplyPoints()
+                ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray());
     }
     
-    public function create(SupplyPointRepository $supplyPointRepository)
+    public function create(SupplyPointRepository $supplyPointRepository, ProviderRepository $providerRepository)
     {
-        return view('backend.services.service.create')
-            ->withCommissions($commissionRepository->getAllCommissions()
+        return view('backend.meters.electricity.create')
+            ->withSupplyPoints($supplyPointRepository->getAllSupplyPoints()
+                ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray())
-            ->withCategories($categoryRepository->get()
-                ->pluck('name', 'uuid')
-                ->toArray())
-            ->withDistributions($commissionDistributionRepository->getAllCommissionDistributions()
+            ->withProviders($providerRepository->getAllProviders()
                 ->pluck('name', 'uuid')
                 ->toArray());
     }
     
-    public function store()
+    public function store(StoreMeterRequest $request, MeterRepository $meterRepository)
     {
     
     }

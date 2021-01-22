@@ -14,9 +14,9 @@ class ProviderTableSeeder extends \Illuminate\Database\Seeder
     public function run()
     {
         $providers = [
-            ['name' => 'Hexcell'],
-            ['name' => 'Calin'],
-            ['name' => 'Stron'],
+            ['name' => config('business.meter.provider.hexcell')],
+            ['name' => config('business.meter.provider.calin')],
+            ['name' => config('business.meter.provider.stron')],
         ];
     
         foreach ($providers as $provider) {

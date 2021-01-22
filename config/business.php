@@ -111,6 +111,11 @@ return [
         'type' => [
             'electricity' => 'electricity',
             'water' => 'water',
+        ],
+        'provider' => [
+            'calin' => 'Calin',
+            'stron' => 'Stron',
+            'hexcell' => 'Hexcell'
         ]
     ]
 ];

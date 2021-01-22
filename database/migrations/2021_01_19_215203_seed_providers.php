@@ -13,9 +13,9 @@ class SeedProviders extends Migration
     public function up()
     {
         $providers = [
-            ['name' => 'Hexcell'],
-            ['name' => 'Calin'],
-            ['name' => 'Stron'],
+            ['name' => config('business.meter.provider.hexcell')],
+            ['name' => config('business.meter.provider.calin')],
+            ['name' => config('business.meter.provider.stron')],
         ];
     
         foreach ($providers as $provider) {
