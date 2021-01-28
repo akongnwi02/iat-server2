@@ -48,6 +48,8 @@ class Meter extends Model
         'supply_point_id',
         'provider_id',
         'meter_code',
+        'phone',
+        'email',
         'type',
     ];
 }

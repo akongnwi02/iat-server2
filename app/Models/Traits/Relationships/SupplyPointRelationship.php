@@ -9,12 +9,25 @@
 namespace App\Models\Traits\Relationships;
 
 
+use App\Models\Business\Commission;
 use App\Models\Company\Company;
+use App\Models\SupplyPoint\Price;
 
 trait SupplyPointRelationship
 {
     public function company()
     {
-        return $this->hasOne(Company::class, 'uuid', 'company_id');
+        return $this->belongsTo(Company::class, 'company_id', 'uuid');
     }
+    
+    public function serviceCharge()
+    {
+        return $this->belongsTo(Commission::class, 'service_charge_id', 'uuid');
+    }
+    
+    public function price()
+    {
+        return $this->belongsTo(Price::class, 'price_id', 'uuid');
+    }
+    
 }

@@ -17,6 +17,7 @@ use App\Repositories\Backend\Services\Category\CategoryRepository;
 use App\Repositories\Backend\Services\Commission\CommissionDistributionRepository;
 use App\Repositories\Backend\Services\Commission\CommissionRepository;
 use App\Repositories\Backend\Services\Service\ServiceRepository;
+use App\Repositories\Backend\SupplyPoint\PriceRepository;
 
 class ServiceController extends Controller
 {
@@ -84,6 +85,7 @@ class ServiceController extends Controller
      * @param ServiceRepository $serviceRepository
      * @param CommissionDistributionRepository $commissionDistributionRepository
      * @param CompanyRepository $companyRepository
+     * @param PriceRepository $priceRepository
      * @return mixed
      */
     public function edit(
@@ -92,7 +94,9 @@ class ServiceController extends Controller
         CategoryRepository $categoryRepository,
         ServiceRepository $serviceRepository,
         CommissionDistributionRepository $commissionDistributionRepository,
-        CompanyRepository $companyRepository)
+        CompanyRepository $companyRepository,
+        PriceRepository $priceRepository
+    )
     {
         return view('backend.services.service.edit')
             ->withServiceCompanies($serviceRepository->getAvailableCompanies($service)->get())
@@ -105,6 +109,9 @@ class ServiceController extends Controller
                 ->pluck('name', 'uuid')
                 ->toArray())
             ->withCategories($categoryRepository->get()
+                ->pluck('name', 'uuid')
+                ->toArray())
+            ->withPrices($priceRepository->getPrices()
                 ->pluck('name', 'uuid')
                 ->toArray());
     }

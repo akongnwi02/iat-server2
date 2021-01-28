@@ -20,11 +20,11 @@ class SupplyPointTableSeeder extends \Illuminate\Database\Seeder
         
         SupplyPoint::create([
             'name' => 'Test supply point',
-            'area' => 'Test area',
+            'city' => 'Test area',
             'phone' => '+12356',
             'email' => 'gentledivert@gmail.com',
             'address' => '123 church street',
-            'contract_number' => 'ENEO Contract',
+            'external_identifier' => 'ENEO Contract',
             'is_auto_price' => false,
             'auto_price' => 12,
             'provider_price' => 13,

@@ -6,7 +6,7 @@
  * Time: 9:28 PM
  */
 
-use App\Http\Controllers\Backend\Point\SupplyPointController;
+use App\Http\Controllers\Backend\Point\ElectricSupplyPointController;
 
 Route::group([
     'prefix'     => 'point',
@@ -17,15 +17,15 @@ Route::group([
     /*
      * Electric Meter CRUD
      */
-    Route::get('electricity', [SupplyPointController::class, 'index'])
+    Route::get('electricity', [ElectricSupplyPointController::class, 'index'])
         ->name('electricity.index')
         ->middleware('permission:'.config('permission.permissions.read_supply_points'));
     
-    Route::get('electricity/create', [SupplyPointController::class, 'create'])
+    Route::get('electricity/create', [ElectricSupplyPointController::class, 'create'])
         ->name('electricity.create')
         ->middleware('permission:'.config('permission.permissions.create_supply_points'));
     
-    Route::post('electricity', [SupplyPointController::class, 'store'])
+    Route::post('electricity', [ElectricSupplyPointController::class, 'store'])
         ->name('electricity.store')
         ->middleware('permission:'.config('permission.permissions.create_supply_points'));
     
@@ -34,11 +34,11 @@ Route::group([
      */
     Route::group(['prefix' => 'electricity/{meter}'], function () {
         
-        Route::get('/edit', [SupplyPointController::class, 'edit'])
+        Route::get('/edit', [ElectricSupplyPointController::class, 'edit'])
             ->name('electricity.edit')
             ->middleware('permission:'.config('permission.permissions.update_supply_points'));
         
-        Route::put('/', [SupplyPointController::class, 'update'])
+        Route::put('/', [ElectricSupplyPointController::class, 'update'])
             ->name('electricity.update')
             ->middleware('permission:'.config('permission.permissions.update_supply_points'));
     });

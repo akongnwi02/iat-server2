@@ -226,14 +226,33 @@ return [
                     'default_setting'    => 'Use Default Service Charge'
                 ]
             ],
-            'meters' => [
+            'meters'     => [
                 'electricity' => [
-                    'meter_code' => 'Meter Code',
-                    'type' => 'Type',
-                    'comment' => 'Comment',
+                    'meter_code'   => 'Meter Code',
+                    'phone'        => 'Contact Phone',
+                    'email'        => 'Contact Email',
+                    'type'         => 'Type',
+                    'comment'      => 'Comment',
                     'supply_point' => 'Supply Point',
-                    'provider' => 'Provider',
+                    'provider'     => 'Provider',
                 ]
+            ],
+            'points'     => [
+                'electricity' => [
+                    'name'                => 'Name',
+                    'city'                => 'City',
+                    'address'             => 'Address',
+                    'phone'               => 'Contact Phone',
+                    'email'               => 'Contact Email',
+                    'type'                => 'Type',
+                    'external_identifier' => 'ENEO Contract Number',
+                    'provider_price'      => 'Provider\'s Price',
+                    'is_auto_price'       => 'Auto Price',
+                    'auto_price_margin'   => 'Auto Price Margin',
+                    'service_charge'      => 'Specific Service Charge',
+                    'price'               => 'Price',
+                    'total'               => 'Supply point|Supply points',
+                ],
             ],
             'services'   => [
                 'service'    => [
@@ -250,6 +269,7 @@ return [
                     'companycommission'       => 'Company Service Charge',
                     'customercommission'      => 'Customer Service Charge',
                     'supplypoint_servicecharge'      => 'Default Supply Point Service Charge',
+                    'supplypoint_price'      => 'Default Price',
                     'logo'                    => 'Logo',
                     'logo_url'                => 'Logo URL',
                     'prepaid'                 => 'Prepaid',

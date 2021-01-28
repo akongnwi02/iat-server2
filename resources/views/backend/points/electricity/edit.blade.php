@@ -1,20 +1,20 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.meters.edit'))
+@section('title', app_name() . ' | ' . __('labels.backend.points.edit'))
 
 @section('breadcrumb-links')
-    @include('backend.meters.electricity.includes.breadcrumb-links')
+    @include('backend.points.electricity.includes.breadcrumb-links')
 @endsection
 
 @section('content')
-    {{ html()->modelForm($meter, 'PUT', route('admin.meter.electricity.update', $meter))->class('form-horizontal')->open() }}
+    {{ html()->modelForm($point, 'PUT', route('admin.point.electricity.update', $point))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        @lang('labels.backend.meters.electricity')
-                        <small class="text-muted">@lang('labels.backend.meters.edit')</small>
+                        @lang('labels.backend.points.electricity')
+                        <small class="text-muted">@lang('labels.backend.points.edit')</small>
                     </h4>
                 </div><!--col-->
             </div><!--row-->
@@ -25,15 +25,16 @@
             <div class="row mt-4">
                 <div class="col">
                     <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.meters.electricity.meter_code'))
+                        {{ html()->label(__('validation.attributes.backend.points.electricity.name'))
                             ->class('col-md-2 form-control-label')
-                            ->for('meter_code') }}
+                            ->for('name') }}
 
                         <div class="col-md-10">
-                            {{ html()->text('meter_code')
+                            {{ html()->text('name')
                                 ->class('form-control')
-                                ->placeholder(__('validation.attributes.backend.meters.electricity.meter_code'))
+                                ->placeholder(__('validation.attributes.backend.points.electricity.name'))
                                 ->attribute('maxlength', 191)
+                                ->required()
                                 ->disabled() }}
                         </div><!--col-->
                     </div><!--form-group-->

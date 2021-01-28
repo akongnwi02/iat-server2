@@ -16,6 +16,8 @@ class CreateMetersTable extends Migration
         Schema::create('meters', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
             $table->string('identifier')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->uuid('supply_point_id')->nullable();
             $table->uuid('provider_id');
             $table->string('meter_code')->unique();

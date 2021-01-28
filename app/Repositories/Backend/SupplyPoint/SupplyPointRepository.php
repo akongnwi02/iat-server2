@@ -14,7 +14,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class SupplyPointRepository
 {
-    public function getAllSupplyPoints()
+    public function getAllSupplyPointsForCurrentUser()
     {
         $supplyPoints = QueryBuilder::for(SupplyPoint::class)
             ->allowedSorts('supply_points.created_at')

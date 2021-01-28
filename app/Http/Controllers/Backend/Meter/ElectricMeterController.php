@@ -100,11 +100,11 @@ class ElectricMeterController extends Controller
                 ->paginate());
     }
     
-    public function edit(ActivateMeterRequest $request, MeterRepository $meterRepository, Meter $meter, SupplyPointRepository $supplyPointRepository)
+    public function edit(Meter $meter, SupplyPointRepository $supplyPointRepository)
     {
         return view('backend.meters.electricity.edit')
             ->withMeter($meter)
-            ->withSupplyPoints($supplyPointRepository->getAllSupplyPoints()
+            ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
                 ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray());
@@ -113,7 +113,7 @@ class ElectricMeterController extends Controller
     public function create(SupplyPointRepository $supplyPointRepository, ProviderRepository $providerRepository)
     {
         return view('backend.meters.electricity.create')
-            ->withSupplyPoints($supplyPointRepository->getAllSupplyPoints()
+            ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
                 ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray())

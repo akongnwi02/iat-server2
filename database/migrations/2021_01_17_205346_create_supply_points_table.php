@@ -16,12 +16,12 @@ class CreateSupplyPointsTable extends Migration
         Schema::create('supply_points', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
             $table->string('name')->unique();
-            $table->string('area')->nullable();
+            $table->string('city')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
-            $table->string('contract_number')->nullable();
-            $table->enum('type', ['water', 'electricity']);
+            $table->string('external_identifier')->nullable();
+            $table->enum('type', ['water', 'electricity', 'gaz', 'cable']);
             $table->boolean('is_auto_price')->default(false);
             $table->float('auto_price')->nullable();
             $table->float('auto_price_margin')->nullable();

@@ -9,6 +9,7 @@
 namespace App\Models\SupplyPoint;
 
 
+use App\Models\Traits\Attributes\SupplyPointAttribute;
 use App\Models\Traits\Relationships\SupplyPointRelationship;
 use App\Models\Traits\Uuid;
 use Arcanedev\Support\Database\Model;
@@ -18,6 +19,7 @@ class SupplyPoint extends Model
 {
     use Uuid,
         SupplyPointRelationship,
+        SupplyPointAttribute,
         Userstamps;
     
     /**

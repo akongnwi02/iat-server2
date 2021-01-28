@@ -18,6 +18,7 @@ use App\Models\Company\CompanyService;
 use App\Models\Service\Category;
 use App\Models\Service\Item;
 use App\Models\Service\PaymentMethod;
+use App\Models\SupplyPoint\Price;
 use App\Models\Transaction\Transaction;
 
 trait ServiceRelationship
@@ -86,5 +87,9 @@ trait ServiceRelationship
         return $this->belongsTo(CommissionDistribution::class, 'commission_distribution_id', 'uuid');
     }
     
+    public function price()
+    {
+        return $this->belongsTo(Price::class, 'price_id', 'uuid');
+    }
 }
 

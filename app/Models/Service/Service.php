@@ -51,6 +51,7 @@ class Service extends Model
         'destination_placeholder',
         'destination_regex',
         'category_id',
+        'price_id',
         'is_active',
         'requires_auth',
         'is_money_withdrawal',
