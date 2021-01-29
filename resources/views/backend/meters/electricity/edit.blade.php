@@ -85,7 +85,7 @@
                             ->for('email') }}
 
                         <div class="col-md-10">
-                            {{ html()->text('email')
+                            {{ html()->email('email')
                                 ->class('form-control')
                                 ->placeholder(__('validation.attributes.backend.meters.electricity.email'))
                                 ->attribute('maxlength', 191)

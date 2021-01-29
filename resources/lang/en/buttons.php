@@ -50,6 +50,12 @@ return [
             'electricity' => [
                 'activate' => 'Activate Meter',
                 'deactivate' => 'Deactivate Meter',
+                'clone' => 'Clone Meter',
+            ]
+        ],
+        'points' => [
+            'electricity' => [
+                'clone' => 'Clone Point',
             ]
         ],
         'administration' => [

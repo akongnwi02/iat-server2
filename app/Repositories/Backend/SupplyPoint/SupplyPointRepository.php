@@ -9,14 +9,27 @@
 namespace App\Repositories\Backend\SupplyPoint;
 
 
+use App\Exceptions\GeneralException;
 use App\Models\SupplyPoint\SupplyPoint;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class SupplyPointRepository
 {
+    /**
+     * @return QueryBuilder
+     */
     public function getAllSupplyPointsForCurrentUser()
     {
         $supplyPoints = QueryBuilder::for(SupplyPoint::class)
+            ->allowedFilters([
+                AllowedFilter::partial('name'),
+                AllowedFilter::partial('city'),
+                AllowedFilter::partial('address'),
+                AllowedFilter::partial('external_identifier'),
+                AllowedFilter::partial('company.name'),
+                AllowedFilter::exact('is_auto_price'),
+            ])
             ->allowedSorts('supply_points.created_at')
             ->defaultSort( '-supply_points.created_at');
         
@@ -25,5 +38,47 @@ class SupplyPointRepository
         }
         
         return $supplyPoints;
+    }
+    
+    /**
+     * @param $point
+     * @param $data
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function update($point, $data)
+    {
+        $point->fill($data);
+        $point->is_auto_price = request()->has('is_auto_price') ? 1 : 0;
+    
+        if ($point->update()) {
+        
+//            event(new ServiceUpdated($service));
+        
+            return $point;
+        }
+    
+        throw new GeneralException(__('exceptions.backend.points.electricity.update_error'));
+    
+    }
+    
+    /**
+     * @param $data
+     * @return SupplyPoint
+     * @throws GeneralException
+     */
+    public function create($data)
+    {
+        $point = (new SupplyPoint())->fill($data);
+        $point->is_auto_price = request()->has('is_auto_price') ? 1 : 0;
+    
+        if ($point->save()) {
+
+//            event(new ServiceUpdated($service));
+        
+            return $point;
+        }
+    
+        throw new GeneralException(__('exceptions.backend.points.electricity.create_error'));
     }
 }

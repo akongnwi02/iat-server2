@@ -24,7 +24,8 @@ trait SupplyPointAttribute
     {
         return '
     	<div class="btn-group" role="group" aria-label="'.__('labels.general.actions').'">
-		  '.$this->edit_button.'
+		  ' . $this->edit_button . '
+		  ' . $this->clone_button . '
 		</div>';
     }
     
@@ -36,4 +37,10 @@ trait SupplyPointAttribute
     }
     
     
+    public function getCloneButtonAttribute()
+    {
+        if (auth()->user()->can(config('permission.permissions.create_supply_points'))) {
+            return '<a href="'.route('admin.point.electricity.clone', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.points.electricity.clone').'" class="btn btn-primary"><i class="fas fa-copy"></i></a>';
+        }
+    }
 }

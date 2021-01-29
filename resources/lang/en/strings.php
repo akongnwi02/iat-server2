@@ -137,6 +137,13 @@ return [
             'greeting'      => 'Hello!',
         ],
     ],
+    'description' => [
+        'points' => [
+            'electricity' => [
+                'auto_price_margin' => 'The margin maintained between the provider\'s price and internal price when auto price adjustment is turned on.'
+            ]
+        ]
+    ],
     'frontend' => [
         'test'                    => 'Test',
         'tests'                   => [

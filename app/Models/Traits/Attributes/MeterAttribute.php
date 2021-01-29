@@ -43,18 +43,9 @@ trait MeterAttribute
     {
         return '
     	<div class="btn-group" role="group" aria-label="'.__('labels.general.actions').'">
-		  '.$this->edit_button.'
-		</div>
-    
-            <div class="btn-group btn-group-sm" role="group">
-                <button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    '.__('labels.general.more').'
-                </button>
-                <div class="dropdown-menu" aria-labelledby="userActions">
-                    '.$this->deactivate_button.'
-                    </div>
-                </div>
-            </div>';
+		  ' . $this->edit_button . '
+		  ' . $this->clone_button . '
+		</div>';
     }
     
     public function getEditButtonAttribute()
@@ -64,13 +55,10 @@ trait MeterAttribute
         }
     }
     
-    /**
-     * @return string
-     */
-    public function getDeactivateButtonAttribute()
+    public function getCloneButtonAttribute()
     {
-        if (auth()->user()->can(config('permission.permissions.deactivate_meters'))) {
-            return '<a href="'.route('admin.meter.electricity.deactivate', $this).'" class="dropdown-item">'.__('buttons.backend.meters.electricity.deactivate').'</a> ';
+        if (auth()->user()->can(config('permission.permissions.create_meters'))) {
+            return '<a href="'.route('admin.meter.electricity.clone', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.meters.electricity.clone').'" class="btn btn-primary"><i class="fas fa-copy"></i></a>';
         }
     }
 }

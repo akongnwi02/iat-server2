@@ -16,6 +16,9 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class MeterRepository
 {
+    /**
+     * @return QueryBuilder
+     */
     public function getAllMeters()
     {
         $meters = QueryBuilder::for(Meter::class)
@@ -40,6 +43,13 @@ class MeterRepository
         return $meters;
     }
     
+    /**
+     * @param $meter
+     * @param $status
+     * @param null $comment
+     * @return mixed
+     * @throws GeneralException
+     */
     public function updateStatus($meter, $status, $comment = null)
     {
         $meter->is_active = $status;

@@ -25,6 +25,10 @@ Route::group([
         ->name('electricity.create')
         ->middleware('permission:'.config('permission.permissions.create_supply_points'));
     
+    Route::post('electricity', [ElectricSupplyPointController::class, 'create'])
+        ->name('electricity.create')
+        ->middleware('permission:'.config('permission.permissions.create_supply_points'));
+    
     Route::post('electricity', [ElectricSupplyPointController::class, 'store'])
         ->name('electricity.store')
         ->middleware('permission:'.config('permission.permissions.create_supply_points'));
@@ -32,11 +36,19 @@ Route::group([
     /*
      * Specific Electricity Meter
      */
-    Route::group(['prefix' => 'electricity/{meter}'], function () {
+    Route::group(['prefix' => 'electricity/{point}'], function () {
         
         Route::get('/edit', [ElectricSupplyPointController::class, 'edit'])
             ->name('electricity.edit')
             ->middleware('permission:'.config('permission.permissions.update_supply_points'));
+        
+        Route::get('/clone', [ElectricSupplyPointController::class, 'clone'])
+            ->name('electricity.clone')
+            ->middleware('permission:'.config('permission.permissions.create_supply_points'));
+        
+        Route::get('/clone', [ElectricSupplyPointController::class, 'clone'])
+            ->name('electricity.clone')
+            ->middleware('permission:'.config('permission.permissions.create_supply_points'));
         
         Route::put('/', [ElectricSupplyPointController::class, 'update'])
             ->name('electricity.update')

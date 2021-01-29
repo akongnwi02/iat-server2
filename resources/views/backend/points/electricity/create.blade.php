@@ -1,20 +1,20 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.points.edit'))
+@section('title', app_name() . ' | ' . __('labels.backend.points.create'))
 
 @section('breadcrumb-links')
     @include('backend.points.electricity.includes.breadcrumb-links')
 @endsection
 
 @section('content')
-    {{ html()->modelForm($point, 'PUT', route('admin.point.electricity.update', $point))->class('form-horizontal')->open() }}
+    {{ html()->modelForm(@$point, 'POST', route('admin.point.electricity.store'))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
                         @lang('labels.backend.points.electricity')
-                        <small class="text-muted">@lang('labels.backend.points.edit')</small>
+                        <small class="text-muted">@lang('labels.backend.points.create')</small>
                     </h4>
                 </div><!--col-->
             </div><!--row-->

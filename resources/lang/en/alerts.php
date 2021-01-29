@@ -87,6 +87,13 @@ return [
                 'activated' => 'The meter was activated successfully.',
                 'deactivated' => 'The meter was deactivated successfully',
                 'updated' => 'The meter was updated successfully',
+                'created' => 'The meter was created successfully',
+            ]
+        ],
+        'points' => [
+            'electricity' => [
+                'updated' => 'The supply point was updated successfully',
+                'created' => 'The supply point was created successfully',
             ]
         ],
         'administration' => [

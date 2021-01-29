@@ -53,6 +53,10 @@ Route::group([
         Route::get('/edit', [ElectricMeterController::class, 'edit'])
             ->name('electricity.edit')
             ->middleware('permission:'.config('permission.permissions.update_meters'));
+        
+        Route::get('/clone', [ElectricMeterController::class, 'clone'])
+            ->name('electricity.clone')
+            ->middleware('permission:'.config('permission.permissions.create_meters'));
     
         Route::put('/', [ElectricMeterController::class, 'update'])
             ->name('electricity.update')

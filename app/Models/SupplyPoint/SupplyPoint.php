@@ -34,4 +34,20 @@ class SupplyPoint extends Model
     protected $keyType = 'string';
     
     public $incrementing = false;
+    
+    protected $fillable = [
+        'name',
+        'city',
+        'address',
+        'phone',
+        'email',
+        'type',
+        'external_identifier',
+        'company_id',
+        'service_charge_id',
+        'provider_price',
+        'price_id',
+        'is_auto_price',
+        'auto_price_margin',
+    ];
 }

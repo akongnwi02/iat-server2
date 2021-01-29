@@ -83,6 +83,13 @@ class ElectricMeterController extends Controller
             ->withFlashSuccess(__('alerts.backend.meters.electricity.deactivated'));
     }
     
+    /**
+     * @param MeterRepository $meterRepository
+     * @param UpdateMeterRequest $request
+     * @param Meter $meter
+     * @return mixed
+     * @throws GeneralException
+     */
     public function update(MeterRepository $meterRepository, UpdateMeterRequest $request, Meter $meter)
     {
         $meterRepository->update($meter, $request->input());
@@ -91,6 +98,10 @@ class ElectricMeterController extends Controller
                 ->withFlashSuccess(__('alerts.backend.meters.electricity.updated'));
     }
     
+    /**
+     * @param MeterRepository $meterRepository
+     * @return mixed
+     */
     public function unassigned(MeterRepository $meterRepository)
     {
         return view('backend.meters.electricity.index')
@@ -100,6 +111,11 @@ class ElectricMeterController extends Controller
                 ->paginate());
     }
     
+    /**
+     * @param Meter $meter
+     * @param SupplyPointRepository $supplyPointRepository
+     * @return mixed
+     */
     public function edit(Meter $meter, SupplyPointRepository $supplyPointRepository)
     {
         return view('backend.meters.electricity.edit')
@@ -110,9 +126,27 @@ class ElectricMeterController extends Controller
                 ->toArray());
     }
     
+    /**
+     * @param SupplyPointRepository $supplyPointRepository
+     * @param ProviderRepository $providerRepository
+     * @return mixed
+     */
     public function create(SupplyPointRepository $supplyPointRepository, ProviderRepository $providerRepository)
     {
         return view('backend.meters.electricity.create')
+            ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
+                ->where('type', config('business.meter.type.electricity'))
+                ->pluck('name', 'uuid')
+                ->toArray())
+            ->withProviders($providerRepository->getAllProviders()
+                ->pluck('name', 'uuid')
+                ->toArray());
+    }
+    
+    public function clone(Meter $meter, SupplyPointRepository $supplyPointRepository, ProviderRepository $providerRepository)
+    {
+        return view('backend.meters.electricity.create')
+            ->withMeter($meter)
             ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
                 ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')

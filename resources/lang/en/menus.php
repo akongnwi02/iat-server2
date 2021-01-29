@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -12,11 +12,11 @@ return [
     | found in a intuitive way.
     |
     */
-
+    
     'backend' => [
         'access' => [
             'title' => 'Users',
-
+            
             'roles' => [
                 'all'        => 'All Roles',
                 'create'     => 'Create Role',
@@ -24,7 +24,7 @@ return [
                 'management' => 'Role Management',
                 'main'       => 'Roles',
             ],
-
+            
             'users' => [
                 'all'             => 'All Users',
                 'change-password' => 'Change Password',
@@ -37,35 +37,37 @@ return [
                 'view'            => 'View User',
             ],
         ],
-
+        
         'administration' => [
-            'main' => 'Administration',
+            'main'     => 'Administration',
             'currency' => [
                 'management' => 'Currency',
-                'create' => 'Create Currency',
-                'edit' => 'Edit Currency',
+                'create'     => 'Create Currency',
+                'edit'       => 'Edit Currency',
             ],
         ],
         
         'meter' => [
-            'main' => 'Meters',
-            'all' => 'All Meters',
+            'main'        => 'Meters',
+            'all'         => 'All Meters',
             'electricity' => [
                 'management' => 'Electricity Meters',
-                'create' => 'Register Electricity Meter',
-                'edit' => 'Edit Electricity Meter',
-                'activate' => 'Activate Meter',
+                'create'     => 'Register Electricity Meter',
+                'edit'       => 'Edit Electricity Meter',
+                'activate'   => 'Activate Meter',
                 'deactivate' => 'Deactivate Meter',
+                'clone'      => 'Clone Meter',
                 'unassigned' => 'Unassigned Meters'
             ],
         ],
         'point' => [
-            'main' => 'Supply Points',
-            'all' => 'All Supply Points',
+            'main'        => 'Supply Points',
+            'all'         => 'All Supply Points',
             'electricity' => [
                 'management' => 'Electricity Points',
-                'create' => 'Register Point',
-                'edit' => 'Edit Point',
+                'create'     => 'Register Point',
+                'edit'       => 'Edit Point',
+                'clone'      => 'Clone Point',
             ],
         ],
         
@@ -74,22 +76,22 @@ return [
             'dashboard' => 'Dashboard',
             'logs'      => 'Logs',
         ],
-
-        'sidebar' => [
+        
+        'sidebar'   => [
             'dashboard' => 'Dashboard',
-            'sales' => 'Sales',
-            'orders' => 'Merchant Orders',
-            'horizon' => 'Horizon',
+            'sales'     => 'Sales',
+            'orders'    => 'Merchant Orders',
+            'horizon'   => 'Horizon',
             'general'   => 'General',
             'history'   => 'History',
             'system'    => 'System',
             'business'  => 'Business',
             'access'    => 'Access',
-            'hardware' => 'Hardware',
+            'hardware'  => 'Hardware',
         ],
         'companies' => [
             'title' => 'Companies',
-    
+            
             'company' => [
                 'management' => 'Companies',
                 'create'     => 'Create Company',
@@ -99,17 +101,17 @@ return [
         
         'services' => [
             'title' => 'Service',
-    
-            'service'   => [
+            
+            'service'      => [
                 'management' => 'Services',
                 'create'     => 'Create Service',
                 'edit'       => 'Edit Service',
             ],
-            'category' => [
+            'category'     => [
                 'management' => 'Categories',
-                'edit' => 'Edit Category',
+                'edit'       => 'Edit Category',
             ],
-            'commission' => [
+            'commission'   => [
                 'management' => 'Service Charges',
                 'create'     => 'Create Service Charge',
                 'edit'       => 'Edit Service Charge',
@@ -119,56 +121,56 @@ return [
                 'create'     => 'Create Distribution Strategy',
                 'edit'       => 'Edit Distribution Strategy',
             ],
-            'method' => [
+            'method'       => [
                 'management' => 'Payment Methods',
                 'create'     => 'Create Payment Method',
                 'edit'       => 'Edit Payment Method',
             ]
         ],
         
-        'sales' => [
+        'sales'      => [
             'management' => 'Sales',
-            'clear' => 'Clear Filters',
-            'reset' => 'Reset Filters',
+            'clear'      => 'Clear Filters',
+            'reset'      => 'Reset Filters',
         ],
-        'orders' => [
+        'orders'     => [
             'management' => 'Merchant Orders',
-            'clear' => 'Clear Filters',
-            'reset' => 'Reset Filters',
+            'clear'      => 'Clear Filters',
+            'reset'      => 'Reset Filters',
         ],
-        'accounts' => [
+        'accounts'   => [
             'title' => 'Accounts',
             
-            'deposit' => [
+            'deposit'  => [
                 'management' => 'Deposit Account',
-                'view' => 'View Account'
+                'view'       => 'View Account'
             ],
             'umbrella' => [
                 'management' => 'Cash Account',
-                'view' => 'View Account',
+                'view'       => 'View Account',
             ],
-            'payout' => [
+            'payout'   => [
                 'management' => 'Commission Account',
-                'view' => 'View Account',
+                'view'       => 'View Account',
             ]
         ],
         'accounting' => [
-            'title' => 'Accounting',
+            'title'       => 'Accounting',
             'collections' => [
                 'management' => 'Collections',
-                'view' => 'View Collection'
+                'view'       => 'View Collection'
             ],
-            'provisions' => [
+            'provisions'  => [
                 'management' => 'Provisions',
-                'view' => 'View Provisions',
+                'view'       => 'View Provisions',
             ],
             'commissions' => [
                 'management' => 'Commissions',
-                'view' => 'View Commissions',
+                'view'       => 'View Commissions',
             ],
         ]
     ],
-
+    
     'language-picker' => [
         'language' => 'Language',
         /*
@@ -177,7 +179,7 @@ return [
          * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
          * Be sure to add the new language in alphabetical order.
          */
-        'langs' => [
+        'langs'    => [
             'ar'    => 'Arabic',
             'zh'    => 'Chinese Simplified',
             'zh-TW' => 'Chinese Traditional',

@@ -24,3 +24,8 @@ Breadcrumbs::for('admin.meter.electricity.edit', function ($trail, $id) {
     $trail->parent('admin.meter.electricity.index');
     $trail->push(__('menus.backend.meter.electricity.edit'), route('admin.meter.electricity.edit', $id));
 });
+
+Breadcrumbs::for('admin.meter.electricity.clone', function ($trail, $id) {
+    $trail->parent('admin.meter.electricity.index');
+    $trail->push(__('menus.backend.meter.electricity.clone'), route('admin.meter.electricity.clone', $id));
+});

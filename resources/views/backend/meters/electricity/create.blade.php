@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    {{ html()->form('POST', route('admin.meter.electricity.store'))->class('form-horizontal')->open() }}
+    {{ html()->modelForm(@$meter, 'POST', route('admin.meter.electricity.store'))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">

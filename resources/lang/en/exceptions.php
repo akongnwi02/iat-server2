@@ -104,6 +104,12 @@ return [
                 'already_inactive' => 'The meter is already inactive.',
             ]
         ],
+        'points' => [
+            'electricity' => [
+                'update_error' => 'There was a problem updating the supply point. Please try again.',
+                'create_error' => 'There was a problem creating the supply point. Please try again.',
+            ]
+        ],
         'services' => [
             'service'    => [
                 'create_error'  => 'There was a problem creating this service. Please try again.',

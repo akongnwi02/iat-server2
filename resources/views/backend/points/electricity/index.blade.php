@@ -33,6 +33,7 @@
                                 <th>@lang('labels.backend.points.table.email')</th>
                                 <th>@lang('labels.backend.points.table.address')</th>
                                 <th>@lang('labels.backend.points.table.external_identifier')</th>
+                                <th>@lang('labels.backend.points.table.company')</th>
                                 <th>@lang('labels.backend.points.table.service_charge')</th>
                                 <th>@lang('labels.backend.points.table.price')</th>
                                 <th>@lang('labels.backend.points.table.provider_price')</th>
@@ -51,6 +52,7 @@
                                     <td>{{ $point->email}}</td>
                                     <td>{{ $point->address}}</td>
                                     <td>{{ $point->external_identifier}}</td>
+                                    <td>{{ $point->company->name}}</td>
                                     <td>{{ @$point->serviceCharge->name }}</td>
                                     <td>{{ @$point->price->name }}</td>
                                     <td>{{ $point->provider_price }}</td>
