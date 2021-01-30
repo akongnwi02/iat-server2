@@ -15,7 +15,7 @@ class CreateSupplyPointsTable extends Migration
     {
         Schema::create('supply_points', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('city')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();

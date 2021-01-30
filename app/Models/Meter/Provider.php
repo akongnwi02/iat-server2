@@ -30,6 +30,7 @@ class Provider extends Model
     use Uuid;
     
     protected $fillable = [
-        'name'
+        'name',
+        'code'
     ];
 }

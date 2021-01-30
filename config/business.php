@@ -101,9 +101,6 @@ return [
                 'process'  => 'process_purchase',
                 'verify'   => 'verify_purchase',
                 'complete' => 'complete_purchase',
-            ],
-            'merchant' => [
-                'process' => 'process_order'
             ]
         ],
     ],

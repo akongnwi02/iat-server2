@@ -21,7 +21,6 @@ class SeedProviders extends Migration
         foreach ($providers as $provider) {
             Provider::create($provider);
         }
-        
     }
 
     /**

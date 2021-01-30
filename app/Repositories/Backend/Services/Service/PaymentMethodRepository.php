@@ -178,28 +178,4 @@ class PaymentMethodRepository
     {
         return PaymentMethod::where('uuid', $id)->first();
     }
-    
-    public function getCustomerOrderFee($method, $order)
-    {
-    
-        $customerServiceCommission = $this->commissionRepository->getCompanyMethodCustomerCommission($method, $order->company);
-    
-        /*
-         * calculate the customer fees for each method
-         */
-        return $this->commissionRepository->calculateFee($customerServiceCommission, $order->total_amount);
-        
-    }
-    
-    public function getMerchantOrderFee($method, $order)
-    {
-    
-        $merchantServiceCommission = $this->commissionRepository->getCompanyMethodProviderCommission($method, $order->company);
-    
-        /*
-         * calculate the merchant fees for each method
-         */
-        return $this->commissionRepository->calculateFee($merchantServiceCommission, $order->total_amount);
-        
-    }
 }

@@ -21,7 +21,6 @@ Vue.use(Buefy);
  */
 Vue.component('layout', require('./layouts/Layout'));
 Vue.component('balance-bar', require('./components/global/BalanceBar'));
-Vue.component('merchant', require('./layouts/Merchant'));
 
 /*
   Create a new Vue instance and mount the app element.

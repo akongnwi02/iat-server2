@@ -36,9 +36,9 @@
                                 <th>@lang('labels.backend.points.table.company')</th>
                                 <th>@lang('labels.backend.points.table.service_charge')</th>
                                 <th>@lang('labels.backend.points.table.price')</th>
-                                <th>@lang('labels.backend.points.table.provider_price')</th>
+                                <th>@lang('labels.backend.points.table.provider_price') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.points.table.is_auto_price')</th>
-                                <th>@lang('labels.backend.points.table.auto_price_margin')</th>
+                                <th>@lang('labels.backend.points.table.auto_price_margin') ({{$default_currency->code}})</th>
 
                                 <th>@lang('labels.general.actions')</th>
                             </tr>

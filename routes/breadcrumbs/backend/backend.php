@@ -10,7 +10,6 @@ require __DIR__.'/company.php';
 require __DIR__.'/service.php';
 require __DIR__.'/account.php';
 require __DIR__.'/sales.php';
-require __DIR__.'/orders.php';
 require __DIR__.'/accounting.php';
 require __DIR__.'/administration.php';
 require __DIR__.'/meter.php';

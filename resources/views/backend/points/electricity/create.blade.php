@@ -17,8 +17,10 @@
                         <small class="text-muted">@lang('labels.backend.points.create')</small>
                     </h4>
                 </div><!--col-->
+                <div class="col-sm-7">
+                    @include('backend.points.electricity.includes.show-header-buttons')
+                </div><!--col-->
             </div><!--row-->
-            <!--row-->
 
             <hr />
 

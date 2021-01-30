@@ -21,6 +21,10 @@ Route::group([
         ->name('electricity.index')
         ->middleware('permission:'.config('permission.permissions.read_meters'));
     
+    Route::get('electricity/download', [ElectricMeterController::class, 'download'])
+        ->name('electricity.download')
+        ->middleware('permission:'.config('permission.permissions.read_meters'));
+    
     Route::get('electricity/unassigned', [ElectricMeterController::class, 'unassigned'])
         ->name('electricity.unassigned')
         ->middleware('permission:'.config('permission.permissions.read_meters'));

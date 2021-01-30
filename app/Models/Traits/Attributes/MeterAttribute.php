@@ -58,7 +58,7 @@ trait MeterAttribute
     public function getCloneButtonAttribute()
     {
         if (auth()->user()->can(config('permission.permissions.create_meters'))) {
-            return '<a href="'.route('admin.meter.electricity.clone', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.meters.electricity.clone').'" class="btn btn-primary"><i class="fas fa-copy"></i></a>';
+            return '<a href="'.route('admin.meter.electricity.clone', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.meters.electricity.clone').'" class="btn btn-secondary"><i class="fas fa-copy"></i></a>';
         }
     }
 }

@@ -100,4 +100,25 @@ return [
         ],
     ],
 
+    'meters' => [
+        'providers' => [
+            'hexcell' => [
+                'url'      => env('HEXCELL_URL'),
+                'username' => env('HEXCELL_USERNAME'),
+                'password' => env('HEXCELL_PASSWORD'),
+            ],
+            'calin'   => [
+                'url'              => env('CALIN_URL'),
+                'username'         => env('CALIN_USERNAME'),
+                'password'         => env('CALIN_PASSWORD'),
+                'vending_password' => env('CALIN_VENDING_PASSWORD'),
+                'company_name'     => env('CALIN_COMPANY_NAME'),
+                'key'              => env('CALIN_KEY'),
+                'new_url'          => env('CALIN_URL_NEW'),
+            ],
+            'stron'   => [
+    
+            ],
+        ]
+    ]
 ];

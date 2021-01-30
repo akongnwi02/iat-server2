@@ -41,7 +41,7 @@ class UpdateSupplyPointRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'                => ['required', 'string', 'max:191', Rule::unique('supply_points', 'name')->ignore(request()->point, 'uuid')],
+            'name'                => ['required', 'string', 'max:191'],
             'city'                => 'required|string|max:191',
             'address'             => 'nullable|string|max:191',
             'email'                => 'nullable|email|max:191',

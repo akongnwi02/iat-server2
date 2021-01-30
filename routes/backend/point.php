@@ -21,6 +21,14 @@ Route::group([
         ->name('electricity.index')
         ->middleware('permission:'.config('permission.permissions.read_supply_points'));
     
+    Route::get('electricity/download', [ElectricSupplyPointController::class, 'download'])
+        ->name('electricity.download')
+        ->middleware('permission:'.config('permission.permissions.read_supply_points'));
+    
+    Route::get('electricity/map', [ElectricSupplyPointController::class, 'map'])
+        ->name('electricity.map')
+        ->middleware('permission:'.config('permission.permissions.read_supply_points'));
+    
     Route::get('electricity/create', [ElectricSupplyPointController::class, 'create'])
         ->name('electricity.create')
         ->middleware('permission:'.config('permission.permissions.create_supply_points'));

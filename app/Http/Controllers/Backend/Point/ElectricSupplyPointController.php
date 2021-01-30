@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Backend\Point;
 
 
+use App\Exports\SupplyPoint\PointExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\SupplyPoint\UpdateSupplyPointRequest;
 use App\Http\Requests\Backend\SupplyPoint\StoreSupplyPointRequest;
@@ -30,6 +31,16 @@ class ElectricSupplyPointController extends Controller
             ->withPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
                 ->where('type', config('business.meter.type.electricity'))
                 ->paginate());
+    }
+    
+    
+    public function download(SupplyPointRepository $supplyPointRepository)
+    {
+        $points = $supplyPointRepository->getAllSupplyPointsForCurrentUser()
+            ->where('type', config('business.meter.type.electricity'))
+            ->get();
+    
+        return (new PointExport($points));
     }
     
     /**
@@ -121,5 +132,13 @@ class ElectricSupplyPointController extends Controller
     
         return redirect()->route('admin.point.electricity.index')
             ->withFlashSuccess(__('alerts.backend.points.electricity.created'));
+    }
+    
+    public function map(SupplyPointRepository $supplyPointRepository)
+    {
+        return view('backend.points.electricity.map')
+            ->withPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
+                ->where('type', config('business.meter.type.electricity'))
+                ->get());
     }
 }

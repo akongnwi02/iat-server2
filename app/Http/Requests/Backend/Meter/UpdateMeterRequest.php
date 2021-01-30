@@ -33,7 +33,7 @@ class UpdateMeterRequest extends FormRequest
         return [
             'supply_point_id'      => ['nullable', Rule::exists('supply_points', 'uuid')],
             'email'                => 'nullable|email|max:191',
-            'phone'                => ['nullable', 'max:191', 'regex:/^(237|00237|\+237)?[6|2|3]{1}\d{8}$/'],
+            'phone'                => ['nullable', 'max:191', 'string'],
         ];
     }
 }

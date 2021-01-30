@@ -19,4 +19,9 @@ class ProviderRepository
         return QueryBuilder::for(Provider::class)
             ->defaultSort( '-providers.name', '-providers.created_at');
     }
+    
+    public function findByUuid($uuid)
+    {
+        return Provider::find($uuid);
+    }
 }

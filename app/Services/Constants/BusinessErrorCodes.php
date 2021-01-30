@@ -24,7 +24,7 @@ class BusinessErrorCodes
     const TRANSACTION_NOT_IN_CACHE          = '10010';
     const MICRO_SERVICE_CONNECTION_ERROR    = '10011';
     const NO_PRICE_RANGE_ERROR              = '10012';
-    const UNKNOWN_SERVICE_CATEGORY          = '10013';
+    const UNKNOWN_PROVIDER                  = '10013';
     const INVALID_API_KEY                   = '10014';
     const INVALID_LANG_KEY                  = '10015';
     const INVALID_ACCEPT_HEADER_ERROR       = '10016';

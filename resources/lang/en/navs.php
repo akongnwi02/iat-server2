@@ -21,7 +21,6 @@ return [
     'frontend' => [
         'contact'   => 'Contact',
         'dashboard' => 'Dashboard',
-        'merchant_dashboard' => 'Secure Checkout',
         'login'     => 'Login',
         'macros'    => 'Macros',
         'register'  => 'Register',

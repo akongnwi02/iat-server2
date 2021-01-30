@@ -36,15 +36,6 @@ trait CompanyAttribute
         return '<span class="badge badge-danger">'.__('labels.general.no').'</span>';
     }
     
-    public function getMerchantLabelAttribute()
-    {
-        if ($this->is_merchant) {
-            return '<i class="fa fa-check"></i>';
-        }
-        return '<i class="fa fa-times"></i>';
-    }
-    
-    
     /**
      * @return string
      */

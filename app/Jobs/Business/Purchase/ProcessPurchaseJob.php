@@ -12,13 +12,13 @@ use App\Exceptions\Api\BadRequestException;
 use App\Jobs\Job;
 use App\Models\Transaction\Transaction;
 use App\Repositories\Backend\Services\Service\ServiceRepository;
-use App\Services\Business\Validators\CategoryProvider;
+use App\Services\Business\Validators\ClientProvider;
 use App\Services\Constants\BusinessErrorCodes;
 use Log;
 
 class ProcessPurchaseJob extends Job
 {
-    use CategoryProvider;
+    use ClientProvider;
     
     /**
      * @var Transaction

@@ -51,5 +51,10 @@ class Meter extends Model
         'phone',
         'email',
         'type',
+        'identifier'
+    ];
+    
+    protected $casts = [
+        'meter_code' => 'string'
     ];
 }

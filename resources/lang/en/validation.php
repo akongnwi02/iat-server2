@@ -205,7 +205,6 @@ return [
                     'logo'             => 'Company Logo',
                     'provider'         => 'Provider',
                     'direct_polling'   => 'Direct Polling',
-                    'merchant'         => 'Merchant',
                     'agent_self_topup' => 'Agent Self Topup',
                 ],
                 'service'       => [

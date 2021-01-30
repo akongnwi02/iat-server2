@@ -170,27 +170,6 @@
             "topup": "Top Up Your Account",
             "payout": "Request Commission Payout",
             "delete": "Delete"
-        },
-        "merchant": {
-            "title": "Secure Checkout",
-            "shop": "Shop",
-            "address": "Address",
-            "order": {
-                "your_order": "YOUR ORDER",
-                "subtotal": "Subtotal",
-                "payment_fee": "Payment Fee",
-                "total": "Total"
-            },
-            "payment": {
-                "method": "PAYMENT METHOD",
-                "details": "PAYMENT DETAILS",
-                "checkout": "PAY NOW",
-                "account_number": "Account Number",
-                "thank_you": "Thank you for trusting CorlaPay. We have sent a request to your payment provider.",
-                "return": "Return to Shop",
-                "success": "Success",
-                "dear": "Dear"
-            }
         }
     },
     "validations": {
@@ -237,11 +216,6 @@
             "maintenance": "We're currently maintaining our system. Please check back later",
             "network": "Network error. Please check your internet connection",
             "unexpected": "An unexpected error occurred"
-        },
-        "merchant": {
-            "account_number_format": "Please enter account number in the required format {format}",
-            "account_number_invalid": "Please enter a valid account number",
-            "no_method": "Please select a payment method from the list"
         }
     },
     "notifications": {

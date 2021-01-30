@@ -45,7 +45,6 @@ class EventServiceProvider extends ServiceProvider
         /*
          * Api Subscribers
          */
-        \App\Listeners\Api\Merchant\OrderEventListener::class,
         
         /*
          * Auth Subscribers

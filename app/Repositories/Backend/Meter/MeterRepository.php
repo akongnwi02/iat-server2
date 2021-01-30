@@ -99,4 +99,23 @@ class MeterRepository
     
         throw new GeneralException(__('exceptions.backend.meters.electricity.update_error'));
     }
+    
+    /**
+     * @param $data
+     * @return Meter
+     * @throws GeneralException
+     */
+    public function create($data)
+    {
+        $meter = (new Meter())->fill($data);
+    
+        if ($meter->save()) {
+
+//            event(new ServiceUpdated($service));
+        
+            return $meter;
+        }
+    
+        throw new GeneralException(__('exceptions.backend.meters.electricity.create_error'));
+    }
 }

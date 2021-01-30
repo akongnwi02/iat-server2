@@ -63,6 +63,35 @@
                                 }}
                         </div><!--col-->
                     </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.meters.electricity.phone'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('phone') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('phone')
+                                ->class('form-control')
+                                ->placeholder(__('validation.attributes.backend.meters.electricity.phone'))
+                                ->attribute('maxlength', 191)
+                            }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.meters.electricity.email'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('email') }}
+
+                        <div class="col-md-10">
+                            {{ html()->email('email')
+                                ->class('form-control')
+                                ->placeholder(__('validation.attributes.backend.meters.electricity.email'))
+                                ->attribute('maxlength', 191)
+                            }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
                 </div><!--col-->
             </div><!--row-->
         </div><!--card-body-->

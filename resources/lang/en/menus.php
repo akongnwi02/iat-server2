@@ -68,6 +68,7 @@ return [
                 'create'     => 'Register Point',
                 'edit'       => 'Edit Point',
                 'clone'      => 'Clone Point',
+                'map'        => 'Map',
             ],
         ],
         
@@ -80,7 +81,6 @@ return [
         'sidebar'   => [
             'dashboard' => 'Dashboard',
             'sales'     => 'Sales',
-            'orders'    => 'Merchant Orders',
             'horizon'   => 'Horizon',
             'general'   => 'General',
             'history'   => 'History',
@@ -130,11 +130,6 @@ return [
         
         'sales'      => [
             'management' => 'Sales',
-            'clear'      => 'Clear Filters',
-            'reset'      => 'Reset Filters',
-        ],
-        'orders'     => [
-            'management' => 'Merchant Orders',
             'clear'      => 'Clear Filters',
             'reset'      => 'Reset Filters',
         ],

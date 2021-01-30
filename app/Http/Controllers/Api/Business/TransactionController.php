@@ -23,13 +23,13 @@ use App\Repositories\Api\Business\TransactionRepository;
 use App\Repositories\Backend\Services\Service\ServiceRepository;
 use App\Services\Business\Models\ModelInterface;
 use App\Services\Business\Models\PostpaidBill;
-use App\Services\Business\Validators\CategoryProvider;
+use App\Services\Clients\ClientProvider;
 use App\Services\Constants\BusinessErrorCodes;
 use Illuminate\Support\Carbon;
 
 class TransactionController extends Controller
 {
-    use CategoryProvider;
+    use ClientProvider;
     
     /**
      * @param GeneralRequest $request

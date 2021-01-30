@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Backend\Meter;
 
 
 use App\Exceptions\GeneralException;
+use App\Exports\Meters\MetersExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Meter\ActivateMeterRequest;
 use App\Http\Requests\Backend\Meter\DeactivateMeterRequest;
@@ -19,9 +20,12 @@ use App\Models\Meter\Meter;
 use App\Repositories\Backend\Meter\MeterRepository;
 use App\Repositories\Backend\Meter\ProviderRepository;
 use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
+use App\Services\Clients\ClientProvider;
 
 class ElectricMeterController extends Controller
 {
+    use ClientProvider;
+    
     /**
      * @param MeterRepository $meterRepository
      * @return mixed
@@ -33,6 +37,19 @@ class ElectricMeterController extends Controller
                 ->where('type', config('business.meter.type.electricity'))
                 ->paginate());
     
+    }
+    
+    /**
+     * @param MeterRepository $meterRepository
+     * @return MetersExport
+     */
+    public function download(MeterRepository $meterRepository)
+    {
+        $meters = $meterRepository->getAllMeters()
+            ->where('type', config('business.meter.type.electricity'))
+            ->get();
+    
+        return (new MetersExport($meters));
     }
     
     /**
@@ -156,8 +173,26 @@ class ElectricMeterController extends Controller
                 ->toArray());
     }
     
-    public function store(StoreMeterRequest $request, MeterRepository $meterRepository)
+    /**
+     * @param StoreMeterRequest $request
+     * @param MeterRepository $meterRepository
+     * @param ProviderRepository $providerRepository
+     * @return mixed
+     * @throws \App\Exceptions\Api\ServerErrorException
+     * @throws GeneralException
+     */
+    public function store(StoreMeterRequest $request, MeterRepository $meterRepository, ProviderRepository $providerRepository)
     {
+        $data = request()->input();
+        
+        $provider = $providerRepository->findByUuid($data['provider_id']);
+        
+        $data['identifier'] = $this->client($provider)->searchMeter($data['meter_code']);
+        $data['type'] = config('business.meter.type.electricity');
+        
+        $meterRepository->create($data);
     
+        return redirect()->route('admin.meter.electricity.index')
+            ->withFlashSuccess(__('alerts.backend.meters.electricity.created'));
     }
 }

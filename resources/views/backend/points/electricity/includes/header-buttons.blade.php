@@ -5,6 +5,8 @@
                 <span class="badge badge-danger">{{ count(array_filter(request()->input('filter')?:[], function($filter){return $filter !== null && $filter !== '';})) }}</span>
             @endif
         </span>
+        <a href="{{ route('admin.point.electricity.download', request()->except('page')) }}"><span class="btn btn-secondary ml-1" data-toggle="tooltip" title="@lang('labels.general.download')"><i class="fas fa-download"></i></span><a>
+        <a href="{{ route('admin.point.electricity.map', request()->except('page')) }}"><span class="btn btn-facebook ml-1" data-toggle="tooltip" title="@lang('labels.general.map')"><i class="fas fa-map"></i></span><a>
         <a href="{{ route('admin.point.electricity.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
     </div><!--btn-toolbar-->
 @endcan
