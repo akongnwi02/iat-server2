@@ -19,7 +19,7 @@ use App\Http\Controllers\Backend\Services\PaymentMethod\PaymentMethodStatusContr
 use App\Http\Controllers\Backend\Services\Service\ServiceCompanyController;
 use App\Http\Controllers\Backend\Services\Service\ServiceController;
 use App\Http\Controllers\Backend\Services\Service\ServiceStatusController;
-use App\Http\Controllers\Backend\Services\Category\CategoryController;
+use App\Http\Controllers\Backend\Services\Price\PriceController;
 
 Route::group([
     'prefix'     => 'services',
@@ -90,29 +90,32 @@ Route::group([
     });
     
     /*
-     * Category CRUD
+     * Price CRUD
      */
-    Route::get('category', [CategoryController::class, 'index'])
-        ->name('category.index')
-        ->middleware('permission:'.config('permission.permissions.read_categories'));
+    Route::get('price', [PriceController::class, 'index'])
+        ->name('price.index')
+        ->middleware('permission:'.config('permission.permissions.read_prices'));
+
+    Route::post('price', [PriceController::class, 'store'])
+        ->name('price.store')
+        ->middleware('permission:'.config('permission.permissions.create_prices'));
+    
+    Route::get('price/create', [PriceController::class, 'create'])
+        ->name('price.create')
+        ->middleware('permission:'.config('permission.permissions.create_prices'));
     
     /*
-     * Specific Category
+     * Specific Price
      */
-    Route::group(['prefix' => 'category/{category}'], function () {
+    Route::group(['prefix' => 'price/{price}'], function () {
         
-        Route::get('edit', [CategoryController::class, 'edit'])
-            ->name('category.edit')
-            ->middleware('permission:'.config('permission.permissions.update_categories'));
+        Route::get('edit', [PriceController::class, 'edit'])
+            ->name('price.edit')
+            ->middleware('permission:'.config('permission.permissions.update_prices'));
         
-        Route::put('/', [CategoryController::class, 'update'])
-            ->name('category.update')
-            ->middleware('permission:'.config('permission.permissions.update_categories'));
-        
-        // Status
-        Route::get('mark/{status}', [CategoryController::class, 'mark'])
-            ->name('category.mark')
-            ->middleware('permission:'.config('permission.permissions.deactivate_categories'));
+        Route::put('/', [PriceController::class, 'update'])
+            ->name('price.update')
+            ->middleware('permission:'.config('permission.permissions.update_prices'));
     });
     
     /*

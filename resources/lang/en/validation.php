@@ -253,6 +253,8 @@ return [
                     'auto_price_margin2'   => 'Auto Price Margin',
                     'service_charge'      => 'Specific Service Charge',
                     'price'               => 'Price',
+                    'gps_lat'             => 'Latitude',
+                    'gps_long'            => 'Longitude',
                     'total'               => 'Supply point|Supply points',
                 ],
             ],
@@ -332,6 +334,11 @@ return [
                     'active'  => 'Active',
                     'api_key' => 'Micro Service API Key',
                     'api_url' => 'Micro Service URL'
+                ],
+                'price' => [
+                    'name' => 'Name',
+                    'amount' => 'Amount',
+                    'description' => 'Description',
                 ]
             ],
             'accounting'     => [

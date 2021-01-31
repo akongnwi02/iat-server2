@@ -144,8 +144,9 @@ return [
             'company' => [
                 'update_error' => 'The was a problem updating the assignments of this service'
             ],
-            'category' => [
-                'update_error' => 'There was a problem updating this category. Please try again.',
+            'price' => [
+                'update_error' => 'There was a problem updating this price. Please try again.',
+                'create_error' => 'There was a problem creating this price. Please try again.',
                 'mark_error'   => 'There was a problem updating the status of this category. Please try again.',
             ],
             'topup' => [

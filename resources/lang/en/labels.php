@@ -37,6 +37,7 @@ return [
         'add'                => 'Add',
         'location'           => 'Get Location',
         'map'                => 'Map',
+        'list'               => 'List',
         'remove'             => 'Remove',
         'credit'             => 'Credit',
         'debit'              => 'Debit',
@@ -227,18 +228,18 @@ return [
                     ]
                 ]
             ],
-            'category'     => [
-                'management' => 'Service Category',
-                'edit'       => 'Edit Category',
-                'active'     => 'Active Categories',
+            'price'     => [
+                'management' => 'Service Prices',
+                'edit'       => 'Edit Price',
+                'create'     => 'Create Price',
+                'active'     => 'Active Prices',
                 'table'      => [
-                    'name'    => 'Category Name',
-                    'code'    => 'Category Code',
+                    'name'    => 'Price Name',
+                    'code'    => 'Price Code',
                     'active'  => 'Active',
-                    'logo'    => 'Logo',
-                    'api_url' => 'Micro Service URL',
-                    'api_key' => 'Micro Service API Key',
-                    'total'   => 'category|categories',
+                    'amount'  => 'Amount',
+                    'description'    => 'Price Description',
+                    'total'   => 'price|prices',
                 ]
             ],
             'commission'   => [
@@ -331,6 +332,7 @@ return [
             'water'       => 'Water Points',
             'create'      => 'Create Point',
             'edit'        => 'Edit Point',
+            'editMap'        => 'Update GPS',
             'map'        => 'Map',
             'active'      => 'Active Points',
             'deactivate'  => 'Deactivate Point',

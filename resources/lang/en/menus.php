@@ -67,6 +67,7 @@ return [
                 'management' => 'Electricity Points',
                 'create'     => 'Register Point',
                 'edit'       => 'Edit Point',
+                'editMap'       => 'Update GPS',
                 'clone'      => 'Clone Point',
                 'map'        => 'Map',
             ],
@@ -107,9 +108,10 @@ return [
                 'create'     => 'Create Service',
                 'edit'       => 'Edit Service',
             ],
-            'category'     => [
-                'management' => 'Categories',
-                'edit'       => 'Edit Category',
+            'price'     => [
+                'management' => 'Prices',
+                'edit'       => 'Edit Price',
+                'create'       => 'Create Price',
             ],
             'commission'   => [
                 'management' => 'Service Charges',

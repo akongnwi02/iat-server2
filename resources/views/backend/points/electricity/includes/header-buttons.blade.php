@@ -6,7 +6,11 @@
             @endif
         </span>
         <a href="{{ route('admin.point.electricity.download', request()->except('page')) }}"><span class="btn btn-secondary ml-1" data-toggle="tooltip" title="@lang('labels.general.download')"><i class="fas fa-download"></i></span><a>
-        <a href="{{ route('admin.point.electricity.map', request()->except('page')) }}"><span class="btn btn-facebook ml-1" data-toggle="tooltip" title="@lang('labels.general.map')"><i class="fas fa-map"></i></span><a>
+        @if(request()->route()->named('admin.point.electricity.index'))
+            <a href="{{ route('admin.point.electricity.map', request()->except('page')) }}"><span class="btn btn-facebook ml-1" data-toggle="tooltip" title="@lang('labels.general.map')"><i class="fas fa-map"></i></span><a>
+        @else
+            <a href="{{ route('admin.point.electricity.index', request()->except('page')) }}"><span class="btn btn-facebook ml-1" data-toggle="tooltip" title="@lang('labels.general.list')"><i class="fas fa-list"></i></span><a>
+       @endif
         <a href="{{ route('admin.point.electricity.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
     </div><!--btn-toolbar-->
 @endcan

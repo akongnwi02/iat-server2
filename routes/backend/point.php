@@ -50,6 +50,18 @@ Route::group([
             ->name('electricity.edit')
             ->middleware('permission:'.config('permission.permissions.update_supply_points'));
         
+        Route::get('/map', [ElectricSupplyPointController::class, 'singleMap'])
+            ->name('electricity.singleMap')
+            ->middleware('permission:'.config('permission.permissions.read_supply_points'));
+        
+        Route::get('/editMap', [ElectricSupplyPointController::class, 'editMap'])
+            ->name('electricity.editMap')
+            ->middleware('permission:'.config('permission.permissions.update_supply_points'));
+        
+        Route::patch('/storeMap', [ElectricSupplyPointController::class, 'storeMap'])
+            ->name('electricity.storeMap')
+            ->middleware('permission:'.config('permission.permissions.update_supply_points'));
+        
         Route::get('/clone', [ElectricSupplyPointController::class, 'clone'])
             ->name('electricity.clone')
             ->middleware('permission:'.config('permission.permissions.create_supply_points'));

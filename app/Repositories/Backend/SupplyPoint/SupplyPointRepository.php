@@ -81,4 +81,25 @@ class SupplyPointRepository
     
         throw new GeneralException(__('exceptions.backend.points.electricity.create_error'));
     }
+    
+    /**
+     * @param $point
+     * @param $data
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function updateGps($point, $data)
+    {
+        $point->gps_lat = $data['gps_lat'];
+        $point->gps_long = $data['gps_long'];
+    
+        if ($point->update()) {
+
+//            event(new ServiceUpdated($service));
+        
+            return $point;
+        }
+    
+        throw new GeneralException(__('exceptions.backend.points.electricity.update_error'));
+    }
 }

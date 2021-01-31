@@ -12,7 +12,9 @@ namespace App\Http\Controllers\Backend\Point;
 use App\Exports\SupplyPoint\PointExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\SupplyPoint\UpdateSupplyPointRequest;
+use App\Http\Requests\Backend\SupplyPoint\UpdateSupplyPointGpsCoordinatesRequest;
 use App\Http\Requests\Backend\SupplyPoint\StoreSupplyPointRequest;
+use App\Http\Requests\Backend\SupplyPoint\ShowSupplyPointRequest;
 use App\Models\SupplyPoint\SupplyPoint;
 use App\Repositories\Backend\Company\Company\CompanyRepository;
 use App\Repositories\Backend\Services\Commission\CommissionRepository;
@@ -134,11 +136,38 @@ class ElectricSupplyPointController extends Controller
             ->withFlashSuccess(__('alerts.backend.points.electricity.created'));
     }
     
+    /**
+     * @param SupplyPointRepository $supplyPointRepository
+     * @return mixed
+     */
     public function map(SupplyPointRepository $supplyPointRepository)
     {
         return view('backend.points.electricity.map')
             ->withPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
                 ->where('type', config('business.meter.type.electricity'))
                 ->get());
+    }
+    
+    public function singleMap(SupplyPointRepository $supplyPointRepository, ShowSupplyPointRequest $request, SupplyPoint $point)
+    {
+        return view('backend.points.electricity.map')
+            ->withPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
+                ->where('type', config('business.meter.type.electricity'))
+                ->where('uuid', $point->uuid)
+                ->get());
+    }
+    
+    public function editMap(SupplyPoint $point)
+    {
+        return view('backend.points.electricity.update-gps-coordinates')
+            ->withPoint($point);
+    }
+    
+    public function storeMap(SupplyPoint $point, UpdateSupplyPointGpsCoordinatesRequest $request, SupplyPointRepository $supplyPointRepository)
+    {
+        $supplyPointRepository->updateGps($point, $request->input());
+    
+        return redirect()->route('admin.point.electricity.index')
+            ->withFlashSuccess(__('alerts.backend.points.electricity.gps_updated'));
     }
 }

@@ -36,6 +36,7 @@ class ServiceController extends Controller
     /**
      * @param CommissionRepository $commissionRepository
      * @param CategoryRepository $categoryRepository
+     * @param CommissionDistributionRepository $commissionDistributionRepository
      * @return mixed
      */
     public function create(CommissionRepository $commissionRepository, CategoryRepository $categoryRepository, CommissionDistributionRepository $commissionDistributionRepository)

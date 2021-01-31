@@ -9,15 +9,16 @@
 namespace App\Models\Service;
 
 
-use App\Models\Traits\Attributes\CategoryAttribute;
+use App\Models\Traits\Attributes\PriceAttribute;
 use App\Models\Traits\Relationships\CategoryRelationship;
 use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    //TODO DELETE THIS CLASS. NO LONGER NEEDED
     use Uuid,
-        CategoryAttribute,
+        PriceAttribute,
         CategoryRelationship;
     
     /**

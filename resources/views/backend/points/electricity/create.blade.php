@@ -18,7 +18,7 @@
                     </h4>
                 </div><!--col-->
                 <div class="col-sm-7">
-                    @include('backend.points.electricity.includes.show-header-buttons')
+                    {{--@include('backend.points.electricity.includes.show-header-buttons')--}}
                 </div><!--col-->
             </div><!--row-->
 
@@ -202,7 +202,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.meter.electricity.index'), __('buttons.general.cancel')) }}
+                    {{ form_cancel(route('admin.point.electricity.index'), __('buttons.general.cancel')) }}
                 </div><!--col-->
 
                 <div class="col text-right">

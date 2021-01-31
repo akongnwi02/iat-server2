@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.services.category.management'))
+@section('title', app_name() . ' | ' . __('labels.backend.services.price.management'))
 
 @section('breadcrumb-links')
     {{--@include('backend.services.service.includes.breadcrumb-links')--}}
@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        {{ __('labels.backend.services.category.management') }}
+                        {{ __('labels.backend.services.price.management') }}
                     </h4>
                 </div><!--col-->
 
                 <div class="col-sm-7">
-                    @include('backend.services.category.includes.header-buttons')
+                    @include('backend.services.price.includes.header-buttons')
                 </div><!--col-->
             </div><!--row-->
 
@@ -27,27 +27,21 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>@lang('labels.backend.services.category.table.name')</th>
-                                <th>@lang('labels.backend.services.category.table.code')</th>
-                                {{--<th>@lang('labels.backend.services.service.table.logo')</th>--}}
-                                <th>@lang('labels.backend.services.category.table.active')</th>
-                                <th>@lang('labels.backend.services.category.table.api_key')</th>
-                                <th>@lang('labels.backend.services.category.table.api_url')</th>
+                                <th>@lang('labels.backend.services.price.table.name')</th>
+                                <th>@lang('labels.backend.services.price.table.description')</th>
+                                <th>@lang('labels.backend.services.price.table.amount') ({{$default_currency->code}})</th>
 
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $category)
+                            @foreach($prices as $price)
                                 <tr>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->code }}</td>
-                                    {{--<td>{!! $category->logo_label !!}</td>--}}
-                                    <td>{!! $category->active_label !!}</td>
-                                    <td>{{ $category->api_key }}</td>
-                                    <td>{{ $category->api_url }}</td>
+                                    <td>{{ $price->name }}</td>
+                                    <td>{{ $price->description }}</td>
+                                    <td>{{ $price->amount }}</td>
 
-                                    <td>{!! $category->action_buttons  !!}</td>
+                                    <td>{!! $price->action_buttons  !!}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -58,13 +52,13 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        {!! $categories->total() !!} {{ trans_choice('labels.backend.services.category.table.total', $categories->total()) }}
+                        {!! $prices->total() !!} {{ trans_choice('labels.backend.services.price.table.total', $prices->total()) }}
                     </div>
                 </div><!--col-->
 
                 <div class="col-5">
                     <div class="float-right">
-                        {!! $categories->render() !!}
+                        {!! $prices->render() !!}
                     </div>
                 </div><!--col-->
             </div><!--row-->

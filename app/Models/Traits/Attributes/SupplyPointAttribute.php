@@ -23,9 +23,18 @@ trait SupplyPointAttribute
     public function getActionButtonsAttribute()
     {
         return '
-    	<div class="btn-group" role="group" aria-label="'.__('labels.general.actions').'">
+    	<div class="btn-group" role="group" aria-label="' . __('labels.general.actions') . '">
 		  ' . $this->edit_button . '
 		  ' . $this->clone_button . '
+		  ' . $this->map_pointer_button . '
+		  	 <div class="btn-group btn-group-sm" role="group">
+			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  ' . __('labels.general.more') . '
+			</button>
+			<div class="dropdown-menu" aria-labelledby="userActions">
+			  ' . $this->update_gps_coordinates_button . '
+			</div>
+		  </div>
 		</div>';
     }
     
@@ -41,6 +50,20 @@ trait SupplyPointAttribute
     {
         if (auth()->user()->can(config('permission.permissions.create_supply_points'))) {
             return '<a href="'.route('admin.point.electricity.clone', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.points.electricity.clone').'" class="btn btn-secondary"><i class="fas fa-copy"></i></a>';
+        }
+    }
+    
+    public function getMapPointerButtonAttribute()
+    {
+        if (auth()->user()->can(config('permission.permissions.read_supply_points'))) {
+            return '<a href="'.route('admin.point.electricity.map', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.points.electricity.map').'" class="btn btn-facebook"><i class="fas fa-map-marker-alt"></i></a>';
+        }
+    }
+    
+    public function getUpdateGpsCoordinatesButtonAttribute()
+    {
+        if (auth()->user()->can(config('permission.permissions.update_meters'))) {
+            return '<a href="'.route('admin.point.electricity.editMap', $this).'" class="dropdown-item">'.__('buttons.backend.points.electricity.edit_map').'</a>';
         }
     }
 }

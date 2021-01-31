@@ -63,9 +63,9 @@ return [
             'company' => [
                 'updated' => 'The companies for this service was updated successfully'
             ],
-            'category' => [
-                'created' => 'The category was successfully created.',
-                'updated' => 'The category was successfully updated.',
+            'price' => [
+                'created' => 'The price was successfully created.',
+                'updated' => 'The price was successfully updated.',
                 'status_updated' => 'The status was successfully updated.',
             ],
             'commission' => [
@@ -93,6 +93,7 @@ return [
         'points' => [
             'electricity' => [
                 'updated' => 'The supply point was updated successfully',
+                'gps_updated' => 'The supply point GPS was updated successfully',
                 'created' => 'The supply point was created successfully',
             ]
         ],

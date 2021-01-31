@@ -90,17 +90,10 @@
                                 </a>
                             </li>
                         @endcan
-                        @can(config('permission.permissions.read_services'))
+                        @can(config('permission.permissions.read_prices'))
                             <li class="nav-item">
-                                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/services/service*')) }}" href="{{ route('admin.services.service.index') }}">
-                                    @lang('labels.backend.services.service.management')
-                                </a>
-                            </li>
-                        @endcan
-                        @can(config('permission.permissions.read_categories'))
-                            <li class="nav-item">
-                                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/services/category*')) }}" href="{{ route('admin.services.category.index') }}">
-                                    @lang('labels.backend.services.category.management')
+                                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/services/price*')) }}" href="{{ route('admin.services.price.index') }}">
+                                    @lang('labels.backend.services.price.management')
                                 </a>
                             </li>
                         @endcan
@@ -108,6 +101,13 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ active_class(Active::checkUriPattern('admin/services/method*')) }}" href="{{ route('admin.services.method.index') }}">
                                     @lang('labels.backend.services.method.management')
+                                </a>
+                            </li>
+                        @endcan
+                        @can(config('permission.permissions.read_services'))
+                            <li class="nav-item">
+                                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/services/service*')) }}" href="{{ route('admin.services.service.index') }}">
+                                    @lang('labels.backend.services.service.management')
                                 </a>
                             </li>
                         @endcan

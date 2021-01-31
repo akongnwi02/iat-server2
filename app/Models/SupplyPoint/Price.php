@@ -9,6 +9,7 @@
 namespace App\Models\SupplyPoint;
 
 
+use App\Models\Traits\Attributes\PriceAttribute;
 use App\Models\Traits\Uuid;
 use Arcanedev\Support\Database\Model;
 use Wildside\Userstamps\Userstamps;
@@ -16,6 +17,7 @@ use Wildside\Userstamps\Userstamps;
 class Price extends Model
 {
     use Uuid,
+        PriceAttribute,
         Userstamps;
     
     /**
@@ -30,4 +32,10 @@ class Price extends Model
     protected $keyType = 'string';
     
     public $incrementing = false;
+    
+    protected $fillable = [
+        'name',
+        'amount',
+        'description',
+    ];
 }

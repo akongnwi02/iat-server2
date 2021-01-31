@@ -56,6 +56,8 @@ return [
         'points' => [
             'electricity' => [
                 'clone' => 'Clone Point',
+                'map'   => 'View on map',
+                'edit_map' => 'Update GPS',
             ]
         ],
         'administration' => [

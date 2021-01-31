@@ -6,7 +6,7 @@
  * Time: 12:57 PM
  */
 
-namespace App\Http\Requests\Backend\Services\Category;
+namespace App\Http\Requests\Backend\Services\Price;
 
 
 use Illuminate\Foundation\Http\FormRequest;

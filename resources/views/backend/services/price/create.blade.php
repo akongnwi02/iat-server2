@@ -1,20 +1,20 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.services.category.management'))
+@section('title', app_name() . ' | ' . __('labels.backend.services.price.management'))
 
 @section('breadcrumb-links')
     {{--@include('backend.services.service.includes.breadcrumb-links')--}}
 @endsection
 
 @section('content')
-    {{ html()->modelForm($category, 'PUT', route('admin.services.category.update', $category))->class('form-horizontal')->attribute('enctype', 'multipart/form-data')->open() }}
+    {{ html()->modelForm($price, 'PUT', route('admin.services.price.update', $price))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        @lang('labels.backend.services.category.management')
-                        <small class="text-muted">@lang('labels.backend.services.category.edit')</small>
+                        @lang('labels.backend.services.price.management')
+                        <small class="text-muted">@lang('labels.backend.services.price.edit')</small>
                     </h4>
                 </div><!--col-->
             </div><!--row-->
@@ -25,52 +25,39 @@
                 <div class="col">
 
                     <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.services.category.name'))->class('col-md-2 form-control-label required')->for('name') }}
+                        {{ html()->label(__('validation.attributes.backend.services.price.name'))->class('col-md-2 form-control-label required')->for('name') }}
 
                         <div class="col-md-10">
                             {{ html()->text('name')
                                 ->class('form-control')
                                 ->required()
                                 ->attribute('maxlength', 191)
-                                ->placeholder(__('validation.attributes.backend.services.category.name'))}}
+                                ->placeholder(__('validation.attributes.backend.services.price.name'))}}
                         </div><!--col-->
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.services.category.code'))->class('col-md-2 form-control-label required')->for('code') }}
+                        {{ html()->label(__('validation.attributes.backend.services.price.description'))->class('col-md-2 form-control-label required')->for('description') }}
 
                         <div class="col-md-10">
-                            {{ html()->text('code')
-                                ->class('form-control')
-                                ->disabled()
-                                ->attribute('maxlength', 191)
-                                ->placeholder(__('validation.attributes.backend.services.category.code'))}}
-                        </div><!--col-->
-                    </div><!--form-group-->
-
-                    <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.services.category.api_key'))->class('col-md-2 form-control-label')->for('api_key') }}
-
-                        <div class="col-md-10">
-                            {{ html()->text('api_key')
-                                ->class('form-control')
-                                ->attribute('maxlength', 191)
-                                ->placeholder(__('validation.attributes.backend.services.category.api_key'))}}
-                        </div><!--col-->
-                    </div><!--form-group-->
-
-                    <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.services.category.api_url'))->class('col-md-2 form-control-label required')->for('api_url') }}
-
-                        <div class="col-md-10">
-                            {{ html()->text('api_url')
+                            {{ html()->text('description')
                                 ->class('form-control')
                                 ->required()
                                 ->attribute('maxlength', 191)
-                                ->placeholder(__('validation.attributes.backend.services.category.api_url'))}}
+                                ->placeholder(__('validation.attributes.backend.services.price.description'))}}
                         </div><!--col-->
                     </div><!--form-group-->
 
+                    <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.services.price.amount'))->class('col-md-2 form-control-label required')->for('amount') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('amount')
+                                ->class('form-control')
+                                ->attribute('maxlength', 191)
+                                ->placeholder(__('validation.attributes.backend.services.price.amount'))}}
+                        </div><!--col-->
+                    </div><!--form-group-->
                 </div><!--col-->
             </div><!--row-->
         </div><!--card-body-->
@@ -78,11 +65,11 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.services.category.index'), __('buttons.general.cancel')) }}
+                    {{ form_cancel(route('admin.services.price.index'), __('buttons.general.cancel')) }}
                 </div><!--col-->
 
                 <div class="col text-right">
-                    {{ form_submit(__('buttons.general.continue')) }}
+                    {{ form_submit(__('buttons.general.crud.update')) }}
                 </div><!--row-->
             </div><!--row-->
         </div><!--card-footer-->

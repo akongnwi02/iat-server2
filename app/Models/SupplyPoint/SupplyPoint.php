@@ -50,4 +50,9 @@ class SupplyPoint extends Model
         'is_auto_price',
         'auto_price_margin',
     ];
+    
+    protected $casts = [
+        'gps_lat' => 'double',
+        'gps_long' => 'double',
+    ];
 }
