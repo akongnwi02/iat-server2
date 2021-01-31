@@ -118,6 +118,10 @@
                             </div><!--form-group-->
                         </div><!--col-->
                     </div><!--row-->
+                    @if(config('access.captcha.registration'))
+                        {!! Captcha::display() !!}
+                        {{ html()->hidden('captcha_status', 'true') }}
+                    @endif
                     {{ html()->form()->close() }}
                 </div><!--card-body-->
                 </div><!--card-->
