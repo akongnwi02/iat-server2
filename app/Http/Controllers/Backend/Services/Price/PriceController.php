@@ -57,8 +57,7 @@ class PriceController extends Controller
     
     public function create()
     {
-        return view('backend.services.price.edit')
-            ->withPrice(Price::first());
+        return view('backend.services.price.create');
     }
     
     /**

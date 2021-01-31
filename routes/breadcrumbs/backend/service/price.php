@@ -12,6 +12,6 @@ Breadcrumbs::for('admin.services.price.edit', function ($trail, $id) {
 });
 
 Breadcrumbs::for('admin.services.price.create', function ($trail) {
-    $trail->parent('admin.services.price.create');
+    $trail->parent('admin.services.price.index');
     $trail->push(__('menus.backend.services.price.create'), route('admin.services.price.create'));
 });

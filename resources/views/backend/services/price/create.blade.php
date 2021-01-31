@@ -7,14 +7,14 @@
 @endsection
 
 @section('content')
-    {{ html()->modelForm($price, 'PUT', route('admin.services.price.update', $price))->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('admin.services.price.store'))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
                         @lang('labels.backend.services.price.management')
-                        <small class="text-muted">@lang('labels.backend.services.price.edit')</small>
+                        <small class="text-muted">@lang('labels.backend.services.price.create')</small>
                     </h4>
                 </div><!--col-->
             </div><!--row-->
