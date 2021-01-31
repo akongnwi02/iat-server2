@@ -29,7 +29,7 @@
                     <div id="map"></div>
                     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
                     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_cixaH9oce4kyM8LoOp7yDyGA5lfM25k&callback=initMap&libraries=&v=weekly"
+                    <script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google.maps.key')}}&callback=initMap&libraries=&v=weekly"
                             defer
                     ></script>
                 </div><!--col-->

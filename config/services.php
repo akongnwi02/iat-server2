@@ -78,6 +78,9 @@ return [
         'client_id'     => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect'      => env('GOOGLE_REDIRECT'),
+        'maps' => [
+            'key' => env('GOOGLE_MAP_API')
+        ],
 
         /*
          * Only allows google to grab email address
