@@ -229,7 +229,7 @@ return [
                 'electricity' => [
                     'meter_code'   => 'Meter Code',
                     'phone'        => 'Contact Phone',
-                    'location'        => 'Location',
+                    'location'     => 'Location',
                     'email'        => 'Contact Email',
                     'type'         => 'Type',
                     'comment'      => 'Comment',
@@ -245,13 +245,16 @@ return [
                     'phone'               => 'Contact Phone',
                     'email'               => 'Contact Email',
                     'external_identifier' => 'ENEO Contract Number',
+                    'meter_no' => 'ENEO Meter Number',
                     'company'             => 'Company',
                     'type'                => 'Type',
                     'provider_price'      => 'Provider\'s Price (:currency)',
-                    'provider_price2'      => 'Provider\'s Price',
+                    'provider_price2'     => 'Provider\'s Price',
                     'is_auto_price'       => 'Auto Price',
                     'auto_price_margin'   => 'Auto Price Margin (:currency)',
-                    'auto_price_margin2'   => 'Auto Price Margin',
+                    'adjusted_price'      => 'Adjusted Price (:currency)',
+                    'auto_price_margin2'  => 'Auto Price Margin',
+                    'adjusted_price2'     => 'Adjusted Price',
                     'service_charge'      => 'Specific Service Charge',
                     'price'               => 'Price',
                     'gps_lat'             => 'Latitude',
@@ -336,9 +339,9 @@ return [
                     'api_key' => 'Micro Service API Key',
                     'api_url' => 'Micro Service URL'
                 ],
-                'price' => [
-                    'name' => 'Name',
-                    'amount' => 'Amount',
+                'price'                   => [
+                    'name'        => 'Name',
+                    'amount'      => 'Amount',
                     'description' => 'Description',
                 ]
             ],

@@ -49,6 +49,7 @@ class SupplyPoint extends Model
         'price_id',
         'is_auto_price',
         'auto_price_margin',
+        'meter_no',
     ];
     
     protected $casts = [

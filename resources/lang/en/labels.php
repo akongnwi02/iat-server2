@@ -349,6 +349,8 @@ return [
                 'external_identifier' => 'ENEO Contract Number',
                 'company'             => 'Company',
                 'provider_price'      => 'Provider\'s Price',
+                'adjusted_price'      => 'Adjusted Price',
+                'meter_no'            => 'Meter Number',
                 'is_auto_price'       => 'Auto Price',
                 'auto_price_margin'   => 'Auto Price Margin',
                 'service_charge'      => 'Specific Service Charge',

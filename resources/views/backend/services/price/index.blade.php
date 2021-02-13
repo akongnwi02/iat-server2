@@ -39,7 +39,7 @@
                                 <tr>
                                     <td>{{ $price->name }}</td>
                                     <td>{{ $price->description }}</td>
-                                    <td>{{ $price->amount }}</td>
+                                    <td>{{ number_format($price->amount, 2) }}</td>
 
                                     <td>{!! $price->action_buttons  !!}</td>
                                 </tr>

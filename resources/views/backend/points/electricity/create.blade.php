@@ -114,6 +114,20 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.points.electricity.meter_no'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('meter_no') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('meter_no')
+                                ->class('form-control')
+                                ->placeholder(__('validation.attributes.backend.points.electricity.meter_no'))
+                                ->attribute('maxlength', 191)
+                            }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         {{ html()->label(__('validation.attributes.backend.points.electricity.company'))
                             ->class('col-md-2 form-control-label')
                             ->for('company_id') }}
