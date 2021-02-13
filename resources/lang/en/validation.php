@@ -229,6 +229,7 @@ return [
                 'electricity' => [
                     'meter_code'   => 'Meter Code',
                     'phone'        => 'Contact Phone',
+                    'location'        => 'Location',
                     'email'        => 'Contact Email',
                     'type'         => 'Type',
                     'comment'      => 'Comment',

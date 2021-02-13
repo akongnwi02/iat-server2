@@ -89,6 +89,7 @@ class MeterRepository
         $meter->supply_point_id = @$data['supply_point_id'];
         $meter->phone = @$data['phone'];
         $meter->email = @$data['email'];
+        $meter->location = @$data['location'];
     
         if ($meter->update()) {
         

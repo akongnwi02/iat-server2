@@ -25,6 +25,7 @@ class UpdateMeterRequest extends FormRequest
             'supply_point_id' => __('validation.attributes.backend.meters.electricity.supply_point'),
             'phone' => __('validation.attributes.backend.meters.electricity.phone'),
             'email' => __('validation.attributes.backend.meters.electricity.email'),
+            'location'      => __('validation.attributes.backend.meters.electricity.location'),
         ];
     }
     
@@ -34,6 +35,7 @@ class UpdateMeterRequest extends FormRequest
             'supply_point_id'      => ['nullable', Rule::exists('supply_points', 'uuid')],
             'email'                => 'nullable|email|max:191',
             'phone'                => ['nullable', 'max:191', 'string'],
+            'location'           => ['nullable', 'max:191', 'string'],
         ];
     }
 }

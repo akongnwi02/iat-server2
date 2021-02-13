@@ -21,6 +21,7 @@ class CreateMetersTable extends Migration
             $table->uuid('supply_point_id')->nullable();
             $table->uuid('provider_id');
             $table->string('meter_code')->unique();
+            $table->string('location')->nullable();
             $table->enum('type', ['water', 'electricity']);
             $table->boolean('is_active')->default(1);
             $table->text('blocked_reason')->nullable();

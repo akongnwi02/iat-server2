@@ -51,6 +51,7 @@ class Meter extends Model
         'phone',
         'email',
         'type',
+        'location',
         'identifier'
     ];
     

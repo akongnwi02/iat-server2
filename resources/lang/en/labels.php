@@ -324,6 +324,7 @@ return [
                 'active'            => 'Active',
                 'last_vending_date' => 'Last Recharge Date',
                 'identifier'        => 'External Identifier',
+                'location'        => 'Room Number',
                 'total'             => 'meter|Meters',
             ],
         ],

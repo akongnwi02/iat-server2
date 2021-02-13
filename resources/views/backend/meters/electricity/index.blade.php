@@ -33,6 +33,7 @@
                                 <th>@lang('labels.backend.meters.table.provider')</th>
                                 {{--<th>@lang('labels.backend.meters.table.type')</th>--}}
                                 <th>@lang('labels.backend.meters.table.active')</th>
+                                <th>@lang('labels.backend.meters.table.location')</th>
                                 <th>@lang('labels.backend.meters.table.identifier')</th>
                                 <th>@lang('labels.backend.meters.table.last_vending_date')</th>
                                 <th>@lang('labels.backend.meters.table.phone')</th>
@@ -50,6 +51,7 @@
                                     <td>{{ @$meter->provider->name }}</td>
                                     {{--<td>{{ __($meter->type) }}</td>--}}
                                     <td>{!! @$meter->active_label !!}</td>
+                                    <td>{{ $meter->location }}</td>
                                     <td>{{ $meter->identifier }}</td>
                                     <td>{{ @$meter->last_vending_date }}</td>
                                     <td>{{ $meter->phone }}</td>

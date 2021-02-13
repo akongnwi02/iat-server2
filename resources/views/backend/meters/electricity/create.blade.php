@@ -65,6 +65,20 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.meters.electricity.location'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('location') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('location')
+                                ->class('form-control')
+                                ->placeholder(__('validation.attributes.backend.meters.electricity.location'))
+                                ->attribute('maxlength', 191)
+                            }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                    -
+                    <div class="form-group row">
                         {{ html()->label(__('validation.attributes.backend.meters.electricity.phone'))
                             ->class('col-md-2 form-control-label')
                             ->for('phone') }}

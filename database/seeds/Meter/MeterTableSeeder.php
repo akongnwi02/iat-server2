@@ -20,6 +20,7 @@ class MeterTableSeeder extends \Illuminate\Database\Seeder
         Meter::create([
             'meter_code' => '46021525854',
             'identifier' => '46021525854',
+            'location' => 'ROOM A3',
             'phone' => '653754334',
             'email' => 'gentledivert@gmail.com',
             'supply_point_id' => SupplyPoint::first()->uuid,
