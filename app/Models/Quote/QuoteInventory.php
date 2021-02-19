@@ -16,7 +16,12 @@ class QuoteInventory extends Pivot
 {
     use Uuid;
     
-    protected $table = 'company_service';
+    protected $table = 'quote_inventories';
     
     public $incrementing = false;
+    
+    protected $fillable = [
+        'quote_id',
+        'inventory_id',
+    ];
 }

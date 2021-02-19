@@ -87,6 +87,7 @@ return [
         'sidebar'   => [
             'dashboard' => 'Dashboard',
             'sales'     => 'Sales',
+            'quote' => 'Installation Quote',
             'horizon'   => 'Horizon',
             'general'   => 'General',
             'history'   => 'History',

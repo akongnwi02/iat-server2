@@ -34,7 +34,10 @@ class DatabaseSeeder extends Seeder
             'providers',
             'prices',
             'supply_points',
-            'meters'
+            'meters',
+            'inventories',
+            'quotes',
+            'quote_inventories',
         ]);
     
         Model::unguard();

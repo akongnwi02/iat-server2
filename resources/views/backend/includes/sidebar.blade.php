@@ -202,6 +202,13 @@
                 </ul>
             </li>
             @endcan
+            @can(config('permission.permissions.read_quotes'))
+            <li class="nav-item">
+                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/quotes/quote')) }}" href="{{ route('admin.quotes.quote.index') }}">
+                    <i class="nav-icon icon-book-open"></i> @lang('menus.backend.sidebar.quote')
+                </a>
+            </li>
+            @endcan
             <li class="nav-title">
                 <h6><b>@lang('menus.backend.sidebar.system')</b></h6>
             </li>

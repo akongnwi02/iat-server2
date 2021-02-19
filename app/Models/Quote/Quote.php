@@ -33,4 +33,11 @@ class Quote extends Model
         SoftDeletes,
         Userstamps;
     
+    protected $fillable = [
+        'title',
+        'code',
+        'description',
+        'status',
+        'type',
+    ];
 }

@@ -19,7 +19,7 @@ class CreateQuotesTable extends Migration
             $table->string('code');
             $table->string('description')->nullable();
             $table->enum('status', ['created', 'rejected', 'validated']);
-            $table->enum('type', ['ownership, partnership'])->nullable();
+            $table->enum('type', ['ownership', 'partnership'])->nullable();
     
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

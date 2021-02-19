@@ -17,6 +17,7 @@ class CreateQuoteInventoriesTable extends Migration
             $table->uuid('uuid')->primary();
             $table->uuid('quote_id');
             $table->uuid('inventory_id');
+            $table->timestamps();
             
             $table->unique(['quote_id', 'inventory_id']);
     

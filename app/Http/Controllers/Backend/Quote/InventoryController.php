@@ -58,7 +58,7 @@ class InventoryController extends Controller
         $inventoryRepository->update($inventory, $request->input());
         
         return redirect()->route('admin.quotes.inventory.index')
-            ->withFlashSuccess(__('alerts.backend.administration.currency.updated'));
+            ->withFlashSuccess(__('alerts.backend.quote.inventory.updated'));
     }
 
     /**
