@@ -33,5 +33,6 @@ class DumpTableSeeder extends Seeder
         $this->call(PriceTableSeeder::class);
         $this->call(SupplyPointTableSeeder::class);
         $this->call(MeterTableSeeder::class);
+        $this->call(InventoryTableSeeder::class);
     }
 }

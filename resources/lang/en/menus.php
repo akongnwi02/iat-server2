@@ -45,6 +45,11 @@ return [
                 'create'     => 'Create Currency',
                 'edit'       => 'Edit Currency',
             ],
+            'inventory' => [
+                'management' => 'Inventory Management',
+                'create' => 'Create Inventory',
+                'edit' => 'Edit Inventory',
+            ]
         ],
         
         'meter' => [
@@ -98,6 +103,15 @@ return [
                 'create'     => 'Create Company',
                 'edit'       => 'Edit Company',
             ],
+        ],
+        
+        'quote' => [
+            'title' => 'Quote',
+            'inventory' => [
+                'management' => 'Inventories',
+                'create' => 'Create Quote',
+                'edit' => 'Edit Quote',
+            ]
         ],
         
         'services' => [

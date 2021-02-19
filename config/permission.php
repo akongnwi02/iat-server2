@@ -200,6 +200,18 @@ return [
         'update_meters'     => 'update meters',
         'delete_meters'     => 'delete meters',
         'deactivate_meters' => 'deactivate meters',
+        
+        // quotes
+        'read_quotes'       => 'read quotes',
+        'create_quotes'     => 'create quotes',
+        'update_quotes'     => 'update quotes',
+        'delete_quotes'     => 'delete quotes',
+        
+        //inventories
+        'read_inventories'       => 'read inventories',
+        'create_inventories'     => 'create inventories',
+        'update_inventories'     => 'update inventories',
+        'delete_inventories'     => 'delete inventories',
     ],
 
 ];

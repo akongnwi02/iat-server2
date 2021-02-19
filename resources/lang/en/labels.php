@@ -617,6 +617,18 @@ return [
                 ]
             ],
         ],
+        'quote' => [
+            'inventory' => [
+                'management' => 'Inventory Management',
+                'edit' => 'Edit Inventory',
+                'create' => 'Create Inventory',
+                'table' => [
+                    'name_en' => 'English Name',
+                    'name_fr' => 'French Name',
+                    'total' => 'inventory|inventories'
+                ]
+            ]
+        ]
     ],
     'frontend' => [
         'auth'      => [

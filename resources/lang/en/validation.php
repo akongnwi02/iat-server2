@@ -365,6 +365,12 @@ return [
                     'rate'   => 'Exchange Rate',
                 ]
             ],
+            'quote' => [
+                'inventory' => [
+                    'name_en' => 'English Name',
+                    'name_fr' => 'French Name',
+                ]
+            ],
             'account'        => [
                 'amount'         => 'Amount',
                 'currency'       => 'Currency',

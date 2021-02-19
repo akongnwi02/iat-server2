@@ -219,6 +219,13 @@
                                 </a>
                             </li>
                         @endcan
+                        @can(config('permission.permissions.read_inventories'))
+                            <li class="nav-item">
+                                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/quotes/inventory*')) }}" href="{{ route('admin.quotes.inventory.index') }}">
+                                    @lang('menus.backend.administration.inventory.management')
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endif
