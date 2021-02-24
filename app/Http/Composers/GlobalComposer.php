@@ -22,6 +22,7 @@ class GlobalComposer
     {
         $view->with('logged_in_user', auth()->user())
             ->with('default_company', Company::where('is_default', true)->first())
-            ->with('default_currency', Currency::where('is_default', true)->first());
+            ->with('default_currency', Currency::where('is_default', true)->first())
+            ->with('current_locale', \Carbon\Carbon::getLocale());
     }
 }

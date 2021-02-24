@@ -369,6 +369,20 @@ return [
                 'inventory' => [
                     'name_en' => 'English Name',
                     'name_fr' => 'French Name',
+                ],
+                'quote' => [
+                    'title' => 'Title',
+                    'code' => 'Code',
+                    'description' => 'Description',
+                    'status' => 'Status',
+                    'type' => 'Type',
+                    'amount' => 'Amount',
+                    'inventories' => [
+                        'material' => 'Material',
+                        'unit_cost' => 'Unit Cost',
+                        'quantity' => 'Quantity',
+                        'sub_total' => 'Sub Total',
+                    ]
                 ]
             ],
             'account'        => [

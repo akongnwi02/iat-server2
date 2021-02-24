@@ -36,6 +36,10 @@ Route::group([
         Route::get('edit', [QuoteController::class, 'edit'])
             ->name('quote.edit')
             ->middleware('permission:'.config('permission.permissions.update_quotes'));
+       
+        Route::get('download', [QuoteController::class, 'download'])
+            ->name('quote.download')
+            ->middleware('permission:'.config('permission.permissions.read_quotes'));
     
         Route::put('/', [QuoteController::class, 'update'])
             ->name('quote.update')

@@ -22,7 +22,8 @@ class QuoteTableSeeder extends Seeder
             'code' => 'QUOTE001',
             'description' => 'This is a simple description for the quote',
             'status' => 'created',
-            'type' => 'ownership'
+            'type' => 'ownership',
+            'amount' => 3000.00
         ]);
         Quote::reguard();
         
@@ -30,6 +31,9 @@ class QuoteTableSeeder extends Seeder
         QuoteInventory::create([
             'quote_id' => Quote::first()->uuid,
             'inventory_id' => Inventory::first()->uuid,
+            'unit_cost' => 1000.00,
+            'quantity' => 3,
+            'sub_total' => 3000.00
         ]);
         QuoteInventory::reguard();
     }

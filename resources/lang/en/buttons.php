@@ -106,6 +106,7 @@ return [
         'back'   => 'Back',
         'continue' => 'Continue',
         'submit'   => 'Submit',
+        'download' => 'Download',
 
         'crud' => [
             'create' => 'Create',

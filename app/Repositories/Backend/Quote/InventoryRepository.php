@@ -24,22 +24,7 @@ class InventoryRepository
     
     public function findByCode($code)
     {
-        return Inventory::where('code', $code)->first();
-    }
-    
-    public function getDefaultInventory()
-    {
-        return Inventory::where('is_default', true)->first();
-    }
-    
-    public function convertAmount($amount, $inventoryCode, $reverse = false)
-    {
-        $inventory = $this->findByCode($inventoryCode);
-        
-        $convertedAmount = $reverse ? $amount / $inventory->rate : $amount * $inventory->rate;
-        
-        return ceil(($convertedAmount * 100)) / 100;
-        
+        return Inventory::where('code', $code)->get();
     }
     
     /**

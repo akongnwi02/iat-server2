@@ -17,6 +17,9 @@ class CreateQuoteInventoriesTable extends Migration
             $table->uuid('uuid')->primary();
             $table->uuid('quote_id');
             $table->uuid('inventory_id');
+            $table->float('unit_cost');
+            $table->integer('quantity');
+            $table->float('sub_total');
             $table->timestamps();
             
             $table->unique(['quote_id', 'inventory_id']);

@@ -17,9 +17,10 @@ class CreateQuotesTable extends Migration
             $table->uuid('uuid')->primary()->unique();
             $table->string('title');
             $table->string('code');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->enum('status', ['created', 'rejected', 'validated']);
             $table->enum('type', ['ownership', 'partnership'])->nullable();
+            $table->float('amount');
     
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

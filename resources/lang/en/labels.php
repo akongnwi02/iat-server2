@@ -620,12 +620,35 @@ return [
         'quote' => [
             'inventory' => [
                 'management' => 'Inventory Management',
-                'edit' => 'Edit Inventory',
-                'create' => 'Create Inventory',
-                'table' => [
+                'edit'       => 'Edit Inventory',
+                'create'     => 'Create Inventory',
+                'table'      => [
                     'name_en' => 'English Name',
                     'name_fr' => 'French Name',
-                    'total' => 'inventory|inventories'
+                    'total'   => 'inventory|inventories'
+                ]
+            ],
+            'quote' => [
+                'management' => 'Installation Quotes',
+                'edit'       => 'Edit Quote',
+                'create'     => 'Create Quote',
+                'show'       => 'Show',
+                'table'      => [
+                    'title'       => 'Title',
+                    'code'        => 'Code',
+                    'amount'        => 'Amount',
+                    'description' => 'Description',
+                    'status'      => 'Status',
+                    'type'        => 'Type',
+                    'created_at'  => 'Created At',
+                    'empty'       => 'Empty',
+                    'total'       => 'quote|quotes',
+                    'inventories' => [
+                        'name' => 'Name',
+                        'unit_cost' => 'Unit Cost',
+                        'quantity' => 'Quantity',
+                        'sub_total' => 'Sub Total',
+                    ]
                 ]
             ]
         ]

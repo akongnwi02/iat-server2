@@ -1,16 +1,16 @@
 <?php
 
-Breadcrumbs::for('admin.quotes.inventory.index', function ($trail) {
+Breadcrumbs::for('admin.quotes.quote.index', function ($trail) {
     $trail->parent('admin.dashboard');
-    $trail->push(__('menus.backend.quote.inventory.management'), route('admin.quotes.inventory.index'));
+    $trail->push(__('menus.backend.quote.quote.management'), route('admin.quotes.quote.index'));
 });
 
-Breadcrumbs::for('admin.quotes.inventory.edit', function ($trail, $id) {
-    $trail->parent('admin.quotes.inventory.index');
-    $trail->push(__('menus.backend.quote.inventory.edit'), route('admin.quotes.inventory.edit', $id));
+Breadcrumbs::for('admin.quotes.quote.edit', function ($trail, $id) {
+    $trail->parent('admin.quotes.quote.index');
+    $trail->push(__('menus.backend.quote.quote.edit'), route('admin.quotes.quote.edit', $id));
 });
 
-Breadcrumbs::for('admin.quotes.inventory.create', function ($trail) {
-    $trail->parent('admin.quotes.inventory.index');
-    $trail->push(__('menus.backend.quote.inventory.create'), route('admin.quotes.inventory.create'));
+Breadcrumbs::for('admin.quotes.quote.create', function ($trail) {
+    $trail->parent('admin.quotes.quote.index');
+    $trail->push(__('menus.backend.quote.quote.create'), route('admin.quotes.quote.create'));
 });

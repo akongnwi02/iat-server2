@@ -9,6 +9,8 @@
 namespace App\Models\Quote;
 
 
+use App\Models\Traits\Attributes\QuoteAttribute;
+use App\Models\Traits\Relationships\QuoteRelationship;
 use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,6 +32,8 @@ class Quote extends Model
     public $incrementing = false;
     
     use Uuid,
+        QuoteAttribute,
+        QuoteRelationship,
         SoftDeletes,
         Userstamps;
     

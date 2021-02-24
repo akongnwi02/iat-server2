@@ -110,6 +110,11 @@ return [
             'title' => 'Quote',
             'inventory' => [
                 'management' => 'Inventories',
+                'create' => 'Create Inventory',
+                'edit' => 'Edit Inventory',
+            ],
+            'quote' => [
+                'management' => 'Quotes',
                 'create' => 'Create Quote',
                 'edit' => 'Edit Quote',
             ]
