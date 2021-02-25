@@ -19,6 +19,7 @@
         "arcanedev/log-viewer": "^4.5",
         "arcanedev/no-captcha": "^5.0",
         "barryvdh/laravel-cors": "^0.11.3",
+        "barryvdh/laravel-dompdf": "^0.9.0",
         "beyondcode/laravel-self-diagnosis": "^1.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",

@@ -18,7 +18,7 @@ class CreateQuotesTable extends Migration
             $table->string('title');
             $table->string('code');
             $table->text('description')->nullable();
-            $table->enum('status', ['created', 'rejected', 'validated']);
+            $table->enum('status', ['created', 'rejected', 'approved']);
             $table->enum('type', ['ownership', 'partnership'])->nullable();
             $table->float('amount');
     

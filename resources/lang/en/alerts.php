@@ -109,6 +109,11 @@ return [
                 'created' => 'The inventory was created successfully',
                 'updated' => 'The inventory was updated successfully',
             ],
+            'quote' => [
+                'created' => 'The quote was created successfully',
+                'updated' => 'The quote was updated successfully',
+                'status_updated' => 'The status was successfully updated.',
+            ]
         ],
         'accounting' => [
             'collection' => [

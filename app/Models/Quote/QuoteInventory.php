@@ -21,7 +21,11 @@ class QuoteInventory extends Pivot
     public $incrementing = false;
     
     protected $fillable = [
+        'uuid',
         'quote_id',
         'inventory_id',
+        'unit_cost',
+        'quantity',
+        'sub_total',
     ];
 }

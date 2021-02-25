@@ -36,4 +36,19 @@ trait QuoteAttribute
             return '<a href="'.route('admin.quotes.quote.download', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.download').'" class="btn btn-secondary"><i class="fas fa-download"></i></a>';
         }
     }
+    
+    public function getStatusLabelAttribute()
+    {
+        switch ($this->status) {
+            case 'rejected':
+                return '<span class="badge badge-danger">'.__($this->status).'</span>';
+            
+            case 'approved':
+                return '<span class="badge badge-success">'.__($this->status).'</span>';
+                
+            default:
+                return '<span class="badge badge-secondary">'.__($this->status).'</span>';
+        }
+    }
+    
 }

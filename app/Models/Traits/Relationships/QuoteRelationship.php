@@ -19,10 +19,10 @@ trait QuoteRelationship
         return $this->belongsToMany(Inventory::class, 'quote_inventories', 'quote_id', 'inventory_id', 'uuid')
             ->withTimestamps()
             ->using(QuoteInventory::class)
-            ->withPivot([
+            ->withPivot(
                 'unit_cost',
                 'quantity',
-                'sub_total',
-            ]);
+                'sub_total'
+            );
     }
 }

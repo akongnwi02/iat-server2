@@ -53,7 +53,7 @@
                                     <td>{{ $quote->code }}</td>
                                     <td>{{ number_format($quote->amount, 2) }}</td>
                                     <td>{{ $quote->description }}</td>
-                                    <td>{{ __($quote->status)  }}</td>
+                                    <td>{!! $quote->status_label !!}</td>
                                     <td>{{ __($quote->type)  }}</td>
                                     <td>{{ __($quote->created_at->toDatetimeString())  }}</td>
 

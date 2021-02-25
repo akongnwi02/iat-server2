@@ -158,6 +158,11 @@ return [
                 'create_error' => 'There was a problem creating this currency. Please try again.',
                 'update_error' => 'There was a problem updating this currency. Please try again.',
                 'mark_error'   => 'There was a problem updating the status of this currency. Please try again.',
+            ],
+            'inventory' => [
+                'create_error' => 'There was a problem creating this inventory. Please try again.',
+                'update_error' => 'There was a problem updating this inventory. Please try again.',
+                'mark_error'   => 'There was a problem updating the status of this inventory. Please try again.',
             ]
         ],
         'payout'   => [
@@ -168,6 +173,11 @@ return [
             'invalid_status'   => 'Invalid payout status.',
             'status_error'     => 'There was a problem updating the status of the payout. Please try again.',
             'state_error'     => 'There was a problem updating the status of the payout. The payout is in a final state.'
+        ],
+        'quote' => [
+            'create_error' => 'There was a problem creating this quote. Please try again.',
+            'update_error' => 'There was a problem updating this quote. Please try again.',
+            'mark_error'   => 'There was a problem updating the status of this quote. Please try again.',
         ]
     ],
     'frontend' => [

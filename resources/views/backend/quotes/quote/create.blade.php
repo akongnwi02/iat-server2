@@ -76,13 +76,14 @@
                                 <tr>
                                     <td>
                                         <select id="material" style="min-width:100px" name="inventories[0][inventory_id]" class="form-control" required>
-                                            @foreach($inventories as $inventory)
-                                                <option value="{{ $inventory->{'name_' . $current_locale} }}"></option>
+                                            <option></option>
+                                        @foreach($inventories as $inventory)
+                                                <option value="{{ $inventory->uuid }}">{{ $inventory->{'name_' . $current_locale} }}</option>
                                             @endforeach
                                         </select>
                                     </td>
                                     <td><input id="unit_cot" style="min-width:100px" type="number" name="inventories[0][unit_cost]" step="0.01" class="form-control" min="0" required/></td>
-                                    <td><input id="quantity" style="min-width:100px" type="number" name="inventories[0][quantiry]" step="0.01" class="form-control" required/></td>
+                                    <td><input id="quantity" style="min-width:100px" type="number" name="inventories[0][quantity]" step="1" class="form-control" min="0" required/></td>
                                     <td><span id="delPOIbutton" onclick="deleteRow(this)" class="btn btn-default btn-xs"><span class="fa fa-trash"></span></span></td>
                                 </tr>
                             </tbody>
