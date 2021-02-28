@@ -37,10 +37,46 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.quote.quote.name'))->class('col-md-2 form-control-label required')->for('customer_name') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('customer_name')
+                                ->class('form-control')
+                                ->required()
+                                ->attribute('maxlength', 191)
+                                ->placeholder(__('validation.attributes.backend.quote.quote.name'))}}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.quote.quote.phone'))->class('col-md-2 form-control-label required')->for('customer_phone') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('customer_phone')
+                                ->class('form-control')
+                                ->required()
+                                ->attribute('maxlength', 191)
+                                ->placeholder(__('validation.attributes.backend.quote.quote.phone'))}}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.quote.quote.address'))->class('col-md-2 form-control-label required')->for('customer_address') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('customer_address')
+                                ->class('form-control')
+                                ->required()
+                                ->attribute('maxlength', 191)
+                                ->placeholder(__('validation.attributes.backend.quote.quote.address'))}}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         {{ html()->label(__('validation.attributes.backend.quote.quote.type'))->class('col-md-2 form-control-label required')->for('type') }}
 
                         <div class="col-md-10">
-                            {{ html()->select('type', ['ownership' => __('ownership'), 'partnership' => __('partnership')])
+                            {{ html()->select('type', [null => null, 'ownership' => __('ownership'), 'partnership' => __('partnership')])
                                 ->class('form-control')
                                 ->required()}}
                         </div><!--col-->

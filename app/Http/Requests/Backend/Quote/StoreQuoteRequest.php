@@ -18,6 +18,9 @@ class StoreQuoteRequest extends FormRequest
     {
         return [
             'title'                      => __('validation.attributes.backend.quote.quote.title'),
+            'customer_name'              => __('validation.attributes.backend.quote.quote.name'),
+            'customer_phone'             => __('validation.attributes.backend.quote.quote.phone'),
+            'customer_address'           => __('validation.attributes.backend.quote.quote.address'),
             'description'                => __('validation.attributes.backend.quote.quote.description'),
             'type'                       => __('validation.attributes.backend.quote.quote.type'),
             'inventories.*.inventory_id' => __('validation.attributes.backend.quote.quote.inventories.material'),
@@ -30,6 +33,9 @@ class StoreQuoteRequest extends FormRequest
     {
         return [
             'title'                      => ['required', 'string', 'max:191', Rule::unique('quotes', 'title')],
+            'customer_name'              => 'nullable|string|max:191',
+            'customer_phone'             => 'nullable|string|max:191',
+            'customer_address'           => 'nullable|string|max:191',
             'description'                => 'nullable|string|max:191',
             'type'                       => 'in:ownership,partnership',
             'inventories'                => ['required', 'array'],

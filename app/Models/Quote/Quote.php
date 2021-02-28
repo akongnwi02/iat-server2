@@ -38,6 +38,9 @@ class Quote extends Model
         Userstamps;
     
     protected $fillable = [
+        'customer_name',
+        'customer_phone',
+        'customer_address',
         'title',
         'code',
         'description',

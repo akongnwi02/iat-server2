@@ -80,7 +80,7 @@ class QuoteController extends Controller
      */
     public function download(Quote $quote)
     {
-        $pdf = \PDF::loadView('backend.quotes.quote.pdf', $quote);
+        $pdf = \PDF::loadView('backend.quotes.quote.pdf', ['quote' => $quote]);
         
         return $pdf->download('quote.pdf');
     }

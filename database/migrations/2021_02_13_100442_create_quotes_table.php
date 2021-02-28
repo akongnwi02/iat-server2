@@ -15,6 +15,9 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
+            $table->string('customer_name')->nullable();
+            $table->string('customer_phone')->nullable();
+            $table->string('customer_address')->nullable();
             $table->string('title');
             $table->string('code');
             $table->text('description')->nullable();

@@ -635,8 +635,11 @@ return [
                 'show'       => 'Show',
                 'table'      => [
                     'title'       => 'Title',
+                    'name' => 'Customer Name',
+                    'phone' => 'Customer phone',
+                    'address' => 'Customer Address',
                     'code'        => 'Code',
-                    'amount'        => 'Amount',
+                    'amount'      => 'Amount',
                     'description' => 'Description',
                     'status'      => 'Status',
                     'type'        => 'Type',
@@ -648,6 +651,24 @@ return [
                         'unit_cost' => 'Unit Cost',
                         'quantity' => 'Quantity',
                         'sub_total' => 'Sub Total',
+                    ]
+                ],
+                'pdf' => [
+                    'invoice' => 'Invoice',
+                    'date' => 'Date',
+                    'department' => 'Commercial Department',
+                    'business_details' => 'Business Details',
+                    'customer_details' => 'Customer Details',
+                    'country' => 'Cameroon',
+                    'description' => 'Notes',
+                    'table' => [
+                        'title' => 'Items',
+                        'material' => 'Item Name',
+                        'unit_cost' => 'Unit Cost',
+                        'quantity' => 'Quantity',
+                        'sub_total' => 'Sub Total',
+                        'tax' => 'Tax',
+                        'total' => 'Total',
                     ]
                 ]
             ]

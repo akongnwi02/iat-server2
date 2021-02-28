@@ -32,11 +32,14 @@ class QuoteRepository
     {
         return \DB::transaction(function () use ($data) {
             $quote = (new Quote())->fill([
-                'title'        => $data['title'],
-                'description' => $data['description'],
-                'status'      => 'created',
-                'type'        => $data['type'],
-                'code' => rand(100000000, 999999999)
+                'customer_name'    => $data['customer_name'],
+                'customer_phone'   => $data['customer_phone'],
+                'customer_address' => $data['customer_address'],
+                'title'            => $data['title'],
+                'description'      => $data['description'],
+                'status'           => 'created',
+                'type'             => $data['type'],
+                'code'             => rand(10000000, 99999999)
             ]);
             
             $amount = 0;
@@ -75,6 +78,9 @@ class QuoteRepository
     {
         return \DB::transaction(function () use ($quote, $data) {
             $quote->fill([
+                'customer_name'    => $data['customer_name'],
+                'customer_phone'   => $data['customer_phone'],
+                'customer_address' => $data['customer_address'],
                 'title'        => $data['title'],
                 'description' => $data['description'],
                 'status'      => 'created',

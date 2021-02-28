@@ -29,6 +29,9 @@
                             <tr>
                                 <th>@lang('labels.backend.quote.quote.show')</th>
                                 <th>@lang('labels.backend.quote.quote.table.title')</th>
+                                <th>@lang('labels.backend.quote.quote.table.name')</th>
+                                <th>@lang('labels.backend.quote.quote.table.phone')</th>
+                                <th>@lang('labels.backend.quote.quote.table.address')</th>
                                 <th>@lang('labels.backend.quote.quote.table.code')</th>
                                 <th>@lang('labels.backend.quote.quote.table.amount') ({{ $default_currency->code }})</th>
                                 <th>@lang('labels.backend.quote.quote.table.description')</th>
@@ -50,6 +53,9 @@
                                             class="accordion-toggle"><button class="btn btn-default btn-xs"><span class="fa fa-eye"></span></button>
                                     </td>
                                     <td>{{ $quote->title }}</td>
+                                    <td>{{ $quote->customer_name }}</td>
+                                    <td>{{ $quote->customer_phone }}</td>
+                                    <td>{{ $quote->customer_address }}</td>
                                     <td>{{ $quote->code }}</td>
                                     <td>{{ number_format($quote->amount, 2) }}</td>
                                     <td>{{ $quote->description }}</td>
