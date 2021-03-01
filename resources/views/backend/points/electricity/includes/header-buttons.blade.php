@@ -11,7 +11,9 @@
         @else
             <a href="{{ route('admin.point.electricity.index', request()->except('page')) }}"><span class="btn btn-facebook ml-1" data-toggle="tooltip" title="@lang('labels.general.list')"><i class="fas fa-list"></i></span><a>
        @endif
-        <a href="{{ route('admin.point.electricity.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+       @can(config('permission.permissions.create_supply_points'))
+            <a href="{{ route('admin.point.electricity.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+       @endcan
     </div><!--btn-toolbar-->
 @endcan
 
