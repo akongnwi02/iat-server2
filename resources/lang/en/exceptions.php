@@ -178,7 +178,12 @@ return [
             'create_error' => 'There was a problem creating this quote. Please try again.',
             'update_error' => 'There was a problem updating this quote. Please try again.',
             'mark_error'   => 'There was a problem updating the status of this quote. Please try again.',
-        ]
+        ],
+        'sales' => [
+            'service_forbidden' => 'You are not allowed to use this service',
+            'service_invalid' => 'This service is not a valid service',
+            'service_inactive' => 'This service is not active',
+        ],
     ],
     'frontend' => [
         'auth' => [

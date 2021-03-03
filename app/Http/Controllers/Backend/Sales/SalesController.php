@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Backend\Sales;
 
 use App\Exports\Sales\SalesExport;
+use App\Http\Requests\Backend\Sales\SalesQuoteRequest;
 use App\Models\Company\Company;
 use App\Models\Service\Service;
 use App\Repositories\Api\Business\TransactionRepository;
@@ -36,9 +37,14 @@ class SalesController
         return (new SalesExport($sales));
     }
     
-    public function create(ServiceRepository $serviceRepository)
+    public function create()
     {
         return view('backend.sales.create')
-            ->withServices($serviceRepository->getAllServices());
+            ->withServices(auth()->user()->company->services()->pluck('name', 'code')->toArray());
+    }
+    
+    public function quote(SalesQuoteRequest $request, TransactionRepository $transactionRepository)
+    {
+    
     }
 }

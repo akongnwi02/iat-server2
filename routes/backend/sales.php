@@ -18,8 +18,8 @@ Route::group([
         ->name('create')
         ->middleware('permission:' . config('permission.permissions.create_sales'));
     
-    Route::post('/', [SalesController::class, 'index'])
-        ->name('store')
+    Route::post('/quote', [SalesController::class, 'quote'])
+        ->name('quote')
         ->middleware('permission:' . config('permission.permissions.create_sales'));
     
     Route::get('/download', [SalesController::class, 'download'])

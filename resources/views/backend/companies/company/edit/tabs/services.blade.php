@@ -24,7 +24,7 @@
                 <th>@lang('labels.backend.companies.company.tabs.content.service.table.name')</th>
                 <th>@lang('labels.backend.companies.company.tabs.content.service.table.code')</th>
 {{--                <th>@lang('labels.backend.companies.company.tabs.content.service.table.logo')</th>--}}
-                <th>@lang('labels.backend.companies.company.tabs.content.service.table.active')</th>
+                {{--<th>@lang('labels.backend.companies.company.tabs.content.service.table.active')</th>--}}
                 {{--<th>@lang('labels.backend.companies.company.tabs.content.service.table.customercommission')</th>--}}
                 {{--<th>@lang('labels.backend.companies.company.tabs.content.service.table.providercommission')</th>--}}
                 {{--<th>@lang('labels.backend.companies.company.tabs.content.service.table.commissiondistribution')</th>--}}
@@ -37,7 +37,7 @@
                     <td>{!! $service->logo_label !!} {{ $service->name }}</td>
                     <td>{{ $service->code }}</td>
                     {{--<td>{!! $service->logo_label !!}</td>--}}
-                    <td>{!! $service->specific->active_label !!}</td>
+                    {{--<td>{!! $service->specific->active_label !!}</td>--}}
                     {{--<td>{{ ! is_null($service->specific->customercommission_id) ? @$service->specific->customer_commission->name : @$service->customer_commission->name }}</td>--}}
                     {{--<td>{{ ! is_null($service->specific->providercommission_id) ? @$service->specific->provider_commission->name : @$service->provider_commission->name }}</td>--}}
                     {{--<td>{{ ! is_null($service->specific->commission_distribution_id) ? @$service->specific->commission_distribution->name : @$service->commission_distribution->name }}</td>--}}

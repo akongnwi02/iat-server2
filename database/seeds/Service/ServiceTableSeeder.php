@@ -18,87 +18,39 @@ class ServiceTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         Service::create([
-            'name' => 'IAT Prepaid',
+            'name' => 'IAT Prepaid Electricity',
             'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORIAT',
+            'code' => 'CORIATELEC',
             'country_id' => Country::first()->uuid,
             'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.prepaidbills.code'))->first()->uuid,
+            'category_id' => Category::where('code', 'electricity')->first()->uuid,
             'is_prepaid' => false,
             'customercommission_id' => Commission::first()->uuid,
             'providercommission_id' => Commission::first()->uuid,
         ]);
         
         Service::create([
-            'name' => 'Sample service 2',
+            'name' => 'IAT Prepaid Water',
             'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORORANGEIN',
+            'code' => 'CORIATWAT',
             'country_id' => Country::first()->uuid,
             'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.sendmoney.code'))->first()->uuid,
+            'category_id' => Category::where('code', 'water')->first()->uuid,
             'is_prepaid' => true,
             'customercommission_id' => Commission::first()->uuid,
             'providercommission_id' => Commission::first()->uuid,
         ]);
         
         Service::create([
-            'name' => 'Orange Web Payment',
+            'name' => 'Cable',
             'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORORANGEWEBPAY',
+            'code' => 'IATCABLE',
             'country_id' => Country::first()->uuid,
             'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.receivemoney.code'))->first()->uuid,
-            'is_prepaid' => true,
-            'requires_auth'  => false,
-            'is_money_withdrawal' => true,
-            'customercommission_id' => Commission::first()->uuid,
-            'providercommission_id' => Commission::first()->uuid,
-        ]);
-        
-        Service::create([
-            'name' => 'Sample service 4',
-            'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORMTNOUT',
-            'country_id' => Country::first()->uuid,
-            'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.receivemoney.code'))->first()->uuid,
+            'category_id' => Category::where('code', 'cable')->first()->uuid,
             'is_prepaid' => true,
             'requires_auth'  => false,
             'is_money_withdrawal' => true,
-            'auth_type'      => null,
-            'customercommission_id' => Commission::first()->uuid,
-            'providercommission_id' => Commission::first()->uuid,
-        ]);
-        
-        Service::create([
-            'name' => 'ENEO',
-            'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORENEOPP',
-            'country_id' => Country::first()->uuid,
-            'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.postpaidbills.code'))->first()->uuid,
-            'customercommission_id' => Commission::first()->uuid,
-            'providercommission_id' => Commission::first()->uuid,
-        ]);
-        
-        Service::create([
-            'name' => 'MTN Airtime',
-            'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORAPMTN',
-            'country_id' => Country::first()->uuid,
-            'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.airtime.code'))->first()->uuid,
-            'customercommission_id' => Commission::first()->uuid,
-            'providercommission_id' => Commission::first()->uuid,
-        ]);
-        
-        Service::create([
-            'name' => 'MTN Data',
-            'description' => 'Some quick example text to serve as the service description and make up the bulk of the service\'s content.',
-            'code' => 'CORAPMTNDATA',
-            'country_id' => Country::first()->uuid,
-            'is_active' => true,
-            'category_id' => Category::where('code', config('business.service.category.data.code'))->first()->uuid,
             'customercommission_id' => Commission::first()->uuid,
             'providercommission_id' => Commission::first()->uuid,
         ]);

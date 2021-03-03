@@ -30,6 +30,7 @@ return [
         'hide'               => 'Hide',
         'inactive'           => 'Inactive',
         'none'               => 'None',
+        'continue'           => 'Continue',
         'show'               => 'Show',
         'toggle_navigation'  => 'Toggle Navigation',
         'create_new'         => 'Create New',
@@ -360,6 +361,7 @@ return [
         ],
         'sales'          => [
             'management' => 'Sales',
+            'create' => 'New Sale',
             'filter'     => [
                 'title'     => 'Filter Sales',
                 'download'  => 'Download',
