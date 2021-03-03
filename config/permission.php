@@ -174,6 +174,7 @@ return [
         
         //sales
         'read_sales'            => 'read sales',
+        'create_sales'            => 'create sales',
         
         // currency
         'read_currencies'       => 'read currencies',

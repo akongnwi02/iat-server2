@@ -13,6 +13,7 @@ class SeedSalesPermissions extends Migration
     {
         $permissions = [
             config('permission.permissions.read_sales'),
+            config('permission.permissions.create_sales'),
         ];
     
         foreach ($permissions as $permission) {

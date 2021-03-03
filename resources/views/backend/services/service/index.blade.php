@@ -36,7 +36,7 @@
                                 <th>@lang('labels.backend.services.service.table.price') </th>
                                 {{--<th>@lang('labels.backend.services.service.table.providercommission')</th>--}}
                                 {{--<th>@lang('labels.backend.services.service.table.commissionditribution')</th>--}}
-                                {{--<th>@lang('labels.backend.services.service.table.category')</th>--}}
+                                <th>@lang('labels.backend.services.service.table.category')</th>
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
                             </thead>
@@ -52,7 +52,7 @@
                                     <td>{{ @$service->price->name }}</td>
                                     {{--<td>{{ @$service->provider_commission->name }}</td>--}}
                                     {{--<td>{{ @$service->commission_distribution->name }}</td>--}}
-                                    {{--<td>{{ $service->category->name }}</td>--}}
+                                    <td>{{ $service->category->name }}</td>
                                     <td>{!! $service->action_buttons  !!}</td>
                                 </tr>
                             @endforeach

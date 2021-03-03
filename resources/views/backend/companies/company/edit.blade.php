@@ -24,9 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-expanded="true"><i class="fas fa-info"></i> @lang('labels.backend.companies.company.tabs.titles.profile')</a>
                         </li>
-                        {{--<li class="nav-item">--}}
-                            {{--<a class="nav-link" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-expanded="true"><i class="fas fa-cog"></i> @lang('labels.backend.companies.company.tabs.titles.services')</a>--}}
-                        {{--</li>--}}
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-expanded="true"><i class="fas fa-cog"></i> @lang('labels.backend.companies.company.tabs.titles.services')</a>
+                        </li>
                         {{--<li class="nav-item">--}}
                             {{--<a class="nav-link" data-toggle="tab" href="#paymentmethods" role="tab" aria-controls="paymentmethods" aria-expanded="true"><i class="fas fa-cog"></i> @lang('labels.backend.companies.company.tabs.titles.paymentmethods')</a>--}}
                         {{--</li>--}}
@@ -36,9 +36,9 @@
                         <div class="tab-pane active" id="profile" role="tabpanel" aria-expanded="true">
                             @include('backend.companies.company.edit.tabs.profile')
                         </div><!--tab-->
-                        {{--<div class="tab-pane fade" id="services" role="tabpanel" aria-expanded="true">--}}
-                            {{--@include('backend.companies.company.edit.tabs.services')--}}
-                        {{--</div><!--tab-->--}}
+                        <div class="tab-pane fade" id="services" role="tabpanel" aria-expanded="true">
+                            @include('backend.companies.company.edit.tabs.services')
+                        </div><!--tab-->
                         {{--<div class="tab-pane fade" id="paymentmethods" role="tabpanel" aria-expanded="true">--}}
                             {{--@include('backend.companies.company.edit.tabs.payment-methods')--}}
                         {{--</div><!--tab-->--}}

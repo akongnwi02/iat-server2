@@ -237,6 +237,12 @@ return [
                     'provider'     => 'Provider',
                 ]
             ],
+            'sales' => [
+                'service_code' => 'Service',
+                'service_number' => 'Service Number',
+                'amount' => 'Amount',
+            ],
+            
             'points'         => [
                 'electricity' => [
                     'name'                => 'Name',

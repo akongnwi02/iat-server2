@@ -154,6 +154,7 @@ return [
             'management' => 'Sales',
             'clear'      => 'Clear Filters',
             'reset'      => 'Reset Filters',
+            'create'     => 'New',
         ],
         'accounts'   => [
             'title' => 'Accounts',

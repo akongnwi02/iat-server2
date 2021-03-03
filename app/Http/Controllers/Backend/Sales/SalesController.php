@@ -35,4 +35,10 @@ class SalesController
         
         return (new SalesExport($sales));
     }
+    
+    public function create(ServiceRepository $serviceRepository)
+    {
+        return view('backend.sales.create')
+            ->withServices($serviceRepository->getAllServices());
+    }
 }

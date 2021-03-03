@@ -161,13 +161,13 @@
                     </ul>
                 </li>
             @endcan
-
-            <li class="nav-item">
-                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/sales')) }}" href="{{ route('admin.sales.index') }}">
-                    <i class="nav-icon icon-basket-loaded"></i> @lang('menus.backend.sidebar.sales')
-                </a>
-            </li>
-
+            @can(config('permission.permissions.read_sales'))
+                <li class="nav-item">
+                    <a class="nav-link {{ active_class(Active::checkUriPattern('admin/sales')) }}" href="{{ route('admin.sales.index') }}">
+                        <i class="nav-icon icon-basket-loaded"></i> @lang('menus.backend.sidebar.sales')
+                    </a>
+                </li>
+            @endcan
             <li class="nav-title">
                 <h6><b>@lang('menus.backend.sidebar.hardware')</b></h6>
             </li>

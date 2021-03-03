@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        {{ __('labels.backend.sales.management') }}
+                        @lang('labels.backend.sales.management')
                     </h4>
                 </div><!--col-->
 

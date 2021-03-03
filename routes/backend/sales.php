@@ -14,6 +14,13 @@ Route::group([
     Route::get('/', [SalesController::class, 'index'])
         ->name('index')
         ->middleware('permission:' . config('permission.permissions.read_sales'));
+    Route::get('/create', [SalesController::class, 'create'])
+        ->name('create')
+        ->middleware('permission:' . config('permission.permissions.create_sales'));
+    
+    Route::post('/', [SalesController::class, 'index'])
+        ->name('store')
+        ->middleware('permission:' . config('permission.permissions.create_sales'));
     
     Route::get('/download', [SalesController::class, 'download'])
         ->name('download')
