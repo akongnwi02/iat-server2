@@ -56,6 +56,13 @@
                             </div><!--form-group-->
                         </div><!--col-->
                     </div><!--row-->
+                    <div class="row">
+                    {{ html()->hidden('currency_code')
+                        ->class('form-control')
+                        ->value($default_currency->code)
+                        ->required()
+                    }}
+                    </div><!--row-->
 
                     <div>
                         <div class="row">

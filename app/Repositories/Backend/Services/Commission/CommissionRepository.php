@@ -124,11 +124,6 @@ class CommissionRepository
         return $company->services()->where('uuid', $service->uuid)->first()->specific->customer_commission ?: $service->customer_commission;
     }
     
-    public function getCompanyServiceProviderCommission($service, $company)
-    {
-        return $company->services()->where('uuid', $service->uuid)->first()->specific->provider_commission ?: $service->provider_commission;
-    }
-    
     public function getCompanyMethodProviderCommission($method, $company)
     {
         return $company->methods()->where('uuid', $method->uuid)->first()->specific->provider_commission ?: $method->provider_commission;

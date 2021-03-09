@@ -239,10 +239,10 @@ return [
             ],
             'sales' => [
                 'service_code' => 'Service',
+                'currency_code' => 'Currency',
                 'service_number' => 'Service Number',
                 'amount' => 'Amount',
             ],
-            
             'points'         => [
                 'electricity' => [
                     'name'                => 'Name',

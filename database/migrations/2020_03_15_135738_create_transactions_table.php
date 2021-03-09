@@ -36,24 +36,13 @@ class CreateTransactionsTable extends Migration
                 config('business.transaction.status.failed'),
                 config('business.transaction.status.reversed'),
             ])->nullable();
-            $table->boolean('is_account_topup')->default(false);
             $table->boolean('to_be_verified')->default(false);
             $table->string('error_code')->nullable();
             $table->text('error')->nullable();
             $table->text('message')->nullable();
-    
-            $table->double('customer_service_fee')->nullable();
-            $table->double('provider_service_fee')->nullable();
-            $table->double('total_customer_fee')->nullable();
-            $table->double('total_customer_amount')->nullable();
-            $table->double('total_fee')->nullable();
-    
+            
             $table->uuid('customer_servicecommission_id')->nullable();
-            $table->uuid('provider_servicecommission_id')->nullable();
-    
-            $table->double('agent_commission')->nullable();
-            $table->double('company_commission')->nullable();
-            $table->double('external_commission')->nullable();
+            
             $table->double('system_commission')->nullable();
             
             $table->string('movement_code')->nullable();

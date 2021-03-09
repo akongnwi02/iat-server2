@@ -183,6 +183,8 @@ return [
             'service_forbidden' => 'You are not allowed to use this service',
             'service_invalid' => 'This service is not a valid service',
             'service_inactive' => 'This service is not active',
+            'meter_inactive' => 'This meter is not active',
+            'meter_unassigned' => 'This meter is not assigned to a supply point',
         ],
     ],
     'frontend' => [

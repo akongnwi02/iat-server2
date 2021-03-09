@@ -20,6 +20,7 @@ class SalesQuoteRequest extends FormRequest
         return [
             'service_code' => __('validation.attributes.backend.sales.service_code'),
             'service_number' => __('validation.attributes.backend.sales.service_number'),
+            'currency_code' => __('validation.attributes.backend.sales.currency_code'),
             'amount' => __('validation.attributes.backend.sales.amount'),
         ];
     }
@@ -27,6 +28,7 @@ class SalesQuoteRequest extends FormRequest
     public function rules()
     {
         return [
+            'currency_code' => [Rule::exists('currencies', 'code')],
             'service_code' => [Rule::exists('services', 'code'), new ServiceAccessRule()],
             'service_number' => 'required|string|gt:3',
             'amount' => 'required|numeric|gt:0',

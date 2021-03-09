@@ -12,9 +12,12 @@ use App\Exceptions\Api\BadRequestException;
 use App\Exceptions\Api\ForbiddenException;
 use App\Exceptions\Api\NotFoundException;
 use App\Exceptions\Api\ServerErrorException;
+use App\Exceptions\GeneralException;
 use App\Models\Transaction\Transaction;
+use App\Repositories\Backend\Meter\MeterRepository;
 use App\Repositories\Backend\Movement\MovementRepository;
 use App\Repositories\Backend\Services\Service\PaymentMethodRepository;
+use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
 use App\Repositories\Backend\System\CurrencyRepository;
 use App\Services\Business\Models\ModelInterface;
 use App\Repositories\Backend\Services\Service\ServiceRepository;
@@ -30,6 +33,8 @@ class TransactionRepository
     public $commissionRepository;
     public $movementRepository;
     public $currencyRepository;
+    public $supplyPointRepository;
+    public $meterRepository;
     
     public function __construct
     (
@@ -37,14 +42,18 @@ class TransactionRepository
         CommissionRepository $commissionRepository,
         MovementRepository $movementRepository,
         PaymentMethodRepository $paymentMethodRepository,
-        CurrencyRepository $currencyRepository
+        CurrencyRepository $currencyRepository,
+        SupplyPointRepository $supplyPointRepository,
+        MeterRepository $meterRepository
     )
     {
-        $this->serviceRepository    = $serviceRepository;
-        $this->commissionRepository = $commissionRepository;
-        $this->movementRepository   = $movementRepository;
+        $this->serviceRepository       = $serviceRepository;
+        $this->commissionRepository    = $commissionRepository;
+        $this->movementRepository      = $movementRepository;
         $this->paymentMethodRepository = $paymentMethodRepository;
-        $this->currencyRepository = $currencyRepository;
+        $this->currencyRepository      = $currencyRepository;
+        $this->supplyPointRepository   = $supplyPointRepository;
+        $this->meterRepository         = $meterRepository;
     }
     
     /**
@@ -68,163 +77,67 @@ class TransactionRepository
      * @return mixed
      * @throws \Throwable
      */
-    public function create(ModelInterface $model)
+    public function create($data)
     {
-        return \DB::transaction(function () use ($model) {
+        return \DB::transaction(function () use ($data) {
             // is user trying to top up his account balance ?
             $accountTopUp = false;
             
             /*
              * get the service
              */
-            $service  = $this->serviceRepository->findByCode($model->getServiceCode());
+            $service  = $this->serviceRepository->findByCode($data['service_code']);
             $category = $service->category;
+            $meter = $this->meterRepository->findByMeterCode($data['service_number']);
+            $supplyPoint = $meter->supplyPoint;
             
-            // determine if user is trying to do a topup
-            if ($service->is_money_withdrawal && $service->payment_method) {
-                
-                $topupAccount = @auth()->user()->getTopupAccount($service->payment_method)->account;
-                if ($topupAccount == $model->getDestination()) {
-                    $accountTopUp = true;
-                    
-                }
+            // make sure meter is active and assigned
+            if (! $meter->is_active) {
+                throw new GeneralException(__('exceptions.backend.sales.meter_inactive'));
             }
-            
-            // public users should not withdraw money if it is not a top up
-            if (! $accountTopUp
-                && $service->is_money_withdrawal
-                && ! auth()->user()->company_id
-            ) {
-                throw new ForbiddenException(BusinessErrorCodes::SERVICE_NOT_ALLOWED, 'Users without companies are not allowed to perform cash out');
+    
+            if (! $meter->supply_point_id) {
+                throw  new GeneralException(__('exceptions.backend.sales.meter_unassigned'));
             }
             
             /*
              * get the commissions
              */
-            if ($accountTopUp) {
-                $customerServiceCommission = auth()->user()->company ? $this->commissionRepository->getCompanyMethodCustomerCommission($service->payment_method, auth()->user()->company) : $service->payment_method->customer_commission;
-                $providerServiceCommission = auth()->user()->company ? $this->commissionRepository->getCompanyMethodProviderCommission($service->payment_method, auth()->user()->company) : $service->payment_method->provider_commission;
-            } else {
-                $customerServiceCommission = auth()->user()->company ? $this->commissionRepository->getCompanyServiceCustomerCommission($service, auth()->user()->company) : $service->customer_commission;
-                $providerServiceCommission = auth()->user()->company ? $this->commissionRepository->getCompanyServiceProviderCommission($service, auth()->user()->company) : $service->provider_commission;
-            }
+            $customerServiceCommission = $supplyPoint->serviceCharge ?: $service->customer_commission;
             
             /*
              * calculate the fees
              */
-            $customerServiceFee = $this->commissionRepository->calculateFee($customerServiceCommission, $model->getAmount());
-            $providerServiceFee = $this->commissionRepository->calculateFee($providerServiceCommission, $model->getAmount());
+            $customerServiceFee = $this->commissionRepository->calculateFee($customerServiceCommission, $data['amount']);
             
-            $totalCustomerFee = $customerServiceFee;
-            
-            /*
-             * calculate the provider payment method fee
-             */
-            $totalFee = $totalCustomerFee + $providerServiceFee;
-            
-            /*
-             * get the commission rates
-             */
-            $agent_commission_rate = 0;
-            $company_commission_rate = 0;
-            $external_commission_rate = 0;
-            
-            
-            if (auth()->user()->company && !$accountTopUp) {
-                
-                $commission_distribution = @auth()->user()->company->services()->where('uuid', $service->uuid)->first()->specific->commission_distribution ?: @$service->commission_distribution;
-    
-                if ($commission_distribution) {
-                    $agent_commission_rate = $commission_distribution->agent_rate;
-                    $company_commission_rate = $commission_distribution->company_rate;
-                    $external_commission_rate = $commission_distribution->external_rate;
-                }
-            }
-            
-            \Log::debug('The following distribution strategy was applied for this transaction', [
-                'agent_rate' => $agent_commission_rate,
-                'company_rate' => $company_commission_rate,
-                'external_rate' => $external_commission_rate,
-            ]);
-            
-            /*
-             * Verify if the commission distribution amongst the stakeholders is not greater than 100
-             */
-            if (($agent_commission_rate + $company_commission_rate + $external_commission_rate) > 100) {
-                dd($agent_commission_rate, $company_commission_rate, $external_commission_rate);
-                throw new ServerErrorException(BusinessErrorCodes::COMMISSION_DISTRIBUTION_ERROR, 'The commission for this service is not properly distributed amongst the stakeholders');
-            }
-            
-            /*
-             * share the commissions
-             */
-            $company_commission  = $totalFee * $company_commission_rate / 100;
-            $agent_commission    = $totalFee * $agent_commission_rate / 100;
-            $external_commission = $totalFee * $external_commission_rate / 100;
-            
-            $system_commission = $totalFee - ($company_commission + $agent_commission + $external_commission);
-    
-            \Log::info('Total fee calculated for the service calculated', [
-                'service name' => $service->name,
-                'service code' => $service->code,
-                'destination' => $model->getDestination(),
-                'amount' => $model->getAmount(),
-                'is top up' => $accountTopUp,
-                'provider commission name' => $providerServiceCommission ? $providerServiceCommission->name : null,
-                'provider commission id' => $providerServiceCommission? $providerServiceCommission->uuid : null,
-                'customer commission name' => $customerServiceCommission ? $customerServiceCommission->name : null,
-                'customer commission id' => $customerServiceCommission ? $customerServiceCommission->uuid : null,
-                'customer fee' => $customerServiceFee,
-                'provider fee' => $providerServiceFee,
-                'total fee' => $totalFee,
-            ]);
-            
-            \Log::info('Commissions for the service calculated', [
-                'agent name' => auth()->user()->full_name,
-                'agent id' => auth()->user()->uuid,
-                'company name' => auth()->user()->company_id ? auth()->user()->company->name : null,
-                'company id' => auth()->user()->company_id ? auth()->user()->company->uuid : null,
-                'company commission rate' => $company_commission_rate,
-                'agent commission rate' => $agent_commission_rate,
-                'external commission rate' => $external_commission_rate,
-                'company commission' => $company_commission,
-                'agent commission' => $agent_commission,
-                'external commission' => $external_commission,
+            \Log::debug('The following service charge will be applied for this transaction', [
+                'uuid' => $customerServiceCommission->uuid,
+                'name' => $customerServiceCommission->name,
+                'description' => $customerServiceCommission->description,
             ]);
             
             // Transaction creation
             $transaction = new Transaction();
             
             $transaction->code             = Transaction::generateCode();
-            $transaction->items            = $model->getItems();
-            $transaction->amount           = $model->getAmount();
+            $transaction->amount           = $data['amount'];
             $transaction->user_id          = auth()->user()->uuid;
             $transaction->company_id       = auth()->user()->company_id;
-            $transaction->service_code     = $model->getServiceCode();
-            $transaction->currency_code    = $model->getCurrencyCode();
-            $transaction->destination      = $model->getDestination();
-            $transaction->is_account_topup = $accountTopUp;
+            $transaction->service_code     = $data['service_code'];
+            $transaction->currency_code    = $data['currency_code'];
+            $transaction->destination      = $data['service_number'];
             $transaction->status           = config('business.transaction.status.created');
             
-            $transaction->customer_service_fee  = $customerServiceFee;
-            $transaction->provider_service_fee  = $providerServiceFee;
-            $transaction->total_customer_fee    = $totalCustomerFee;
-            $transaction->total_customer_amount = $model->getAmount() + $totalCustomerFee;
-            $transaction->total_fee             = $totalFee;
             
             $transaction->customer_servicecommission_id = @$customerServiceCommission->uuid;
-            $transaction->provider_servicecommission_id = @$providerServiceCommission->uuid;
             
             $transaction->service_id    = $service->uuid;
             $transaction->category_id   = $category->uuid;
             $transaction->category_code = $category->code;
+
+            $transaction->system_commission = $customerServiceFee;
             
-            $transaction->agent_commission    = $agent_commission;
-            $transaction->company_commission  = $company_commission;
-            $transaction->external_commission = $external_commission;
-            $transaction->system_commission   = $system_commission;
-            
-            $transaction->customer_phone = @$model->getPhone();
+            $transaction->customer_phone = @$data['phone_number'];
             
             if ($transaction->save()) {
                 return $transaction;

@@ -119,4 +119,9 @@ class MeterRepository
     
         throw new GeneralException(__('exceptions.backend.meters.electricity.create_error'));
     }
+    
+    public function findByMeterCode($meterCode)
+    {
+        return Meter::where('meter_code', $meterCode);
+    }
 }
