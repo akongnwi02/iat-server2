@@ -79,18 +79,11 @@ class TransactionRepository
      */
     public function create($data)
     {
-        return \DB::transaction(function () use ($data) {
-            // is user trying to top up his account balance ?
-            $accountTopUp = false;
-            
-            /*
+         /*
              * get the service
              */
-            $service  = $this->serviceRepository->findByCode($data['service_code']);
-            $category = $service->category;
             $meter = $this->meterRepository->findByMeterCode($data['service_number']);
-            $supplyPoint = $meter->supplyPoint;
-            
+    
             // make sure meter is active and assigned
             if (! $meter->is_active) {
                 throw new GeneralException(__('exceptions.backend.sales.meter_inactive'));
@@ -99,6 +92,32 @@ class TransactionRepository
             if (! $meter->supply_point_id) {
                 throw  new GeneralException(__('exceptions.backend.sales.meter_unassigned'));
             }
+    
+            $service  = $this->serviceRepository->findByCode($data['service_code']);
+    
+            if ($data['amount'] < $service->min_amount) {
+                throw new GeneralException(__('exceptions.backend.sales.min_amount'));
+            }
+            
+            if ($data['amount'] > $service->max_amount) {
+                throw new GeneralException(__('exceptions.backend.sales.max_amount'));
+            }
+            
+            if ($data['amount'] % $service->step_amount != 0) {
+                throw new GeneralException(__('exceptions.backend.sales.step_amount'));
+            }
+            
+            $category = $service->category;
+    
+            if ($meter->type != $category->code) {
+                throw  new GeneralException(__('exceptions.backend.sales.category_invalid'));
+            }
+            
+            $supplyPoint = $meter->supplyPoint;
+            
+            $price = $supplyPoint->is_auto_price ? $supplyPoint->adjusted_price : $supplyPoint->price->amount;
+    
+            $units = round(($data['amount'] / $price),2);
             
             /*
              * get the commissions
@@ -127,10 +146,12 @@ class TransactionRepository
             $transaction->currency_code    = $data['currency_code'];
             $transaction->destination      = $data['service_number'];
             $transaction->status           = config('business.transaction.status.created');
-            
-            
+            $transaction->meter_id         = $meter->uuid;
+            $transaction->type = $meter->type;
             $transaction->customer_servicecommission_id = @$customerServiceCommission->uuid;
-            
+            $transaction->price_id = @$supplyPoint->price->uuid;
+            $transaction->price = $price;
+            $transaction->units = $units;
             $transaction->service_id    = $service->uuid;
             $transaction->category_id   = $category->uuid;
             $transaction->category_code = $category->code;
@@ -139,12 +160,7 @@ class TransactionRepository
             
             $transaction->customer_phone = @$data['phone_number'];
             
-            if ($transaction->save()) {
-                return $transaction;
-            }
-            
-            throw new ServerErrorException(BusinessErrorCodes::TRANSACTION_CREATION_ERROR, 'Error creating transaction');
-        });
+            return $transaction;
     }
     
     /**
@@ -157,7 +173,7 @@ class TransactionRepository
      * @throws \Throwable
      * @return boolean
      */
-    public function processPayment($transaction)
+    public function processTransaction($transaction)
     {
         // verify if user has sufficient balance
         $userAccount = $transaction->user->account;

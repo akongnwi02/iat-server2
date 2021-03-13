@@ -33,7 +33,6 @@
                                 <th>@lang('labels.backend.services.service.table.min_amount')</th>
                                 <th>@lang('labels.backend.services.service.table.max_amount')</th>
                                 <th>@lang('labels.backend.services.service.table.customercommission')</th>
-                                <th>@lang('labels.backend.services.service.table.price') </th>
                                 {{--<th>@lang('labels.backend.services.service.table.providercommission')</th>--}}
                                 {{--<th>@lang('labels.backend.services.service.table.commissionditribution')</th>--}}
                                 <th>@lang('labels.backend.services.service.table.category')</th>
@@ -49,7 +48,6 @@
                                     <td>{!! $service->min_amount_label !!}</td>
                                     <td>{!! $service->max_amount_label !!}</td>
                                     <td>{{ @$service->customer_commission->name }}</td>
-                                    <td>{{ @$service->price->name }}</td>
                                     {{--<td>{{ @$service->provider_commission->name }}</td>--}}
                                     {{--<td>{{ @$service->commission_distribution->name }}</td>--}}
                                     <td>{{ $service->category->name }}</td>

@@ -51,6 +51,10 @@ class SupplyPointRepository
         $point->fill($data);
         $point->is_auto_price = request()->has('is_auto_price') ? 1 : 0;
     
+        if ($point->is_auto_price) {
+            $point->adjusted_price = $point->provider_price + $point->auto_price_margin;
+        }
+        
         if ($point->update()) {
         
 //            event(new ServiceUpdated($service));
@@ -72,6 +76,10 @@ class SupplyPointRepository
         $point = (new SupplyPoint())->fill($data);
         $point->is_auto_price = request()->has('is_auto_price') ? 1 : 0;
     
+        if ($point->is_auto_price) {
+            $point->adjusted_price = $point->provider_price + $point->auto_price_margin;
+        }
+        
         if ($point->save()) {
 
 //            event(new ServiceUpdated($service));

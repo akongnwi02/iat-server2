@@ -46,4 +46,19 @@ trait TransactionAttribute
     
         return 'light';
     }
+    
+    public function getUnitsLabelAttribute()
+    {
+        switch ($this->type) {
+            case 'electricity':
+                $unit = 'KWh';
+                break;
+            case 'water':
+                $unit = 'm³';
+                break;
+            default:
+                $unit = '';
+        }
+        return $this->units . ' ' . $unit;
+    }
 }

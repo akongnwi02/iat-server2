@@ -396,6 +396,16 @@ return [
                 'actual_status'         => 'Actual Status',
                 'to_be_verified'        => 'To be verified',
                 'total_sales'           => 'sale|sales',
+            ],
+            'quote' => [
+                'meter_code' => 'Meter Code',
+                'meter_type' => 'Meter Type',
+                'supply_point' => 'Supply Point',
+                'address' => 'Address',
+                'amount' => 'Amount',
+                'units' => 'Units',
+                'tariff_name' => 'Tariff Name',
+                'tariff_price' => 'Tariff Price',
             ]
         ],
         

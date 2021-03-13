@@ -123,6 +123,9 @@ return [
                 'requested' => 'The provision was requested successfully.',
             ]
         ],
+        'sales' => [
+            'success' => 'The transaction completed successfully',
+        ],
         'account' => [
             'floated' => 'Float applied successfully.',
             'transferred' => 'Amount transferred successfully,',

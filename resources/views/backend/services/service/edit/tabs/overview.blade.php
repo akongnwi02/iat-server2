@@ -110,16 +110,6 @@
                 </div><!--col-->
             </div><!--form-group-->
 
-            <div class="form-group row">
-                {{ html()->label(__('validation.attributes.backend.services.service.supplypoint_price'))->class('col-md-2 form-control-label')->for('price_id') }}
-
-                <div class="col-md-10">
-                    {{ html()->select('price_id', [null => null] + $prices)
-                        ->class('form-control')
-                        }}
-                </div><!--col-->
-            </div><!--form-group-->
-
             {{--<div class="form-group row">--}}
                 {{--{{ html()->label(__('validation.attributes.backend.services.service.items'))->class('col-md-2 form-control-label')->for('has_items') }}--}}
 

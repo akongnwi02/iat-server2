@@ -35,7 +35,10 @@ class ElectricSupplyPointController extends Controller
                 ->paginate());
     }
     
-    
+    /**
+     * @param SupplyPointRepository $supplyPointRepository
+     * @return PointExport
+     */
     public function download(SupplyPointRepository $supplyPointRepository)
     {
         $points = $supplyPointRepository->getAllSupplyPointsForCurrentUser()
@@ -88,6 +91,13 @@ class ElectricSupplyPointController extends Controller
             ->withFlashSuccess(__('alerts.backend.points.electricity.updated'));
     }
     
+    /**
+     * @param SupplyPoint $point
+     * @param CompanyRepository $companyRepository
+     * @param CommissionRepository $commissionRepository
+     * @param PriceRepository $priceRepository
+     * @return mixed
+     */
     public function clone(
         SupplyPoint $point,
         CompanyRepository $companyRepository,
@@ -108,6 +118,12 @@ class ElectricSupplyPointController extends Controller
                 ->toArray());
     }
     
+    /**
+     * @param CompanyRepository $companyRepository
+     * @param CommissionRepository $commissionRepository
+     * @param PriceRepository $priceRepository
+     * @return mixed
+     */
     public function create(
         CompanyRepository $companyRepository,
         CommissionRepository $commissionRepository,
@@ -126,6 +142,12 @@ class ElectricSupplyPointController extends Controller
                 ->toArray());
     }
     
+    /**
+     * @param SupplyPointRepository $supplyPointRepository
+     * @param StoreSupplyPointRequest $request
+     * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     */
     public function store(SupplyPointRepository $supplyPointRepository, StoreSupplyPointRequest $request)
     {
         $data = $request->input();
@@ -148,6 +170,12 @@ class ElectricSupplyPointController extends Controller
                 ->get());
     }
     
+    /**
+     * @param SupplyPointRepository $supplyPointRepository
+     * @param ShowSupplyPointRequest $request
+     * @param SupplyPoint $point
+     * @return mixed
+     */
     public function singleMap(SupplyPointRepository $supplyPointRepository, ShowSupplyPointRequest $request, SupplyPoint $point)
     {
         return view('backend.points.electricity.map')
@@ -157,12 +185,23 @@ class ElectricSupplyPointController extends Controller
                 ->get());
     }
     
+    /**
+     * @param SupplyPoint $point
+     * @return mixed
+     */
     public function editMap(SupplyPoint $point)
     {
         return view('backend.points.electricity.update-gps-coordinates')
             ->withPoint($point);
     }
     
+    /**
+     * @param SupplyPoint $point
+     * @param UpdateSupplyPointGpsCoordinatesRequest $request
+     * @param SupplyPointRepository $supplyPointRepository
+     * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     */
     public function storeMap(SupplyPoint $point, UpdateSupplyPointGpsCoordinatesRequest $request, SupplyPointRepository $supplyPointRepository)
     {
         $supplyPointRepository->updateGps($point, $request->input());

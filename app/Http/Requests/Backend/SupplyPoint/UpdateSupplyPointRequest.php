@@ -45,16 +45,16 @@ class UpdateSupplyPointRequest extends FormRequest
             'name'                => ['required', 'string', 'max:191'],
             'city'                => 'required|string|max:191',
             'address'             => 'nullable|string|max:191',
-            'email'                => 'nullable|email|max:191',
-            'phone'                => ['nullable', 'max:191', 'string'],
+            'email'               => 'nullable|email|max:191',
+            'phone'               => ['nullable', 'max:191', 'string'],
             'meter_no'            => 'nullable|string|max:191',
             'external_identifier' => ['required', 'string', 'max:191', Rule::unique('supply_points', 'external_identifier')->ignore(request()->point, 'uuid')],
             'company_id'          => ['required', Rule::exists('companies', 'uuid')],
-            'price_id'            => ['required', Rule::exists('prices', 'uuid')],
+            'price_id'            => ['nullable', 'required_unless:is_auto_price,1', Rule::exists('prices', 'uuid')],
             'service_charge_id'   => ['nullable', Rule::exists('commissions', 'uuid')],
-            'provider_price'      => 'nullable|numeric|gt:0',
-//            'is_auto_price'       =>
-            'auto_price_margin'   => 'nullable|numeric|gt:0|lt:100|requiredIf:is_auto_price,1',
+            'provider_price'      => 'nullable|requiredIf:is_auto_price,1|numeric|gte:0',
+            'is_auto_price'       => 'boolean',
+            'auto_price_margin'   => 'nullable|numeric|gte:0|requiredIf:is_auto_price,1',
         ];
     }
 }

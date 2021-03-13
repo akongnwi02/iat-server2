@@ -38,9 +38,9 @@
                                 <th>@lang('labels.backend.points.table.service_charge')</th>
                                 <th>@lang('labels.backend.points.table.price')</th>
                                 <th>@lang('labels.backend.points.table.provider_price') ({{$default_currency->code}})</th>
-                                <th>@lang('labels.backend.points.table.adjusted_price') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.points.table.is_auto_price')</th>
                                 <th>@lang('labels.backend.points.table.auto_price_margin') ({{$default_currency->code}})</th>
+                                <th>@lang('labels.backend.points.table.adjusted_price') ({{$default_currency->code}})</th>
 
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
@@ -57,11 +57,11 @@
                                     <td>{{ $point->meter_no}}</td>
                                     <td>{{ $point->company->name}}</td>
                                     <td>{{ @$point->serviceCharge->name }}</td>
-                                    <td>{{ @$point->price->name }}</td>
+                                    <td>{{ $point->is_auto_price ? '--' : @$point->price->name }}</td>
                                     <td>{{ number_format($point->provider_price, 2) }}</td>
-                                    <td>{{ number_format($point->adjusted_price, 2) }}</td>
                                     <td>{!! @$point->is_auto_price_label !!}</td>
-                                    <td>{{ number_format($point->auto_price_margin, 2) }}</td>
+                                    <td>{{ $point->is_auto_price ? number_format($point->auto_price_margin, 2) : '--' }}</td>
+                                    <td>{{ $point->is_auto_price ? number_format($point->adjusted_price, 2) : '--' }}</td>
 
                                     <td>{!! $point->action_buttons  !!}</td>
                                 </tr>

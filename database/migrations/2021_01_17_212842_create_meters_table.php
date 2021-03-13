@@ -22,7 +22,7 @@ class CreateMetersTable extends Migration
             $table->uuid('provider_id');
             $table->string('meter_code')->unique();
             $table->string('location')->nullable();
-            $table->enum('type', ['water', 'electricity']);
+            $table->enum('type', ['water', 'electricity', 'cable', 'gaz']);
             $table->boolean('is_active')->default(1);
             $table->text('blocked_reason')->nullable();
             $table->uuid('blocker_id')->nullable();

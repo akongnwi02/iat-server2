@@ -22,6 +22,10 @@ Route::group([
         ->name('quote')
         ->middleware('permission:' . config('permission.permissions.create_sales'));
     
+    Route::get('/confirm', [SalesController::class, 'confirm'])
+        ->name('confirm')
+        ->middleware('permission:' . config('permission.permissions.create_sales'));
+    
     Route::get('/download', [SalesController::class, 'download'])
         ->name('download')
         ->middleware('permission:' . config('permission.permissions.read_sales'));

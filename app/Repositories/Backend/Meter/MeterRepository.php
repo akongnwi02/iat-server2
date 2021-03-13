@@ -122,6 +122,6 @@ class MeterRepository
     
     public function findByMeterCode($meterCode)
     {
-        return Meter::where('meter_code', $meterCode);
+        return Meter::where('meter_code', $meterCode)->first();
     }
 }

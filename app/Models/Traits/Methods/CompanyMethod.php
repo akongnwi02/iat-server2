@@ -27,25 +27,4 @@ trait CompanyMethod
     {
         return $this->users()->count();
     }
-    
-    public function getCompanyCommissionBalance()
-    {
-        return $this->getCompanyCommissionsTotal() - $this->account->getPayoutsTotal();
-    }
-    
-    public function getCompanyCommissionsTotal()
-    {
-        return Transaction::where('company_id', $this->uuid)
-            ->where('status', config('business.transaction.status.success'))
-            ->sum('company_commission');
-    }
-    
-    public function getCompanyTodayCommission()
-    {
-        $commission = Transaction::where('company_id', $this->uuid)
-            ->where('created_at', '>=', Carbon::today())
-            ->where('status', config('business.transaction.status.success'))
-            ->sum('company_commission');
-        return $commission;
-    }
 }

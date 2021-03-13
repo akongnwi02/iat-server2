@@ -45,11 +45,6 @@ class Transaction extends Model
      */
     protected $casts = [
         'amount'             => 'double',
-        'customer_fee'       => 'double',
-        'agent_commission'   => 'double',
-        'external_commission'=> 'double',
-        'company_commission' => 'double',
         'system_commission'  => 'double',
-        'total_commission'   => 'double',
     ];
 }

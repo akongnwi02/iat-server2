@@ -91,7 +91,7 @@ class TransactionController extends Controller
             
             $transaction = $transactionRepository->findByUuid($model->getTransactionId());
             
-            $transactionRepository->processPayment($transaction);
+            $transactionRepository->processTransaction($transaction);
             
             $transaction->status = config('business.transaction.status.pending');
             $transaction->save();

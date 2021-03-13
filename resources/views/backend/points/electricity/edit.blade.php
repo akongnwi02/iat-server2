@@ -149,8 +149,10 @@
                         <div class="col-md-10">
                             {{ html()->select('price_id', [null => null] + $prices)
                                 ->class('form-control')
-                                ->required()
                             }}
+                            <div>
+                                <small class="text-muted">@lang('strings.description.points.electricity.price')</small>
+                            </div>
                         </div><!--col-->
                     </div><!--form-group-->
 

@@ -12,7 +12,6 @@ namespace App\Http\Requests\Backend\Services\Service;
 use App\Rules\Service\ItemRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\RequiredIf;
 
 class UpdateServiceRequest extends FormRequest
 {
@@ -35,7 +34,6 @@ class UpdateServiceRequest extends FormRequest
             'customercommission_id'      => __('validation.attributes.backend.services.service.supplypoint_servicecharge'),
 //            'providercompany_id'      => __('validation.attributes.backend.services.service.providercompany'),
             'commission_distribution_id' => __('validation.attributes.backend.services.service.commission_distribution_id'),
-            'price_id' => __('validation.attributes.backend.services.service.supplypoint_price'),
             'min_amount'                 => __('validation.attributes.backend.services.service.min_amount'),
             'max_amount'                 => __('validation.attributes.backend.services.service.max_amount'),
             'step_amount'                => __('validation.attributes.backend.services.service.step_amount'),
@@ -56,7 +54,6 @@ class UpdateServiceRequest extends FormRequest
             'providercommission_id'      => ['nullable', Rule::exists('commissions', 'uuid')],
             'customercommission_id'      => ['nullable', Rule::exists('commissions', 'uuid')],
             'commission_distribution_id' => ['nullable', Rule::exists('commission_distributions', 'uuid')],
-            'price_id' => ['nullable', Rule::exists('prices', 'uuid')],
 //            'providercompany_id'      => ['nullable', Rule::exists('companies', 'uuid')],
             'min_amount'                 => ['required', 'numeric', 'min:0'],
             'max_amount'                 => ['required', 'numeric', 'min:0'],

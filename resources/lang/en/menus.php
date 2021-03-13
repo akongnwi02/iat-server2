@@ -155,6 +155,7 @@ return [
             'clear'      => 'Clear Filters',
             'reset'      => 'Reset Filters',
             'create'     => 'New',
+            'quote'      => 'New Sale'
         ],
         'accounts'   => [
             'title' => 'Accounts',

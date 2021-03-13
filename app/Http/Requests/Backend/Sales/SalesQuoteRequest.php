@@ -28,9 +28,9 @@ class SalesQuoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'currency_code' => [Rule::exists('currencies', 'code')],
-            'service_code' => [Rule::exists('services', 'code'), new ServiceAccessRule()],
-            'service_number' => 'required|string|gt:3',
+            'currency_code' => ['required', Rule::exists('currencies', 'code')],
+            'service_code' => ['required', Rule::exists('services', 'code'), new ServiceAccessRule()],
+            'service_number' => ['required', Rule::exists('meters', 'meter_code')],
             'amount' => 'required|numeric|gt:0',
         ];
     }

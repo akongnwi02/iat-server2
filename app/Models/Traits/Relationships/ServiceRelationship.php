@@ -86,10 +86,5 @@ trait ServiceRelationship
     {
         return $this->belongsTo(CommissionDistribution::class, 'commission_distribution_id', 'uuid');
     }
-    
-    public function price()
-    {
-        return $this->belongsTo(Price::class, 'price_id', 'uuid');
-    }
 }
 

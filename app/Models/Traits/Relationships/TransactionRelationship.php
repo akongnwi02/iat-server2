@@ -11,6 +11,7 @@ namespace App\Models\Traits\Relationships;
 
 use App\Models\Auth\User;
 use App\Models\Company\Company;
+use App\Models\Meter\Meter;
 use App\Models\Service\Category;
 use App\Models\Service\Service;
 
@@ -34,5 +35,10 @@ trait TransactionRelationship
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'uuid');
+    }
+    
+    public function meter()
+    {
+        return $this->belongsTo(Meter::class, 'meter_id', 'uuid');
     }
 }

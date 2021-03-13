@@ -26,7 +26,7 @@ class MeterTableSeeder extends \Illuminate\Database\Seeder
             'supply_point_id' => SupplyPoint::first()->uuid,
             'provider_id' => Provider::first()->uuid,
             'type' => config('business.meter.type.electricity'),
-            'is_active' => false,
+            'is_active' => true,
             'blocked_reason' => 'requested by landlord',
             'last_vending_date' => now()->toDateTimeString(),
         ]);

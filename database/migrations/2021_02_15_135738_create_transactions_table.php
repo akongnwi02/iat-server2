@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->uuid('company_id')->nullable();
             $table->uuid('service_id')->nullable();
             $table->uuid('category_id')->nullable();
+            $table->uuid('meter_id')->nullable();
             $table->string('category_code')->nullable();
             $table->string('service_code')->nullable();
             $table->string('currency_code');
@@ -38,10 +39,16 @@ class CreateTransactionsTable extends Migration
             ])->nullable();
             $table->boolean('to_be_verified')->default(false);
             $table->string('error_code')->nullable();
+            $table->string('type')->nullable();
             $table->text('error')->nullable();
             $table->text('message')->nullable();
+    
+            $table->float('units')->nullable();
+            $table->float('price')->nullable();
+            $table->string('token')->nullable();
             
             $table->uuid('customer_servicecommission_id')->nullable();
+            $table->uuid('price_id')->nullable();
             
             $table->double('system_commission')->nullable();
             
@@ -59,13 +66,14 @@ class CreateTransactionsTable extends Migration
             
             $table->foreign('user_id')->references('uuid')->on('users');
             $table->foreign('company_id')->references('uuid')->on('companies');
+            $table->foreign('meter_id')->references('uuid')->on('meters');
             $table->foreign('service_code')->references('code')->on('services');
             $table->foreign('service_id')->references('uuid')->on('services');
             $table->foreign('category_id')->references('uuid')->on('categories');
             $table->foreign('category_code')->references('code')->on('categories');
             $table->foreign('currency_code')->references('code')->on('currencies');
             $table->foreign('customer_servicecommission_id')->references('uuid')->on('commissions');
-            $table->foreign('provider_servicecommission_id')->references('uuid')->on('commissions');
+            $table->foreign('price_id')->references('uuid')->on('prices');
         });
     }
 

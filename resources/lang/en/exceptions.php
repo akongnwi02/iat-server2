@@ -185,6 +185,12 @@ return [
             'service_inactive' => 'This service is not active',
             'meter_inactive' => 'This meter is not active',
             'meter_unassigned' => 'This meter is not assigned to a supply point',
+            'quote_error' => 'Error generating quote for this transaction',
+            'category_invalid' => 'This meter does not belong to the selected service',
+            'min_amount' => 'The amount is less than the minimum amount required',
+            'max_amount' => 'The amount is greater than the maximum amount required',
+            'step_amount' => 'The amount is not a multiple of the step amount',
+            'quote_not_found' => 'The transaction must have been processed already or expired'
         ],
     ],
     'frontend' => [
