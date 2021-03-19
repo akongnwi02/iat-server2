@@ -190,7 +190,9 @@ return [
             'min_amount' => 'The amount is less than the minimum amount required',
             'max_amount' => 'The amount is greater than the maximum amount required',
             'step_amount' => 'The amount is not a multiple of the step amount',
-            'quote_not_found' => 'The transaction must have been processed already or expired'
+            'quote_not_found' => 'The transaction must have been processed already or expired',
+            'account_inactive' => 'The company account is inactive. Hence sale cannot be performed.',
+            'register_error' => 'There was an error registering the sale.',
         ],
     ],
     'frontend' => [

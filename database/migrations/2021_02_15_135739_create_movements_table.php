@@ -16,6 +16,8 @@ class CreateMovementsTable extends Migration
         Schema::create('movements', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
             $table->string('code');
+            $table->string('transaction_code')->nullable();
+    
             $table->double('amount');
             $table->uuid('type_id');
             $table->uuid('user_id')->nullable();

@@ -9,6 +9,7 @@
 namespace App\Models\Traits\Relationships;
 
 
+use App\Models\Account\Movement;
 use App\Models\Auth\User;
 use App\Models\Company\Company;
 use App\Models\Meter\Meter;
@@ -40,5 +41,10 @@ trait TransactionRelationship
     public function meter()
     {
         return $this->belongsTo(Meter::class, 'meter_id', 'uuid');
+    }
+    
+    public function movement()
+    {
+        return $this->belongsTo(Movement::class, 'code', 'transaction_code');
     }
 }

@@ -90,7 +90,7 @@ class SalesController
             \Log::info('Purchase confirmation request received. Beginning processing');
         
             $processed = $transactionRepository->processTransaction($transaction);
-    
+            
             if ($processed) {
                 return redirect()->route('admin.sales.index')
                     ->withFlashSuccess(__('alerts.backend.sales.success'));

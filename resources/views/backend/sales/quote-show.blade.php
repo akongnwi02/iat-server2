@@ -36,13 +36,13 @@
                                 </tr>
 
                                 <tr>
-                                    <th>@lang('labels.backend.sales.quote.amount')</th>
-                                    <td>{{ number_format($transaction->amount, 2). ' ' .$transaction->currency_code }}</td>
+                                    <th>@lang('labels.backend.sales.quote.units')</th>
+                                    <td>{{ $transaction->units_label }}</td>
                                 </tr>
 
                                 <tr>
-                                    <th>@lang('labels.backend.sales.quote.units')</th>
-                                    <td>{{ $transaction->units_label }}</td>
+                                    <th>@lang('labels.backend.sales.quote.amount')</th>
+                                    <td>{{ number_format($transaction->amount, 2). ' ' .$transaction->currency_code }}</td>
                                 </tr>
 
                                 <tr>

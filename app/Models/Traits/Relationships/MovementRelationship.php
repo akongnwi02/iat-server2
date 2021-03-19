@@ -12,6 +12,7 @@ use App\Models\Account\Account;
 use App\Models\Account\MovementType;
 use App\Models\Auth\User;
 use App\Models\System\Currency;
+use App\Models\Transaction\Transaction;
 
 trait MovementRelationship
 {
@@ -38,5 +39,10 @@ trait MovementRelationship
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'uuid');
+    }
+    
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class, 'code', 'transaction_code');
     }
 }

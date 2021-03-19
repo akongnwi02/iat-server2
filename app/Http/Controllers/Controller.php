@@ -58,7 +58,7 @@ class Controller extends BaseController
             'transaction.uuid'                  => $transaction->uuid,
             'transaction.code'                  => $transaction->code,
             'transaction.service_code'          => $transaction->service_code,
-            'transaction.movement_code'         => $transaction->movement_code,
+            'movement'         => $transaction->movement->code,
             'transaction.paymentaccount'        => $transaction->paymentaccount,
             'transaction.created_at'            => $transaction->created_at->toDatetimeString(),
             'transaction.destination'           => $transaction->destination,
@@ -77,8 +77,7 @@ class Controller extends BaseController
                 'transaction.uuid'                  => $transaction->uuid,
                 'transaction.code'                  => $transaction->code,
                 'transaction.service_code'          => $transaction->service_code,
-                'transaction.movement_code'         => $transaction->movement_code,
-                'transaction.paymentaccount'        => $transaction->paymentaccount,
+                'transaction movement'              => $transaction->movement->code,
                 'transaction.created_at'            => $transaction->created_at->toDatetimeString(),
                 'transaction.destination'           => $transaction->destination,
                 'transaction.total_customer_amount' => $transaction->total_customer_amount,
@@ -98,10 +97,10 @@ class Controller extends BaseController
             \Log::warning("{$this->getClassName()}: Transaction is not successful. Reversing movements...", [
                 'transaction.status' => $transaction->status,
                 'transaction.code'   => $transaction->code,
-                'movement.code'      => $transaction->movement_code
+                'movement.code'      => $transaction->movement->code
             ]);
         
-            $this->movementRepository->reverseMovements($transaction->movement_code);
+            $this->movementRepository->reverseMovements($transaction->movement->code);
         }
     
         if ($transaction->status == config('business.transaction.status.success')) {
@@ -116,7 +115,7 @@ class Controller extends BaseController
     
         \Log::info("{$this->getClassName()}: Completing movement for this transaction. To be counted in the balance for withdrawals");
     
-        $this->movementRepository->completeMovements($transaction->movement_code);
+        $this->movementRepository->completeMovements($transaction->movement->code);
     }
     
     public function callbackSuccessResponse()

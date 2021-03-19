@@ -28,11 +28,6 @@ trait ServiceMethod
     
     public function getTransactionAmount()
     {
-        if ($this->is_money_withdrawal) {
-            return $this->transactions()
-                ->where('status', config('business.transaction.status.success'))
-                ->sum('total_customer_amount');
-        }
         return $this->transactions()
             ->where('status', config('business.transaction.status.success'))
             ->sum('amount');
@@ -52,7 +47,7 @@ trait ServiceMethod
     {
         return $this->transactions()
             ->where('status', config('business.transaction.status.success'))
-            ->sum('provider_service_fee');
+            ->sum('system_commission');
     }
     
     public function getRequestedAmount()

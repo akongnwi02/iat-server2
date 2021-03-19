@@ -9,9 +9,7 @@
 namespace App\Repositories\Api\Business;
 
 use App\Exceptions\Api\BadRequestException;
-use App\Exceptions\Api\ForbiddenException;
 use App\Exceptions\Api\NotFoundException;
-use App\Exceptions\Api\ServerErrorException;
 use App\Exceptions\GeneralException;
 use App\Models\Transaction\Transaction;
 use App\Repositories\Backend\Meter\MeterRepository;
@@ -22,12 +20,15 @@ use App\Repositories\Backend\System\CurrencyRepository;
 use App\Services\Business\Models\ModelInterface;
 use App\Repositories\Backend\Services\Service\ServiceRepository;
 use App\Repositories\Backend\Services\Commission\CommissionRepository;
+use App\Services\Clients\ClientProvider;
 use App\Services\Constants\BusinessErrorCodes;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class TransactionRepository
 {
+    use ClientProvider;
+    
     public $serviceRepository;
     public $paymentMethodRepository;
     public $commissionRepository;
@@ -144,6 +145,7 @@ class TransactionRepository
             $transaction->company_id       = auth()->user()->company_id;
             $transaction->service_code     = $data['service_code'];
             $transaction->currency_code    = $data['currency_code'];
+            $transaction->paymentaccount   = auth()->user()->account->code;
             $transaction->destination      = $data['service_number'];
             $transaction->status           = config('business.transaction.status.created');
             $transaction->meter_id         = $meter->uuid;
@@ -176,31 +178,13 @@ class TransactionRepository
     public function processTransaction($transaction)
     {
         // verify if user has sufficient balance
-        $userAccount = $transaction->user->account;
+        $companyAccount = $transaction->company->account;
         
-        if (!$userAccount->is_active) {
-            throw new ForbiddenException(BusinessErrorCodes::ACCOUNT_LIMITED, 'Your account has been limited.');
-        }
-        if ($transaction->service->is_money_withdrawal) {
-            $this->movementRepository->registerSale($userAccount, $transaction);
-            return true;
-        }
-        
-        if (($userAccount->getBalance() >= $transaction->total_customer_amount)) {
-            $this->movementRepository->registerSale($userAccount, $transaction);
-            return true;
-            
-        } elseif (
-            $transaction->company->direct_polling
-            && $transaction->company->account->is_active
-            && $transaction->company->account->getBalance() > $transaction->total_customer_amount
-        ) {
-            $companyAccount = $transaction->company->account;
-            
-            $this->movementRepository->registerSale($companyAccount, $transaction);
+         if($companyAccount->is_active) {
+             $this->movementRepository->registerSale($transaction);
             return true;
         } else {
-            throw new BadRequestException(BusinessErrorCodes::INSUFFICIENT_ACCOUNT_BALANCE, 'Your account balance is insufficient for this transaction');
+            throw new GeneralException(__('exceptions.backend.sales.account_inactive'));
         }
     }
     

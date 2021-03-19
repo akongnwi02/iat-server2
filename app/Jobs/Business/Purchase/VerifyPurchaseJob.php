@@ -123,14 +123,14 @@ class VerifyPurchaseJob extends Job
         \Log::warning("{$this->getJobName()}: Transaction failed during status check with micro service. Reversing movements...", [
             'transaction.status' => $this->transaction->status,
             'transaction.code'   => $this->transaction->code,
-            'movement.code'      => $this->transaction->movement_code
+            'movement.code'      => $this->transaction->movement->code
         ]);
         
-        $movementRepository->reverseMovements($this->transaction->movement_code);
+        $movementRepository->reverseMovements($this->transaction->movement->code);
     
         \Log::info("{$this->getJobName()}: Completing movement for this transaction. To be counted in the balance for withdrawals");
     
-        $movementRepository->completeMovements($this->transaction->movement_code);
+        $movementRepository->completeMovements($this->transaction->movement->code);
         
         $this->transaction->status  = config('business.transaction.status.failed');
         $this->transaction->message = 'Transaction failed unexpectedly while verifying status';

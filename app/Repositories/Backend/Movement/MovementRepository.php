@@ -114,31 +114,31 @@ class MovementRepository
      * @return mixed
      * @throws \Throwable
      */
-    public function registerSale($account, $transaction)
+    public function registerSale($transaction)
     {
-        $movement = new Movement();
-        $movement->code = Movement::generateCode();
-        $movement->amount = $transaction->service->is_money_withdrawal ? $transaction->amount : $transaction->total_customer_amount;
-        $movement->type_id = $transaction->service->is_money_withdrawal
-            ? MovementType::where('name', config('business.movement.type.sale'))->first()->uuid
-            : MovementType::where('name', config('business.movement.type.purchase'))->first()->uuid;
-        $movement->user_id = $transaction->user->uuid;
-        $movement->company_id = @$transaction->company->uuid;
-        $movement->service_id = $transaction->service_id;
-        $movement->is_complete = false;
-        $movement->currency_id = $this->currencyRepository->findByCode($transaction->currency_code)->uuid;
-        $movement->destinationaccount_id = $account->uuid;
-        
-        $transaction->paymentaccount = $account->code;
-        $transaction->movement_code = $movement->code;
-        return \DB::transaction(function () use ($movement, $transaction) {
+        return \DB::transaction(function () use ($transaction) {
+            $movement = new Movement();
+            $movement->code = Movement::generateCode();
+            $movement->amount = $transaction->amount - $transaction->system_commission;
+            $movement->type_id = MovementType::where('name', config('business.movement.type.sale'))->first()->uuid;
+            $movement->user_id = $transaction->user->uuid;
+            $movement->company_id = @$transaction->company->uuid;
+            $movement->service_id = $transaction->service_id;
+            $movement->is_complete = true;
+            $movement->currency_id = $this->currencyRepository->findByCode($transaction->currency_code)->uuid;
+            $movement->destinationaccount_id = $transaction->company->account->uuid;
+            $movement->transaction_code = $transaction->code;
+    
+            $transaction->status = config('business.transaction.status.success');
+            
             if ($movement->save() && $transaction->save()) {
 //                event(Accountfdfs($movement));
-                return true;
+                return $transaction;
             }
     
-            throw new ServerErrorException(BusinessErrorCodes::GENERAL_CODE, 'Error creating sale');
+            throw new GeneralException(__('exceptions.backend.sales.register_error'));
         });
+        
     }
     
     public function reverseMovements($code)
