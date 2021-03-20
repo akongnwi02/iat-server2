@@ -77,14 +77,15 @@ class SalesController
     /**
      * @param Request $request
      * @param TransactionRepository $transactionRepository
+     * @param $code
      * @return mixed
      * @throws GeneralException
      * @throws \App\Exceptions\Api\BadRequestException
      * @throws \Throwable
      */
-    public function confirm(Request $request, TransactionRepository $transactionRepository)
+    public function confirm(Request $request, TransactionRepository $transactionRepository, $code)
     {
-        $transaction = \Cache::store(config('app.micro_services.cache_store'))->pull($request->input('quote_id'));
+        $transaction = \Cache::store(config('app.micro_services.cache_store'))->pull($code);
     
         if ($transaction) {
             \Log::info('Purchase confirmation request received. Beginning processing');

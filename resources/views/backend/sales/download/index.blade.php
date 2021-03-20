@@ -20,6 +20,7 @@
                         <th>@lang('labels.backend.sales.table.token')</th>
                         <th>@lang('labels.backend.sales.table.amount') ({{$default_currency->code}})</th>
                         <th>@lang('labels.backend.sales.table.system_commission') ({{$default_currency->code}})</th>
+                        <th>@lang('labels.backend.sales.table.company_amount') ({{$default_currency->code}})</th>
                         <th>@lang('labels.backend.sales.table.service_number')</th>
                         <th>@lang('labels.backend.sales.table.payment_account')</th>
                     </tr>
@@ -35,6 +36,7 @@
                             <td>{{ $sale->token }}</td>
                             <td>{{ number_format($sale->amount, 2) }}</td>
                             <td>{{ number_format($sale->system_commission, 2) }}</td>
+                            <td>{{ number_format($sale->amount - $sale->system_commission, 2) }}</td>
                             <td>{{ $sale->destination }}</td>
                             <td>{{ $sale->paymentaccount}}</td>
                         </tr>

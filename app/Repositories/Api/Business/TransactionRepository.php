@@ -157,6 +157,7 @@ class TransactionRepository
             $transaction->service_id    = $service->uuid;
             $transaction->category_id   = $category->uuid;
             $transaction->category_code = $category->code;
+            $transaction->is_account_credit = false;
 
             $transaction->system_commission = $customerServiceFee;
             
@@ -181,6 +182,13 @@ class TransactionRepository
         $companyAccount = $transaction->company->account;
         
          if($companyAccount->is_active) {
+             $params = [
+                 'meterId' => $transaction->meter->identifier,
+                 'energy' => $transaction->units,
+                 'amount' => $transaction->amount,
+             ];
+    
+             $transaction->token = $this->client($transaction->meter->provider)->generateToken($params);
              $this->movementRepository->registerSale($transaction);
             return true;
         } else {

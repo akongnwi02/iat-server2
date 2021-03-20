@@ -27,6 +27,7 @@ class CreateTransactionsTable extends Migration
             $table->string('currency_code');
             $table->string('destination')->nullable();
             $table->string('paymentaccount')->nullable();
+            $table->boolean('is_account_credit')->default(false);
             $table->enum('status', [
                 config('business.transaction.status.created'),
                 config('business.transaction.status.pending'),
@@ -52,7 +53,7 @@ class CreateTransactionsTable extends Migration
             
             $table->double('system_commission')->nullable();
             
-            $table->dateTime('reversed_at')->nullable();
+            $table->dateTime('reversed_at')->default(false);
             $table->dateTime('completed_at')->nullable();
     
             $table->string('customer_phone')->nullable();

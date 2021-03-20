@@ -388,7 +388,7 @@ return [
                 'service_number'        => 'Service Number',
                 'payment_account'       => 'Payment Account',
                 'system_commission'     => 'System Commission',
-                'external_commission'   => 'External Commission',
+                'company_amount'   => 'Company Amount',
                 'completed_at'          => 'Completed At',
                 'user_status'           => 'User\'s Status',
                 'actual_status'         => 'Actual Status',
@@ -446,7 +446,8 @@ return [
                         ],
                         'movements' => [
                             'table' => [
-                                'code'        => 'Transaction Number',
+                                'code'        => 'Code',
+                                'transaction_code'        => 'Transaction Reference',
                                 'amount'      => 'Amount',
                                 'type'        => 'Type',
                                 'user'        => 'Executed By',

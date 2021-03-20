@@ -14,6 +14,7 @@ use App\Models\Account\Movement;
 use App\Models\Account\MovementType;
 use App\Models\Account\Payout;
 use App\Models\Account\PayoutType;
+use App\Models\Transaction\Transaction;
 use App\Repositories\Backend\Account\AccountRepository;
 
 trait AccountMethod
@@ -76,20 +77,14 @@ trait AccountMethod
     
     public function getSales()
     {
-        $credit = Movement::where('is_reversed', false)
-            ->where('is_complete', true)
+        $credit = Transaction::where('status', config('business.transaction.status.success'))
             ->where('user_id', $this->user->uuid)
-            ->where(function ($query) {
-                $query->where('type_id', MovementType::where('name', config('business.movement.type.purchase'))->first()->uuid);
-            })
+            ->where('is_account_credit', false)
             ->sum('amount');
         
-        $debit = Movement::where('is_reversed', false)
-            ->where('is_complete', true)
+        $debit = Transaction::where('status', config('business.transaction.status.success'))
             ->where('user_id', $this->user->uuid)
-            ->where(function ($query) {
-                $query->where('type_id', MovementType::where('name', config('business.movement.type.sale'))->first()->uuid);
-            })
+            ->where('is_account_credit', true)
             ->sum('amount');
         
         return $credit - $debit;

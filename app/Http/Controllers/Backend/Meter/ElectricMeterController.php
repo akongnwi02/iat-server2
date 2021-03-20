@@ -20,12 +20,9 @@ use App\Models\Meter\Meter;
 use App\Repositories\Backend\Meter\MeterRepository;
 use App\Repositories\Backend\Meter\ProviderRepository;
 use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
-use App\Services\Clients\ClientProvider;
 
 class ElectricMeterController extends Controller
 {
-    use ClientProvider;
-    
     /**
      * @param MeterRepository $meterRepository
      * @return mixed

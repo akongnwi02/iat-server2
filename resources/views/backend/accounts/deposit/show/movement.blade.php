@@ -5,6 +5,7 @@
                 <thead>
                 <tr>
                     <th>@lang('labels.backend.account.deposit.tabs.content.movements.table.code')</th>
+                    <th>@lang('labels.backend.account.deposit.tabs.content.movements.table.transaction_code')</th>
                     <th>@lang('labels.backend.account.deposit.tabs.content.movements.table.amount')</th>
                     <th>@lang('labels.backend.account.deposit.tabs.content.movements.table.type')</th>
                     <th>@lang('labels.backend.account.deposit.tabs.content.movements.table.user')</th>
@@ -19,6 +20,7 @@
                 @foreach($movements as $movement)
                     <tr>
                         <td>{{ $movement->code }}</td>
+                        <td>{{ $movement->transaction_code }}</td>
                         <td>{{ $movement->amount_label }}</td>
                         <td><span class="badge badge-{{ $movement->class_label }}">{{ $movement->is_reversed ? __('labels.backend.account.deposit.tabs.content.movements.table.cancelled') : __($movement->type->name) }}</span></td>
                         <td>{{ $movement->user->full_name }}</td>

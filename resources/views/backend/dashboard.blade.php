@@ -9,38 +9,6 @@
             <div class="row">
                 <div class="cols-sm-8 col-lg-8">
                     <div class="row">
-                        {{--<div class="col-sm-4 col-lg-4">--}}
-                        {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                        {{--<div class="text-value-lg">{{ $company_today_commission }}</div>--}}
-                        {{--<div>@lang('strings.backend.dashboard.company.commission_today')</div>--}}
-                        {{--<div class="progress progress-xs my-2">--}}
-                        {{--<div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                        {{--</div>--}}
-                        {{--<small class="text-muted">@lang('strings.backend.dashboard.company.commission_today_help')</small>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div><!--col-->--}}
-                        {{--<div class="col-sm-4 col-lg-4">--}}
-                        {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                        {{--@can(config('permission.permissions.request_payouts'))--}}
-                        {{--<div class="btn-group float-right">--}}
-                        {{--<button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#payoutModal" title="@lang('labels.backend.account.request_payout')">--}}
-                        {{--<img src="{{ url('img/backend/brand/arrow-circle-bottom.svg') }}" alt="@lang('labels.backend.account.request_payout')">--}}
-                        {{--</button>--}}
-                        {{--</div>--}}
-                        {{--@endcan--}}
-                        {{--<div class="text-value-lg">{{ $company_commission_balance }}</div>--}}
-                        {{--<div>@lang('strings.backend.dashboard.company.commission')</div>--}}
-                        {{--<div class="progress progress-xs my-2">--}}
-                        {{--<div class="progress-bar bg-warning" role="progressbar" style="width: 25%"--}}
-                        {{--aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                        {{--</div>--}}
-                        {{--<small class="text-muted">@lang('strings.backend.dashboard.company.commission_help')</small>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div><!--col-->--}}
                         @if(@$logged_in_user->company->is_default)
                             <div class="col-sm-4 col-lg-4">
                                 <div class="card">
@@ -90,9 +58,9 @@
                                 <div class="card-body">
                                     @can(config('permission.permissions.drain_accounts'))
                                         <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
-                                            <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#" title="@lang('labels.backend.account.drain')">
-                                                <img src="{{ url('img/backend/brand/arrow-circle-bottom.svg') }}" alt="@lang('labels.backend.account.drain')">
-                                            </button>
+                                            {{--<button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#" title="@lang('labels.backend.account.drain')">--}}
+                                                {{--<img src="{{ url('img/backend/brand/arrow-circle-bottom.svg') }}" alt="@lang('labels.backend.account.drain')">--}}
+                                            {{--</button>--}}
                                         </div><!--btn-toolbar-->
                                     @endif
                                     <div class="text-value-lg">{{ $company_strongbox_balance }}</div>

@@ -59,13 +59,13 @@
                         <div class="row">
                             <div class="col text-left">
                                 <div class="form-group clearfix">
-                                    {{ form_cancel(route('admin.sales.create'), __('buttons.general.cancel')) }}
+                                    {{ form_cancel(route('admin.sales.quote'), __('buttons.general.cancel')) }}
                                 </div><!--form-group-->
                             </div><!--col-->
 
                             <div class="col text-right">
                                 <div class="form-group clearfix">
-                                    {{ form_cancel(route('admin.sales.confirm', ['quote_id' => $transaction->code]), __('buttons.general.confirm'), 'btn btn-success btn-sm') }}
+                                    {{ form_cancel(route('admin.sales.confirm', $transaction->code), __('buttons.general.confirm'), 'btn btn-success btn-sm') }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->

@@ -125,9 +125,13 @@ class HexcellClient extends AbstractClient
         $amount   = $params['amount'];
     
         $this->login();
+        
+        $purchaseUrl = $hexcellUrl . '/Vending/SaveData' . "?cid=$meter_id&amt=$amount&qt=$energy&nflag=1";
     
+        \Log::debug('Sending request to provider', ['purchase url' => $purchaseUrl]);
+        
         try {
-            $response = $this->httpClient->request('GET', $hexcellUrl . '/Vending/SaveData' . "?cid=$meter_id&amt=$amount&qt=$energy&nflag=1");
+            $response = $this->httpClient->request('GET', $purchaseUrl);
             $response = $response->getBody()->getContents();
         } catch (GuzzleException $e) {
             \Log::emergency("Token generation error for metercode $meter_id", ['message' => $e->getMessage()]);
@@ -158,8 +162,12 @@ class HexcellClient extends AbstractClient
         }
         
         $this->login();
+    
+        $purchaseUrl = $url . "?mc=$meterCode&&nflag=1";
+    
+        \Log::debug('Sending request to provider', ['purchase url' => $purchaseUrl]);
         try {
-            $response = $this->httpClient->request('GET', $url . "?mc=$meterCode&&nflag=1");
+            $response = $this->httpClient->request('GET', $purchaseUrl);
         } catch (GuzzleException $e) {
             \Log::emergency("$codeType generation error for metercode $meterCode", ['message' => $e->getMessage()]);
             throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.token_error'));
@@ -191,9 +199,12 @@ class HexcellClient extends AbstractClient
         $hexcellUrl = $this->config['url'];
         $username   = $this->config['username'];
         $password   = $this->config['password'];
-        
+    
+        $loginUrl = $hexcellUrl . '/Login/VerifyLoginUser' . "?id=$username&pwd=$password";
+    
+        \Log::debug('Sending request to provider', ['purchase url' => config('app.env') != 'production' ? $loginUrl: "Hidden"]);
         try {
-            $this->httpClient->request('GET', $hexcellUrl . '/Login/VerifyLoginUser' . "?id=$username&pwd=$password");
+            $this->httpClient->request('GET', $loginUrl);
         } catch (GuzzleException $exception) {
             \Log::emergency("Login Error for $username", ['message' => $exception->getMessage()]);
             throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.auth_error'));
