@@ -44,7 +44,9 @@ class Transaction extends Model
      * @var array
      */
     protected $casts = [
-        'amount'             => 'double',
-        'system_commission'  => 'double',
+        'amount'            => 'double',
+        'system_commission' => 'double',
+        'vat'               => 'double',
+        'amount_with_vat'   => 'double',
     ];
 }

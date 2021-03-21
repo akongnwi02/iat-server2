@@ -156,6 +156,18 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.points.electricity.tax'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('tax') }}
+
+                        <div class="col-md-10">
+                            {{ html()->number('tax', null, 0, 100, 0.01)
+                                ->class('form-control')
+                            }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         {{ html()->label(__('validation.attributes.backend.points.electricity.service_charge'))
                             ->class('col-md-2 form-control-label')
                             ->for('service_charge_id') }}

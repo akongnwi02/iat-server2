@@ -11,6 +11,7 @@ namespace App\Repositories\Backend\Quote;
 
 use App\Exceptions\GeneralException;
 use App\Models\Quote\Quote;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Webpatser\Uuid\Uuid;
 
@@ -19,7 +20,15 @@ class QuoteRepository
     public function getQuotes()
     {
         $inventory = QueryBuilder::for(Quote::class)
-            ->defaultSort('-created_at', 'title');
+            ->defaultSort('-created_at', 'title')
+            ->allowedFilters([
+                AllowedFilter::partial('code'),
+                AllowedFilter::partial('customer_name'),
+                AllowedFilter::partial('user.username'),
+                AllowedFilter::exact('status'),
+                AllowedFilter::scope('start_date'),
+                AllowedFilter::scope('end_date'),
+            ]);
         return $inventory;
     }
     
@@ -109,7 +118,22 @@ class QuoteRepository
                 return $quote;
             }
         
-            throw new GeneralException(__('exceptions.backend.quote.create_error'));
+            throw new GeneralException(__('exceptions.backend.quote.update_error'));
         });
+    }
+    
+    /**
+     * @param $quote
+     * @param $status
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function updateStatus($quote, $status)
+    {
+        $quote->status = $status;
+        if ($quote->save()) {
+            return $quote;
+        }
+        throw new GeneralException(__('exceptions.backend.quote.update_error'));
     }
 }

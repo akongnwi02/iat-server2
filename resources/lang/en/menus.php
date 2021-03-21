@@ -14,6 +14,11 @@ return [
     */
     
     'backend' => [
+        'general' => [
+            'filters' => [
+                'reset' => 'Reset Filters'
+            ],
+        ],
         'access' => [
             'title' => 'Users',
             
@@ -149,7 +154,6 @@ return [
                 'edit'       => 'Edit Payment Method',
             ]
         ],
-        
         'sales'      => [
             'management' => 'Sales',
             'clear'      => 'Clear Filters',

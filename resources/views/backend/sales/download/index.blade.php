@@ -21,6 +21,9 @@
                         <th>@lang('labels.backend.sales.table.amount') ({{$default_currency->code}})</th>
                         <th>@lang('labels.backend.sales.table.system_commission') ({{$default_currency->code}})</th>
                         <th>@lang('labels.backend.sales.table.company_amount') ({{$default_currency->code}})</th>
+                        <th>@lang('labels.backend.sales.table.vat')</th>
+                        <th>@lang('labels.backend.sales.table.amount_with_vat') ({{$default_currency->code}})</th>
+                        <th>@lang('labels.backend.sales.table.units')</th>
                         <th>@lang('labels.backend.sales.table.service_number')</th>
                         <th>@lang('labels.backend.sales.table.payment_account')</th>
                     </tr>
@@ -28,15 +31,18 @@
                     <tbody>
                     @foreach($sales as $sale)
                         <tr>
-                            <td><span> {{ $sale->service->name }}</span></td>
+                            <td> {{ $sale->service->name }}</td>
                             <td>{{ $sale->code }}</td>
-                            <td>{{ $sale->created_at->diffForHumans() }}</td>
+                            <td>{{ $sale->created_at->toDatetimeString() }}</td>
                             <td>{{ @$sale->company->name }}</td>
                             <td>{{ $sale->user->username }}</td>
                             <td>{{ $sale->token }}</td>
                             <td>{{ number_format($sale->amount, 2) }}</td>
                             <td>{{ number_format($sale->system_commission, 2) }}</td>
                             <td>{{ number_format($sale->amount - $sale->system_commission, 2) }}</td>
+                            <td>{{ $sale->vat }}</td>
+                            <td>{{ $sale->amount_with_vat }}</td>
+                            <td>{{ $sale->units_label }}</td>
                             <td>{{ $sale->destination }}</td>
                             <td>{{ $sale->paymentaccount}}</td>
                         </tr>

@@ -91,6 +91,10 @@ return [
             'cancel' => 'Cancel',
             'approve' => 'Approve',
             'reject' => 'Reject',
+        ],
+        'quotes' => [
+            'approve' => 'Approve',
+            'reject' => 'Reject',
         ]
     ],
 

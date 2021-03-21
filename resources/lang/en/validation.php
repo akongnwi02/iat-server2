@@ -263,6 +263,7 @@ return [
                     'adjusted_price2'     => 'Adjusted Price',
                     'service_charge'      => 'Specific Service Charge',
                     'price'               => 'Price',
+                    'tax'               => 'Tax (%)',
                     'gps_lat'             => 'Latitude',
                     'gps_long'            => 'Longitude',
                     'total'               => 'Supply point|Supply points',

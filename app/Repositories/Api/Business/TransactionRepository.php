@@ -80,90 +80,97 @@ class TransactionRepository
      */
     public function create($data)
     {
-         /*
-             * get the service
-             */
-            $meter = $this->meterRepository->findByMeterCode($data['service_number']);
-    
-            // make sure meter is active and assigned
-            if (! $meter->is_active) {
-                throw new GeneralException(__('exceptions.backend.sales.meter_inactive'));
-            }
-    
-            if (! $meter->supply_point_id) {
-                throw  new GeneralException(__('exceptions.backend.sales.meter_unassigned'));
-            }
-    
-            $service  = $this->serviceRepository->findByCode($data['service_code']);
-    
-            if ($data['amount'] < $service->min_amount) {
-                throw new GeneralException(__('exceptions.backend.sales.min_amount'));
-            }
-            
-            if ($data['amount'] > $service->max_amount) {
-                throw new GeneralException(__('exceptions.backend.sales.max_amount'));
-            }
-            
-            if ($data['amount'] % $service->step_amount != 0) {
-                throw new GeneralException(__('exceptions.backend.sales.step_amount'));
-            }
-            
-            $category = $service->category;
-    
-            if ($meter->type != $category->code) {
-                throw  new GeneralException(__('exceptions.backend.sales.category_invalid'));
-            }
-            
-            $supplyPoint = $meter->supplyPoint;
-            
-            $price = $supplyPoint->is_auto_price ? $supplyPoint->adjusted_price : $supplyPoint->price->amount;
-    
-            $units = round(($data['amount'] / $price),2);
-            
-            /*
-             * get the commissions
-             */
-            $customerServiceCommission = $supplyPoint->serviceCharge ?: $service->customer_commission;
-            
-            /*
-             * calculate the fees
-             */
-            $customerServiceFee = $this->commissionRepository->calculateFee($customerServiceCommission, $data['amount']);
-            
-            \Log::debug('The following service charge will be applied for this transaction', [
-                'uuid' => $customerServiceCommission->uuid,
-                'name' => $customerServiceCommission->name,
-                'description' => $customerServiceCommission->description,
-            ]);
-            
-            // Transaction creation
-            $transaction = new Transaction();
-            
-            $transaction->code             = Transaction::generateCode();
-            $transaction->amount           = $data['amount'];
-            $transaction->user_id          = auth()->user()->uuid;
-            $transaction->company_id       = auth()->user()->company_id;
-            $transaction->service_code     = $data['service_code'];
-            $transaction->currency_code    = $data['currency_code'];
-            $transaction->paymentaccount   = auth()->user()->account->code;
-            $transaction->destination      = $data['service_number'];
-            $transaction->status           = config('business.transaction.status.created');
-            $transaction->meter_id         = $meter->uuid;
-            $transaction->type = $meter->type;
-            $transaction->customer_servicecommission_id = @$customerServiceCommission->uuid;
-            $transaction->price_id = @$supplyPoint->price->uuid;
-            $transaction->price = $price;
-            $transaction->units = $units;
-            $transaction->service_id    = $service->uuid;
-            $transaction->category_id   = $category->uuid;
-            $transaction->category_code = $category->code;
-            $transaction->is_account_credit = false;
-
-            $transaction->system_commission = $customerServiceFee;
-            
-            $transaction->customer_phone = @$data['phone_number'];
-            
-            return $transaction;
+        /*
+            * get the service
+            */
+        $meter = $this->meterRepository->findByMeterCode($data['service_number']);
+        
+        // make sure meter is active and assigned
+        if (!$meter->is_active) {
+            throw new GeneralException(__('exceptions.backend.sales.meter_inactive'));
+        }
+        
+        if (!$meter->supply_point_id) {
+            throw  new GeneralException(__('exceptions.backend.sales.meter_unassigned'));
+        }
+        
+        $service = $this->serviceRepository->findByCode($data['service_code']);
+        
+        if ($data['amount'] < $service->min_amount) {
+            throw new GeneralException(__('exceptions.backend.sales.min_amount'));
+        }
+        
+        if ($data['amount'] > $service->max_amount) {
+            throw new GeneralException(__('exceptions.backend.sales.max_amount'));
+        }
+        
+        if ($data['amount'] % $service->step_amount != 0) {
+            throw new GeneralException(__('exceptions.backend.sales.step_amount'));
+        }
+        
+        $category = $service->category;
+        
+        if ($meter->type != $category->code) {
+            throw  new GeneralException(__('exceptions.backend.sales.category_invalid'));
+        }
+        
+        $supplyPoint = $meter->supplyPoint;
+        $vat         = $supplyPoint->tax;
+        
+        $amountWithVat = $data['amount'] * $vat / 100;
+        
+        
+        $price = $supplyPoint->is_auto_price ? $supplyPoint->adjusted_price : $supplyPoint->price->amount;
+        
+        $units = round(($amountWithVat / $price), 2);
+        
+        
+        /*
+         * get the commissions
+         */
+        $customerServiceCommission = $supplyPoint->serviceCharge ?: $service->customer_commission;
+        
+        /*
+         * calculate the fees
+         */
+        $customerServiceFee = $this->commissionRepository->calculateFee($customerServiceCommission, $data['amount']);
+        
+        \Log::debug('The following service charge will be applied for this transaction', [
+            'uuid'        => $customerServiceCommission->uuid,
+            'name'        => $customerServiceCommission->name,
+            'description' => $customerServiceCommission->description,
+        ]);
+        
+        // Transaction creation
+        $transaction = new Transaction();
+        
+        $transaction->code                          = Transaction::generateCode();
+        $transaction->amount                        = $data['amount'];
+        $transaction->user_id                       = auth()->user()->uuid;
+        $transaction->company_id                    = auth()->user()->company_id;
+        $transaction->service_code                  = $data['service_code'];
+        $transaction->currency_code                 = $data['currency_code'];
+        $transaction->paymentaccount                = auth()->user()->account->code;
+        $transaction->destination                   = $data['service_number'];
+        $transaction->status                        = config('business.transaction.status.created');
+        $transaction->meter_id                      = $meter->uuid;
+        $transaction->type                          = $meter->type;
+        $transaction->customer_servicecommission_id = @$customerServiceCommission->uuid;
+        $transaction->price_id                      = @$supplyPoint->price->uuid;
+        $transaction->price                         = $price;
+        $transaction->units                         = $units;
+        $transaction->vat                           = $vat;
+        $transaction->amount_with_vat               = $amountWithVat;
+        $transaction->service_id                    = $service->uuid;
+        $transaction->category_id                   = $category->uuid;
+        $transaction->category_code                 = $category->code;
+        $transaction->is_account_credit             = false;
+        
+        $transaction->system_commission = $customerServiceFee;
+        
+        $transaction->customer_phone = @$data['phone_number'];
+        
+        return $transaction;
     }
     
     /**
@@ -181,15 +188,15 @@ class TransactionRepository
         // verify if user has sufficient balance
         $companyAccount = $transaction->company->account;
         
-         if($companyAccount->is_active) {
-             $params = [
-                 'meterId' => $transaction->meter->identifier,
-                 'energy' => $transaction->units,
-                 'amount' => $transaction->amount,
-             ];
-    
-             $transaction->token = $this->client($transaction->meter->provider)->generateToken($params);
-             $this->movementRepository->registerSale($transaction);
+        if ($companyAccount->is_active) {
+            $params = [
+                'meterId' => $transaction->meter->identifier,
+                'energy'  => $transaction->units,
+                'amount'  => $transaction->amount,
+            ];
+            
+            $transaction->token = $this->client($transaction->meter->provider)->generateToken($params);
+            $this->movementRepository->registerSale($transaction);
             return true;
         } else {
             throw new GeneralException(__('exceptions.backend.sales.account_inactive'));
@@ -215,6 +222,7 @@ class TransactionRepository
                 AllowedFilter::exact('status'),
                 AllowedFilter::partial('user.username'),
                 AllowedFilter::partial('code'),
+                AllowedFilter::partial('destination'),
                 AllowedFilter::scope('start_date'),
                 AllowedFilter::scope('end_date'),
             ])

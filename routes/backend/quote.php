@@ -44,6 +44,11 @@ Route::group([
         Route::put('/', [QuoteController::class, 'update'])
             ->name('quote.update')
             ->middleware('permission:'.config('permission.permissions.update_quotes'));
+        
+        Route::get('status/{status}', [QuoteController::class, 'status'])
+            ->name('quote.status')
+            ->where('status', '[A-Za-z0-9]+')
+            ->middleware('permission:'.config('permission.permissions.update_quotes'));
     });
     
     /*

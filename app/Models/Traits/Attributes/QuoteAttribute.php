@@ -15,8 +15,10 @@ trait QuoteAttribute
     {
         return '
     	<div class="btn-group" role="group" aria-label="'.__('labels.general.actions').'">
-		  ' . $this->edit_button. '
 		  ' . $this->download_button . '
+		  ' . $this->edit_button. '
+		  ' . $this->reject_button. '
+		  ' . $this->approve_button . '
 		</div>';
     }
     
@@ -25,6 +27,9 @@ trait QuoteAttribute
      */
     public function getEditButtonAttribute()
     {
+        if ($this->status != 'created') {
+            return '';
+        }
         if (auth()->user()->can(config('permission.permissions.update_quotes'))) {
             return '<a href="'.route('admin.quotes.quote.edit', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'" class="btn btn-primary"><i class="fas fa-edit"></i></a>';
         }
@@ -51,4 +56,23 @@ trait QuoteAttribute
         }
     }
     
+    public function getApproveButtonAttribute()
+    {
+        if ($this->status != 'created') {
+            return '';
+        }
+        if (auth()->user()->can(config('permission.permissions.update_quotes'))) {
+            return '<a href="'.route('admin.quotes.quote.status', [$this, 'approved']).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.quotes.approve').'" class="btn btn-success"><i class="fas fa-check-circle"></i></a>';
+        }
+    }
+    
+    public function getRejectButtonAttribute()
+    {
+        if ($this->status != 'created') {
+            return '';
+        }
+        if (auth()->user()->can(config('permission.permissions.update_quotes'))) {
+            return '<a href="'.route('admin.quotes.quote.status', [$this, 'rejected']).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.quotes.reject').'" class="btn btn-danger"><i class="fas fa-times-circle"></i></a>';
+        }
+    }
 }

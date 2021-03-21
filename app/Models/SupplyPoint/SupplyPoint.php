@@ -48,6 +48,7 @@ class SupplyPoint extends Model
         'provider_price',
         'price_id',
         'is_auto_price',
+        'tax',
         'auto_price_margin',
         'meter_no',
     ];
@@ -55,5 +56,6 @@ class SupplyPoint extends Model
     protected $casts = [
         'gps_lat' => 'double',
         'gps_long' => 'double',
+        'tax' => 'double',
     ];
 }

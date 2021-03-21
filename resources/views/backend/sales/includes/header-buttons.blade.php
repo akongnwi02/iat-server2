@@ -38,6 +38,13 @@
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.service_number')</span>
+                    </div>
+                    <input value="{{ @request()->input()['filter']['destination'] }}" name="filter[destination]" type="text" class="form-control">
+                </div>quote.includes.breadcrumb-links
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.service')</span>
                     </div>
                     {{ html()->select('filter[service_id]', [null => null] + $services)

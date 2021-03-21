@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->uuid('uuid')->primary()->unique();
             $table->string('code')->unique();
             $table->double('amount');
+            $table->double('amount_with_vat');
             $table->uuid('user_id')->nullable();
             $table->uuid('company_id')->nullable();
             $table->uuid('service_id')->nullable();
@@ -47,7 +48,8 @@ class CreateTransactionsTable extends Migration
             $table->float('units')->nullable();
             $table->float('price')->nullable();
             $table->string('token')->nullable();
-            
+            $table->float('vat')->default(0);
+    
             $table->uuid('customer_servicecommission_id')->nullable();
             $table->uuid('price_id')->nullable();
             

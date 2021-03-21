@@ -28,6 +28,7 @@ class CreateSupplyPointsTable extends Migration
             $table->float('auto_price_margin')->nullable();
             $table->float('provider_price')->nullable();
             $table->float('adjusted_price')->nullable();
+            $table->float('tax')->default(0);
     
             $table->float('gps_long')->nullable();
             $table->float('gps_lat')->nullable();

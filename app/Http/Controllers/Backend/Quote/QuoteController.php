@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Backend\Quote;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Quote\StoreQuoteRequest;
 use App\Http\Requests\Backend\Quote\UpdateQuoteRequest;
+use App\Http\Requests\Backend\Quote\UpdateQuoteStatusRequest;
 use App\Models\Quote\Quote;
 use App\Repositories\Backend\Quote\InventoryRepository;
 use App\Repositories\Backend\Quote\QuoteRepository;
@@ -85,4 +86,19 @@ class QuoteController extends Controller
         return $pdf->download('quote.pdf');
     }
     
+    /**
+     * @param UpdateQuoteStatusRequest $request
+     * @param QuoteRepository $quoteRepository
+     * @param Quote $quote
+     * @param $status
+     * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     */
+    public function status(UpdateQuoteStatusRequest $request, QuoteRepository $quoteRepository, Quote $quote, $status)
+    {
+        $quoteRepository->updateStatus($quote, $status);
+        return redirect()->route('admin.quotes.quote.index')
+            ->withFlashSuccess(__('alerts.backend.quote.quote.updated'));
+        
+    }
 }
