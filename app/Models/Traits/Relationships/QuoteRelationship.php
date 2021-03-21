@@ -25,4 +25,9 @@ trait QuoteRelationship
                 'sub_total'
             );
     }
+    
+    public function user()
+    {
+        return $this->creator();
+    }
 }

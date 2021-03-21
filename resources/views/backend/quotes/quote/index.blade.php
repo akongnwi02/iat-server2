@@ -38,6 +38,7 @@
                                 <th>@lang('labels.backend.quote.quote.table.status')</th>
                                 <th>@lang('labels.backend.quote.quote.table.type')</th>
                                 <th>@lang('labels.backend.quote.quote.table.created_at')</th>
+                                <th>@lang('labels.backend.quote.quote.table.created_by')</th>
 
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
@@ -62,6 +63,7 @@
                                     <td>{!! $quote->status_label !!}</td>
                                     <td>{{ __($quote->type)  }}</td>
                                     <td>{{ __($quote->created_at->toDatetimeString())  }}</td>
+                                    <td>{{ @$quote->creator->username  }}</td>
 
                                     <td>{!! $quote->action_buttons  !!}</td>
                                 </tr>

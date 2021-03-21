@@ -55,7 +55,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">@lang('labels.backend.quote.quote.filter.status')</span>
                         </div>
-                        {{ html()->select('filter[status]', [null => null] + array_map(function($status){return __($status);}, ['approved', 'rejected', 'created']))
+                        {{ html()->select('filter[status]', [null => null] + array_map(function($status){return __($status);}, [
+                            'approved' => 'approved',
+                            'rejected' => 'rejected',
+                            'created' => 'created'
+                         ]))
                             ->value(@request()->input()['filter']['status'])
                             ->class('form-control')
                         }}

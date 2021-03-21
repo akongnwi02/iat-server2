@@ -660,6 +660,7 @@ return [
                     'status'      => 'Status',
                     'type'        => 'Type',
                     'created_at'  => 'Created At',
+                    'created_by'  => 'Created By',
                     'empty'       => 'Empty',
                     'total'       => 'quote|quotes',
                     'inventories' => [
