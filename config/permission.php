@@ -174,7 +174,7 @@ return [
         
         //sales
         'read_sales'            => 'read sales',
-        'create_sales'            => 'create sales',
+        'create_sales'          => 'create sales',
         
         // currency
         'read_currencies'       => 'read currencies',
@@ -184,35 +184,47 @@ return [
         'deactivate_currencies' => 'deactivate currencies',
         
         // supply points
-        'read_supply_points'       => 'read supply points',
-        'create_supply_points'     => 'create supply points',
-        'update_supply_points'     => 'update supply points',
-        'delete_supply_points'     => 'delete supply points',
-
+        'read_supply_points'    => 'read supply points',
+        'create_supply_points'  => 'create supply points',
+        'update_supply_points'  => 'update supply points',
+        'delete_supply_points'  => 'delete supply points',
+        
         // prices
-        'read_prices'       => 'read prices',
-        'create_prices'     => 'create prices',
-        'update_prices'     => 'update prices',
-        'delete_prices'     => 'delete prices',
-
+        'read_prices'           => 'read prices',
+        'create_prices'         => 'create prices',
+        'update_prices'         => 'update prices',
+        'delete_prices'         => 'delete prices',
+        
         // meters
-        'read_meters'       => 'read meters',
-        'create_meters'     => 'create meters',
-        'update_meters'     => 'update meters',
-        'delete_meters'     => 'delete meters',
-        'deactivate_meters' => 'deactivate meters',
+        'read_meters'           => 'read meters',
+        'create_meters'         => 'create meters',
+        'update_meters'         => 'update meters',
+        'delete_meters'         => 'delete meters',
+        'deactivate_meters'     => 'deactivate meters',
         
         // quotes
-        'read_quotes'       => 'read quotes',
-        'create_quotes'     => 'create quotes',
-        'update_quotes'     => 'update quotes',
-        'delete_quotes'     => 'delete quotes',
+        'read_quotes'           => 'read quotes',
+        'create_quotes'         => 'create quotes',
+        'update_quotes'         => 'update quotes',
+        'delete_quotes'         => 'delete quotes',
         
         //inventories
-        'read_inventories'       => 'read inventories',
-        'create_inventories'     => 'create inventories',
-        'update_inventories'     => 'update inventories',
-        'delete_inventories'     => 'delete inventories',
+        'read_inventories'      => 'read inventories',
+        'create_inventories'    => 'create inventories',
+        'update_inventories'    => 'update inventories',
+        'delete_inventories'    => 'delete inventories',
+        
+        //bill payments
+        'read_bill_payments'    => 'read bill payments',
+        'create_bill_payments'  => 'create bill payments',
+        'update_bill_payments'  => 'update bill payments',
+        'delete_bill_payments'  => 'delete bill payments',
+        
+        // cycles
+        'read_cycles'           => 'read cycles',
+        'create_cycles'         => 'create cycles',
+        'update_cycles'         => 'update cycles',
+        'delete_cycles'         => 'delete cycles',
     ],
 
 ];

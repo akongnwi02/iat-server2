@@ -168,6 +168,21 @@
                     </a>
                 </li>
             @endcan
+            @can(config('permission.permissions.read_bill_payments'))
+                <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/payments*'), 'open') }}">
+                    <a class="nav-link nav-dropdown-toggle {{ active_class(Active::checkUriPattern('admin/payments*')) }}" href="{{ route('admin.payments.electricity.index') }}">
+                        <i class="nav-icon icon-book-open"></i> @lang('menus.backend.payments.title')
+                    </a>
+
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link {{ active_class(Active::checkUriPattern('admin/payments/electricity*')) }}" href="{{ route('admin.payments.electricity.index') }}">
+                                @lang('menus.backend.payments.electricity.management')
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
             <li class="nav-title">
                 <h6><b>@lang('menus.backend.sidebar.hardware')</b></h6>
             </li>
@@ -223,6 +238,13 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ active_class(Active::checkUriPattern('admin/administration/currency*')) }}" href="{{ route('admin.administration.currency.index') }}">
                                     @lang('menus.backend.administration.currency.management')
+                                </a>
+                            </li>
+                        @endcan
+                        @can(config('permission.permissions.read_cycles'))
+                            <li class="nav-item">
+                                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/administration/cycle*')) }}" href="{{ route('admin.administration.cycle.index') }}">
+                                    @lang('menus.backend.administration.cycle.management')
                                 </a>
                             </li>
                         @endcan

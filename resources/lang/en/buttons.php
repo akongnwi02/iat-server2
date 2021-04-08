@@ -65,6 +65,10 @@ return [
                 'activate' => 'Activate Currency',
                 'deactivate' => 'Deactivate Currency'
             ],
+            'cycle' => [
+                'complete' => 'Complete',
+                'reopen' => 'Re-open'
+            ]
         ],
         'companies' => [
             'company' => [

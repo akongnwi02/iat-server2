@@ -15,3 +15,4 @@ require __DIR__.'/administration.php';
 require __DIR__.'/meter.php';
 require __DIR__.'/point.php';
 require __DIR__.'/quote.php';
+require __DIR__.'/payments.php';

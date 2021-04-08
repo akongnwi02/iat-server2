@@ -108,5 +108,13 @@
   "water": "water",
   "validated": "validated",
   "ownership": "ownership",
-  "partnership": "partnership"
+  "partnership": "partnership",
+  "read bill payments": "read bill payments",
+  "create bill payments": "create bill payments",
+  "update bill payments": "update bill payments",
+  "delete bill payments": "delete bill payments",
+  "read cycles": "read cycles",
+  "create cycles": "create cycles",
+  "update cycles": "update cycles",
+  "delete cycles": "delete cycles"
 }

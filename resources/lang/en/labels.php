@@ -632,6 +632,21 @@ return [
                     'total'   => 'currency|currencies',
                 ]
             ],
+            'cycle' => [
+                'management' => 'Cycle',
+                'edit'       => 'Edit Cycle',
+                'create'     => 'Create Cycle',
+                'active'     => 'Active Cycles',
+                'table'      => [
+                    'month'    => 'Cycle Month',
+                    'year'    => 'Cycle Year',
+                    'complete'  => 'Complete',
+                    'balance'  => 'Balance',
+                    'amount_collected' => 'Amount Collected',
+                    'amount_paid' => 'Amount Paid',
+                    'total'   => 'cycle|cycles',
+                ]
+            ]
         ],
         'quote' => [
             'inventory' => [

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\Administration\CurrencyController;
+use App\Http\Controllers\Backend\BillPayment\CycleController;
 
 Route::group([
     'prefix'     => 'administration',
@@ -51,4 +52,25 @@ Route::group([
         
     });
     
+    /*
+         * Cycle CRUD
+         */
+    Route::get('cycle', [CycleController::class, 'index'])
+        ->name('cycle.index')
+        ->middleware('permission:'.config('permission.permissions.read_cycles'));
+    
+    Route::get('cycle/create', [CycleController::class, 'create'])
+        ->name('cycle.create')
+        ->middleware('permission:'.config('permission.permissions.create_cycles'));
+    
+    Route::post('cycle', [CycleController::class, 'store'])
+        ->name('cycle.store')
+        ->middleware('permission:'.config('permission.permissions.create_cycles'));
+    
+    Route::group(['prefix' => 'cycle/{cycle}'], function () {
+        Route::get('mark/{status}', [CycleController::class, 'mark'])
+            ->where('status', '[A-Za-z0-9]+')
+            ->name('cycle.mark')
+            ->middleware('permission:'.config('permission.permissions.update_cycles'));
+    });
 });

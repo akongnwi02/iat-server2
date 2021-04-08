@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'inventories',
             'quotes',
             'quote_inventories',
+            'cycles',
         ]);
     
         Model::unguard();

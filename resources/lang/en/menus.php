@@ -54,6 +54,11 @@ return [
                 'management' => 'Inventory Management',
                 'create' => 'Create Inventory',
                 'edit' => 'Edit Inventory',
+            ],
+            'cycle' => [
+                'management' => 'Cycle Management',
+                'create' => 'Create Cycle',
+                'edit' => 'Edit Cycle',
             ]
         ],
         
@@ -100,6 +105,7 @@ return [
             'business'  => 'Business',
             'access'    => 'Access',
             'hardware'  => 'Hardware',
+            'payments' => 'BIll Payments'
         ],
         'companies' => [
             'title' => 'Companies',
@@ -191,6 +197,13 @@ return [
                 'management' => 'Commissions',
                 'view'       => 'View Commissions',
             ],
+        ],
+        'payments' => [
+            'title' => 'Bill Payments',
+            'view' => 'View Payments',
+            'electricity' => [
+                'management' => 'Electricity Bills',
+            ]
         ]
     ],
     

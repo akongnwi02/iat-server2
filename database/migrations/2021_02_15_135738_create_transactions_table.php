@@ -55,7 +55,7 @@ class CreateTransactionsTable extends Migration
             
             $table->double('system_commission')->nullable();
             
-            $table->dateTime('reversed_at')->default(false);
+            $table->dateTime('reversed_at')->nullable();
             $table->dateTime('completed_at')->nullable();
     
             $table->string('customer_phone')->nullable();

@@ -163,6 +163,11 @@ return [
                 'create_error' => 'There was a problem creating this inventory. Please try again.',
                 'update_error' => 'There was a problem updating this inventory. Please try again.',
                 'mark_error'   => 'There was a problem updating the status of this inventory. Please try again.',
+            ],
+            'cycle' => [
+                'create_error' => 'There was a problem creating a new. Please try again.',
+                'update_error' => 'There was a problem updating this cycle. Please try again.',
+                'mark_error'   => 'There was a problem updating the status of this cycle. Please try again.',
             ]
         ],
         'payout'   => [

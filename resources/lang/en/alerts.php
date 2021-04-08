@@ -102,6 +102,11 @@ return [
                 'created' => 'The currency was successfully created.',
                 'updated' => 'The currency was successfully updated.',
                 'status_updated' => 'The status was successfully updated.',
+            ],
+            'cycle' => [
+                'created' => 'The cycle was successfully created.',
+                'updated' => 'The cycle was successfully updated.',
+                'status_updated' => 'The status was successfully updated.',
             ]
         ],
         'quote' => [

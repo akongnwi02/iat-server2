@@ -12,7 +12,6 @@
     </div><!--btn-toolbar-->
 @endcan
 
-
 <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -41,7 +40,7 @@
                         <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.service_number')</span>
                     </div>
                     <input value="{{ @request()->input()['filter']['destination'] }}" name="filter[destination]" type="text" class="form-control">
-                </div>quote.includes.breadcrumb-links
+                </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
