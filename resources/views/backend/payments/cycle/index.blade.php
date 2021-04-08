@@ -3,7 +3,7 @@
 @section('title', app_name() . ' | ' . __('labels.backend.administration.cycle.management'))
 
 @section('breadcrumb-links')
-    {{--@include('backend.administration.service.includes.breadcrumb-links')--}}
+    {{--@include('backend.payments.cycle.includes.breadcrumb-links')--}}
 @endsection
 
 @section('content')
@@ -43,7 +43,9 @@
                                     <td>{{ $cycle->cycle_month }}</td>
                                     <td>{{ $cycle->cycle_year }}</td>
                                     <td>{!! $cycle->complete_label !!}</td>
-
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>{!! $cycle->action_buttons  !!}</td>
                                 </tr>
                             @endforeach

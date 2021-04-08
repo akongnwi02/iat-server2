@@ -1,5 +1,5 @@
-@can(config('permission.permissions.create_currencies'))
+@can(config('permission.permissions.create_cycles'))
     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
-        <a href="{{ route('admin.administration.currency.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+        <a href="{{ route('admin.administration.cycle.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
     </div><!--btn-toolbar-->
 @endcan

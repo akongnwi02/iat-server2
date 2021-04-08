@@ -21,9 +21,8 @@ class CycleRepository
     public function getCycles()
     {
         $cycles = QueryBuilder::for(Cycle::class)
-            ->defaultSort('created_at');
+            ->defaultSort('-created_at');
         return $cycles;
-        
     }
     
     /**
@@ -52,6 +51,22 @@ class CycleRepository
         }
     
         throw new GeneralException(__('exceptions.backend.administration.cycle.mark_error'));
-        
+    }
+    
+    public function create()
+    {
+        $cycleMonth = now()->month;
+        $cycleYear = now()->year;
+    
+        $cycle = Cycle::where('cycle_month', $cycleMonth)
+            ->where('cycle_year', $cycleYear)->first();
+        if ($cycle) {
+            throw new GeneralException(__('exceptions.backend.administration.cycle.create_duplicate_error'));
+        }
+    
+        return Cycle::create([
+            'cycle_month' => $cycleMonth,
+            'cycle_year' => $cycleYear,
+        ]);
     }
 }

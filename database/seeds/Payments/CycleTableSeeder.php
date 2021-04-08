@@ -15,8 +15,8 @@ class CycleTableSeeder extends \Illuminate\Database\Seeder
     {
         Cycle::unguard();
         Cycle::create([
-            'cycle_year' => now()->month,
-            'cycle_month' => now()->year,
+            'cycle_month' => now()->month,
+            'cycle_year' => now()->year,
             'is_complete' => false,
         ]);
         Cycle::reguard();

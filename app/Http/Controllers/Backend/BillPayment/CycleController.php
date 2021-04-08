@@ -10,6 +10,8 @@ namespace App\Http\Controllers\Backend\BillPayment;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Payment\CycleStatusRequest;
+use App\Http\Requests\Backend\Payment\CreateCycleRequest;
 use App\Models\Payment\Cycle;
 use App\Repositories\Backend\Payment\CycleRepository;
 
@@ -38,7 +40,15 @@ class CycleController extends Controller
     {
         $cycleRepository->mark($cycle, $status);
     
-        return redirect()->route('administration.cycle.index')
+        return redirect()->route('admin.administration.cycle.index')
             ->withFlashSuccess(__('alerts.backend.administration.cycle.status_updated'));
+    }
+    
+    public function create(CreateCycleRequest $request, CycleRepository $cycleRepository)
+    {
+        $cycleRepository->create();
+        
+        return redirect()->route('admin.administration.cycle.index')
+            ->withFlashSuccess(__('alerts.backend.administration.cycle.created'));
     }
 }

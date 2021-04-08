@@ -63,10 +63,6 @@ Route::group([
         ->name('cycle.create')
         ->middleware('permission:'.config('permission.permissions.create_cycles'));
     
-    Route::post('cycle', [CycleController::class, 'store'])
-        ->name('cycle.store')
-        ->middleware('permission:'.config('permission.permissions.create_cycles'));
-    
     Route::group(['prefix' => 'cycle/{cycle}'], function () {
         Route::get('mark/{status}', [CycleController::class, 'mark'])
             ->where('status', '[A-Za-z0-9]+')
