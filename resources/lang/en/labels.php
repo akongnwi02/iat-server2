@@ -713,6 +713,23 @@ return [
                     ]
                 ]
             ]
+        ],
+        'payment' => [
+            'electricity' => [
+                'management' => 'Electricity',
+                'edit' => 'Edit Payment',
+                'create' => 'Create Payment',
+                'show' => 'Show',
+                'table' => [
+                    'supply_point' => 'Supply Point',
+                    'external_identifier' => 'Contract Number',
+                    'cycle_year' => 'Cycle Year',
+                    'cycle_month' => 'Cycle Month',
+                    'amount_collected' => 'Amount Collected',
+                    'amount_paid' => 'Amount Paid Out',
+                    'balance' => 'Balance'
+                ]
+            ]
         ]
     ],
     'frontend' => [

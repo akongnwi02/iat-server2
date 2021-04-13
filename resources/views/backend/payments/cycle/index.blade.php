@@ -27,8 +27,8 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>@lang('labels.backend.administration.cycle.table.month')</th>
                                 <th>@lang('labels.backend.administration.cycle.table.year')</th>
+                                <th>@lang('labels.backend.administration.cycle.table.month')</th>
                                 <th>@lang('labels.backend.administration.cycle.table.complete')</th>
                                 <th>@lang('labels.backend.administration.cycle.table.amount_collected') ({{ $default_currency->code }})</th>
                                 <th>@lang('labels.backend.administration.cycle.table.amount_paid') ({{ $default_currency->code }})</th>
@@ -40,8 +40,8 @@
                             <tbody>
                             @foreach($cycles as $cycle)
                                 <tr>
-                                    <td>{{ $cycle->cycle_month }}</td>
                                     <td>{{ $cycle->cycle_year }}</td>
+                                    <td>{{ $cycle->cycle_month }}</td>
                                     <td>{!! $cycle->complete_label !!}</td>
                                     <td></td>
                                     <td></td>

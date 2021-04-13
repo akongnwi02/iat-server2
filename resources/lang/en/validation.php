@@ -395,6 +395,20 @@ return [
                     ]
                 ]
             ],
+            'payment' => [
+                'supply_point' => 'Supply Point',
+                'external_identifier' => 'ENEO Contract Number',
+                'cycle_year' => 'Cycle Year',
+                'cycle_month' => 'Cycle Month',
+                'payments' => [
+                    'amount' => 'Amount',
+                    'payment_ref' => 'Payment Reference',
+                    'method' => 'Payment Method',
+                    'consumption' => 'Consumption',
+                    'bill_number' => 'Bill Number',
+                    'note' => 'Note',
+                ]
+            ],
             'account'        => [
                 'amount'         => 'Amount',
                 'currency'       => 'Currency',

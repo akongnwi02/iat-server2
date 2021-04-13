@@ -1,9 +1,9 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.services.method.management'))
+@section('title', app_name() . ' | ' . __('labels.backend.payment.electricity.management'))
 
 @section('breadcrumb-links')
-    {{--@include('backend.services.payment-method.includes.breadcrumb-links')--}}
+    @include('backend.payments.electricity.includes.breadcrumb-links')
 @endsection
 
 @section('content')
@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        {{ __('labels.backend.services.method.management') }}
+                        @lang('labels.backend.payment.electricity.management')
                     </h4>
                 </div><!--col-->
 
                 <div class="col-sm-7">
-                    @include('backend.services.payment-method.includes.header-buttons')
+                    @include('backend.payments.electricity.includes.header-buttons')
                 </div><!--col-->
             </div><!--row-->
 
@@ -27,34 +27,87 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>@lang('labels.backend.services.method.table.name')</th>
-                                <th>@lang('labels.backend.services.method.table.code')</th>
-                                {{--<th>@lang('labels.backend.services.method.table.logo')</th>--}}
-                                <th>@lang('labels.backend.services.method.table.service')</th>
-                                <th>@lang('labels.backend.services.method.table.active')</th>
-                                <th>@lang('labels.backend.services.method.table.description_en')</th>
-                                <th>@lang('labels.backend.services.method.table.description_fr')</th>
-                                <th>@lang('labels.backend.services.method.table.realtime')</th>
-                                <th>@lang('labels.backend.services.method.table.customercommission')</th>
-                                <th>@lang('labels.backend.services.method.table.providercommission')</th>
+                                <th>@lang('labels.backend.payment.electricity.show')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.supply_point')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.external_identifier')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.cycle_year')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.cycle_month')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.amount_collected') ({{ $default_currency->code }})</th>
+                                <th>@lang('labels.backend.payment.electricity.table.amount_paid') ({{ $default_currency->code }})</th>
+                                <th>@lang('labels.backend.payment.electricity.table.balance') ({{ $default_currency->code }})</th>
+
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($methods as $method)
+                            @foreach($points as $point)
                                 <tr>
-                                    <td>{!! @$method->logo_label !!} {{ $method->name }}</td>
-                                    <td>{{ $method->code }}</td>
-                                    {{--<td>{!! @$method->logo_label !!}</td>--}}
-                                    <td>{{ @$method->service_name }}</td>
-                                    <td>{!! $method->active_label !!}</td>
-                                    <td>{{ $method->description_en }}</td>
-                                    <td>{{ $method->description_fr}}</td>
-                                    <td>{!! $method->realtime_label !!}</td>
-                                    <td>{{ @$method->customer_commission->name }}</td>
-                                    <td>{{ @$method->provider_commission->name }}</td>
-                                    <td>{!! $method->action_buttons  !!}</td>
+                                    <td
+                                            data-placement="top"
+                                            title="@lang('buttons.general.crud.view')"
+                                            data-toggle="collapse"
+                                            data-target="#payments-{{ $point->uuid }}"
+                                            class="accordion-toggle"><button class="btn btn-default btn-xs"><span class="fa fa-eye"></span></button>
+                                    </td>
+                                    <td>{{ $point->name }}</td>
+                                    <td>{{ $point->external_identifier }}</td>
+                                    <td>{{ $cycleYear }}</td>
+                                    <td>{{ $cycleMonth }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="{{__('labels.general.actions')}}">
+                                            <a href="{{route('admin.payments.electricity.edit', [
+                                                'point_id' => $point->uuid,
+                                                'cycle_year' => $cycleYear,
+                                                'cycle_month' => $cycleMonth
+                                                ])}}" data-toggle="tooltip" data-placement="top" title="{{__('buttons.general.crud.edit')}}" class="btn btn-primary"><i class="fas fa-edit"></i>
+                                            </a>
+                                        </div>
+                                    </td>
                                 </tr>
+                                <tr class="child">
+                                    <td colspan="5" align="center" class="hiddenRowtable collapse fade" id="payments-{{ $point->uuid }}">
+                                        <div>
+                                            @if($point->billPayments->count())
+                                                <table class="table table-responsive-sm table-secondary">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>@lang('validation.attributes.backend.payment.payments.amount') ({{ $default_currency->code }})</th>
+                                                        <th>@lang('validation.attributes.backend.payment.payments.bill_number')</th>
+                                                        <th>@lang('validation.attributes.backend.payment.payments.payment_ref')</th>
+                                                        <th>@lang('validation.attributes.backend.payment.payments.consumption') (KWh)</th>
+                                                        <th>@lang('validation.attributes.backend.payment.payments.method')</th>
+                                                        <th>@lang('validation.attributes.backend.payment.payments.note')</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($point->getPaymentsForCycle($cycleYear, $cycleMonth) as $payment)
+                                                        <tr>
+                                                            <td>{{ number_format($payment->amount, 2) }}</td>
+                                                            <td>{{ $payment->bill_number }}</td>
+                                                            <td>{{ $payment->payment_ref }}</td>
+                                                            <td>{{ $payment->consumption }}</td>
+                                                            <td>{{ $payment->method_label }}</td>
+                                                            <td>{{ $payment->note }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            @else
+                                                <table class="table table-responsive-sm table-secondary table-borderless">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>@lang('labels.backend.quote.quote.table.empty')</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
+
                             @endforeach
                             </tbody>
                         </table>
@@ -64,13 +117,13 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        {!! $methods->total() !!} {{ trans_choice('labels.backend.services.method.table.total', $methods->total()) }}
+                        {!! $points->total() !!} {{ trans_choice('labels.backend.quote.quote.table.total', $points->total()) }}
                     </div>
                 </div><!--col-->
 
                 <div class="col-5">
                     <div class="float-right">
-                        {!! $methods->render() !!}
+                        {!! $points->render() !!}
                     </div>
                 </div><!--col-->
             </div><!--row-->

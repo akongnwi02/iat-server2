@@ -90,6 +90,10 @@ return [
             'results'    => 'Search Results for :query',
         ],
         'welcome'   => 'Welcome to the Dashboard',
+        'bill_payment' => [
+            'money_transfer' => 'Money Transfer',
+            'bill_settlement' => 'Bill Settlement',
+        ]
     ],
     'emails'   => [
         'auth'      => [

@@ -176,7 +176,7 @@
 
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link {{ active_class(Active::checkUriPattern('admin/payments/electricity*')) }}" href="{{ route('admin.payments.electricity.index') }}">
+                            <a class="nav-link {{ active_class(Active::checkUriPattern('admin/payments/electricity*')) }}" href="{{ route('admin.payments.electricity.index', ['cycle_year' => now()->year, 'cycle_month' => now()->month]) }}">
                                 @lang('menus.backend.payments.electricity.management')
                             </a>
                         </li>

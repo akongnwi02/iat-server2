@@ -20,9 +20,11 @@ class CreateBillPaymentsTable extends Migration
             $table->float('amount');
             $table->string('payment_ref')->nullable();
             $table->boolean('is_confirmed')->default(false);
-            $table->enum('type', ['money_transfer', 'bill_settlement']);
+            $table->enum('type', ['water', 'electricity', 'cable']);
+            $table->enum('method', ['money_transfer', 'bill_settlement'])->nullable();
             $table->string('consumption')->nullable();
             $table->string('bill_number')->nullable();
+            $table->string('note')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

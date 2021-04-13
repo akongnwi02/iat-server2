@@ -87,6 +87,10 @@ return [
                 'map'        => 'Map',
             ],
         ],
+        'payment' => [
+            'main' => 'Payments',
+            'unpaid' => 'Unpaid Bills',
+        ],
         
         'log-viewer' => [
             'main'      => 'Log Viewer',
@@ -203,6 +207,7 @@ return [
             'view' => 'View Payments',
             'electricity' => [
                 'management' => 'Electricity Bills',
+                'edit' => 'Update Payment'
             ]
         ]
     ],

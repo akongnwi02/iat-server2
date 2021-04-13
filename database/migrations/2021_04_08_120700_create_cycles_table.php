@@ -14,7 +14,7 @@ class CreateCyclesTable extends Migration
     public function up()
     {
         Schema::create('cycles', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->uuid('uuid')->unique();
             $table->integer('cycle_month');
             $table->integer('cycle_year');
             $table->boolean('is_complete')->default(false);

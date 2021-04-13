@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             'quotes',
             'quote_inventories',
             'cycles',
+            'bill_payments'
         ]);
     
         Model::unguard();
