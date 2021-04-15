@@ -257,6 +257,7 @@ return [
                     'provider_price'      => 'Provider\'s Price (:currency)',
                     'provider_price2'     => 'Provider\'s Price',
                     'is_auto_price'       => 'Auto Price',
+                    'is_internal'         => 'Internal',
                     'auto_price_margin'   => 'Auto Price Margin (:currency)',
                     'adjusted_price'      => 'Adjusted Price (:currency)',
                     'auto_price_margin2'  => 'Auto Price Margin',

@@ -53,6 +53,10 @@ class CycleRepository
         throw new GeneralException(__('exceptions.backend.administration.cycle.mark_error'));
     }
     
+    /**
+     * @return Cycle
+     * @throws GeneralException
+     */
     public function create()
     {
         $cycleMonth = now()->month;
@@ -68,5 +72,18 @@ class CycleRepository
             'cycle_month' => $cycleMonth,
             'cycle_year' => $cycleYear,
         ]);
+    }
+    
+    /**
+     * @param $cycleYear
+     * @param $cycleMonth
+     * @return Cycle
+     */
+    public function findByYearAndMonth($cycleYear, $cycleMonth)
+    {
+        $cycle = Cycle::where('cycle_month', $cycleMonth)
+            ->where('cycle_year', $cycleYear)->first();
+    
+        return $cycle;
     }
 }

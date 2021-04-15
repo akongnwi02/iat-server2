@@ -26,6 +26,7 @@ class SupplyPointTableSeeder extends \Illuminate\Database\Seeder
             'address' => '123 church street',
             'external_identifier' => 'ENEO Contract',
             'is_auto_price' => false,
+            'is_internal' => true,
             'auto_price' => 12,
             'provider_price' => 13,
             'gps_long' => 1.4825,

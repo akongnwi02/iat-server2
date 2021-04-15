@@ -31,9 +31,9 @@ Route::group([
             ->name('electricity.update')
             ->middleware('permission:' . config('permission.permissions.update_bill_payments'));
     
-        Route::get('status/{status}', [QuoteController::class, 'status'])
-            ->name('quote.status')
+        Route::get('mark/{status}', [ElectricityBIllPaymentController::class, 'mark'])
+            ->name('electricity.mark')
             ->where('status', '[A-Za-z0-9]+')
-            ->middleware('permission:' . config('permission.permissions.update_bill_payments'));
+            ->middleware('permission:' . config('permission.permissions.confirm_bill_payments'));
     });
 });

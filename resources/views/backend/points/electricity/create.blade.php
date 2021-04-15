@@ -141,6 +141,17 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.points.electricity.is_internal'))->class('col-md-2 form-control-label')->for('is_internal') }}
+
+                        <div class="col-md-10">
+                            <label class="switch switch-label switch-pill switch-primary">
+                                {{ html()->checkbox('is_internal', null, 1)->class('switch-input') }}
+                                <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
+                            </label>
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         {{ html()->label(__('validation.attributes.backend.points.electricity.price'))
                             ->class('col-md-2 form-control-label')
                             ->for('price_id') }}

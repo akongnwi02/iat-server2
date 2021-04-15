@@ -11,8 +11,10 @@ namespace App\Models\Traits\Relationships;
 
 use App\Models\Business\Commission;
 use App\Models\Company\Company;
+use App\Models\Meter\Meter;
 use App\Models\Payment\BillPayment;
 use App\Models\SupplyPoint\Price;
+use App\Models\Transaction\Transaction;
 
 trait SupplyPointRelationship
 {
@@ -34,5 +36,10 @@ trait SupplyPointRelationship
     public function billPayments()
     {
         return $this->hasMany(BillPayment::class, 'supply_point_id', 'uuid');
+    }
+    
+    public function sales()
+    {
+        return $this->hasMany(Transaction::class, 'supply_point_id', 'uuid');
     }
 }

@@ -37,5 +37,6 @@ class DumpTableSeeder extends Seeder
         $this->call(QuoteTableSeeder::class);
         $this->call(CycleTableSeeder::class);
         $this->call(BillPaymentTableSeeder::class);
+        $this->call(TransactionTableSeeder::class);
     }
 }

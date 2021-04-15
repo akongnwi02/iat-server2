@@ -20,6 +20,14 @@ trait SupplyPointAttribute
         return '<i class="fa fa-times"></i>';
     }
     
+    public function getIsInternalLabelAttribute()
+    {
+        if ($this->is_internal) {
+            return '<i class="fa fa-check"></i>';
+        }
+        return '<i class="fa fa-times"></i>';
+    }
+    
     public function getActionButtonsAttribute()
     {
         return '

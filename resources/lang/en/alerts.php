@@ -120,6 +120,13 @@ return [
                 'status_updated' => 'The status was successfully updated.',
             ]
         ],
+        'payment' => [
+            'electricity' => [
+                'updated' => 'The bill payment was updated successfully',
+                'status_changed' => 'The bill payment status was changed successfully'
+            ]
+        ],
+        
         'accounting' => [
             'collection' => [
                 'paid' => 'The collection was paid successfully.'

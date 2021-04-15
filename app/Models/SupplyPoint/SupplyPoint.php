@@ -50,6 +50,7 @@ class SupplyPoint extends Model
         'provider_price',
         'price_id',
         'is_auto_price',
+        'is_internal',
         'tax',
         'auto_price_margin',
         'meter_no',

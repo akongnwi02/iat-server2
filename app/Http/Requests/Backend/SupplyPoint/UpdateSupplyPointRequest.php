@@ -36,6 +36,7 @@ class UpdateSupplyPointRequest extends FormRequest
             'service_charge_id'   => __('validation.attributes.backend.points.electricity.service_charge'),
             'provider_price'      => __('validation.attributes.backend.points.electricity.provider_price2'),
             'is_auto_price'       => __('validation.attributes.backend.points.electricity.is_auto_price'),
+            'is_internal'       => __('validation.attributes.backend.points.electricity.is_internal'),
             'auto_price_margin'   => __('validation.attributes.backend.points.electricity.auto_price_margin2'),
         ];
     }
@@ -56,6 +57,7 @@ class UpdateSupplyPointRequest extends FormRequest
             'service_charge_id'   => ['nullable', Rule::exists('commissions', 'uuid')],
             'provider_price'      => 'nullable|requiredIf:is_auto_price,1|numeric|gte:0',
             'is_auto_price'       => 'boolean',
+            'is_internal'       => 'boolean',
             'auto_price_margin'   => 'nullable|numeric|gte:0|requiredIf:is_auto_price,1',
         ];
     }

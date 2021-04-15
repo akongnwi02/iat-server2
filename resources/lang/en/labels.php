@@ -353,6 +353,8 @@ return [
                 'adjusted_price'      => 'Adjusted Price',
                 'meter_no'            => 'Meter Number',
                 'is_auto_price'       => 'Auto Price',
+                'is_internal'         => 'Internal',
+                'internal'         => 'Internal',
                 'auto_price_margin'   => 'Auto Price Margin',
                 'service_charge'      => 'Specific Service Charge',
                 'price'               => 'Price',
@@ -721,13 +723,20 @@ return [
                 'create' => 'Create Payment',
                 'show' => 'Show',
                 'table' => [
+                    'company' => 'Company',
                     'supply_point' => 'Supply Point',
                     'external_identifier' => 'Contract Number',
                     'cycle_year' => 'Cycle Year',
                     'cycle_month' => 'Cycle Month',
+                    'confirmed' => 'Confirmed',
                     'amount_collected' => 'Amount Collected',
+                    'system_commission' => 'System Commission',
                     'amount_paid' => 'Amount Paid Out',
-                    'balance' => 'Balance'
+                    'eneo_consumption' => 'ENEO Consumption',
+                    'iat_consumption' => 'IAT Consumption',
+                    'balance' => 'Balance',
+                    'new_tariff' => 'Estimated New Tariff',
+                    'current_tariff' => 'Current Tariff',
                 ]
             ]
         ]

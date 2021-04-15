@@ -170,6 +170,13 @@ return [
                 'mark_error'   => 'There was a problem updating the status of this cycle. Please try again.',
             ]
         ],
+        'payment' => [
+            'electricity' => [
+                'cycle_not_found' => 'The cycle for this payment does not exist in the system',
+                'update_error' => 'There was a problem updating the payments. Please try again later!',
+                'status_error' => 'There was a problem updating the status of the payments. Please try again later!',
+            ]
+        ],
         'payout'   => [
             'drain_error'      => 'There was an error draining the amount',
             'transfer_error'   => 'There was a problem transferring the amount to the strongbox.',

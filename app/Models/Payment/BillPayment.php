@@ -44,5 +44,6 @@ class BillPayment extends Model
         'method',
         'consumption',
         'bill_number',
+        'note',
     ];
 }

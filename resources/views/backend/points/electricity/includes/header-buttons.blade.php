@@ -78,6 +78,16 @@
                     <input value="{{ @request()->input()['filter']['company.name'] }}" name="filter[company.name]" type="text" class="form-control"/>
                 </div>
 
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@lang('labels.backend.points.table.is_internal')</span>
+                    </div>
+                    {{ html()->select('filter[is_internal]', [null => null] + [0 => __('labels.general.no'), 1 => __('labels.general.yes')])
+                        ->value(@request()->input()['filter']['is_internal'])
+                        ->class('form-control')
+                    }}
+                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="'btn btn-secondary btn-sm" onclick="clearFilters()">@lang('buttons.general.filter.clear')</button>
 

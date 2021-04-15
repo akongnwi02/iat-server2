@@ -24,6 +24,7 @@ class CreateSupplyPointsTable extends Migration
             $table->string('meter_no')->nullable();
             $table->enum('type', ['water', 'electricity', 'gaz', 'cable']);
             $table->boolean('is_auto_price')->default(false);
+            $table->boolean('is_internal');
             $table->float('auto_price')->nullable();
             $table->float('auto_price_margin')->nullable();
             $table->float('provider_price')->nullable();

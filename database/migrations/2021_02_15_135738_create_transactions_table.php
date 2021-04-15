@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->uuid('service_id')->nullable();
             $table->uuid('category_id')->nullable();
             $table->uuid('meter_id')->nullable();
+            $table->uuid('supply_point_id')->nullable();
             $table->string('category_code')->nullable();
             $table->string('service_code')->nullable();
             $table->string('currency_code');
@@ -69,6 +70,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('user_id')->references('uuid')->on('users');
             $table->foreign('company_id')->references('uuid')->on('companies');
             $table->foreign('meter_id')->references('uuid')->on('meters');
+            $table->foreign('supply_point_id')->references('uuid')->on('supply_points');
             $table->foreign('service_code')->references('code')->on('services');
             $table->foreign('service_id')->references('uuid')->on('services');
             $table->foreign('category_id')->references('uuid')->on('categories');

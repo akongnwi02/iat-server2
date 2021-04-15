@@ -219,6 +219,7 @@ return [
         'create_bill_payments'  => 'create bill payments',
         'update_bill_payments'  => 'update bill payments',
         'delete_bill_payments'  => 'delete bill payments',
+        'confirm_bill_payments'  => 'confirm bill payments',
         
         // cycles
         'read_cycles'           => 'read cycles',

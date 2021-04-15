@@ -35,6 +35,7 @@
                                 <th>@lang('labels.backend.points.table.external_identifier')</th>
                                 <th>@lang('labels.backend.points.table.meter_no')</th>
                                 <th>@lang('labels.backend.points.table.company')</th>
+                                <th>@lang('labels.backend.points.table.internal')</th>
                                 <th>@lang('labels.backend.points.table.service_charge')</th>
                                 <th>@lang('labels.backend.points.table.price')</th>
                                 <th>@lang('labels.backend.points.table.tax') (%)</th>
@@ -57,6 +58,7 @@
                                     <td>{{ $point->external_identifier}}</td>
                                     <td>{{ $point->meter_no}}</td>
                                     <td>{{ $point->company->name}}</td>
+                                    <td>{!! @$point->is_internal_label !!}</td>
                                     <td>{{ @$point->serviceCharge->name }}</td>
                                     <td>{{ $point->is_auto_price ? '--' : @$point->price->name }}</td>
                                     <td>{{ $point->tax }}</td>

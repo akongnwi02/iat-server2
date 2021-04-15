@@ -12,6 +12,7 @@ namespace App\Models\Traits\Relationships;
 use App\Models\Auth\User;
 use App\Models\Meter\Provider;
 use App\Models\SupplyPoint\SupplyPoint;
+use App\Models\Transaction\Transaction;
 
 trait MeterRelationship
 {
@@ -29,5 +30,10 @@ trait MeterRelationship
     public function blocker()
     {
         return $this->belongsTo(User::class, 'blocker_id', 'uuid');
+    }
+    
+    public function sales()
+    {
+        return $this->hasMany(Transaction::class, 'meter_id', 'uuid');
     }
 }

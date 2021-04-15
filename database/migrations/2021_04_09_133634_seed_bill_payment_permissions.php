@@ -16,6 +16,7 @@ class SeedBillPaymentPermissions extends Migration
             config('permission.permissions.create_bill_payments'),
             config('permission.permissions.update_bill_payments'),
             config('permission.permissions.delete_bill_payments'),
+            config('permission.permissions.confirm_bill_payments'),
         ];
         
         foreach ($permissions as $permission) {

@@ -154,6 +154,7 @@ class TransactionRepository
         $transaction->destination                   = $data['service_number'];
         $transaction->status                        = config('business.transaction.status.created');
         $transaction->meter_id                      = $meter->uuid;
+        $transaction->supply_point_id               = $supplyPoint->uuid;
         $transaction->type                          = $meter->type;
         $transaction->customer_servicecommission_id = @$customerServiceCommission->uuid;
         $transaction->price_id                      = @$supplyPoint->price->uuid;

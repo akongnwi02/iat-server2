@@ -10,20 +10,35 @@ namespace App\Http\Controllers\Backend\BillPayment;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Payment\BillPayment;
+use App\Http\Requests\Backend\Payment\UpdateBillPaymentRequest;
 use App\Models\SupplyPoint\SupplyPoint;
 use App\Repositories\Backend\Payment\BillPaymentRepository;
 use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
+use Illuminate\Http\Request;
 
 class ElectricityBIllPaymentController extends Controller
 {
-    
     /**
+     * @param UpdateBillPaymentRequest $request
      * @param BillPaymentRepository $billPaymentRepository
      * @param SupplyPoint $point
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     * @throws \Throwable
      */
-    public function edit(BillPaymentRepository $billPaymentRepository, SupplyPoint $point)
+    public function update(UpdateBillPaymentRequest $request, BillPaymentRepository $billPaymentRepository, SupplyPoint $point)
+    {
+        $billPaymentRepository->update($point, $request->input());
+    
+        return redirect()->route('admin.payments.electricity.index')
+            ->withFlashSuccess(__('alerts.backend.payment.electricity.updated'));
+    }
+    
+    /**
+     * @param SupplyPoint $point
+     * @return mixed
+     */
+    public function edit(SupplyPoint $point)
     {
         $cycleYear = @request()->cycle_year ?: now()->year;
         $cycleMonth = @request()->cycle_month ?: now()->month;
@@ -54,5 +69,13 @@ class ElectricityBIllPaymentController extends Controller
                 ->paginate())
             ->withCycleYear($cycleYear)
             ->withCycleMonth($cycleMonth);
+    }
+    
+    public function mark(SupplyPoint $point, $status, BillPaymentRepository $billPaymentRepository, Request $request)
+    {
+        $billPaymentRepository->confirm($point, $status, $request->input());
+        
+        return redirect()->route('admin.payments.electricity.index')
+            ->withFlashSuccess(__('alerts.backend.payment.electricity.status_changed'));
     }
 }

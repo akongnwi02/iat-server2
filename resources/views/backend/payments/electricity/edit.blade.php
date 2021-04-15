@@ -70,6 +70,8 @@
                                 ->attribute('maxlength', 191)
                                 ->placeholder(__('validation.attributes.backend.payment.cycle_month'))}}
                         </div><!--col-->
+                        <input type="hidden" name="cycle_year" value="{{ $cycleYear }}">
+                        <input type="hidden" name="cycle_month" value="{{ $cycleMonth }}">
                     </div><!--form-group-->
 
                     <div id="POItablediv">
@@ -135,7 +137,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.quotes.quote.index'), __('buttons.general.cancel')) }}
+                    {{ form_cancel(route('admin.payments.electricity.index'), __('buttons.general.cancel')) }}
                 </div><!--col-->
 
                 <div class="col text-right">
@@ -182,23 +184,23 @@
 
             let inp2 = new_row.cells[1].getElementsByTagName('input')[0];
             inp2.value = '';
-            inp2.name = `inventories[${len}][bill_number]`;
+            inp2.name = `payments[${len}][bill_number]`;
 
             let inp3 = new_row.cells[2].getElementsByTagName('input')[0];
             inp3.value = '';
-            inp3.name = `inventories[${len}][payment_ref]`;
+            inp3.name = `payments[${len}][payment_ref]`;
 
             let inp4 = new_row.cells[3].getElementsByTagName('input')[0];
             inp4.value = '';
-            inp4.name = `inventories[${len}][consumption]`;
+            inp4.name = `payments[${len}][consumption]`;
 
             let inp5 = new_row.cells[4].getElementsByTagName('select')[0];
             inp5.value = '';
-            inp5.name = `inventories[${len}][method]`;
+            inp5.name = `payments[${len}][method]`;
 
             let inp6 = new_row.cells[5].getElementsByTagName('input')[0];
             inp6.value = '';
-            inp6.name = `inventories[${len}][note]`;
+            inp6.name = `payments[${len}][note]`;
 
             x.appendChild(new_row);
         }

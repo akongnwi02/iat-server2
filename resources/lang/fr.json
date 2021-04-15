@@ -113,6 +113,7 @@
   "create bill payments": "create bill payments",
   "update bill payments": "update bill payments",
   "delete bill payments": "delete bill payments",
+  "confirm bill payments": "confirm bill payments",
   "read cycles": "read cycles",
   "create cycles": "create cycles",
   "update cycles": "update cycles",

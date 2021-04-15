@@ -28,13 +28,20 @@
                             <thead>
                             <tr>
                                 <th>@lang('labels.backend.payment.electricity.show')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.company')</th>
                                 <th>@lang('labels.backend.payment.electricity.table.supply_point')</th>
                                 <th>@lang('labels.backend.payment.electricity.table.external_identifier')</th>
                                 <th>@lang('labels.backend.payment.electricity.table.cycle_year')</th>
                                 <th>@lang('labels.backend.payment.electricity.table.cycle_month')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.confirmed')</th>
+                                <th>@lang('labels.backend.payment.electricity.table.system_commission') ({{ $default_currency->code }})</th>
                                 <th>@lang('labels.backend.payment.electricity.table.amount_collected') ({{ $default_currency->code }})</th>
                                 <th>@lang('labels.backend.payment.electricity.table.amount_paid') ({{ $default_currency->code }})</th>
-                                <th>@lang('labels.backend.payment.electricity.table.balance') ({{ $default_currency->code }})</th>
+                                <th>@lang('labels.backend.payment.electricity.table.iat_consumption') (KWh)</th>
+                                <th>@lang('labels.backend.payment.electricity.table.eneo_consumption') (KWh)</th>
+                                <th>@lang('labels.backend.payment.electricity.table.current_tariff') ({{ $default_currency->code. '/KWh' }}) </th>
+                                <th>@lang('labels.backend.payment.electricity.table.new_tariff') ({{ $default_currency->code. '/KWh' }}) </th>
+{{--                                <th>@lang('labels.backend.payment.electricity.table.balance') ({{ $default_currency->code }})</th>--}}
 
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
@@ -49,21 +56,42 @@
                                             data-target="#payments-{{ $point->uuid }}"
                                             class="accordion-toggle"><button class="btn btn-default btn-xs"><span class="fa fa-eye"></span></button>
                                     </td>
+                                    <td>{{ $point->company->name }}</td>
                                     <td>{{ $point->name }}</td>
                                     <td>{{ $point->external_identifier }}</td>
                                     <td>{{ $cycleYear }}</td>
                                     <td>{{ $cycleMonth }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{!! $point->getPaymentsConfirmedStatusForCycleLabel($cycleYear, $cycleMonth) !!}</td>
+                                    <td>{{ number_format($point->getSumSystemCommissionForCycle($cycleYear, $cycleMonth), 2 )}}</td>
+                                    <td>{{ number_format($point->getSumCollectedForCycle($cycleYear, $cycleMonth), 2 )}}</td>
+                                    <td>{{ number_format($point->getSumPaymentsForCycle($cycleYear, $cycleMonth), 2) }}</td>
+                                    <td>{{ number_format($point->getSumIATConsumptionForCycle($cycleYear, $cycleMonth), 2) }}</td>
+                                    <td>{{ number_format($point->getENEOConsumptionForCycle($cycleYear, $cycleMonth), 2) }}</td>
+                                    <td>
+                                        @if($point->is_auto_price)
+                                            {{ number_format($point->adjusted_price, 2) }}
+                                        @else
+                                            {{ number_format($point->price->amount, 2) }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($point->is_auto_price)
+                                            {{ $point->getEstimatedNewTariffForCycle($cycleYear, $cycleMonth) }}
+                                        @else
+                                            {{ 'N/A' }}
+                                        @endif
+                                    </td>
+                                    {{--<td></td>--}}
                                     <td>
                                         <div class="btn-group" role="group" aria-label="{{__('labels.general.actions')}}">
-                                            <a href="{{route('admin.payments.electricity.edit', [
-                                                'point_id' => $point->uuid,
-                                                'cycle_year' => $cycleYear,
-                                                'cycle_month' => $cycleMonth
-                                                ])}}" data-toggle="tooltip" data-placement="top" title="{{__('buttons.general.crud.edit')}}" class="btn btn-primary"><i class="fas fa-edit"></i>
-                                            </a>
+                                            @if(! $point->getPaymentsConfirmedStatusForCycle($cycleYear, $cycleMonth))
+                                                <a href="{{route('admin.payments.electricity.edit', [
+                                                    'point_id' => $point->uuid,
+                                                    'cycle_year' => $cycleYear,
+                                                    'cycle_month' => $cycleMonth
+                                                    ])}}" data-toggle="tooltip" data-placement="top" title="{{__('buttons.general.crud.edit')}}" class="btn btn-primary"><i class="fas fa-edit"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
