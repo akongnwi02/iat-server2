@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        {!! $points->total() !!} {{ trans_choice('labels.backend.quote.quote.table.total', $points->total()) }}
+                        {!! $points->total() !!} {{ trans_choice('labels.backend.payment.electricity.table.total', $points->total()) }}
                     </div>
                 </div><!--col-->
 

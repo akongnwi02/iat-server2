@@ -9,6 +9,8 @@
 namespace App\Repositories\Backend\Payment;
 
 
+use App\Events\Backend\Payment\BillPaymentConfirmed;
+use App\Events\Backend\Payment\BillPaymentUnconfirmed;
 use App\Exceptions\GeneralException;
 use App\Models\Payment\BillPayment;
 use App\Models\SupplyPoint\SupplyPoint;
@@ -66,19 +68,30 @@ class BillPaymentRepository
         });
     }
     
-    public function confirm(SupplyPoint $point, $status, $data)
+    public function  confirm(SupplyPoint $point, $status, $data)
     {
         return \DB::transaction(function () use ($point, $status, $data) {
             $cycleYear = $data['cycle_year'];
             $cycleMonth = $data['cycle_month'];
     
             $payments = $point->getPaymentsForCycle($cycleYear, $cycleMonth);
-            
+            if (!$payments) {
+                throw new GeneralException(__('exceptions.backend.payment.electricity.no_payment_to_confirm'));
+            }
             foreach ($payments as $payment) {
                 $payment->is_confirmed = $status;
                 if (! $payment->update()) {
                     throw new GeneralException(__('exceptions.backend.payment.electricity.status_error'));
                 }
+            }
+            
+            switch ($status) {
+                case 0:
+                    event(new BillPaymentUnconfirmed($point, $cycleYear, $cycleMonth));
+                    break;
+                case 1:
+                    event(new BillPaymentConfirmed($point, $cycleYear, $cycleMonth));
+                    break;
             }
         });
     }

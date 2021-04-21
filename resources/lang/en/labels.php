@@ -737,6 +737,7 @@ return [
                     'balance' => 'Balance',
                     'new_tariff' => 'Estimated New Tariff',
                     'current_tariff' => 'Current Tariff',
+                    'total' => 'points|point'
                 ]
             ]
         ]

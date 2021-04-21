@@ -113,4 +113,29 @@ class SupplyPointRepository
     
         throw new GeneralException(__('exceptions.backend.points.electricity.update_error'));
     }
+    
+    public function autoUpdateTariff(SupplyPoint $point, $cycleYear, $cycleMonth)
+    {
+        \Log::debug('Check to see if tariff should be updated automatically', $point->getAttributes());
+    
+        $amount = $point->getSumPaymentsForCycle($cycleYear, $cycleMonth);
+    
+        $consumption = $point->getENEOConsumptionForCycle($cycleYear, $cycleMonth);
+    
+        if ($point->is_auto_price && $consumption) {
+    
+            \Log::debug('Auto update of tariff in progress');
+    
+            $point->provider_price = $amount / $consumption;
+            
+            $point->adjusted_price = $point->auto_price_margin + $point->provider_price;
+    
+            if ($point->update()) {
+                \Log::info('Auto price adjusted automatically');
+                return $point;
+            }
+    
+            \Log::error('There was an error auto updating the tariff for this supply point', $point->getAttributes());
+        }
+    }
 }

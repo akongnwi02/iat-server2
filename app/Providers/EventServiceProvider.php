@@ -41,6 +41,7 @@ class EventServiceProvider extends ServiceProvider
         \App\Listeners\Backend\Service\CommissionEventListener::class,
         \App\Listeners\Backend\Account\AccountEventListener::class,
         \App\Listeners\Backend\Movement\MovementEventListener::class,
+        \App\Listeners\Backend\Payment\BillPaymentEventListener::class,
         
         /*
          * Api Subscribers

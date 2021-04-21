@@ -62,7 +62,7 @@ trait SupplyPointMethod
         $eneoConsumption = $this->getENEOConsumptionForCycle($cycleYear, $cycleMonth);
     
         if ($eneoConsumption == 0) {
-            return 'N/A';
+            return null;
         }
         
         $estimate = ($this->getSumPaymentsForCycle($cycleYear, $cycleMonth) / $eneoConsumption)  + $this->auto_price_margin;
