@@ -74,7 +74,7 @@ trait SupplyPointMethod
     {
         $payments = $this->getPaymentsForCycle($cycleYear, $cycleMonth);
     
-        if (!$payments) {
+        if (! $payments->toArray()) {
             return false;
         }
   

@@ -11,6 +11,7 @@ namespace App\Repositories\Backend\Payment;
 
 use App\Exceptions\GeneralException;
 use App\Models\Payment\Cycle;
+use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CycleRepository
@@ -36,15 +37,16 @@ class CycleRepository
         $cycle->is_complete = $status;
     
         if ($cycle->save()) {
-        
-            switch ($status) {
-                case 0:
-//                    event(new CycleReopened($account));
-                    break;
+            $supplyPointRepository = new SupplyPointRepository();
+            $billPaymentRepository = new BillPaymentRepository($this);
             
-                case 1:
-//                    event(new CycleCompleted($account));
-                    break;
+            $supplyPoints = $supplyPointRepository->getAllSupplyPointsForCurrentUser()->get();
+            
+            $data['cycle_year'] = $cycle->cycle_year;
+            $data['cycle_month'] = $cycle->cycle_month;
+    
+            foreach ($supplyPoints as $supplyPoint) {
+                $billPaymentRepository->confirm($supplyPoint, $status, $data);
             }
         
             return $cycle;

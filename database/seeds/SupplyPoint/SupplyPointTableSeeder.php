@@ -27,7 +27,7 @@ class SupplyPointTableSeeder extends \Illuminate\Database\Seeder
             'external_identifier' => 'ENEO Contract',
             'is_auto_price' => false,
             'is_internal' => true,
-            'auto_price' => 12,
+            'adjusted_price' => 12,
             'provider_price' => 13,
             'gps_long' => 1.4825,
             'gps_lat' => 1.2354,

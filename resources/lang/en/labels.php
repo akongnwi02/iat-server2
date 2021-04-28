@@ -47,7 +47,7 @@ return [
         'select'             => 'Select One'
     ],
     'backend'  => [
-        'access'         => [
+        'access'    => [
             'roles' => [
                 'create'     => 'Create Role',
                 'edit'       => 'Edit Role',
@@ -125,7 +125,7 @@ return [
                 'view'                => 'View User',
             ],
         ],
-        'companies'      => [
+        'companies' => [
             'company' => [
                 'management'      => 'Company Management',
                 'create'          => 'Create Company',
@@ -195,7 +195,7 @@ return [
                 ],
             ],
         ],
-        'services'       => [
+        'services'  => [
             'service'      => [
                 'management'      => 'Service Management',
                 'assign'          => 'Assign :service to companies',
@@ -229,18 +229,18 @@ return [
                     ]
                 ]
             ],
-            'price'     => [
+            'price'        => [
                 'management' => 'Service Prices',
                 'edit'       => 'Edit Price',
                 'create'     => 'Create Price',
                 'active'     => 'Active Prices',
                 'table'      => [
-                    'name'    => 'Price Name',
-                    'code'    => 'Price Code',
-                    'active'  => 'Active',
-                    'amount'  => 'Amount',
-                    'description'    => 'Price Description',
-                    'total'   => 'price|prices',
+                    'name'        => 'Price Name',
+                    'code'        => 'Price Code',
+                    'active'      => 'Active',
+                    'amount'      => 'Amount',
+                    'description' => 'Price Description',
+                    'total'       => 'price|prices',
                 ]
             ],
             'commission'   => [
@@ -305,7 +305,7 @@ return [
                 ]
             ],
         ],
-        'meters'         => [
+        'meters'    => [
             'electricity' => 'Electricity Meters',
             'water'       => 'Water Meters',
             'create'      => 'Create Meter',
@@ -325,17 +325,17 @@ return [
                 'active'            => 'Active',
                 'last_vending_date' => 'Last Recharge Date',
                 'identifier'        => 'External Identifier',
-                'location'        => 'Room Number',
+                'location'          => 'Room Number',
                 'total'             => 'meter|Meters',
             ],
         ],
-        'points'         => [
+        'points'    => [
             'electricity' => 'Electricity Points',
             'water'       => 'Water Points',
             'create'      => 'Create Point',
             'edit'        => 'Edit Point',
-            'editMap'        => 'Update GPS',
-            'map'        => 'Map',
+            'editMap'     => 'Update GPS',
+            'map'         => 'Map',
             'active'      => 'Active Points',
             'deactivate'  => 'Deactivate Point',
             'filter'      => 'Filter Points',
@@ -354,7 +354,7 @@ return [
                 'meter_no'            => 'Meter Number',
                 'is_auto_price'       => 'Auto Price',
                 'is_internal'         => 'Internal',
-                'internal'         => 'Internal',
+                'internal'            => 'Internal',
                 'auto_price_margin'   => 'Auto Price Margin',
                 'service_charge'      => 'Specific Service Charge',
                 'price'               => 'Price',
@@ -362,54 +362,54 @@ return [
                 'total'               => 'Supply point|Supply points',
             ],
         ],
-        'sales'          => [
+        'sales'     => [
             'management' => 'Sales',
-            'create' => 'New Sale',
+            'create'     => 'New Sale',
             'filter'     => [
-                'title'     => 'Filter Sales',
-                'download'  => 'Download',
-                'service'   => 'Service',
-                'company'   => 'Company',
-                'status'    => 'Status',
-                'agent'     => 'Agent',
-                'reference' => 'Reference',
+                'title'          => 'Filter Sales',
+                'download'       => 'Download',
+                'service'        => 'Service',
+                'company'        => 'Company',
+                'status'         => 'Status',
+                'agent'          => 'Agent',
+                'reference'      => 'Reference',
                 'service_number' => 'Service Number',
-                'from'      => 'From',
-                'to'        => 'To',
+                'from'           => 'From',
+                'to'             => 'To',
             ],
             'table'      => [
-                'code'                  => 'Reference',
-                'company'               => 'Company',
-                'date'                  => 'Date',
-                'user'                  => 'Agent',
-                'items'                 => 'Items',
-                'token'                 => 'Token',
-                'service'               => 'Service',
-                'amount'                => 'Amount',
-                'customer_fee'          => 'Customer Fee',
-                'provider_fee'          => 'Provider Fee',
-                'currency'              => 'Currency',
-                'service_number'        => 'Service Number',
-                'payment_account'       => 'Payment Account',
-                'system_commission'     => 'System Commission',
-                'company_amount'   => 'Company Amount',
-                'units'   => 'Units',
-                'vat'   => 'VAT (%)',
+                'code'              => 'Reference',
+                'company'           => 'Company',
+                'date'              => 'Date',
+                'user'              => 'Agent',
+                'items'             => 'Items',
+                'token'             => 'Token',
+                'service'           => 'Service',
+                'amount'            => 'Amount',
+                'customer_fee'      => 'Customer Fee',
+                'provider_fee'      => 'Provider Fee',
+                'currency'          => 'Currency',
+                'service_number'    => 'Service Number',
+                'payment_account'   => 'Payment Account',
+                'system_commission' => 'System Commission',
+                'company_amount'    => 'Company Amount',
+                'units'             => 'Units',
+                'vat'               => 'VAT (%)',
                 'amount_with_vat'   => 'Amount With VAT',
-                'completed_at'          => 'Completed At',
-                'user_status'           => 'User\'s Status',
-                'actual_status'         => 'Actual Status',
-                'to_be_verified'        => 'To be verified',
-                'total_sales'           => 'sale|sales',
+                'completed_at'      => 'Completed At',
+                'user_status'       => 'User\'s Status',
+                'actual_status'     => 'Actual Status',
+                'to_be_verified'    => 'To be verified',
+                'total_sales'       => 'sale|sales',
             ],
-            'quote' => [
-                'meter_code' => 'Meter Code',
-                'meter_type' => 'Meter Type',
+            'quote'      => [
+                'meter_code'   => 'Meter Code',
+                'meter_type'   => 'Meter Type',
                 'supply_point' => 'Supply Point',
-                'address' => 'Address',
-                'amount' => 'Amount',
-                'units' => 'Units',
-                'tariff_name' => 'Tariff Name',
+                'address'      => 'Address',
+                'amount'       => 'Amount',
+                'units'        => 'Units',
+                'tariff_name'  => 'Tariff Name',
                 'tariff_price' => 'Tariff Price',
             ]
         ],
@@ -453,17 +453,17 @@ return [
                         ],
                         'movements' => [
                             'table' => [
-                                'code'        => 'Code',
-                                'transaction_code'        => 'Transaction Reference',
-                                'amount'      => 'Amount',
-                                'type'        => 'Type',
-                                'user'        => 'Executed By',
-                                'source'      => 'Source Account',
-                                'destination' => 'Destination Account',
-                                'date'        => 'Date',
-                                'reversal'    => 'reversal',
-                                'cancelled'   => 'cancelled',
-                                'total'       => 'movement|movements'
+                                'code'             => 'Code',
+                                'transaction_code' => 'Transaction Reference',
+                                'amount'           => 'Amount',
+                                'type'             => 'Type',
+                                'user'             => 'Executed By',
+                                'source'           => 'Source Account',
+                                'destination'      => 'Destination Account',
+                                'date'             => 'Date',
+                                'reversal'         => 'reversal',
+                                'cancelled'        => 'cancelled',
+                                'total'            => 'movement|movements'
                             ],
                         ],
                     ],
@@ -634,23 +634,24 @@ return [
                     'total'   => 'currency|currencies',
                 ]
             ],
-            'cycle' => [
+            'cycle'    => [
                 'management' => 'Cycle',
                 'edit'       => 'Edit Cycle',
                 'create'     => 'Create Cycle',
                 'active'     => 'Active Cycles',
                 'table'      => [
-                    'month'    => 'Cycle Month',
-                    'year'    => 'Cycle Year',
-                    'complete'  => 'Complete',
-                    'balance'  => 'Balance',
-                    'amount_collected' => 'Amount Collected',
-                    'amount_paid' => 'Amount Paid',
-                    'total'   => 'cycle|cycles',
+                    'month'             => 'Cycle Month',
+                    'year'              => 'Cycle Year',
+                    'complete'          => 'Complete',
+                    'balance'           => 'Balance',
+                    'system_commission' => 'System Commission',
+                    'amount_collected'  => 'Amount Collected',
+                    'amount_paid'       => 'Amount Paid',
+                    'total'             => 'cycle|cycles',
                 ]
             ]
         ],
-        'quote' => [
+        'quote'          => [
             'inventory' => [
                 'management' => 'Inventory Management',
                 'edit'       => 'Edit Inventory',
@@ -661,16 +662,16 @@ return [
                     'total'   => 'inventory|inventories'
                 ]
             ],
-            'quote' => [
+            'quote'     => [
                 'management' => 'Installation Quotes',
                 'edit'       => 'Edit Quote',
                 'create'     => 'Create Quote',
                 'show'       => 'Show',
                 'table'      => [
                     'title'       => 'Title',
-                    'name' => 'Customer Name',
-                    'phone' => 'Customer phone',
-                    'address' => 'Customer Address',
+                    'name'        => 'Customer Name',
+                    'phone'       => 'Customer phone',
+                    'address'     => 'Customer Address',
                     'code'        => 'Code',
                     'amount'      => 'Amount',
                     'description' => 'Description',
@@ -681,63 +682,64 @@ return [
                     'empty'       => 'Empty',
                     'total'       => 'quote|quotes',
                     'inventories' => [
-                        'name' => 'Name',
+                        'name'      => 'Name',
                         'unit_cost' => 'Unit Cost',
-                        'quantity' => 'Quantity',
+                        'quantity'  => 'Quantity',
                         'sub_total' => 'Sub Total',
                     ]
                 ],
-                'filter' => [
-                    'title' => 'Filter Quotes',
-                    'user' => 'Username',
-                    'code' => 'Code',
-                    'customer' => 'Customer',
+                'filter'     => [
+                    'title'      => 'Filter Quotes',
+                    'user'       => 'Username',
+                    'code'       => 'Code',
+                    'customer'   => 'Customer',
                     'start_date' => 'From',
-                    'end_date' => 'To',
-                    'status' => 'Status',
+                    'end_date'   => 'To',
+                    'status'     => 'Status',
                 ],
-                'pdf' => [
-                    'invoice' => 'Invoice',
-                    'date' => 'Date',
-                    'department' => 'Commercial Department',
+                'pdf'        => [
+                    'invoice'          => 'Invoice',
+                    'date'             => 'Date',
+                    'department'       => 'Commercial Department',
                     'business_details' => 'Business Details',
                     'customer_details' => 'Customer Details',
-                    'country' => 'Cameroon',
-                    'description' => 'Notes',
-                    'table' => [
-                        'title' => 'Items',
-                        'material' => 'Item Name',
+                    'country'          => 'Cameroon',
+                    'description'      => 'Notes',
+                    'table'            => [
+                        'title'     => 'Items',
+                        'material'  => 'Item Name',
                         'unit_cost' => 'Unit Cost',
-                        'quantity' => 'Quantity',
+                        'quantity'  => 'Quantity',
                         'sub_total' => 'Sub Total',
-                        'tax' => 'Tax',
-                        'total' => 'Total',
+                        'tax'       => 'Tax',
+                        'total'     => 'Total',
                     ]
                 ]
             ]
         ],
-        'payment' => [
+        'payment'        => [
             'electricity' => [
                 'management' => 'Electricity',
-                'edit' => 'Edit Payment',
-                'create' => 'Create Payment',
-                'show' => 'Show',
-                'table' => [
-                    'company' => 'Company',
-                    'supply_point' => 'Supply Point',
+                'edit'       => 'Edit Payment',
+                'create'     => 'Create Payment',
+                'show'       => 'Show',
+                'table'      => [
+                    'company'             => 'Company',
+                    'supply_point'        => 'Supply Point',
                     'external_identifier' => 'Contract Number',
-                    'cycle_year' => 'Cycle Year',
-                    'cycle_month' => 'Cycle Month',
-                    'confirmed' => 'Confirmed',
-                    'amount_collected' => 'Amount Collected',
-                    'system_commission' => 'System Commission',
-                    'amount_paid' => 'Amount Paid Out',
-                    'eneo_consumption' => 'ENEO Consumption',
-                    'iat_consumption' => 'IAT Consumption',
-                    'balance' => 'Balance',
-                    'new_tariff' => 'Estimated New Tariff',
-                    'current_tariff' => 'Current Tariff',
-                    'total' => 'points|point'
+                    'cycle_year'          => 'Cycle Year',
+                    'is_internal'         => 'Internal',
+                    'cycle_month'         => 'Cycle Month',
+                    'confirmed'           => 'Confirmed',
+                    'amount_collected'    => 'Amount Collected',
+                    'system_commission'   => 'System Commission',
+                    'amount_paid'         => 'Amount Paid Out',
+                    'eneo_consumption'    => 'ENEO Consumption',
+                    'iat_consumption'     => 'IAT Consumption',
+                    'balance'             => 'Balance',
+                    'new_tariff'          => 'Estimated New Tariff',
+                    'current_tariff'      => 'Current Tariff',
+                    'total'               => 'points|point'
                 ]
             ]
         ]

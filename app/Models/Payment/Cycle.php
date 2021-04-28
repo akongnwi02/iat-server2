@@ -10,6 +10,7 @@ namespace App\Models\Payment;
 
 
 use App\Models\Traits\Attributes\CycleAttribute;
+use App\Models\Traits\Methods\CycleMethod;
 use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Wildside\Userstamps\Userstamps;
@@ -31,7 +32,8 @@ class Cycle extends Model
     
     use Uuid,
         Userstamps,
-        CycleAttribute;
+        CycleAttribute,
+        CycleMethod;
     
     protected $fillable = [
         'cycle_month',

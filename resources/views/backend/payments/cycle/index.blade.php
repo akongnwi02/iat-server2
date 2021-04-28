@@ -31,8 +31,7 @@
                                 <th>@lang('labels.backend.administration.cycle.table.month')</th>
                                 <th>@lang('labels.backend.administration.cycle.table.complete')</th>
                                 <th>@lang('labels.backend.administration.cycle.table.amount_collected') ({{ $default_currency->code }})</th>
-                                <th>@lang('labels.backend.administration.cycle.table.amount_paid') ({{ $default_currency->code }})</th>
-                                <th>@lang('labels.backend.administration.cycle.table.balance') ({{ $default_currency->code }})</th>
+                                <th>@lang('labels.backend.administration.cycle.table.system_commission') ({{ $default_currency->code }})</th>
 
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
@@ -43,9 +42,8 @@
                                     <td>{{ $cycle->cycle_year }}</td>
                                     <td>{{ $cycle->cycle_month }}</td>
                                     <td>{!! $cycle->complete_label !!}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ number_format($cycle->getSumPayments(), 2) }}</td>
+                                    <td>{{ number_format($cycle->getSumSystemCommission(), 2) }}</td>
                                     <td>{!! $cycle->action_buttons  !!}</td>
                                 </tr>
                             @endforeach

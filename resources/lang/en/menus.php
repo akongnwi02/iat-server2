@@ -89,6 +89,7 @@ return [
         ],
         'payment' => [
             'main' => 'Payments',
+            'reset_filters' => 'Reset Filters',
             'unpaid' => 'Unpaid Bills',
         ],
         
@@ -206,7 +207,7 @@ return [
             'title' => 'Bill Payments',
             'view' => 'View Payments',
             'electricity' => [
-                'management' => 'Electricity Bills',
+                'management' => 'Electricity Points',
                 'edit' => 'Update Payment'
             ]
         ]
