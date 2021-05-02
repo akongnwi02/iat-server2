@@ -64,4 +64,5 @@ class BusinessErrorCodes
     const TRANSACTION_DELETE_ERROR          = '10050';
     const BILL_NOT_IN_CACHE                 = '10051';
     const BILL_NOT_FOUND                    = '10052';
+    const INVALID_CATEGORY                  = '10053';
 }
