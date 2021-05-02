@@ -145,6 +145,7 @@ class TransactionRepository
         $transaction = new Transaction();
         
         $transaction->code                          = Transaction::generateCode();
+        $transaction->external_id                   = @$data['external_id'];
         $transaction->amount                        = $data['amount'];
         $transaction->user_id                       = auth()->user()->uuid;
         $transaction->company_id                    = auth()->user()->company_id;

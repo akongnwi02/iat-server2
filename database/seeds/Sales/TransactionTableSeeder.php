@@ -25,6 +25,7 @@ class TransactionTableSeeder extends \Illuminate\Database\Seeder
         
         Transaction::create([
             'code'                          => Transaction::generateCode(),
+            'external_id'                   => Uuid::generate(4)->string,
             'amount'                        => 1000,
             'amount_with_vat'               => 1050,
             'user_id'                       => User::first()->uuid,

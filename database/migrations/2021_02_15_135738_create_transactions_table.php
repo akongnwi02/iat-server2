@@ -16,6 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
             $table->string('code')->unique();
+            $table->string('external_id')->nullable();
             $table->double('amount');
             $table->double('amount_with_vat');
             $table->uuid('user_id')->nullable();
