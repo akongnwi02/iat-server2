@@ -136,9 +136,9 @@ class TransactionRepository
         $customerServiceFee = $this->commissionRepository->calculateFee($customerServiceCommission, $data['amount']);
         
         \Log::debug('The following service charge will be applied for this transaction', [
-            'uuid'        => $customerServiceCommission->uuid,
-            'name'        => $customerServiceCommission->name,
-            'description' => $customerServiceCommission->description,
+            'uuid'        => @$customerServiceCommission->uuid,
+            'name'        => @$customerServiceCommission->name,
+            'description' => @$customerServiceCommission->description,
         ]);
         
         // Transaction creation

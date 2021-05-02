@@ -42,7 +42,7 @@ class PartnerController extends Controller
     public function search(Request $request, ServiceRepository $serviceRepository, MeterRepository $meterRepository)
     {
         $this->validate($request, [
-            'service_number' => ['required', Rule::exists('meters', 'meter_code')],
+            'service_number' => ['required', 'string'],
             'service_code' => ['required', Rule::exists('services', 'code')]
         ]);
         
