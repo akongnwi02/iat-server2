@@ -19,12 +19,13 @@ class TransactionResource extends JsonResource
             'id'             => $this->uuid,
             'type'           => $this->type,
             'energy'         => $this->units,
-            'number'         => $this->code,
+            'number'         => (string)$this->code,
             'token'          => $this->token,
-            'confirmed_at'   => $this->completed_at ? @$this->completed_at->toDatetimeString() : null,
+            'created_at'     => $this->created_at->toDatetimeString(),
+            'confirmed_at'   => $this->completed_at,
             'meter_code'     => $this->meter->meter_code,
             'amount'         => $this->amount,
-            'external_id'    => $this->external_id
+            'external_id'    => $this->external_id,
         ];
     }
 }

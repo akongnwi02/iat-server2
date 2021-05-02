@@ -81,6 +81,7 @@ class PartnerController extends Controller
         $this->validate($request, [
             'service_number' => ['required', Rule::exists('meters', 'meter_code')],
             'service_code'   => ['required', Rule::exists('services', 'code')],
+            'currency_code'  => ['required', Rule::exists('currencies', 'code')],
             'amount'         => ['required', 'numeric'],
             'external_id'    => ['required', 'string', Rule::unique('transactions', 'external_id')]
         ]);

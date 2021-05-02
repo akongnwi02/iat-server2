@@ -134,7 +134,11 @@ class MovementRepository
             if ($movement->save() && $transaction->save()) {
 //                event(Accountfdfs($movement));
                 if ($transaction->meter_id) {
+                    $transaction->completed_at = now()->toDateTimeString();
                     $transaction->meter->last_vending_date = now()->toDateTimeString();
+                    
+                    $transaction->meter->save();
+                    $transaction->save();
                 }
                 return $transaction;
             }
