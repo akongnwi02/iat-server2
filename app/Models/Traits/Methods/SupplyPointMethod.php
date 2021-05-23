@@ -9,6 +9,8 @@
 namespace App\Models\Traits\Methods;
 
 
+use App\Models\Payment\BillPayment;
+
 trait SupplyPointMethod
 {
     public function getPaymentsForCycle($cycleYear, $cycleMonth)
@@ -94,5 +96,12 @@ trait SupplyPointMethod
         }
         return '<a href="'.route('admin.payments.electricity.mark', [$this, 1, 'cycle_year' => $cycleYear, 'cycle_month' => $cycleMonth]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.confirm').'" name="confirm_item"><span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span></a>';
     
+    }
+    
+    public function getConfirmedPaymentsTotal()
+    {
+        return BillPayment::where('supply_point_id', $this->uuid)
+            ->where('is_confirmed', true)
+            ->sum('amount');
     }
 }

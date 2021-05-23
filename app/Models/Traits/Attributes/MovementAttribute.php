@@ -27,9 +27,13 @@ trait MovementAttribute
     
     public function getDestinationLabelAttribute()
     {
-        if ($this->destination->type->name == config('business.account.type.user'))
+        if ($this->destination->type->name == config('business.account.type.user')) {
             return $this->destination->user->full_name. ' | ' . $this->destination->code;
-        return $this->destination->company->name. ' | ' . $this->destination->code;
+        }
+        if ($this->destination->type->name == config('business.account.type.company')) {
+            return $this->destination->company->name. ' | ' . $this->destination->code;
+        }
+        return $this->destination->point->name. ' | ' . $this->destination->code;
     }
     
     public function getClassLabelAttribute()

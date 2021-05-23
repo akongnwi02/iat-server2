@@ -10,6 +10,8 @@ namespace App\Repositories\Backend\SupplyPoint;
 
 
 use App\Exceptions\GeneralException;
+use App\Models\Account\Account;
+use App\Models\Account\AccountType;
 use App\Models\SupplyPoint\SupplyPoint;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -79,15 +81,23 @@ class SupplyPointRepository
         $point->is_auto_price = request()->has('is_auto_price') ? 1 : 0;
         $point->is_internal = request()->has('is_internal') ? 1 : 0;
     
+    
+        // create account for the company
+        $account = new Account();
+        $account->code = Account::generateCode();
+        $account->type_id = AccountType::where('name', config('business.account.type.point'))->first()->uuid;
+        
         if ($point->is_auto_price) {
             $point->adjusted_price = $point->provider_price + $point->auto_price_margin;
         }
         
         if ($point->save()) {
-
-//            event(new ServiceUpdated($service));
-        
-            return $point;
+            $account->owner_id = $point->uuid;
+            
+            if ($account->save()) {
+//                event(new SupplyPointCreated($point));
+                return $point;
+            }
         }
     
         throw new GeneralException(__('exceptions.backend.points.electricity.create_error'));

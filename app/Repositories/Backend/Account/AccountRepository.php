@@ -60,15 +60,14 @@ class AccountRepository
             ->with('type');
         
         if (! auth()->user()->company->isDefault()) {
-            $accounts->whereHas('user', function ($query) {
-                    $query->where('users.company_id', auth()->user()->company_id);
-                })
-            ->orWhereHas('company', function ($query) {
+            $accounts->whereHas('company', function ($query) {
                     $query->where('companies.uuid', auth()->user()->company_id);
                 });
         }
         
-        return $accounts->whereHas('company');
+        return $accounts->whereHas('type', function ($query) {
+            $query->where('name', config('business.account.type.company'));
+        });
     }
     
     public function getUmbrellaAccounts()
@@ -92,6 +91,28 @@ class AccountRepository
         }
     
         return $accounts->whereHas('user');
+    }
+    
+    public function getSupplyPointPointAccounts()
+    {
+        $accounts = QueryBuilder::for(Account::class)
+            ->allowedFilters([
+                AllowedFilter::scope('is_active'),
+                AllowedFilter::scope('type_id'),
+            ])
+            ->where('is_default', false)
+            ->defaultSort('-accounts.is_active', '-accounts.created_at')
+            ->with('type');
+    
+        if (! auth()->user()->company->isDefault()) {
+            $accounts->whereHas('point', function ($query) {
+                $query->where('company_id', auth()->user()->company_id);
+            });
+        }
+    
+        return $accounts->whereHas('type', function ($query) {
+            $query->where('name', config('business.account.type.point'));
+        });
     }
     
     public function getSystemCommissionBalance()

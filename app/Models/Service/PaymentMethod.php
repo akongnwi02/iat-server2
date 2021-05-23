@@ -9,6 +9,7 @@
 namespace App\Models\Service;
 
 use App\Models\Traits\Attributes\PaymentMethodAttribute;
+use App\Models\Traits\Methods\PaymentMethodMethod;
 use App\Models\Traits\Relationships\PaymentMethodRelationship;
 use App\Models\Traits\Scopes\PaymentMethodScope;
 use App\Models\Traits\Uuid;
@@ -18,6 +19,7 @@ use Wildside\Userstamps\Userstamps;
 class PaymentMethod extends Model
 {
     use Uuid,
+        PaymentMethodMethod,
         PaymentMethodAttribute,
         PaymentMethodRelationship,
         PaymentMethodScope;

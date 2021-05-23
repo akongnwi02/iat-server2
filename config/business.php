@@ -13,6 +13,7 @@ return [
         'type' => [
             'user'    => 'user account',
             'company' => 'company account',
+            'point' => 'supply point account'
         ]
     ],
     

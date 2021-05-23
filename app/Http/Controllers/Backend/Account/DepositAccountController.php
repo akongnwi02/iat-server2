@@ -69,7 +69,7 @@ class DepositAccountController extends Controller
     {
         $movementRepository->creditAccount($account, $request->only(['amount', 'currency_id', 'direction']));
         
-        return redirect()->route('admin.account.deposit.index')
+        return redirect()->back()
             ->withFlashSuccess(__('alerts.backend.account.transferred'));
     }
 }

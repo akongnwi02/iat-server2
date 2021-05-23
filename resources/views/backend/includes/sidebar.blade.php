@@ -124,7 +124,12 @@
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
                             <a class="nav-link {{ active_class(Active::checkUriPattern('admin/account/deposit*')) }}" href="{{ route('admin.account.deposit.index') }}">
-                                @lang('menus.backend.accounts.deposit.management')
+                                @lang('menus.backend.accounts.deposit.company')
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ active_class(Active::checkUriPattern('admin/account/point*')) }}" href="{{ route('admin.account.point.index') }}">
+                                @lang('menus.backend.accounts.point.management')
                             </a>
                         </li>
                         <li class="nav-item">

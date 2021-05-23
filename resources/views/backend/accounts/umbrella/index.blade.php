@@ -32,6 +32,7 @@
                             <tr>
                                 <th>@lang('labels.backend.account.umbrella.table.code')</th>
                                 <th>@lang('labels.backend.account.umbrella.table.user')</th>
+                                <th>@lang('labels.backend.account.umbrella.table.company')</th>
                                 {{--<th>@lang('labels.backend.account.umbrella.table.active')</th>--}}
                                 <th>@lang('labels.backend.account.umbrella.table.balance')</th>
                                 <th>@lang('labels.general.actions')</th>
@@ -42,6 +43,7 @@
                                 <tr>
                                     <td>{{ $account->code }}</td>
                                     <td>{{ $account->owner_label }}</td>
+                                    <td>{{ @$account->user->company->name }}</td>
                                     {{--<td>{!! $account->active_label !!}</td>--}}
                                     <td class="balance" id="{{ $account->uuid }}">{{ $account->umbrella_balance_label }}</td>
                                     <td>

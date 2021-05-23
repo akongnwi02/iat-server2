@@ -177,6 +177,7 @@ return [
             
             'deposit'  => [
                 'management' => 'Deposit Account',
+                'company' => 'Company Account',
                 'view'       => 'View Account'
             ],
             'umbrella' => [
@@ -185,6 +186,10 @@ return [
             ],
             'payout'   => [
                 'management' => 'Commission Account',
+                'view'       => 'View Account',
+            ],
+            'point' => [
+                'management' => 'Supply Point Account',
                 'view'       => 'View Account',
             ]
         ],

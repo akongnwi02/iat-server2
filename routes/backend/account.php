@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Account\DepositAccountController;
 use App\Http\Controllers\Backend\Account\AccountStatusController;
 use App\Http\Controllers\Backend\Account\UmbrellaAccountController;
 use App\Http\Controllers\Backend\Account\PayoutAccountController;
+use App\Http\Controllers\Backend\Account\SupplyPointAccountController;
 
 Route::group([
     'prefix'     => 'account',
@@ -37,6 +38,10 @@ Route::group([
         ->name('payout.index')
         ->middleware('permission:'.config('permission.permissions.read_accounts'));
     
+    Route::get('/point', [SupplyPointAccountController::class, 'index'])
+        ->name('point.index')
+        ->middleware('permission:'.config('permission.permissions.read_accounts'));
+    
     /*
      * Specific Account
      */
@@ -45,6 +50,10 @@ Route::group([
         // Account
         Route::get('/deposit', [DepositAccountController::class, 'show'])
             ->name('deposit.show')
+            ->middleware('permission:'.config('permission.permissions.read_accounts'));
+
+        Route::get('/point', [SupplyPointAccountController::class, 'show'])
+            ->name('point.show')
             ->middleware('permission:'.config('permission.permissions.read_accounts'));
         
         Route::get('/umbrella', [UmbrellaAccountController::class, 'show'])

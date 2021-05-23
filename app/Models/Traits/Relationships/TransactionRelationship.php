@@ -15,6 +15,7 @@ use App\Models\Company\Company;
 use App\Models\Meter\Meter;
 use App\Models\Service\Category;
 use App\Models\Service\Service;
+use App\Models\SupplyPoint\SupplyPoint;
 
 trait TransactionRelationship
 {
@@ -46,5 +47,10 @@ trait TransactionRelationship
     public function movement()
     {
         return $this->belongsTo(Movement::class, 'code', 'transaction_code');
+    }
+    
+    public function point()
+    {
+        return $this->belongsTo(SupplyPoint::class, 'supply_point_id', 'uuid');
     }
 }

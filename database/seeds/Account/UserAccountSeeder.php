@@ -19,11 +19,11 @@ class UserAccountSeeder extends Seeder
     {
         Account::unguard();
     
-        $acompanyWithoutAccounts = User::has('account', '=', 0)->get();
+        $usersWithoutAccounts = User::has('account', '=', 0)->get();
     
-        foreach ($acompanyWithoutAccounts as $company) {
+        foreach ($usersWithoutAccounts as $user) {
             Account::create([
-                'owner_id' => $company->uuid,
+                'owner_id' => $user->uuid,
                 'type_id' => AccountType::where('name', config('business.account.type.user'))->first()->uuid,
                 'code' => Account::generateCode(),
             ]);

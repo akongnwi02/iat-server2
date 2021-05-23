@@ -448,6 +448,51 @@ return [
                             'code'    => 'Account Number',
                             'type'    => 'Account Type',
                             'owner'   => 'Owner',
+                            'company' => 'Company',
+                            'active'  => 'Active',
+                            'balance' => 'Account Balance',
+                        ],
+                        'movements' => [
+                            'table' => [
+                                'code'             => 'Code',
+                                'transaction_code' => 'Transaction Reference',
+                                'amount'           => 'Amount',
+                                'type'             => 'Type',
+                                'user'             => 'Executed By',
+                                'source'           => 'Source Account',
+                                'destination'      => 'Destination Account',
+                                'date'             => 'Date',
+                                'reversal'         => 'reversal',
+                                'cancelled'        => 'cancelled',
+                                'total'            => 'movement|movements'
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'point'                 => [
+                'management' => 'Supply Point Accounts',
+                'actions'    => 'Account Actions',
+                'view'       => 'View Account',
+                'table'      => [
+                    'code'    => 'Account Number',
+                    'type'    => 'Account Type',
+                    'owner'   => 'Owner',
+                    'company' => 'Company',
+                    'active'  => 'Active',
+                    'balance' => 'Account Balance',
+                    'total'   => 'account|accounts'
+                ],
+                'tabs'       => [
+                    'titles'  => [
+                        'overview'  => 'Overview',
+                        'movements' => 'Movements',
+                    ],
+                    'content' => [
+                        'overview'  => [
+                            'code'    => 'Account Number',
+                            'type'    => 'Account Type',
+                            'owner'   => 'Owner',
                             'active'  => 'Active',
                             'balance' => 'Account Balance',
                         ],
@@ -480,6 +525,7 @@ return [
                     'balance' => 'Balance',
                     'total'   => 'account|accounts',
                     'user'    => 'User',
+                    'company' => 'Company',
                 ],
                 'tabs'       => [
                     'titles'  => [
@@ -490,6 +536,7 @@ return [
                         'overview'  => [
                             'code'    => 'Account Number',
                             'user'    => 'User',
+                            'company'    => 'Company',
                             'balance' => 'Account Balance',
                         ],
                         'movements' => [

@@ -14,6 +14,7 @@ use App\Models\Account\Movement;
 use App\Models\Account\MovementType;
 use App\Models\Account\Payout;
 use App\Models\Account\PayoutType;
+use App\Models\Payment\BillPayment;
 use App\Models\Transaction\Transaction;
 use App\Repositories\Backend\Account\AccountRepository;
 
@@ -97,7 +98,14 @@ trait AccountMethod
     
     public function getBalance()
     {
-        return $this->getCredit() - $this->getDebit();
+        $balance = $this->getCredit() - $this->getDebit();
+        
+        if ($this->type->name == config('business.account.type.point')) {
+            $balance = $balance - $this->point->getConfirmedPaymentsTotal();
+        }
+        
+        return $balance;
+        
     }
     
     public function getCommissionBalance()

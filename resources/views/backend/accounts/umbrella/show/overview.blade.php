@@ -12,10 +12,14 @@
             </tr>
 
             <tr>
+                <th>@lang('labels.backend.account.umbrella.tabs.content.overview.company')</th>
+                <td>{{ @$account->user->company->name }}</td>
+            </tr>
+
+            <tr>
                 <th>@lang('labels.backend.account.umbrella.tabs.content.overview.balance')</th>
                 <td>{{ $account->umbrella_balance_label }}</td>
             </tr>
-
         </table>
     </div>
 </div><!--table-responsive-->

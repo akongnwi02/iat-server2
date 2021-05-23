@@ -9,6 +9,7 @@
 namespace App\Models\Traits\Relationships;
 
 
+use App\Models\Account\Account;
 use App\Models\Business\Commission;
 use App\Models\Company\Company;
 use App\Models\Meter\Meter;
@@ -41,5 +42,10 @@ trait SupplyPointRelationship
     public function sales()
     {
         return $this->hasMany(Transaction::class, 'supply_point_id', 'uuid');
+    }
+    
+    public function account()
+    {
+        return $this->hasOne(Account::class, 'owner_id', 'uuid');
     }
 }

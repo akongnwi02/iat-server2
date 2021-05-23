@@ -45,6 +45,10 @@ class CreditAccountRequest extends FormRequest
             return auth()->user()->company->isDefault() || request()->account->user->company->uuid == auth()->user()->company->uuid;
         }
         
+        if (request()->account->type->name == config('business.account.type.point')) {
+            return auth()->user()->company->isDefault() || request()->account->point->company->uuid == auth()->user()->company->uuid;
+        }
+        
         return false;
     }
     

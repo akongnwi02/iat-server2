@@ -17,6 +17,11 @@
             </tr>
 
             <tr>
+                <th>@lang('labels.backend.account.deposit.tabs.content.overview.company')</th>
+                <td>{{ @$account->point->company->name }}</td>
+            </tr>
+
+            <tr>
                 <th>@lang('labels.backend.account.deposit.tabs.content.overview.active')</th>
                 <td>{!! $account->active_label !!}</td>
             </tr>

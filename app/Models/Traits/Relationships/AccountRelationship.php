@@ -12,6 +12,7 @@ use App\Models\Account\AccountType;
 use App\Models\Account\Payout;
 use App\Models\Auth\User;
 use App\Models\Company\Company;
+use App\Models\SupplyPoint\SupplyPoint;
 
 trait AccountRelationship
 {
@@ -23,6 +24,11 @@ trait AccountRelationship
     public function user()
     {
         return $this->belongsTo(User::class, 'owner_id', 'uuid');
+    }
+    
+    public function point()
+    {
+        return $this->belongsTo(SupplyPoint::class, 'owner_id', 'uuid');
     }
     
     public function type()

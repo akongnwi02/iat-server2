@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.backend.account.deposit.management'))
+@section('title', app_name() . ' | ' . __('labels.backend.account.point.management'))
 
 @section('breadcrumb-links')
     {{--@include('backend.services.service.includes.breadcrumb-links')--}}
@@ -8,19 +8,19 @@
 
 @section('content')
 
-    @include('backend.accounts.deposit.includes.credit')
+    @include('backend.accounts.point.includes.credit')
 
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        @lang('labels.backend.account.deposit.management')
+                        @lang('labels.backend.account.point.management')
                     </h4>
                 </div><!--col-->
 
                 {{--<div class="col-sm-7">--}}
-                    {{--@include('backend.services.service.includes.header-buttons')--}}
+                {{--@include('backend.services.service.includes.header-buttons')--}}
                 {{--</div><!--col-->--}}
             </div><!--row-->
 
@@ -30,11 +30,12 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>@lang('labels.backend.account.deposit.table.code')</th>
-                                <th>@lang('labels.backend.account.deposit.table.type')</th>
-                                <th>@lang('labels.backend.account.deposit.table.company')</th>
-                                <th>@lang('labels.backend.account.deposit.table.active')</th>
-                                <th>@lang('labels.backend.account.deposit.table.balance')</th>
+                                <th>@lang('labels.backend.account.point.table.code')</th>
+                                <th>@lang('labels.backend.account.point.table.type')</th>
+                                <th>@lang('labels.backend.account.point.table.owner')</th>
+                                <th>@lang('labels.backend.account.point.table.company')</th>
+                                <th>@lang('labels.backend.account.point.table.active')</th>
+                                <th>@lang('labels.backend.account.point.table.balance')</th>
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
                             </thead>
@@ -44,18 +45,17 @@
                                     <td>{{ $account->code }}</td>
                                     <td>{{ ucwords(__($account->type->name)) }}</td>
                                     <td>{{ $account->owner_label }}</td>
+                                    <td>{{ @$account->point->company->name }}</td>
                                     <td>{!! $account->active_label !!}</td>
-
                                     @if($account->getBalance() < 0)
                                         <td class="text-danger">{{ $account->account_balance_label }}</td>
                                     @else
                                         <td>{{ $account->account_balance_label }}</td>
                                     @endif
-
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="@lang('labels.backend.account.deposit.actions')">
+                                        <div class="btn-group" role="group" aria-label="@lang('labels.backend.account.point.actions')">
                                             @can(config('permission.permissions.read_accounts'))
-                                                <a href="{{ route('admin.account.deposit.show', $account->uuid) }}" data-toggle="tooltip" data-placement="top" title="@lang('buttons.general.crud.view')" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('admin.account.point.show', $account->uuid) }}" data-toggle="tooltip" data-placement="top" title="@lang('buttons.general.crud.view')" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                             @endcan
                                             @can(config('permission.permissions.credit_accounts'))
                                                 <button name="creditPopup" id="{{ $account->uuid }}" title="@lang('labels.backend.account.credit')" class="btn btn-success"><i class="fas fa-plus-circle"></i></button>
@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        {!! $accounts->total() !!} {{ trans_choice('labels.backend.account.deposit.table.total', $accounts->total()) }}
+                        {!! $accounts->total() !!} {{ trans_choice('labels.backend.account.point.table.total', $accounts->total()) }}
                     </div>
                 </div><!--col-->
 

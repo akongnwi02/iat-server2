@@ -126,7 +126,7 @@ class MovementRepository
             $movement->service_id = $transaction->service_id;
             $movement->is_complete = true;
             $movement->currency_id = $this->currencyRepository->findByCode($transaction->currency_code)->uuid;
-            $movement->destinationaccount_id = $transaction->company->account->uuid;
+            $movement->destinationaccount_id = $transaction->point->account->uuid;
             $movement->transaction_code = $transaction->code;
     
             $transaction->status = config('business.transaction.status.success');

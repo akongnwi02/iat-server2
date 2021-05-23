@@ -96,6 +96,9 @@ trait AccountAttribute
             return $this->company->name;
         }
         
+        if ($this->type->name == config('business.account.type.point')) {
+            return $this->point->name;
+        }
     }
     
     public function getPendingPayoutsAttribute()

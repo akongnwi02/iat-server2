@@ -24,6 +24,12 @@ class SeedAccountTypesTable extends Migration
             'name' => config('business.account.type.company'),
             'code' => 'COMPANYACCOUNT',
         ]);
+        
+        DB::table('accounttypes')->insert([
+            'uuid' => Uuid::generate(4)->string,
+            'name' => config('business.account.type.point'),
+            'code' => 'POINTACCOUNT',
+        ]);
     }
 
     /**
