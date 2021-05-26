@@ -17,11 +17,11 @@ abstract class AbstractClient
         $this->config = $config;
     }
     
-    public abstract function searchMeter($meterCode) : string;
+    public abstract function search($meterCode) : string;
     
-    public abstract function generateToken(array $params) : string;
+    public abstract function buy(array $params) : string;
     
-    public abstract function getMaintenanceCode($meterCode, $codeType) : string;
+    public abstract function getMaintenanceCode($meterCode, $type) : string;
     
     public function getClientName()
     {

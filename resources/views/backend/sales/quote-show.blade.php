@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col text-left">
                                 <div class="form-group clearfix">
-                                    {{ form_cancel(route('admin.sales.quote'), __('buttons.general.cancel')) }}
+                                    {{ form_cancel(route('admin.sales.quote', ['service_code' => request('service_code')]), __('buttons.general.cancel')) }}
                                 </div><!--form-group-->
                             </div><!--col-->
 

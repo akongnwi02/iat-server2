@@ -37,6 +37,14 @@ Route::group([
         ->name('electricity.store')
         ->middleware('permission:'.config('permission.permissions.create_meters'));
     
+    Route::get('electricity/maintain', [ElectricMeterController::class, 'maintainForm'])
+        ->name('electricity.maintain')
+        ->middleware('permission:'.config('permission.permissions.maintain_meters'));
+    
+    Route::post('electricity/maintain', [ElectricMeterController::class, 'maintain'])
+        ->name('electricity.maintain')
+        ->middleware('permission:'.config('permission.permissions.maintain_meters'));
+    
     /*
      * Specific Electricity Meter
      */

@@ -328,6 +328,12 @@ return [
                 'location'          => 'Room Number',
                 'total'             => 'meter|Meters',
             ],
+            'maintain' => [
+                'title' => 'Maintain Meter',
+                'meter_code' => 'Meter Code',
+                'type' => 'Token Type',
+                'token' => 'Token',
+            ]
         ],
         'points'    => [
             'electricity' => 'Electricity Points',

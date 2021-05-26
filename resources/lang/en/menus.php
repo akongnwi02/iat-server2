@@ -67,6 +67,7 @@ return [
             'all'         => 'All Meters',
             'electricity' => [
                 'management' => 'Electricity Meters',
+                'maintain' => 'Maintain Meters',
                 'create'     => 'Register Electricity Meter',
                 'edit'       => 'Edit Electricity Meter',
                 'activate'   => 'Activate Meter',

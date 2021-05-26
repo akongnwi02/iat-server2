@@ -1,4 +1,4 @@
-@can(config('permission.permissions.create_meters'))
+@can(config('permission.permissions.read_meters'))
     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
         <span onclick="showFilterPopup()" class="btn btn-{{ count(array_filter(request()->input('filter') ?: [], function($filter){return $filter !== null && $filter !== '';})) ?'primary':'dark'}} ml-1" data-toggle="tooltip" title="@lang('labels.backend.meters.filter')"><i class="fas fa-filter"></i>
             @if(count(array_filter(request()->input('filter')?:[], function($filter){return $filter !== null && $filter !== '';})) && count(@request()->input()['filter']) > 0)
@@ -6,8 +6,20 @@
             @endif
         </span>
         <a href="{{ route('admin.meter.electricity.download', request()->except('page')) }}"><span class="btn btn-secondary ml-1" data-toggle="tooltip" title="@lang('labels.general.download')"><i class="fas fa-download"></i></span><a>
+        @can(config('permission.permissions.maintain_meters'))
+            <div class="btn-group" role="group" aria-label="Button group">
+                <div class="dropdown">
+                    <a href="#" class="btn btn-danger ml-1 dropdown-toggle" role="button" id="breadcrumb-dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="@lang('labels.general.create_new')"><i class="fas fa-cogs"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-1">
+                        <a class="dropdown-item" href="{{ route('admin.meter.electricity.maintain', ['type' => 'clear_credit']) }}">{{ucwords(__('clear credit'))}}</a>
+                        <a class="dropdown-item" href="{{ route('admin.meter.electricity.maintain', ['type' => 'clear_tamper']) }}">{{ucwords(__('clear tamper'))}}</a>
+                    </div>
+                </div><!--dropdown-->
+                <!--<a class="btn" href="#">Static Link</a>-->
+            </div><!--btn-group-->
+        @endcan
         @can(config('permission.permissions.create_meters'))
-            <a href="{{ route('admin.meter.electricity.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
+                <a href="{{ route('admin.meter.electricity.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
         @endcan
     </div><!--btn-toolbar-->
 @endcan

@@ -28,7 +28,7 @@ class AccountStatusController extends Controller
     {
         $accountRepository->mark($account, $status);
         
-        return redirect()->route('admin.account.deposit.index')
+        return redirect()->back()
             ->withFlashSuccess(__('alerts.backend.account.status_updated'));
     }
 }

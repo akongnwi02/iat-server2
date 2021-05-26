@@ -28,11 +28,27 @@ class HexcellClient extends AbstractClient
     }
     
     /**
+     * @param array $params
+     * @return string
+     * @throws GeneralException
+     */
+    public function buy(array $params): string
+    {
+        switch ($params['serviceCode']) {
+            case 'IAT_ELEC_CREDIT':
+                return $this->generateToken($params);
+                break;
+            default:
+                throw new GeneralException(__('exceptions.backend.sales.service_invalid'));
+        }
+    }
+    
+    /**
      * @param $meterCode
      * @return string
      * @throws GeneralException
      */
-    public function searchMeter($meterCode): string
+    public function search($meterCode): string
     {
         $hexcellUrl = $this->config['url'];
     
@@ -103,7 +119,7 @@ class HexcellClient extends AbstractClient
             
             \Log::info('Meter registered successfully', ['meter code' => $meterCode]);
             // if the meter is saved successfully, return the result of the search to continue normal operation
-            return $this->searchMeter($meterCode);
+            return $this->search($meterCode);
         }
         
         \Log::emergency("Error registering meter $meterCode", ['response from server' => $response]);
@@ -155,7 +171,7 @@ class HexcellClient extends AbstractClient
     public function getMaintenanceCode($meterCode, $codeType) : string
     {
         $hexcellUrl = $this->config['url'];
-        if ($codeType == 'tamper_code') {
+        if ($codeType == 'clear_tamper') {
             $url = $hexcellUrl . '/ClearTamperSign/GetToken';
         } else{
             $url = $hexcellUrl . '/ClearCredit/GetToken';

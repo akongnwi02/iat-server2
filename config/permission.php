@@ -201,6 +201,7 @@ return [
         'update_meters'         => 'update meters',
         'delete_meters'         => 'delete meters',
         'deactivate_meters'     => 'deactivate meters',
+        'maintain_meters'     => 'maintain meters',
         
         // quotes
         'read_quotes'           => 'read quotes',

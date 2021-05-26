@@ -23,6 +23,9 @@ return [
                 'restore_user_confirm' => 'Restore this user to its original state?',
             ],
         ],
+        'meters' => [
+            'maintain' => 'Generate :type token'
+        ],
         
         'dashboard' => [
             'title'   => 'Dashboard',

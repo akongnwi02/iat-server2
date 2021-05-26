@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             'countries',
             'currencies',
             'pricings',
-            'services',
             'settings',
             'accounts',
             'movements',

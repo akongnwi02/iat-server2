@@ -18,13 +18,14 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                {{ html()->label(__('validation.attributes.backend.sales.service_code'))->for('service_code') }}
+                                {{ html()->label(__('validation.attributes.backend.sales.service'))->for('service') }}
 
                                 <div class="col-md-10">
-                                    {{ html()->select('service_code', [null => null] + $services)
+                                    {{ html()->text('service')
                                         ->class('form-control')
-                                        }}
-                                </div><!--col-->
+                                        ->value($service->name)
+                                        ->disabled() }}
+                                </div>
                             </div><!--form-group-->
                         </div><!--col-->
                     </div><!--row-->
@@ -46,11 +47,11 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                {{ html()->label(__('validation.attributes.backend.sales.service_number'))->for('service_number') }}
+                                {{ html()->label(__('validation.attributes.backend.sales.meter_number'))->for('service_number') }}
                                 <div class="col-md-10">
                                 {{ html()->text('service_number')
                                     ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.sales.service_number'))
+                                    ->placeholder(__('validation.attributes.backend.sales.meter_number'))
                                     ->required() }}
                                 </div>
                             </div><!--form-group-->
@@ -60,6 +61,11 @@
                     {{ html()->hidden('currency_code')
                         ->class('form-control')
                         ->value($default_currency->code)
+                        ->required()
+                    }}
+                    {{ html()->hidden('service_code')
+                        ->class('form-control')
+                        ->value($service->code)
                         ->required()
                     }}
                     </div><!--row-->

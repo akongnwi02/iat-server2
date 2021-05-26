@@ -41,11 +41,27 @@ class CalinClient extends AbstractClient
     }
     
     /**
+     * @param array $params
+     * @return string
+     * @throws GeneralException
+     */
+    public function buy(array $params): string
+    {
+        switch ($params['serviceCode']) {
+            case 'IAT_ELEC_CREDIT':
+                return $this->generateToken($params);
+                break;
+            default:
+                throw new GeneralException(__('exceptions.backend.sales.service_invalid'));
+        }
+    }
+    
+    /**
      * @param $meterCode
      * @return bool
      * @throws GeneralException
      */
-    public function searchMeter($meterCode): string
+    public function search($meterCode): string
     {
         $url  = $this->config['url'] . '/POS_Preview';
         $data = $this->getRequestData([
@@ -151,7 +167,7 @@ class CalinClient extends AbstractClient
     public function getMaintenanceCode($meterCode, $codeType): string
     {
         $url = $this->config['new_url'] . '/tokennew';
-        if ($codeType == 'tamper_code') {
+        if ($codeType == 'clear_tamper') {
             $calinCodeType = 'ClearTampToken';
         } else {
             $calinCodeType = 'ClearCreditToken';

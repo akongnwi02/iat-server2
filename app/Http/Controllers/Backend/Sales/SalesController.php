@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Backend\Sales;
 
 use App\Exceptions\GeneralException;
 use App\Exports\Sales\SalesExport;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Sales\SalesQuoteRequest;
 use App\Models\Company\Company;
 use App\Models\Service\Service;
@@ -18,8 +19,9 @@ use App\Repositories\Backend\Company\Company\CompanyRepository;
 use App\Repositories\Backend\Services\Service\ServiceRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
-class SalesController
+class SalesController extends Controller
 {
     public function index(TransactionRepository $transactionRepository, ServiceRepository $serviceRepository, CompanyRepository $companyRepository)
     {
@@ -40,10 +42,24 @@ class SalesController
         return (new SalesExport($sales));
     }
     
-    public function create()
+    /**
+     * @param Request $request
+     * @param ServiceRepository $serviceRepository
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function create(Request $request, ServiceRepository $serviceRepository)
     {
-        return view('backend.sales.create')
-            ->withServices(auth()->user()->company->services()->pluck('name', 'code')->toArray());
+        $serviceCode = $request->has('service_code') ? $request->input('service_code') : 'IAT_ELEC_CREDIT';
+    
+        switch ($serviceCode) {
+            case 'IAT_ELEC_CREDIT':
+                return view('backend.sales.create.credit')
+                    ->withService($serviceRepository->findByCode($serviceCode));
+                break;
+            default:
+                throw new GeneralException(__('exceptions.backend.sales.service_invalid'));
+        }
     }
     
     /**
@@ -89,7 +105,7 @@ class SalesController
     
         if ($transaction) {
             \Log::info('Purchase confirmation request received. Beginning processing');
-        
+            
             $processed = $transactionRepository->processTransaction($transaction);
             
             if ($processed) {

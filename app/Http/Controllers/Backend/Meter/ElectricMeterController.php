@@ -16,11 +16,14 @@ use App\Http\Requests\Backend\Meter\ActivateMeterRequest;
 use App\Http\Requests\Backend\Meter\DeactivateMeterRequest;
 use App\Http\Requests\Backend\Meter\UpdateMeterRequest;
 use App\Http\Requests\Backend\Meter\StoreMeterRequest;
+use App\Http\Requests\Backend\Meter\MaintainMeterRequest;
 use App\Models\Meter\Meter;
 use App\Repositories\Backend\Meter\MeterRepository;
 use App\Repositories\Backend\Meter\ProviderRepository;
 use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
 use App\Services\Clients\ClientProvider;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ElectricMeterController extends Controller
 {
@@ -187,12 +190,46 @@ class ElectricMeterController extends Controller
         
         $provider = $providerRepository->findByUuid($data['provider_id']);
         
-        $data['identifier'] = $this->client($provider)->searchMeter($data['meter_code']);
+        $data['identifier'] = $this->client($provider)->search($data['meter_code']);
         $data['type'] = config('business.meter.type.electricity');
         
         $meterRepository->create($data);
     
         return redirect()->route('admin.meter.electricity.index')
             ->withFlashSuccess(__('alerts.backend.meters.electricity.created'));
+    }
+    
+    /**
+     * @param Request $request
+     * @param MeterRepository $meterRepository
+     * @param ProviderRepository $providerRepository
+     * @return mixed
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function maintainForm(MaintainMeterRequest $request, MeterRepository $meterRepository, ProviderRepository $providerRepository)
+    {
+        
+        $type = $request->has('type') ? $request->input('type') : 'clear_tamper';
+        
+        return view('backend.meters.electricity.maintain-show')
+            ->withType($type);
+    }
+    
+    /**
+     * @param MaintainMeterRequest $request
+     * @param MeterRepository $meterRepository
+     * @return mixed
+     * @throws \App\Exceptions\Api\ServerErrorException
+     */
+    public function maintain(MaintainMeterRequest $request, MeterRepository $meterRepository)
+    {
+        $meter = $meterRepository->findByMeterCode($request->input('meter_code'));
+        
+        $token = $this->client($meter->provider)->getMaintenanceCode($meter->meter_code, $request->input('type'));
+
+        return view('backend.meters.electricity.maintain')
+            ->withType($request->input('type'))
+            ->withMeter($meter)
+            ->withToken($token);
     }
 }

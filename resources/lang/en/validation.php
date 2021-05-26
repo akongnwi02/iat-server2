@@ -239,8 +239,10 @@ return [
             ],
             'sales' => [
                 'service_code' => 'Service',
+                'service' => 'Service',
                 'currency_code' => 'Currency',
                 'service_number' => 'Service Number',
+                'meter_number' => 'Meter Number',
                 'amount' => 'Amount',
             ],
             'points'         => [

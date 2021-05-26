@@ -195,9 +195,10 @@ class TransactionRepository
                 'meterId' => $transaction->meter->identifier,
                 'energy'  => $transaction->units,
                 'amount'  => $transaction->amount,
+                'serviceCode' => $transaction->service_code
             ];
             
-            $transaction->token = $this->client($transaction->meter->provider)->generateToken($params);
+            $transaction->token = $this->client($transaction->meter->provider)->buy($params);
             $this->movementRepository->registerSale($transaction);
             return true;
         } else {

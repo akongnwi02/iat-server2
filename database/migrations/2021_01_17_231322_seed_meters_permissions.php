@@ -19,6 +19,7 @@ class SeedMetersPermissions extends Migration
             config('permission.permissions.update_meters'),
             config('permission.permissions.delete_meters'),
             config('permission.permissions.deactivate_meters'),
+            config('permission.permissions.maintain_meters'),
         ];
     
         foreach ($permissions as $permission) {
