@@ -22,4 +22,14 @@ trait MeterScope
     {
         return $query->where('last_vending_date', '<', Carbon::parse($date)->addDay());
     }
+    
+    public function scopeCreatedAtStart($query, $date)
+    {
+        return $query->where('created_at', '>=', Carbon::parse($date));
+    }
+    
+    public function scopeCreatedAtEnd($query, $date)
+    {
+        return $query->where('created_at', '<', Carbon::parse($date)->addDay());
+    }
 }

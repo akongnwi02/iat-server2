@@ -30,6 +30,8 @@ class MeterRepository
                 AllowedFilter::exact('is_active'),
                 AllowedFilter::scope('vend_start_date'),
                 AllowedFilter::scope('vend_end_date'),
+                AllowedFilter::scope('created_at_start'),
+                AllowedFilter::scope('created_at_end'),
             ])
             ->allowedSorts('meters.is_active', 'meters.created_at')
             ->defaultSort( '-meters.is_active', '-meters.created_at');

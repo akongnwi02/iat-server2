@@ -91,6 +91,15 @@
                     <input value="{{ @request()->input()['filter']['vend_end_date'] }}" name="filter[vend_end_date]" type="date" class="form-control">
                 </div>
 
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@lang('labels.backend.meters.table.registration_date')</span>
+                    </div>
+                    <input value="{{ @request()->input()['filter']['created_at_start'] }}" name="filter[created_at_start]" type="date" class="form-control">
+
+                    <input value="{{ @request()->input()['filter']['created_at_end'] }}" name="filter[created_at_end]" type="date" class="form-control">
+                </div>
+
 
                 <div class="modal-footer">
                     <button type="button" class="'btn btn-secondary btn-sm" onclick="clearFilters()">@lang('buttons.general.filter.clear')</button>

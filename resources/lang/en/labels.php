@@ -324,6 +324,7 @@ return [
                 'type'              => 'Type',
                 'active'            => 'Active',
                 'last_vending_date' => 'Last Recharge Date',
+                'registration_date' => 'Registration Date',
                 'identifier'        => 'External Identifier',
                 'location'          => 'Room Number',
                 'total'             => 'meter|Meters',
