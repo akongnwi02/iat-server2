@@ -1,18 +1,7 @@
 @can(config('permission.permissions.read_sales'))
     <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
         @can(config('permission.permissions.create_sales'))
-            <div class="btn-group" role="group" aria-label="Button group">
-                <div class="dropdown">
-                    <a href="#" class="btn btn-success ml-1 dropdown-toggle" role="button" id="breadcrumb-dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
-                    <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-1">
-                        @foreach($logged_in_user->company->services as $service)
-                            <a class="dropdown-item" href="{{ route('admin.sales.quote', ['service_code' => $service->code]) }}">{{$service->name}}</a>
-                        @endforeach
-                    </div>
-                </div><!--dropdown-->
-
-                <!--<a class="btn" href="#">Static Link</a>-->
-            </div><!--btn-group-->
+            <a href="{{ route('admin.sales.quote') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="@lang('labels.general.create_new')"><i class="fas fa-plus-circle"></i></a>
         @endcan
         <span onclick="showFilterPopup()" class="btn btn-{{ count(array_filter(request()->input('filter') ?: [], function($filter){return $filter !== null && $filter !== '';})) ?'primary':'dark'}} ml-1" data-toggle="tooltip" title="@lang('labels.backend.sales.filter.title')"><i class="fas fa-filter"></i>
             @if(count(array_filter(request()->input('filter')?:[], function($filter){return $filter !== null && $filter !== '';})) && count(@request()->input()['filter']) > 0)

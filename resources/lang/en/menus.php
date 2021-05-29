@@ -146,9 +146,9 @@ return [
                 'edit'       => 'Edit Service',
             ],
             'price'     => [
-                'management' => 'Prices',
-                'edit'       => 'Edit Price',
-                'create'       => 'Create Price',
+                'management' => 'Tariff',
+                'edit'       => 'Edit Tariff',
+                'create'       => 'Create Tariff',
             ],
             'commission'   => [
                 'management' => 'Service Charges',
