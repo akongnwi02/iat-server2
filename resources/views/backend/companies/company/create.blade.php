@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    {{ html()->form('POST', route('admin.companies.company.store'))->class('form-horizontal')->open() }}
+    {{ html()->modelForm(@$company, 'POST', route('admin.companies.company.store'))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">

@@ -16,3 +16,8 @@ Breadcrumbs::for('admin.companies.company.edit', function ($trail, $id) {
     $trail->push(__('menus.backend.companies.company.edit'), route('admin.companies.company.edit', $id));
 });
 
+Breadcrumbs::for('admin.companies.company.clone', function ($trail, $id) {
+    $trail->parent('admin.companies.company.index');
+    $trail->push(__('menus.backend.companies.company.clone'), route('admin.companies.company.clone', $id));
+});
+

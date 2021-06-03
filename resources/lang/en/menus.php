@@ -120,6 +120,7 @@ return [
                 'management' => 'Companies',
                 'create'     => 'Create Company',
                 'edit'       => 'Edit Company',
+                'clone'      => 'Clone Company',
             ],
         ],
         

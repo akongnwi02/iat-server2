@@ -52,7 +52,7 @@ trait CompanyAttribute
     public function getEditButtonAttribute()
     {
         if (auth()->user()->can(config('permission.permissions.update_companies'))) {
-            return '<a href="'.route('admin.companies.company.edit', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'" class="btn btn-primary"><i class="fas fa-edit"></i></a>';
+            return '<a href="'.route('admin.companies.company.edit', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>';
         }
     }
     
@@ -74,12 +74,20 @@ trait CompanyAttribute
         return '';
     }
     
+    public function getCloneButtonAttribute()
+    {
+        if (auth()->user()->can(config('permission.permissions.create_companies'))) {
+            return '<a href="'.route('admin.companies.company.clone', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.clone').'" class="btn btn-outline-success"><i class="fas fa-copy"></i></a>';
+        }
+    }
+    
     public function getActionButtonsAttribute()
     {
         return '
     	<div class="btn-group" role="group" aria-label="'.__('labels.backend.companies.company.company_actions').'">
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
+		  '.$this->clone_button.'
 		  <div class="btn-group btn-group-sm" role="group">
 			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  '.__('labels.general.more').'

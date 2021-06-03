@@ -47,6 +47,10 @@ Route::group([
         Route::get('/', [CompanyController::class, 'show'])
             ->name('company.show')
             ->middleware('permission:'.config('permission.permissions.read_companies'));
+        
+        Route::get('clone', [CompanyController::class, 'clone'])
+            ->name('company.clone')
+            ->middleware('permission:'.config('permission.permissions.create_companies'));
 
         Route::get('edit', [CompanyController::class, 'edit'])
             ->name('company.edit')

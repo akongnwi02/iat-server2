@@ -116,6 +116,7 @@ return [
         'submit'   => 'Submit',
         'confirm' => 'Confirm',
         'download' => 'Download',
+        'clone' => 'Clone',
 
         'crud' => [
             'create' => 'Create',

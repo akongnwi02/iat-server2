@@ -60,6 +60,21 @@ class CompanyController extends Controller
     {
         return 'COMING SOON';
     }
+    
+    /**
+     * @param Company $company
+     * @param CountryRepository $countryRepository
+     * @return mixed
+     */
+    public function clone(Company $company, CountryRepository $countryRepository)
+    {
+        return view('backend.companies.company.create')
+            ->withCompany($company)
+            ->withCountries($countryRepository->get()
+                ->pluck('name', 'uuid')
+                ->toArray())
+            ->withTypes(CompanyType::get());
+    }
 
     public function edit(
         Company $company,
