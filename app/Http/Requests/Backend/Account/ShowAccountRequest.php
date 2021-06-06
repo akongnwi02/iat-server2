@@ -24,6 +24,10 @@ class ShowAccountRequest extends FormRequest
             return auth()->user()->company == request()->account->user->company;
         }
         
+        if (request()->account->type->name == config('business.account.type.point')) {
+            return auth()->user()->company == request()->account->point->company;
+        }
+        
         if (request()->account->type->name == config('business.account.type.company')) {
             return auth()->user()->company == request()->account->company;
         }
