@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Partner\PartnerController;
 
-Route::group(['namespace' => 'Partner', 'prefix' => 'partner', 'middleware' => ['active.confirmed']], function () {
+Route::group(['namespace' => 'Partner', 'prefix' => 'partner'], function () {
     
     // INTERNAL API DOESN'T NEED TO CHANGE
     Route::post('token', [PartnerController::class, 'auth'])
@@ -11,7 +11,7 @@ Route::group(['namespace' => 'Partner', 'prefix' => 'partner', 'middleware' => [
     // API VERSION 1
     Route::group(['namespace' => 'VersionOne', 'prefix' => 'v1'], function () {
         // protected routes
-        Route::group(['middleware' => ['jwt.auth']], function () {
+        Route::group(['middleware' => ['jwt.auth', 'active.confirmed']], function () {
             
             Route::get('/search', [PartnerController::class, 'search']);
     
