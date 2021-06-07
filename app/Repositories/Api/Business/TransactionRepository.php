@@ -117,7 +117,7 @@ class TransactionRepository
         $supplyPoint = $meter->supplyPoint;
         $vat         = $supplyPoint->tax;
         
-        $amountWithVat = $data['amount'] * $vat / 100;
+        $amountWithVat = $data['amount'] - $data['amount'] * $vat / 100;
         
         
         $price = $supplyPoint->is_auto_price ? $supplyPoint->adjusted_price : $supplyPoint->price->amount;
@@ -194,7 +194,7 @@ class TransactionRepository
             $params = [
                 'meterId' => $transaction->meter->identifier,
                 'energy'  => $transaction->units,
-                'amount'  => $transaction->amount,
+                'amount'  => $transaction->amount_with_vat,
                 'serviceCode' => $transaction->service_code
             ];
             
