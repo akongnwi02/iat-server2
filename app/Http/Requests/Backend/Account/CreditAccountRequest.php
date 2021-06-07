@@ -63,7 +63,7 @@ class CreditAccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount'      => ['required', 'numeric', 'min:100', /*new SufficientBalanceRule()*/],
+            'amount'      => ['required', 'numeric', 'min:100', new SufficientBalanceRule()],
             'direction'   => 'required|string|in:IN,OUT',
             'currency_id' => ['required', Rule::exists('currencies', 'uuid')]
         ];
