@@ -25,6 +25,7 @@ class UpdateSupplyPointGpsCoordinatesRequest extends FormRequest
         return [
             'gps_lat'  => __('validation.attributes.backend.points.electricity.gps_lat'),
             'gps_long' => __('validation.attributes.backend.points.electricity.gps_long'),
+            'address' => __('validation.attributes.backend.points.electricity.address')
         ];
     }
     
@@ -33,6 +34,7 @@ class UpdateSupplyPointGpsCoordinatesRequest extends FormRequest
         return [
             'gps_lat'  => ['required', 'numeric', 'between:-90,90'],
             'gps_long' => ['required', 'numeric', 'between:-180,180'],
+            'address' => ['required', 'string']
         ];
     }
     

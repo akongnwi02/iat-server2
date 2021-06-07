@@ -65,7 +65,7 @@
                                 ->class('form-control')
                                 ->placeholder(__('validation.attributes.backend.points.electricity.address'))
                                 ->attribute('maxlength', 191)
-                                ->disabled() }}
+                                ->required() }}
                         </div><!--col-->
                     </div><!--form-group-->
 

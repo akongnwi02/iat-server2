@@ -113,6 +113,7 @@ class SupplyPointRepository
     {
         $point->gps_lat = $data['gps_lat'];
         $point->gps_long = $data['gps_long'];
+        $point->address = $data['address'];
     
         if ($point->update()) {
 
