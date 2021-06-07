@@ -399,7 +399,7 @@ return [
                 'service_number'    => 'Service Number',
                 'payment_account'   => 'Payment Account',
                 'system_commission' => 'System Commission',
-                'company_amount'    => 'Company Amount',
+                'supply_point_amount'    => 'Supply Point Amount',
                 'units'             => 'Units',
                 'vat'               => 'VAT (%)',
                 'amount_with_vat'   => 'Amount With VAT',
