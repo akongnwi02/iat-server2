@@ -36,9 +36,9 @@
                                 <th>@lang('labels.backend.sales.table.amount') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.system_commission') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.supply_point')</th>
+                                <th>@lang('labels.backend.sales.table.amount_with_vat') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.supply_point_amount') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.vat')</th>
-                                <th>@lang('labels.backend.sales.table.amount_with_vat') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.price') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.units')</th>
                                 <th>@lang('labels.backend.sales.table.service_number')</th>
@@ -59,9 +59,9 @@
                                     <td>{{ number_format($sale->amount, 2) }}</td>
                                     <td>{{ number_format($sale->system_commission, 2) }}</td>
                                     <td>{{ @$sale->point->name }}</td>
+                                    <td>{{ number_format($sale->amount_with_vat, 2) }}</td>
                                     <td>{{ number_format($sale->amount - $sale->system_commission, 2) }}</td>
                                     <td>{{ $sale->vat }}</td>
-                                    <td>{{ number_format($sale->amount_with_vat, 2) }}</td>
                                     <td>{{ number_format($sale->price, 2) }}</td>
                                     <td>{{ $sale->units_label }}</td>
                                     <td>{{ $sale->destination }}</td>
