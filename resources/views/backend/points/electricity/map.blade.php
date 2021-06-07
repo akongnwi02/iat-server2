@@ -36,9 +36,15 @@
             var locations = [];
             var point;
             for (point of points) {
+                let lat = point.gps_lat;
+                let long = point.gps_long;
+
+                if (lat === null || long === null) {
+                    continue;
+                }
                 locations.push({
-                    lat: point.gps_lat,
-                    lng: point.gps_long,
+                    lat:lat,
+                    lng: long,
                     label: point.name.charAt(0).toUpperCase(),
                     draggable: false,
                     title: point.name,
