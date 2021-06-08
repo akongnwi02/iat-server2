@@ -48,12 +48,12 @@ class PartnerController extends Controller
         
         $service = $serviceRepository->findByCode($request->input('service_code'));
         
-        $meter = $meterRepository->findByMeterCode($request->input('service_number'))
-            ->where('type', $service->category->code)
-            ->first();
+        $meter = $meterRepository->findByMeterCode($request->input('service_number'));
         
         if ($meter) {
-            return new MeterResource($meter);
+            if ($meter->type == $service->category->code) {
+                return new MeterResource($meter);
+            }
         }
         
         throw new NotFoundException(BusinessErrorCodes::RESOURCE_NOT_FOUND_ERROR, 'Meter code was not found');
