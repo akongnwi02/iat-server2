@@ -219,6 +219,7 @@ class TransactionRepository
     public function getAllSales()
     {
         $sales = QueryBuilder::for(Transaction::class)
+            ->where('status', config('business.transaction.status.success'))
             ->allowedFilters([
                 AllowedFilter::exact('company_id'),
                 AllowedFilter::exact('service_id'),
