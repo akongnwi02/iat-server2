@@ -426,6 +426,7 @@ return [
         'account'        => [
             'management'            => 'Account',
             'company_balance'       => 'Company Balance',
+            'float_balance'       => 'Float Balance',
             'umbrella_balance'      => 'Umbrella Balance',
             'commission_balance'    => 'Commission Balance',
             'credit'                => 'Credit Account',

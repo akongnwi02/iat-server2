@@ -5,7 +5,7 @@
                 <h4 class="modal-title" id="exampleModalCenterTitle">
                     <span class="title-text"></span>
                     <br/>
-                    <small class="text-muted">@lang('labels.backend.account.company_balance'): <strong>{{ $logged_in_user->company->account->account_balance_label }}</strong></small>
+                    <small class="text-muted">@lang('labels.backend.account.float_balance'): <strong>{{ $logged_in_user->company->account->float_balance_label }}</strong></small>
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="@lang('buttons.general.cancel')">
                     <span aria-hidden="true">&times;</span>
