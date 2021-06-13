@@ -37,7 +37,7 @@ class MeterRepository
             ->defaultSort( '-meters.is_active', '-meters.created_at');
         
         if (! auth()->user()->company->is_default) {
-            $meters->whereHas('supply_point', function($query){
+            $meters->whereHas('supplyPoint', function($query){
                 $query->where('company_id', auth()->user()->company->uuid);
             });
         }
