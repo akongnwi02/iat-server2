@@ -9,6 +9,7 @@
 namespace App\Models\Traits\Methods;
 
 
+use App\Models\Payment\BillPayment;
 use App\Models\Transaction\Transaction;
 
 trait CycleMethod
@@ -27,5 +28,10 @@ trait CycleMethod
             ->whereMonth('created_at', '=', $this->cycle_month)
             ->where('status', config('business.transaction.status.success'))
             ->sum('system_commission');
+    }
+    
+    public function getSumPaidOut()
+    {
+        return $this->billPayments()->sum('amount');
     }
 }
