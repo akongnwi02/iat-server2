@@ -20,8 +20,13 @@ trait MovementAttribute
         if ($this->type->name == config('business.movement.type.float'))
             return 'N/A';
     
-        if ($this->source->type->name == config('business.account.type.user'))
+        if ($this->source->type->name == config('business.account.type.user')) {
             return $this->source->user->full_name . ' | ' . $this->source->code;
+        }
+        
+        if ($this->source->type->name == config('business.account.type.point')) {
+            return $this->source->point->name . ' | ' . $this->source->code;
+        }
         return $this->source->company->name . ' | ' . $this->source->code;
     }
     

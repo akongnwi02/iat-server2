@@ -98,6 +98,16 @@ trait AccountMethod
     
     public function getBalance()
     {
+        $floatBalance = $this->getFloatBalance();
+        
+        $supplyPointsBalance = $this->getPointsBalance();
+        
+        return $floatBalance + $supplyPointsBalance;
+        
+    }
+    
+    public function getFloatBalance()
+    {
         $balance = $this->getCredit() - $this->getDebit();
         
         if ($this->type->name == config('business.account.type.point')) {
@@ -106,6 +116,19 @@ trait AccountMethod
         
         return $balance;
         
+    }
+    
+    public function getPointsBalance()
+    {
+        $points = $this->company->points;
+        
+        $total = 0;
+    
+        foreach ($points as $point) {
+            $total += $point->account->getFloatBalance();
+        }
+    
+        return $total;
     }
     
     public function getCommissionBalance()

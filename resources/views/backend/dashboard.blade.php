@@ -10,7 +10,7 @@
                 <div class="cols-sm-8 col-lg-8">
                     <div class="row">
                         @if(@$logged_in_user->company->is_default)
-                            <div class="col-sm-4 col-lg-4">
+                            <div class="col-sm-3 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         @can(config('permission.permissions.request_payouts'))
@@ -31,7 +31,7 @@
                                 </div>
                             </div><!--col-->
                         @endif
-                        <div class="col-sm-4 col-lg-4">
+                        <div class="col-sm-3 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     @can(config('permission.permissions.float_accounts'))
@@ -53,7 +53,20 @@
                                 </div>
                             </div>
                         </div><!--col-->
-                        <div class="col-sm-4 col-lg-4">
+                        <div class="col-sm-3 col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="text-value-lg">{{ $company_float_balance }}</div>
+                                    <div>@lang('strings.backend.dashboard.company.float')</div>
+                                    {{--<div class="progress progress-xs my-2">--}}
+                                    {{--<div class="progress-bar bg-danger" role="progressbar" style="width: 25%"--}}
+                                    {{--aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                    {{--</div>--}}
+                                    <small class="text-muted">@lang('strings.backend.dashboard.company.float_balance_help')</small>
+                                </div>
+                            </div>
+                        </div><!--col-->
+                        <div class="col-sm-3 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     @can(config('permission.permissions.drain_accounts'))

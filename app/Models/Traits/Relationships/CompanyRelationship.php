@@ -12,6 +12,7 @@ use App\Models\Account\Account;
 use App\Models\Account\Strongbox;
 use App\Models\Auth\User;
 use App\Models\Service\PaymentMethod;
+use App\Models\SupplyPoint\SupplyPoint;
 use App\Models\System\Country;
 use App\Models\Service\Service;
 use App\Models\Company\CompanyType;
@@ -79,5 +80,10 @@ trait CompanyRelationship
     public function strongbox()
     {
         return $this->hasOne(Strongbox::class, 'company_id', 'uuid');
+    }
+    
+    public function points()
+    {
+        return $this->hasMany(SupplyPoint::class, 'company_id', 'uuid');
     }
 }

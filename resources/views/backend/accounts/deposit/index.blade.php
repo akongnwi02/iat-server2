@@ -35,6 +35,7 @@
                                 <th>@lang('labels.backend.account.deposit.table.company')</th>
                                 <th>@lang('labels.backend.account.deposit.table.active')</th>
                                 <th>@lang('labels.backend.account.deposit.table.balance')</th>
+                                <th>@lang('labels.backend.account.deposit.table.float')</th>
                                 <th>@lang('labels.general.actions')</th>
                             </tr>
                             </thead>
@@ -50,6 +51,12 @@
                                         <td class="text-danger">{{ $account->account_balance_label }}</td>
                                     @else
                                         <td>{{ $account->account_balance_label }}</td>
+                                    @endif
+
+                                    @if($account->getFloatBalance() < 0)
+                                        <td class="text-danger">{{ $account->float_balance_label }}</td>
+                                    @else
+                                        <td>{{ $account->float_balance_label }}</td>
                                     @endif
 
                                     <td>

@@ -81,6 +81,11 @@ trait AccountAttribute
         return number_format($this->getBalance(), 2) . ' ' . Currency::where('is_default', true)->first()->code;
     }
     
+    public function getFloatBalanceLabelAttribute()
+    {
+        return number_format($this->getFloatBalance(), 2) . ' ' . Currency::where('is_default', true)->first()->code;
+    }
+    
     public function getUmbrellaBalanceLabelAttribute()
     {
         return number_format($this->getUmbrellaBalance(), 2) . ' ' . Currency::where('is_default', true)->first()->code;

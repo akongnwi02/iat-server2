@@ -178,7 +178,7 @@ return [
             'title' => 'Accounts',
             
             'deposit'  => [
-                'management' => 'Deposit Account',
+                'management' => 'Company Account',
                 'company' => 'Company Account',
                 'view'       => 'View Account'
             ],

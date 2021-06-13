@@ -47,10 +47,10 @@
                                     <td>{{ $account->owner_label }}</td>
                                     <td>{{ @$account->point->company->name }}</td>
                                     <td>{!! $account->active_label !!}</td>
-                                    @if($account->getBalance() < 0)
-                                        <td class="text-danger">{{ $account->account_balance_label }}</td>
+                                    @if($account->getFloatBalance() < 0)
+                                        <td class="text-danger">{{ $account->float_balance_label }}</td>
                                     @else
-                                        <td>{{ $account->account_balance_label }}</td>
+                                        <td>{{ $account->float_balance_label }}</td>
                                     @endif
                                     <td>
                                         <div class="btn-group" role="group" aria-label="@lang('labels.backend.account.point.actions')">

@@ -28,10 +28,10 @@
 
             <tr>
                 <th>@lang('labels.backend.account.deposit.tabs.content.overview.balance')</th>
-                @if($account->getBalance() < 0)
-                    <td class="text-danger">{{ $account->account_balance_label }}</td>
+                @if($account->getFloatBalance() < 0)
+                    <td class="text-danger">{{ $account->float_balance_label }}</td>
                 @else
-                    <td>{{ $account->account_balance_label }}</td>
+                    <td>{{ $account->float_balance_label }}</td>
                 @endif
             </tr>
 

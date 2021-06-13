@@ -30,6 +30,15 @@
                 @endif
             </tr>
 
+            <tr>
+                <th>@lang('labels.backend.account.deposit.tabs.content.overview.float')</th>
+                @if($account->getFloatBalance() < 0)
+                    <td class="text-danger">{{ $account->float_balance_label }}</td>
+                @else
+                    <td>{{ $account->float_balance_label }}</td>
+                @endif
+            </tr>
+
         </table>
     </div>
 </div><!--table-responsive-->

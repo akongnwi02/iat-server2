@@ -435,7 +435,7 @@ return [
             'float'                 => 'Add Float',
             'request_payout'        => 'Request Payout',
             'deposit'               => [
-                'management' => 'Deposit Accounts',
+                'management' => 'Company Accounts',
                 'actions'    => 'Account Actions',
                 'view'       => 'View Account',
                 'table'      => [
@@ -445,6 +445,7 @@ return [
                     'company' => 'Company',
                     'active'  => 'Active',
                     'balance' => 'Account Balance',
+                    'float' => 'Float Balance',
                     'total'   => 'account|accounts'
                 ],
                 'tabs'       => [
@@ -460,6 +461,7 @@ return [
                             'company' => 'Company',
                             'active'  => 'Active',
                             'balance' => 'Account Balance',
+                            'float'   => 'Float Balance',
                         ],
                         'movements' => [
                             'table' => [
