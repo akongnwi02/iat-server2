@@ -27,6 +27,21 @@
                                 </tr>
 
                                 <tr>
+                                    <th>@lang('labels.backend.meters.maintain.meter_type')</th>
+                                    <td>{{ __($meter->type) }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>@lang('labels.backend.meters.maintain.supply_point')</th>
+                                    <td>{{ $meter->supplyPoint->name }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>@lang('labels.backend.meters.maintain.address')</th>
+                                    <td>{{ $meter->supplyPoint->address }}</td>
+                                </tr>
+
+                                <tr>
                                     <th>@lang('labels.backend.meters.maintain.type')</th>
                                     <td>{{ $type == 'clear_credit' ? __('clear credit') : __('clear tamper')}}</td>
                                 </tr>
