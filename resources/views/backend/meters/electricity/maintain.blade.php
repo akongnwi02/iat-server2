@@ -28,7 +28,7 @@
 
                                 <tr>
                                     <th>@lang('labels.backend.meters.maintain.meter_type')</th>
-                                    <td>{{ __($meter->type) }}</td>
+                                    <td>{{ ucwords(__($meter->type)) }}</td>
                                 </tr>
 
                                 <tr>
@@ -43,7 +43,7 @@
 
                                 <tr>
                                     <th>@lang('labels.backend.meters.maintain.type')</th>
-                                    <td>{{ $type == 'clear_credit' ? __('clear credit') : __('clear tamper')}}</td>
+                                    <td>{{ $type == 'clear_credit' ? ucwords(__('clear credit')) : ucwords(__('clear tamper'))}}</td>
                                 </tr>
                             </table>
                         </div>
