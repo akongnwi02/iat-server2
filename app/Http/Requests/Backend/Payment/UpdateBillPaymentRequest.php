@@ -42,10 +42,10 @@ class UpdateBillPaymentRequest extends FormRequest
             'payments'               => ['required', 'array'],
             'payments.*.amount'      => ['required', 'numeric', 'min:0'],
             'payments.*.bill_number' => ['required', 'string', 'min:4'],
-            'payments.*.payment_ref' => ['required', 'string', 'min:4'],
+            'payments.*.payment_ref' => ['nullable', 'string', 'min:4'],
             'payments.*.consumption' => ['required', 'numeric', 'min:0'],
             'payments.*.method'      => ['required', 'string', 'min:0'],
-            'payments.*.note'        => ['required', 'string', 'min:0'],
+            'payments.*.note'        => ['nullable', 'string', 'min:0'],
         ];
     }
 }

@@ -106,14 +106,14 @@
                                             <option value="money_transfer" {{($value->method == 'money_transfer') ? "selected":""}}>@lang('strings.backend.bill_payment.money_transfer')</option>
                                         </select>
                                     </td>
-                                    <td><input id="note" type="text" name="payments[{{ $key }}][note]" class="form-control" value="{{ $value->note }}" required/></td>
+                                    <td><input id="note" type="text" name="payments[{{ $key }}][note]" class="form-control" value="{{ $value->note }}"/></td>
                                     <td><span id="delPOIbutton" onclick="deleteRow(this)" class="btn btn-default btn-xs"><span class="fa fa-trash"></span></span></td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td><input id="amount" style="min-width:100px" width="50px" type="number" name="payments[0][amount]" step="0.01" class="form-control" min="0" required/></td>
                                     <td><input id="bill_number" style="min-width:100px" type="text" name="payments[0][bill_number]" class="form-control" required/></td>
-                                    <td><input id="payment_ref" style="min-width:100px" type="text" name="payments[0][payment_ref]" class="form-control" required/></td>
+                                    <td><input id="payment_ref" style="min-width:100px" type="text" name="payments[0][payment_ref]" class="form-control"/></td>
                                     <td><input id="consumption" type="number" name="payments[0][consumption]" step="0.01" class="form-control" min="0" required/></td>
                                     <td>
                                         <select id="method" style="min-width:100px" name="payments[0][method]" class="form-control" required>
@@ -122,7 +122,7 @@
                                             <option value="money_transfer">@lang('strings.backend.bill_payment.money_transfer')</option>
                                         </select>
                                     </td>
-                                    <td><input id="note" type="text" name="payments[0][note]" class="form-control" required/></td>
+                                    <td><input id="note" type="text" name="payments[0][note]" class="form-control"/></td>
                                     <td><span id="delPOIbutton" onclick="deleteRow(this)" class="btn btn-default btn-xs"><span class="fa fa-trash"></span></span></td>
                                 </tr>
                             @endforelse

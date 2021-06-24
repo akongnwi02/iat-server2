@@ -382,6 +382,7 @@ return [
                 'company'        => 'Company',
                 'status'         => 'Status',
                 'agent'          => 'Agent',
+                'supply_point'          => 'Supply Point',
                 'reference'      => 'Reference',
                 'service_number' => 'Service Number',
                 'from'           => 'From',

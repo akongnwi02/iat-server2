@@ -32,6 +32,10 @@ class ElectricityBIllPaymentController extends Controller
     
         return redirect()->route('admin.payments.electricity.index')
             ->withFlashSuccess(__('alerts.backend.payment.electricity.updated'));
+        
+        
+        
+        
     }
     
     /**

@@ -64,6 +64,13 @@
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.supply_point')</span>
+                    </div>
+                    <input value="{{ @request()->input()['filter']['point.name'] }}" name="filter[point.name]" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.status')</span>
                     </div>
                     {{ html()->select('filter[status]', [null => null] + array_map(function($status){return __($status);}, $statuses))
