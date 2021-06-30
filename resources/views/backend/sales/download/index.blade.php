@@ -20,6 +20,7 @@
                         <th>@lang('labels.backend.sales.table.token')</th>
                         <th>@lang('labels.backend.sales.table.amount') ({{$default_currency->code}})</th>
                         <th>@lang('labels.backend.sales.table.system_commission') ({{$default_currency->code}})</th>
+                        <th>@lang('labels.backend.sales.table.supply_point')</th>
                         <th>@lang('labels.backend.sales.table.company_amount') ({{$default_currency->code}})</th>
                         <th>@lang('labels.backend.sales.table.vat')</th>
                         <th>@lang('labels.backend.sales.table.amount_with_vat') ({{$default_currency->code}})</th>
@@ -39,6 +40,7 @@
                             <td>{{ $sale->token }}</td>
                             <td>{{ number_format($sale->amount, 2) }}</td>
                             <td>{{ number_format($sale->system_commission, 2) }}</td>
+                            <td>{{ @$sale->point->name }}</td>
                             <td>{{ number_format($sale->amount - $sale->system_commission, 2) }}</td>
                             <td>{{ $sale->vat }}</td>
                             <td>{{ $sale->amount_with_vat }}</td>

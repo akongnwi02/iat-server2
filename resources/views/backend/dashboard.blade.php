@@ -34,15 +34,6 @@
                         <div class="col-sm-3 col-lg-3">
                             <div class="card">
                                 <div class="card-body">
-                                    @can(config('permission.permissions.float_accounts'))
-                                        <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
-                                            @if($logged_in_user->company->is_default)
-                                                <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#floatAccount" title="@lang('labels.backend.account.float')">
-                                                    <img src="{{ url('img/backend/brand/arrow-circle-top.svg') }}" alt="@lang('labels.backend.account.float')">
-                                                </button>
-                                            @endif
-                                        </div><!--btn-toolbar-->
-                                    @endif
                                     <div class="text-value-lg">{{ $company_account_balance }}</div>
                                     <div>@lang('strings.backend.dashboard.company.balance')</div>
                                     {{--<div class="progress progress-xs my-2">--}}
@@ -56,6 +47,15 @@
                         <div class="col-sm-3 col-lg-3">
                             <div class="card">
                                 <div class="card-body">
+                                    @can(config('permission.permissions.float_accounts'))
+                                        <div class="btn-toolbar float-right" role="toolbar" aria-label="@lang('labels.general.toolbar_btn_groups')">
+                                            @if($logged_in_user->company->is_default)
+                                                <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#floatAccount" title="@lang('labels.backend.account.float')">
+                                                    <img src="{{ url('img/backend/brand/arrow-circle-top.svg') }}" alt="@lang('labels.backend.account.float')">
+                                                </button>
+                                            @endif
+                                        </div><!--btn-toolbar-->
+                                    @endif
                                     <div class="text-value-lg">{{ $company_float_balance }}</div>
                                     <div>@lang('strings.backend.dashboard.company.float')</div>
                                     {{--<div class="progress progress-xs my-2">--}}
