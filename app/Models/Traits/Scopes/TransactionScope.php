@@ -9,6 +9,7 @@
 namespace App\Models\Traits\Scopes;
 
 
+use App\Models\Company\Company;
 use Carbon\Carbon;
 
 trait TransactionScope
@@ -21,5 +22,10 @@ trait TransactionScope
     public function scopeEndDate($query, $date)
     {
         return $query->where('created_at', '<', Carbon::parse($date)->addDay());
+    }
+    
+    public function scopeSupplyPointCompany($query, Company $company)
+    {
+        return $query->whereIn('supply_point_id', $company->points->pluck('uuid')->all());
     }
 }

@@ -221,7 +221,7 @@ class TransactionRepository
         $sales = QueryBuilder::for(Transaction::class)
             ->where('status', config('business.transaction.status.success'))
             ->allowedFilters([
-                AllowedFilter::exact('company_id'),
+                AllowedFilter::scope('supply_point_company'),
                 AllowedFilter::exact('service_id'),
                 AllowedFilter::exact('status'),
                 AllowedFilter::partial('user.username'),
@@ -235,7 +235,7 @@ class TransactionRepository
             ->defaultSort('-transactions.created_at', 'transactions.updated_at');
         
         if (!auth()->user()->company->is_default) {
-            $sales->where('company_id', auth()->user()->company_id);
+            $sales->supplyPointCompany(auth()->user()->company);
         }
         
         return $sales;

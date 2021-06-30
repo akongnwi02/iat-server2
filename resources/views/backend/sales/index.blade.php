@@ -30,12 +30,12 @@
                                 <th>@lang('labels.backend.sales.table.service')</th>
                                 <th>@lang('labels.backend.sales.table.code')</th>
                                 <th>@lang('labels.backend.sales.table.date')</th>
-                                <th>@lang('labels.backend.sales.table.company')</th>
                                 <th>@lang('labels.backend.sales.table.user')</th>
+                                <th>@lang('labels.backend.sales.table.company')</th>
+                                <th>@lang('labels.backend.sales.table.supply_point')</th>
                                 <th>@lang('labels.backend.sales.table.token')</th>
                                 <th>@lang('labels.backend.sales.table.amount') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.system_commission') ({{$default_currency->code}})</th>
-                                <th>@lang('labels.backend.sales.table.supply_point')</th>
                                 <th>@lang('labels.backend.sales.table.amount_with_vat') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.supply_point_amount') ({{$default_currency->code}})</th>
                                 <th>@lang('labels.backend.sales.table.vat')</th>
@@ -53,12 +53,12 @@
                                     <td>{!! @$sale->service->logo_label !!} <span> {{ $sale->service->name }}</span></td>
                                     <td>{{ $sale->code }}</td>
                                     <td>{{ $sale->created_at->toDatetimeString() }}</td>
-                                    <td>{{ @$sale->company->name }}</td>
                                     <td>{{ $sale->user->username }}</td>
+                                    <td>{{ @$sale->point->company->name }}</td>
+                                    <td>{{ @$sale->point->name }}</td>
                                     <td>{{ $sale->token }}</td>
                                     <td>{{ number_format($sale->amount, 2) }}</td>
                                     <td>{{ number_format($sale->system_commission, 2) }}</td>
-                                    <td>{{ @$sale->point->name }}</td>
                                     <td>{{ number_format($sale->amount_with_vat, 2) }}</td>
                                     <td>{{ number_format($sale->amount - $sale->system_commission, 2) }}</td>
                                     <td>{{ $sale->vat }}</td>

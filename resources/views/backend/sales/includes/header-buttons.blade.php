@@ -56,8 +56,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.company')</span>
                     </div>
-                    {{ html()->select('filter[company_id]', [null => null] + $companies)
-                        ->value(@request()->input()['filter']['company_id'])
+                    {{ html()->select('filter[supply_point_company]', [null => null] + $companies)
+                        ->value(@request()->input()['filter']['supply_point_company'])
                         ->class('form-control')
                     }}
                 </div>
