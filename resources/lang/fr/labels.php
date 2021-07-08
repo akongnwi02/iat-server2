@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Labels Language Lines
@@ -30,10 +30,15 @@ return [
         'hide'              => 'Cacher',
         'inactive'          => 'Inactif',
         'none'              => 'Aucun',
+        'continue'           => 'Continue',
         'show'              => 'Voir',
         'toggle_navigation' => 'Navigation',
         'create_new'         => 'Créer nouveau',
+        'download'           => 'Download',
         'add'                => 'Ajouter',
+        'location'           => 'Get Location',
+        'map'                => 'Map',
+        'list'               => 'List',
         'remove'             => 'Retirer',
         'credit'             => 'Crédit',
         'debit'              => 'Débit',
@@ -147,7 +152,8 @@ return [
                 'tabs'  => [
                     'titles'  => [
                         'profile'  => 'Profil',
-                        'services' => 'Services'
+                        'services' => 'Services',
+                        'paymentmethods' => 'Payment Methods',
                     ],
                     'content' => [
                         'service' => [
@@ -169,6 +175,22 @@ return [
                                 'providercommission' => 'Frais de service fournisseur de service',
                                 'total'              => 'service|services'
                             ]
+                        ],
+                        'paymentmethod' => [
+                            'management' => 'Configure Payment Method',
+                            'edit'       => 'Update service rate for :company',
+                            'add'        => 'Add payment methods for :company',
+                            'default'    => 'Use payment method default',
+                            'custom'     => 'Set custom',
+                            'table'      => [
+                                'name'               => 'Payment Method Name',
+                                'active'             => 'Active',
+                                'code'               => 'Code',
+                                'logo'               => 'Logo',
+                                'customercommission' => 'Customer Service Charge',
+                                'providercommission' => 'Merchant Fee',
+                                'total'              => 'method|methods'
+                            ]
                         ]
                     ]
                 ],
@@ -177,6 +199,7 @@ return [
         'services'   => [
             'service'    => [
                 'management'      => 'Gestion de service',
+                'assign'          => 'Assign :service to companies',
                 'create'          => 'Créer un service',
                 'edit'            => 'Modifier le service',
                 'active'          => 'Services activées',
@@ -191,24 +214,34 @@ return [
                     'category'           => 'Catégorie',
                     'agent_rate'         => 'Taux par défaut de l\'agent',
                     'company_rate'       => 'Taux par défaut de l\'entreprise',
+                    'external_rate'         => 'Default External Rate',
                     'min_amount'         => 'Montant minimal',
                     'max_amount'         => 'Montant maximal',
-                    'providercommission' => 'Frais de service par défaut du fournisseur de service',
-                    'total'              => 'service|services',
+                    'customercommission'    => 'Default Supply Point Service Charge',
+                    'price'                 => 'Default Tariff',
+                    'commissionditribution' => 'Commission Distribution',
+                    'total'                 => 'service|services',
                 ],
+                'tabs'  => [
+                    'titles' => [
+                        'profile'       => 'Profile',
+                        'companies'     => 'Companies',
+                        'supply_points' => 'Supply Points'
+                    ]
+                ]
             ],
-            'category'   => [
-                'management' => 'Catégorie de service',
-                'edit'       => 'Modifier la catégorie',
-                'active'     => 'Catégories activées',
+            'price'        => [
+                'management' => 'Service Tariff',
+                'edit'       => 'Edit Tariff',
+                'create'     => 'Create Tariff',
+                'active'     => 'Active Tariff',
                 'table'      => [
-                    'name'    => 'Nom de la catégorie',
-                    'code'    => 'Code de la catégorie',
-                    'active'  => 'Actif',
-                    'logo'    => 'Logo',
-                    'api_url' => 'URL du micro-service',
-                    'api_key' => 'Clé API de Micro Service',
-                    'total'   => 'catégorie|catégories',
+                    'name'        => 'Tariff Name',
+                    'code'        => 'Tariff Code',
+                    'active'      => 'Active',
+                    'amount'      => 'Amount',
+                    'description' => 'Tariff Description',
+                    'total'       => 'tariff|tariffs',
                 ]
             ],
             'commission' => [
@@ -234,9 +267,23 @@ return [
                     ],
                 ],
             ],
+            'distribution' => [
+                'management' => 'Commission Distribution',
+                'create'     => 'Create Commission Distribution',
+                'edit'       => 'Edit Commission Distribution',
+                'table'      => [
+                    'agent_rate'    => 'Default Agent Rate',
+                    'company_rate'  => 'Default Company Rate',
+                    'external_rate' => 'Default External Rate',
+                    'name'          => 'Name',
+                    'description'   => 'Description',
+                    'total'         => 'distribution|distributions'
+                ]
+            ],
             'method'     => [
                 'management' => 'Modes de paiement',
                 'create'     => 'Créer modes de paiement',
+                'assign'     => 'Assign :method to companies',
                 'edit'       => 'Modifier modes de paiement',
                 'table'      => [
                     'name'               => 'Nom',
@@ -251,30 +298,140 @@ return [
                     'providercommission' => 'Frais de service du fournisseur de service',
                     'total'              => 'mode de paiement|modes de paiements',
                 ],
+                'tabs'       => [
+                    'titles' => [
+                        'profile'   => 'Profile',
+                        'companies' => 'Companies'
+                    ]
+                ]
             ],
         ],
-        'sales'      => [
-            'management' => 'Sales',
-            'table'      => [
-                'code'               => 'Référence',
-                'company'            => 'Entreprise',
-                'user'               => 'Agent',
-                'items'              => 'Articles',
-                'service'            => 'Service',
-                'total'              => 'Total',
-                'destination'        => 'Destinataire',
-                'payment_account'    => 'Compte de paiement',
-                'company_commission' => 'Commission de l\'entreprise',
-                'agent_commission'   => 'Commission de l\'agent',
-                'completed_at'       => 'Terminé à',
-                'user_status'        => 'Statut de l\'utilisateur',
-                'actual_status'      => 'Statut actuel',
-                'total_sales'        => 'Vente| ventes',
+        'meters'    => [
+            'electricity' => 'Electricity Meters',
+            'water'       => 'Water Meters',
+            'create'      => 'Create Meter',
+            'edit'        => 'Edit Meter',
+            'active'      => 'Active Meters',
+            'deactivate'  => 'Deactivate Meter',
+            'filter'      => 'Filter Meters',
+            
+            'table'    => [
+                'meter_code'        => 'Meter Code',
+                'supply_point'      => 'Supply Point',
+                'phone'             => 'Contact Phone',
+                'email'             => 'Contact Email',
+                'company'           => 'Company',
+                'provider'          => 'Provider',
+                'type'              => 'Type',
+                'active'            => 'Active',
+                'last_vending_date' => 'Last Recharge Date',
+                'registration_date' => 'Registration Date',
+                'identifier'        => 'External Identifier',
+                'location'          => 'Room Number',
+                'total'             => 'meter|Meters',
+            ],
+            'maintain' => [
+                'title'        => 'Maintain Meter',
+                'meter_code'   => 'Meter Code',
+                'type'         => 'Token Type',
+                'token'        => 'Token',
+                'supply_point' => 'Supply Point',
+                'address'      => 'Address',
+                'meter_type'   => 'Meter Type',
             ]
         ],
-        'account'    => [
-            'management'            => 'Compte',
-            'company_balance'       => 'Solde de l\'entreprise',
+        'points'    => [
+            'electricity' => 'Electricity Points',
+            'water'       => 'Water Points',
+            'create'      => 'Create Point',
+            'edit'        => 'Edit Point',
+            'editMap'     => 'Update GPS',
+            'map'         => 'Map',
+            'active'      => 'Active Points',
+            'deactivate'  => 'Deactivate Point',
+            'filter'      => 'Filter Points',
+            
+            'table' => [
+                'name'                => 'Name',
+                'city'                => 'City',
+                'address'             => 'Address',
+                'phone'               => 'Contact Phone',
+                'email'               => 'Contact Email',
+                'type'                => 'Type',
+                'external_identifier' => 'ENEO Contract Number',
+                'company'             => 'Company',
+                'provider_price'      => 'Provider\'s Tariff',
+                'adjusted_price'      => 'Adjusted Tariff',
+                'meter_no'            => 'Meter Number',
+                'is_auto_price'       => 'Auto Tariff',
+                'is_internal'         => 'Internal',
+                'internal'            => 'Internal',
+                'auto_price_margin'   => 'Auto Tariff Margin',
+                'service_charge'      => 'Specific Service Charge',
+                'price'               => 'Tariff',
+                'tax'                 => 'Tax',
+                'total'               => 'Supply point|Supply points',
+            ],
+        ],
+        'sales'     => [
+            'management' => 'Sales',
+            'create'     => 'New Sale',
+            'filter'     => [
+                'title'          => 'Filter Sales',
+                'download'       => 'Download',
+                'service'        => 'Service',
+                'company'        => 'Company',
+                'status'         => 'Status',
+                'agent'          => 'Agent',
+                'supply_point'          => 'Supply Point',
+                'reference'      => 'Reference',
+                'service_number' => 'Service Number',
+                'from'           => 'From',
+                'to'             => 'To',
+            ],
+            'table'      => [
+                'code'                => 'Reference',
+                'company'             => 'Company',
+                'date'                => 'Date',
+                'user'                => 'Agent',
+                'items'               => 'Items',
+                'token'               => 'Token',
+                'service'             => 'Service',
+                'amount'              => 'Amount',
+                'customer_fee'        => 'Customer Fee',
+                'provider_fee'        => 'Provider Fee',
+                'currency'            => 'Currency',
+                'service_number'      => 'Service Number',
+                'payment_account'     => 'Payment Account',
+                'system_commission'   => 'System Commission',
+                'supply_point'        => 'Supply Point',
+                'supply_point_amount' => 'Supply Point Amount',
+                'units'               => 'Units',
+                'price'               => 'Price Per Unit',
+                'vat'                 => 'VAT (%)',
+                'amount_with_vat'     => 'Amount Minus VAT',
+                'completed_at'        => 'Completed At',
+                'user_status'         => 'User\'s Status',
+                'actual_status'       => 'Actual Status',
+                'to_be_verified'      => 'To be verified',
+                'total_sales'         => 'sale|sales',
+            ],
+            'quote'      => [
+                'meter_code'   => 'Meter Code',
+                'meter_type'   => 'Meter Type',
+                'supply_point' => 'Supply Point',
+                'address'      => 'Address',
+                'amount'       => 'Amount',
+                'units'        => 'Units',
+                'tariff_name'  => 'Tariff Name',
+                'tariff_price' => 'Tariff Tariff',
+            ]
+        ],
+        
+        'account'        => [
+            'management'            => 'Account',
+            'company_balance'       => 'Company Balance',
+            'float_balance'         => 'Float Balance',
             'umbrella_balance'      => 'Solde en espèces',
             'commission_balance'    => 'Solde de commission',
             'credit'                => 'Créditer le compte',
@@ -284,13 +441,61 @@ return [
             'float'                 => 'Ajouter la flotte',
             'request_payout'        => 'Demander un paiement',
             'deposit'               => [
-                'management' => 'Comptes de dépôt',
-                'actions'    => 'Actions sur le compte',
-                'view'       => 'Voir le compte',
+                'management' => 'Company Accounts',
+                'actions'    => 'Account Actions',
+                'view'       => 'View Account',
+                'table'      => [
+                    'code'    => 'Account Number',
+                    'type'    => 'Account Type',
+                    'owner'   => 'Owner',
+                    'company' => 'Company',
+                    'active'  => 'Active',
+                    'balance' => 'Account Balance',
+                    'float'   => 'Float Balance',
+                    'total'   => 'account|accounts'
+                ],
+                'tabs'       => [
+                    'titles'  => [
+                        'overview'  => 'Overview',
+                        'movements' => 'Movements',
+                    ],
+                    'content' => [
+                        'overview'  => [
+                            'code'    => 'Account Number',
+                            'type'    => 'Account Type',
+                            'owner'   => 'Owner',
+                            'company' => 'Company',
+                            'active'  => 'Active',
+                            'balance' => 'Account Balance',
+                            'float'   => 'Float Balance',
+                        ],
+                        'movements' => [
+                            'table' => [
+                                'code'             => 'Code',
+                                'transaction_code' => 'Transaction Reference',
+                                'amount'           => 'Amount',
+                                'type'             => 'Type',
+                                'user'             => 'Executed By',
+                                'source'           => 'Source Account',
+                                'destination'      => 'Destination Account',
+                                'date'             => 'Date',
+                                'reversal'         => 'reversal',
+                                'cancelled'        => 'cancelled',
+                                'total'            => 'movement|movements'
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'point'                 => [
+                'management' => 'Supply Point Accounts',
+                'actions'    => 'Account Actions',
+                'view'       => 'View Account',
                 'table'      => [
                     'code'    => 'Numéro de compte',
                     'type'    => 'Type de compte',
                     'owner'   => 'Titulaire',
+                    'company' => 'Company',
                     'active'  => 'Actif',
                     'balance' => 'Solde du compte',
                     'total'   => 'compte|comptes'
@@ -311,6 +516,7 @@ return [
                         'movements' => [
                             'table' => [
                                 'code'        => 'Numéro de transaction',
+                                'transaction_code' => 'Transaction Reference',
                                 'amount'      => 'Montant',
                                 'type'        => 'Type',
                                 'user'        => 'Exécuté par',
@@ -336,6 +542,7 @@ return [
                     'balance' => 'Solde',
                     'total'   => 'Compte|Comptes',
                     'user'    => 'Utilisateur',
+                    'company' => 'Company',
                 ],
                 'tabs'       => [
                     'titles'  => [
@@ -346,6 +553,7 @@ return [
                         'overview'  => [
                             'code'    => 'Numéro de compte',
                             'user'    => 'Utilisateur',
+                            'company' => 'Company',
                             'balance' => 'Solde du compte',
                         ],
                         'movements' => [
@@ -419,8 +627,9 @@ return [
                 'table'      => [
                     'service'           => 'Service',
                     'commission'        => 'Commission',
-                    'number_requests'   => 'Nombre de demandes',
-                    'last_request_date' => 'Date de dernière demande',
+                    'external'          => 'External',
+                    'number_requests'   => 'Number of requests',
+                    'last_request_date' => 'Last request date',
                     'total'             => 'service|services'
                 ],
                 'movements'  => [
@@ -429,7 +638,28 @@ return [
                     'comment' => 'Commentaire',
                     'user'    => 'Exécuté par',
                     'date'    => 'Date',
-                    'total'   => 'demande|demandes',
+                    'total'   => 'request|requests',
+                ]
+            ],
+            'commission' => [
+                'management' => 'Commissions',
+                'actions'    => 'Commission Actions',
+                'view'       => 'View Commission',
+                'table'      => [
+                    'service'           => 'Service',
+                    'commission'        => 'Commission',
+                    'external'          => 'External',
+                    'number_requests'   => 'Number of requests',
+                    'last_request_date' => 'Last request date',
+                    'total'             => 'service|services'
+                ],
+                'movements'  => [
+                    'code'    => 'Transaction Number',
+                    'amount'  => 'Amount',
+                    'comment' => 'Comment',
+                    'user'    => 'Executed by',
+                    'date'    => 'Date',
+                    'total'   => 'request|requests',
                 ]
             ],
             'collection' => [
@@ -452,6 +682,130 @@ return [
                     'total'   => 'paiement|paiements',
                 ]
             ],
+        ],
+        'administration' => [
+            'currency' => [
+                'management' => 'Currency',
+                'edit'       => 'Edit Currency',
+                'create'     => 'Create Currency',
+                'active'     => 'Active Currencies',
+                'table'      => [
+                    'name'    => 'Currency Name',
+                    'code'    => 'Currency Code',
+                    'active'  => 'Active',
+                    'default' => 'Default',
+                    'rate'    => 'Exchange Rate',
+                    'total'   => 'currency|currencies',
+                ]
+            ],
+            'cycle'    => [
+                'management' => 'Cycle',
+                'edit'       => 'Edit Cycle',
+                'create'     => 'Create Cycle',
+                'active'     => 'Active Cycles',
+                'table'      => [
+                    'month'             => 'Cycle Month',
+                    'year'              => 'Cycle Year',
+                    'complete'          => 'Complete',
+                    'balance'           => 'Balance',
+                    'system_commission' => 'System Commission',
+                    'amount_collected'  => 'Amount Collected',
+                    'amount_paid'       => 'Amount Paid',
+                    'total'             => 'cycle|cycles',
+                ]
+            ]
+        ],
+        'quote'          => [
+            'inventory' => [
+                'management' => 'Inventory Management',
+                'edit'       => 'Edit Inventory',
+                'create'     => 'Create Inventory',
+                'table'      => [
+                    'name_en' => 'English Name',
+                    'name_fr' => 'French Name',
+                    'total'   => 'inventory|inventories'
+                ]
+            ],
+            'quote'     => [
+                'management' => 'Installation Quotes',
+                'edit'       => 'Edit Quote',
+                'create'     => 'Create Quote',
+                'show'       => 'Show',
+                'table'      => [
+                    'title'       => 'Title',
+                    'name'        => 'Customer Name',
+                    'phone'       => 'Customer phone',
+                    'address'     => 'Customer Address',
+                    'code'        => 'Code',
+                    'amount'      => 'Amount',
+                    'description' => 'Description',
+                    'status'      => 'Status',
+                    'type'        => 'Type',
+                    'created_at'  => 'Created At',
+                    'created_by'  => 'Created By',
+                    'empty'       => 'Empty',
+                    'total'       => 'quote|quotes',
+                    'inventories' => [
+                        'name'      => 'Name',
+                        'unit_cost' => 'Unit Cost',
+                        'quantity'  => 'Quantity',
+                        'sub_total' => 'Sub Total',
+                    ]
+                ],
+                'filter'     => [
+                    'title'      => 'Filter Quotes',
+                    'user'       => 'Username',
+                    'code'       => 'Code',
+                    'customer'   => 'Customer',
+                    'start_date' => 'From',
+                    'end_date'   => 'To',
+                    'status'     => 'Status',
+                ],
+                'pdf'        => [
+                    'invoice'          => 'Invoice',
+                    'date'             => 'Date',
+                    'department'       => 'Commercial Department',
+                    'business_details' => 'Business Details',
+                    'customer_details' => 'Customer Details',
+                    'country'          => 'Cameroon',
+                    'description'      => 'Notes',
+                    'table'            => [
+                        'title'     => 'Items',
+                        'material'  => 'Item Name',
+                        'unit_cost' => 'Unit Cost',
+                        'quantity'  => 'Quantity',
+                        'sub_total' => 'Sub Total',
+                        'tax'       => 'Tax',
+                        'total'     => 'Total',
+                    ]
+                ]
+            ]
+        ],
+        'payment'        => [
+            'electricity' => [
+                'management' => 'Electricity',
+                'edit'       => 'Edit Payment',
+                'create'     => 'Create Payment',
+                'show'       => 'Show',
+                'table'      => [
+                    'company'             => 'Company',
+                    'supply_point'        => 'Supply Point',
+                    'external_identifier' => 'Contract Number',
+                    'cycle_year'          => 'Cycle Year',
+                    'is_internal'         => 'Internal',
+                    'cycle_month'         => 'Cycle Month',
+                    'confirmed'           => 'Confirmed',
+                    'amount_collected'    => 'Amount Collected',
+                    'system_commission'   => 'System Commission',
+                    'amount_paid'         => 'Amount Paid Out',
+                    'eneo_consumption'    => 'ENEO Consumption',
+                    'iat_consumption'     => 'IAT Consumption',
+                    'balance'             => 'Balance',
+                    'new_tariff'          => 'Estimated New Tariff',
+                    'current_tariff'      => 'Current Tariff',
+                    'total'               => 'points|point'
+                ]
+            ]
         ]
     ],
     'frontend' => [
@@ -490,7 +844,6 @@ return [
             'passwords' => [
                 'change' => 'Modifier le mot de passe',
             ],
-
             'profile' => [
                 'avatar'             => 'Avatar',
                 'created_at'         => 'Crée le',

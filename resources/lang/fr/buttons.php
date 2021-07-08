@@ -42,8 +42,32 @@ return [
                 'deactivate' => 'Désactiver le mode',
             ],
             'category' => [
-                'activate' => 'Activer la catégorie',
-                'deactivate' => 'Désactiver la catégorie',
+                'activate' => 'Activate Category',
+                'deactivate' => 'Deactivate Category',
+            ]
+        ],
+        'meters' => [
+            'electricity' => [
+                'activate' => 'Activate Meter',
+                'deactivate' => 'Deactivate Meter',
+                'clone' => 'Clone Meter',
+            ]
+        ],
+        'points' => [
+            'electricity' => [
+                'clone' => 'Clone Point',
+                'map'   => 'View on map',
+                'edit_map' => 'Update GPS',
+            ]
+        ],
+        'administration' => [
+            'currency' => [
+                'activate' => 'Activate Currency',
+                'deactivate' => 'Deactivate Currency'
+            ],
+            'cycle' => [
+                'complete' => 'Complete',
+                'reopen' => 'Re-open'
             ]
         ],
         'companies' => [
@@ -68,9 +92,13 @@ return [
             'deactivate' => 'Bloquer un compte'
         ],
         'payout' => [
-            'cancel' => 'Annuler',
-            'approve' => 'Approuver',
-            'reject' => 'Rejetter',
+            'cancel' => 'Cancel',
+            'approve' => 'Approve',
+            'reject' => 'Reject',
+        ],
+        'quotes' => [
+            'approve' => 'Approve',
+            'reject' => 'Reject',
         ]
     ],
 
@@ -82,17 +110,26 @@ return [
     ],
 
     'general' => [
-        'cancel' => 'Annuler',
-        'back'   => 'Retourner',
-        'continue' => 'Continuer',
-        'submit'   => 'Soumettre',
+        'cancel' => 'Cancel',
+        'back'   => 'Back',
+        'continue' => 'Continue',
+        'submit'   => 'Submit',
+        'confirm' => 'Confirm',
+        'download' => 'Download',
+        'clone' => 'Clone',
 
         'crud' => [
-            'create' => 'Créer',
-            'delete' => 'Supprimer',
-            'edit'   => 'Modifier',
-            'update' => 'Mettre à jour',
-            'view'   => 'Voir',
+            'create' => 'Create',
+            'delete' => 'Delete',
+            'edit'   => 'Edit',
+            'update' => 'Update',
+            'view'   => 'View',
+        ],
+        
+        'filter' => [
+            'filter' => 'Filter',
+            'reset' => 'Reset',
+            'clear' => 'Clear',
         ],
 
         'save' => 'Sauvegarder',

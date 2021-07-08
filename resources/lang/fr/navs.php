@@ -24,6 +24,7 @@ return [
         'login'     => 'Connexion',
         'macros'    => 'Macros',
         'register'  => "S'enregistrer",
+        'force_topup' => 'Configure Topup',
 
         'user' => [
             'account'         => 'Mon compte',

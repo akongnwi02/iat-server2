@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -12,8 +12,13 @@ return [
     | found in a intuitive way.
     |
     */
-
+    
     'backend' => [
+        'general' => [
+            'filters' => [
+                'reset' => 'Reset Filters'
+            ],
+        ],
         'access' => [
             'title' => 'Utilisateurs',
 
@@ -24,20 +29,71 @@ return [
                 'management' => 'Gestion des rôles',
                 'main'       => 'Rôles',
             ],
-
+            
             'users' => [
-                'all'             => 'Tous les utilisateurs',
-                'change-password' => 'Changer le mot de passe',
-                'transfer-user'   => 'Transférer l\'utilisateur',
-                'create'          => 'Créer un utilisateur',
-                'deactivated'     => 'Utilisateurs désactivés',
-                'deleted'         => 'Utilisateurs supprimés',
-                'edit'            => 'Modifier un utilisateur',
-                'main'            => 'Utilisateurs',
-                'view'            => 'Voir un utilisateur',
+                'all'             => 'All Users',
+                'change-password' => 'Change Password',
+                'transfer-user'   => 'Transfer User',
+                'create'          => 'Create User',
+                'deactivated'     => 'Deactivated Users',
+                'deleted'         => 'Deleted Users',
+                'edit'            => 'Edit User',
+                'main'            => 'Users',
+                'view'            => 'View User',
             ],
         ],
-
+        
+        'administration' => [
+            'main'     => 'Administration',
+            'currency' => [
+                'management' => 'Currency',
+                'create'     => 'Create Currency',
+                'edit'       => 'Edit Currency',
+            ],
+            'inventory' => [
+                'management' => 'Inventory Management',
+                'create' => 'Create Inventory',
+                'edit' => 'Edit Inventory',
+            ],
+            'cycle' => [
+                'management' => 'Cycle Management',
+                'create' => 'Create Cycle',
+                'edit' => 'Edit Cycle',
+            ]
+        ],
+        
+        'meter' => [
+            'main'        => 'Meters',
+            'all'         => 'All Meters',
+            'electricity' => [
+                'management' => 'Electricity Meters',
+                'maintain' => 'Maintain Meters',
+                'create'     => 'Register Electricity Meter',
+                'edit'       => 'Edit Electricity Meter',
+                'activate'   => 'Activate Meter',
+                'deactivate' => 'Deactivate Meter',
+                'clone'      => 'Clone Meter',
+                'unassigned' => 'Unassigned Meters'
+            ],
+        ],
+        'point' => [
+            'main'        => 'Supply Points',
+            'all'         => 'All Supply Points',
+            'electricity' => [
+                'management' => 'Electricity Points',
+                'create'     => 'Register Point',
+                'edit'       => 'Edit Point',
+                'editMap'       => 'Update GPS',
+                'clone'      => 'Clone Point',
+                'map'        => 'Map',
+            ],
+        ],
+        'payment' => [
+            'main' => 'Payments',
+            'reset_filters' => 'Reset Filters',
+            'unpaid' => 'Unpaid Bills',
+        ],
+        
         'log-viewer' => [
             'main'      => 'Vue du journal',
             'dashboard' => 'Tableau de bord',
@@ -47,12 +103,15 @@ return [
         'sidebar' => [
             'dashboard' => 'Tableau de bord',
             'sales' => 'Ventes',
+            'quote' => 'Installation Quote',
             'horizon' => 'Horizon',
             'general'   => 'Général',
             'history'   => 'Historique',
             'system'    => 'Système',
             'business'  => 'Activités',
             'access'    => 'Accès',
+            'hardware'  => 'Hardware',
+            'payments' => 'BIll Payments'
         ],
         'companies' => [
             'title' => 'Entreprises',
@@ -61,9 +120,24 @@ return [
                 'management' => 'Entreprises',
                 'create'     => 'Créer une entreprise',
                 'edit'       => 'Modifier l\'enttreprise',
+                'clone'      => 'Clone Company',
             ],
         ],
-
+        
+        'quote' => [
+            'title' => 'Quote',
+            'inventory' => [
+                'management' => 'Inventories',
+                'create' => 'Create Inventory',
+                'edit' => 'Edit Inventory',
+            ],
+            'quote' => [
+                'management' => 'Quotes',
+                'create' => 'Create Quote',
+                'edit' => 'Edit Quote',
+            ]
+        ],
+        
         'services' => [
             'title' => 'Services',
     
@@ -72,38 +146,53 @@ return [
                 'create'     => 'Créer un service',
                 'edit'       => 'Modifier le service',
             ],
-            'category' => [
-                'management' => 'Catégories',
-                'edit' => 'Modifier la catégorie',
+            'price'     => [
+                'management' => 'Tariff',
+                'edit'       => 'Edit Tariff',
+                'create'       => 'Create Tariff',
             ],
-            'commission' => [
-                'management' => 'Frais de service',
-                'create'     => 'Créer frais de service',
-                'edit'       => 'Modifier frais de service',
+            'commission'   => [
+                'management' => 'Service Charges',
+                'create'     => 'Create Service Charge',
+                'edit'       => 'Edit Service Charge',
             ],
-            'method' => [
-                'management' => 'Modes de paiement',
-                'create'     => 'Créer un mode de paiement',
-                'edit'       => 'Modifier le mode de paiement',
+            'distribution' => [
+                'management' => 'Commission Distribution Strategy',
+                'create'     => 'Create Distribution Strategy',
+                'edit'       => 'Edit Distribution Strategy',
+            ],
+            'method'       => [
+                'management' => 'Payment Methods',
+                'create'     => 'Create Payment Method',
+                'edit'       => 'Edit Payment Method',
             ]
         ],
-        'sales' => [
-            'management' => 'Ventes',
+        'sales'      => [
+            'management' => 'Sales',
+            'clear'      => 'Clear Filters',
+            'reset'      => 'Reset Filters',
+            'create'     => 'New',
+            'quote'      => 'New Sale'
         ],
         'accounts' => [
             'title' => 'Comptes',
             
             'deposit' => [
                 'management' => 'Compte de dépôt',
+                'company' => 'Company Account',
                 'view' => 'Voir le compte'
             ],
             'umbrella' => [
                 'management' => 'Compte espèces',
                 'view' => 'Voir le compte',
             ],
-            'payout' => [
-                'management' => 'Compte de commission',
-                'view' => 'Voir le compte',
+            'payout'   => [
+                'management' => 'Commission Account',
+                'view'       => 'View Account',
+            ],
+            'point' => [
+                'management' => 'Supply Point Account',
+                'view'       => 'View Account',
             ]
         ],
         'accounting' => [
@@ -114,11 +203,23 @@ return [
             ],
             'provisions' => [
                 'management' => 'Provisions',
-                'view' => 'Voir Provisions',
+                'view'       => 'View Provisions',
             ],
+            'commissions' => [
+                'management' => 'Commissions',
+                'view'       => 'View Commissions',
+            ],
+        ],
+        'payments' => [
+            'title' => 'Bill Payments',
+            'view' => 'View Payments',
+            'electricity' => [
+                'management' => 'Electricity Points',
+                'edit' => 'Update Payment'
+            ]
         ]
     ],
-
+    
     'language-picker' => [
         'language' => 'Langue',
         /*

@@ -11,6 +11,11 @@ return [
     |
     */
 
+    '401' => [
+        'title' => 'Unauthenticated',
+        'description' => 'Sorry, you are not authenticated.'
+    ],
+    
     '403' => [
         'title'       => 'Non autorisé',
         'description' => 'Désolé, cette action n\'est pas autorisée.',

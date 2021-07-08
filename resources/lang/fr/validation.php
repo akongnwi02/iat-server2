@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -123,7 +123,7 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-    'custom' => [
+    'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
@@ -207,39 +207,99 @@ return [
                     'direct_polling'   => 'Approvisionnement direct',
                     'agent_self_topup' => 'Auto-reccharge des agents',
                 ],
-                'service' => [
-                    'company_rate' => 'Pourcetage de l\'entreprise(%)',
-                    'agent_rate'   => 'Pourcentage de l\'agent (%)',
-                    'customercommission' => 'commission du client',
-                    'providercommission'   => 'Commission du fournisseur dde service',
-                    'default'      => 'Utiliser la valeur par défaut du service',
-                    'custom'       => 'Définir une valeur spécifique',
-                    'services'     => 'Services',
-                    'default_setting' => 'Utiliser les frais de service par défaut'
+                'service'       => [
+                    'customercommission'     => 'Customer Commission',
+                    'providercommission'     => 'Provider Commission',
+                    'commissiondistribution' => 'Commission Distribution Strategy',
+                    'default'                => 'Use service default value',
+                    'custom'                 => 'Set custom value',
+                    'services'               => 'Services',
+                    'default_setting'        => 'Use Default Service Charge'
+                ],
+                'paymentmethod' => [
+                    'customercommission' => 'Customer Commission',
+                    'providercommission' => 'Provider Commission',
+                    'default'            => 'Use method default value',
+                    'custom'             => 'Set custom value',
+                    'methods'            => 'Payment methods',
+                    'default_setting'    => 'Use Default Service Charge'
                 ]
             ],
-            'services'  => [
-                'service'    => [
-                    'name'               => 'Nom du service',
-                    'description_en'     => 'Description anglaise',
-                    'description_fr'     => 'Description française',
-                    'category'           => 'Catégorie de service',
-                    'gateway'            => 'Configuration de la passerelle',
-                    'active'             => 'Actif',
-                    'code'               => 'Code',
-                    'providercommission' => 'Frais de service du fournisseur de services',
-                    'companycommission'  => 'Frais de service de l\'entreprise',
-                    'customercommission' => 'Frais de service du client',
-                    'logo'               => 'Logo',
-                    'prepaid'            => 'Prepayé',
-                    'items'              => 'Articles',
-                    'requires_auth'      => 'Autorisation requise',
-                    'withdrawal'      => 'Retrait d\'argent',
-                    'company_rate'       => 'Pourcentage par défaut de l\'entreprise(%)',
-                    'agent_rate'         => 'Pourcentage par défaut de l\'agent (%)',
-                    'min_amount'         => 'MOntant minimal',
-                    'max_amount'         => 'Montant maximal',
-                    'providercompany'    => 'Entreprise fournisseur de services',
+            'meters'         => [
+                'electricity' => [
+                    'meter_code'   => 'Meter Code',
+                    'phone'        => 'Contact Phone',
+                    'location'     => 'Location',
+                    'email'        => 'Contact Email',
+                    'type'         => 'Type',
+                    'comment'      => 'Comment',
+                    'supply_point' => 'Supply Point',
+                    'provider'     => 'Provider',
+                ]
+            ],
+            'sales' => [
+                'service_code' => 'Service',
+                'service' => 'Service',
+                'currency_code' => 'Currency',
+                'service_number' => 'Service Number',
+                'meter_number' => 'Meter Number',
+                'amount' => 'Amount',
+            ],
+            'points'         => [
+                'electricity' => [
+                    'name'                => 'Name',
+                    'city'                => 'City',
+                    'address'             => 'Address',
+                    'phone'               => 'Contact Phone',
+                    'email'               => 'Contact Email',
+                    'external_identifier' => 'ENEO Contract Number',
+                    'meter_no' => 'ENEO Meter Number',
+                    'company'             => 'Company',
+                    'type'                => 'Type',
+                    'provider_price'      => 'Provider\'s Tariff (:currency)',
+                    'provider_price2'     => 'Provider\'s Tariff',
+                    'is_auto_price'       => 'Auto Tariff',
+                    'is_internal'         => 'Internal',
+                    'auto_price_margin'   => 'Auto Tariff Margin (:currency)',
+                    'adjusted_price'      => 'Adjusted Tariff (:currency)',
+                    'auto_price_margin2'  => 'Auto Tariff Margin',
+                    'adjusted_price2'     => 'Adjusted Tariff',
+                    'service_charge'      => 'Specific Service Charge',
+                    'price'               => 'Tariff',
+                    'tax'               => 'Tax (%)',
+                    'gps_lat'             => 'Latitude',
+                    'gps_long'            => 'Longitude',
+                    'total'               => 'Supply point|Supply points',
+                ],
+            ],
+            'services'       => [
+                'service'                 => [
+                    'name'                       => 'Service Name',
+                    'description_en'             => 'English Description',
+                    'description_fr'             => 'French Description',
+                    'category'                   => 'Service Category',
+                    'gateway'                    => 'Gateway Configuration',
+                    'active'                     => 'Active',
+                    'code'                       => 'Code',
+                    'destination_placeholder'    => 'Service Number Example',
+                    'destination_regex'          => 'Service Number Regex',
+                    'providercommission'         => 'Service Provider Service Charge',
+                    'companycommission'          => 'Company Service Charge',
+                    'customercommission'         => 'Customer Service Charge',
+                    'supplypoint_servicecharge'  => 'Default Supply Point Service Charge',
+                    'supplypoint_price'          => 'Default Tariff',
+                    'logo'                       => 'Logo',
+                    'logo_url'                   => 'Logo URL',
+                    'prepaid'                    => 'Prepaid',
+                    'items'                      => 'Items',
+                    'requires_auth'              => 'Authorization Required',
+                    'withdrawal'                 => 'Money Withdrawal',
+                    'min_amount'                 => 'Minimum Amount',
+                    'max_amount'                 => 'Maximum Amount',
+                    'step_amount'                => 'Step Amount',
+                    'providercompany'            => 'Provider Company',
+                    'commission_distribution_id' => 'Commission Distribution',
+                    'companies'                  => 'Companies',
                 ],
                 'item'       => [
                     'active'         => 'Actif',
@@ -261,22 +321,38 @@ return [
                         'percentage' => 'Pourcentage',
                     ]
                 ],
+                'commission_distribution' => [
+                    'name'          => 'Name',
+                    'description'   => 'Description',
+                    'company_rate'  => 'Default Company Rate (%)',
+                    'agent_rate'    => 'Default Agent Rate (%)',
+                    'external_rate' => 'Default External Rate (%)',
+                ],
                 'method'     => [
                     'name'               => 'Nom',
                     'code'               => 'Code',
-                    'description_en'     => 'Description anglaise',
-                    'description_fr'     => 'Description française',
-                    'customercommission' => 'Frais de service du client',
-                    'providercommission' => 'Frais pour les fournisseurs de services',
+                    'placeholder_text'   => 'Account Placeholder',
+                    'accountregex'       => 'Account Regex',
+                    'description_en'     => 'English Description',
+                    'description_fr'     => 'French Description',
+                    'customercommission' => 'Customer Service Charge',
+                    'providercommission' => 'Merchant Fee',
                     'service'            => 'Service',
-                    'realtime'           => 'En temps réel',
+                    'realtime'           => 'Realtime',
+                    'logo'               => 'Logo',
+                    'companies'          => 'Companies',
                 ],
-                'category' => [
-                    'name' => 'Nom',
-                    'code' => 'Code',
-                    'active' => 'Actif',
-                    'api_key' => 'Clé API du Micro Service',
-                    'api_url' => 'URL du micro-service'
+                'category'                => [
+                    'name'    => 'Name',
+                    'code'    => 'Code',
+                    'active'  => 'Active',
+                    'api_key' => 'Micro Service API Key',
+                    'api_url' => 'Micro Service URL'
+                ],
+                'price'                   => [
+                    'name'        => 'Name',
+                    'amount'      => 'Amount',
+                    'description' => 'Description',
                 ]
             ],
             'accounting' => [
@@ -285,10 +361,55 @@ return [
                     'currency' => 'Devise',
                     'comment' => 'commentaire',
                 ],
-                'provision' => [
-                    'amount' => 'Montant',
-                    'currency' => 'Devise',
-                    'comment' => 'commentaire',
+                'provision'  => [
+                    'amount'   => 'Amount',
+                    'currency' => 'Currency',
+                    'comment'  => 'comment',
+                ]
+            ],
+            'administration' => [
+                'currency' => [
+                    'name'   => 'Currency Name',
+                    'code'   => 'Currency Code',
+                    'active' => 'Active',
+                    'rate'   => 'Exchange Rate',
+                ]
+            ],
+            'quote' => [
+                'inventory' => [
+                    'name_en' => 'English Name',
+                    'name_fr' => 'French Name',
+                ],
+                'quote' => [
+                    'title'       => 'Title',
+                    'name'        => 'Customer Name',
+                    'phone'       => 'Customer Phone',
+                    'address'     => 'Customer Address',
+                    'code'        => 'Code',
+                    'description' => 'Description',
+                    'status'      => 'Status',
+                    'type'        => 'Type',
+                    'amount'      => 'Amount',
+                    'inventories' => [
+                        'material'  => 'Material',
+                        'unit_cost' => 'Unit Cost',
+                        'quantity'  => 'Quantity',
+                        'sub_total' => 'Sub Total',
+                    ]
+                ]
+            ],
+            'payment' => [
+                'supply_point' => 'Supply Point',
+                'external_identifier' => 'ENEO Contract Number',
+                'cycle_year' => 'Cycle Year',
+                'cycle_month' => 'Cycle Month',
+                'payments' => [
+                    'amount' => 'Amount',
+                    'payment_ref' => 'Payment Reference',
+                    'method' => 'Payment Method',
+                    'consumption' => 'Consumption',
+                    'bill_number' => 'Bill Number',
+                    'note' => 'Note',
                 ]
             ],
             'account'   => [
@@ -303,6 +424,7 @@ return [
         'frontend' => [
             'avatar'                    => 'Avatar',
             'email'                     => 'Adresse email',
+            'subject'                   => 'Subject',
             'code'                      => 'Code de confirmation',
             'phone_or_email'            => 'Téléphone ou Email',
             'username'                  => 'Nom d\'utilisateur',

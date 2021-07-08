@@ -843,7 +843,6 @@ return [
             'passwords' => [
                 'change' => 'Change Password',
             ],
-            
             'profile' => [
                 'avatar'             => 'Avatar',
                 'created_at'         => 'Created At',

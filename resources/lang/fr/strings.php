@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Strings Language Lines
@@ -12,8 +12,8 @@ return [
     | found in a intuitive way.
     |
     */
-
-    'backend' => [
+    
+    'backend'  => [
         'access' => [
             'users' => [
                 'delete_user_confirm'  => 'Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes les références à cet utilisateur dans cette application peuvent provoquer des erreurs et cette opération ne peut être annulée.',
@@ -23,7 +23,10 @@ return [
                 'restore_user_confirm' => 'Remettre cet utilisateur dans son statut d\'origine ?',
             ],
         ],
-
+        'meters' => [
+            'maintain' => 'Generate :type token'
+        ],
+        
         'dashboard' => [
             'title'   => "Tableau de bord",
             'welcome' => 'Bienvenue',
@@ -31,6 +34,7 @@ return [
                 'agents'                  => 'Agents',
                 'users'                   => 'Utilisateur|Utilisateurs',
                 'balance'                 => 'Solde du compte',
+                'float'           => 'Float Balance',
                 'number'                  => 'Numéro de compte de l\'entreprise',
                 'commission'              => 'Solde de commission',
                 'system_commission'       => 'Commission du système',
@@ -41,6 +45,7 @@ return [
                 'total_balance'           => 'Solde total',
                 'total_commission'        => 'Commission Total ',
                 'balance_help'            => 'Le solde du compte de l\'entreprise',
+                'float_balance_help'            => 'The company\'s float balance',
                 'agents_balance_help'     => 'Le solde du compte de tous les agents',
                 'agents_commission_help'  => 'Le commissions de tous les agents',
                 'total_balance_help'      => 'Solde total de l\'agent et de l\'entreprise',
@@ -62,6 +67,7 @@ return [
             'are_you_sure'        => 'Êtes-vous sûr ?',
             'boilerplate_link'    => 'Laravel 5 Boilerplate',
             'corlang_link'        => 'Corlang Limited',
+            'powered_by'          => 'Powered by',
             'continue'            => 'Continuer',
             'member_since'        => 'Membre depuis',
             'minutes'             => ' minutes.',
@@ -89,7 +95,11 @@ return [
             'title'      => 'Résultats de recherche',
             'results'    => 'Résultats de la recherche :query',
         ],
-        'welcome' => 'Bienvenue à la page d\'accueil',
+        'welcome'   => 'Welcome to the Dashboard',
+        'bill_payment' => [
+            'money_transfer' => 'Money Transfer',
+            'bill_settlement' => 'Bill Settlement',
+        ]
     ],
     'emails' => [
         'auth' => [
@@ -137,6 +147,14 @@ return [
             'greeting'      => 'Hello!',
         ],
     ],
+    'description' => [
+        'points' => [
+            'electricity' => [
+                'auto_price_margin' => 'The margin maintained between the provider\'s price and internal price when auto price adjustment is turned on.',
+                'price' => 'Only required when auto price calculation is turned off',
+            ]
+        ]
+    ],
     'frontend' => [
         'test' => 'Test',
         'tests' => [
@@ -163,18 +181,19 @@ return [
         'general' => [
             'joined'        => 'A rejoint',
         ],
-        'user' => [
-            'change_email_notice' => "Si vous changez d'adresse e-mail, vous devez confirmer votre nouvelle adresse e-mail.",
-            'change_phone_notice'         => 'Si vous changez de numéro de téléphone, vous devez confirmer votre nouveau numéro de téléphone',
-            'email_changed_notice' => 'Vous devez confirmer votre nouvelle adresse e-mail pour vous connecter à nouveau.',
-            'cannot_change_email_notice'  => 'Vous ne pouvez pas changer votre adresse email. Il s\'agit de votre option de notification par défaut',
-            'cannot_change_phone_notice'  => 'Vous ne pouvez pas changer votre numéro de téléphone. Il s\'agit de votre option de notification par défaut',
-            'profile_updated'  => 'Profil modifié avec succès.',
-            'password_updated' => 'Mot de passe modifié avec succès.',
-            'pin_changed'                 => 'Votre code pin a été changé avec succès.',
-            'pin_created'                 => 'Votre code pin a été crée avec succès.',
-            'topup_updated'               => 'Votre paramétrage de recharge a été mis à jour avec succès.',
-            'topup_account_change_notice' => 'Une fois qu\'un compte de recharge est confirmé par le système. Il ne peut pas être modifié, à moins que vous ne contactiez le support.'
+        'user'                    => [
+            'change_email_notice'         => 'If you change your e-mail you will have to confirm your new e-mail address.',
+            'change_phone_notice'         => 'If you change your phone number, you will have to confirm your new phone number',
+            'email_changed_notice'        => 'You must confirm your new e-mail address before you can log in again.',
+            'cannot_change_email_notice'  => 'You cannot change your e-mail address. This is your default notification means',
+            'cannot_change_phone_notice'  => 'You cannot change your phone number. This is your default notification means',
+            'profile_updated'             => 'Profile successfully updated.',
+            'password_updated'            => 'Password successfully updated.',
+            'pin_changed'                 => 'Your pin code was changed successfully.',
+            'pin_created'                 => 'Your pin code was created successfully.',
+            'topup_updated'               => 'Your Topup configuration has been updated successfully. You can now recharge your account',
+            'topup_account_change_notice' => 'Once a topup account is confirmed by the system, it cannot be changed except you contact support.',
+            'configure_topup'             => 'Please configure your account recharge methods'
         ],
         'welcome_to' => 'Bienvenue sur :place',
         'what_we_do'              => 'Ce que nous faisons',
@@ -229,6 +248,19 @@ return [
                 'title' => 'Distributeurs',
                 'description' => 'Avec notre API SIMPLE mais PUISSANTE, vous pouvez vendre sur notre plateforme ou créer les comptes de vos agents directement dans notre plateforme et commencer à vendre et gagner des commissions'
             ]
+        ],
+        'contact_us'              => [
+            'title'      => 'Love to Hear From You',
+            'text'       => 'We are now available twenty-four hours a day, seven days a week. Call us today and find out how we can help your business.',
+            'company'    => 'Company',
+            'address'    => 'Address',
+            'phone'      => 'Phone',
+            'email'      => 'Email',
+            'website'    => 'Website',
+            'work_hours' => 'Work Hours',
+            'monday'     => 'Monday',
+            'saturday'   => 'Saturday',
+            'to'         => 'to',
         ]
     ],
 ];

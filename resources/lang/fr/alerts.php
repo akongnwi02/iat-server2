@@ -46,8 +46,12 @@ return [
                 'logged_in'     => 'Vous avez changé d\'entreprise avec succès.',
             ],
             'service' => [
-                'status_updated' => 'Le statut a été mis à jour avec succès.',
-                'updated' => 'Le service a été mis à jour pour cette entreprise avec succès.',
+                'status_updated' => 'The status was successfully updated.',
+                'updated' => 'The service was updated for this company successfully.',
+            ],
+            'method' => [
+                'status_updated' => 'The status was successfully updated.',
+                'updated' => 'The payment method was updated for this company successfully.',
             ]
         ],
         'services' => [
@@ -56,20 +60,73 @@ return [
                 'updated' => 'Le service a été mis à jour avec succès.',
                 'status_updated' => 'Le statut a été mis à jour avec succès.',
             ],
-            'category' => [
-                'created' => 'La rubrique a été crée avce succès.',
-                'updated' => 'La rubrique a été mis à jour avce succès.',
-                'status_updated' => 'Le statut a été mis à jour avce succès.',
+            'company' => [
+                'updated' => 'The companies for this service was updated successfully'
+            ],
+            'price' => [
+                'created' => 'The price was successfully created.',
+                'updated' => 'The price was successfully updated.',
+                'status_updated' => 'The status was successfully updated.',
             ],
             'commission' => [
-                'created' => 'Les frais de service ont été mis à jour avec succès.',
+                'created' => 'The service charge was updated successfully.',
+            ],
+            'distribution' => [
+                'created' => 'The commission distribution was created successfully',
+                'updated' => 'The commission distribution was updated successfully',
             ],
             'method' => [
-                'created' => 'Le mode de paiement a été créé avec succès.',
-                'updated' => 'Le mode de paiement a été mis à jour avec succès.',
-                'status_updated' => 'Le statut a été mis à jour avec succès.',
+                'created' => 'The payment method was successfully created.',
+                'updated' => 'The payment method was successfully updated.',
+                'status_updated' => 'The status was successfully updated.',
+                'company_updated' => 'The companies for this payment method was updated successfully',
             ]
         ],
+        'meters' => [
+            'electricity' => [
+                'activated' => 'The meter was activated successfully.',
+                'deactivated' => 'The meter was deactivated successfully',
+                'updated' => 'The meter was updated successfully',
+                'created' => 'The meter was registered successfully',
+            ]
+        ],
+        'points' => [
+            'electricity' => [
+                'updated' => 'The supply point was updated successfully',
+                'gps_updated' => 'The supply point GPS was updated successfully',
+                'created' => 'The supply point was created successfully',
+            ]
+        ],
+        'administration' => [
+            'currency' => [
+                'created' => 'The currency was successfully created.',
+                'updated' => 'The currency was successfully updated.',
+                'status_updated' => 'The status was successfully updated.',
+            ],
+            'cycle' => [
+                'created' => 'The cycle was successfully created.',
+                'updated' => 'The cycle was successfully updated.',
+                'status_updated' => 'The status was successfully updated.',
+            ]
+        ],
+        'quote' => [
+            'inventory' => [
+                'created' => 'The inventory was created successfully',
+                'updated' => 'The inventory was updated successfully',
+            ],
+            'quote' => [
+                'created' => 'The quote was created successfully',
+                'updated' => 'The quote was updated successfully',
+                'status_updated' => 'The status was successfully updated.',
+            ]
+        ],
+        'payment' => [
+            'electricity' => [
+                'updated' => 'The bill payment was updated successfully',
+                'status_changed' => 'The bill payment status was changed successfully'
+            ]
+        ],
+        
         'accounting' => [
             'collection' => [
                 'paid' => 'La collecte a été effectuée avec succès.'
@@ -77,6 +134,9 @@ return [
             'provision' => [
                 'requested' => 'La provision a été demandée avec succès.',
             ]
+        ],
+        'sales' => [
+            'success' => 'The transaction completed successfully',
         ],
         'account' => [
             'floated' => 'La Float a été appliquée avec succès.',
