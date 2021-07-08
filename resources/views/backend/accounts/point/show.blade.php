@@ -27,6 +27,9 @@
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#movements" role="tab" aria-controls="movements" aria-expanded="true"><i class="fas fa-list"></i> @lang('labels.backend.account.point.tabs.titles.movements')</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#payments" role="tab" aria-controls="payments" aria-expanded="true"><i class="fas fa-list"></i> @lang('labels.backend.account.point.tabs.titles.payments')</a>
+                        </li>
                     </ul>
 
                     <div class="tab-content">
@@ -35,6 +38,9 @@
                         </div><!--tab-->
                         <div class="tab-pane fade" id="movements" role="tabpanel" aria-expanded="true">
                             @include('backend.accounts.point.show.movement')
+                        </div><!--tab-->
+                        <div class="tab-pane fade" id="payments" role="tabpanel" aria-expanded="true">
+                            @include('backend.accounts.point.show.payments')
                         </div><!--tab-->
                     </div><!--tab-content-->
 

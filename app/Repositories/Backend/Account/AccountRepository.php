@@ -52,8 +52,10 @@ class AccountRepository
     {
         $accounts = QueryBuilder::for(Account::class)
             ->allowedFilters([
-                AllowedFilter::scope('is_active'),
-                AllowedFilter::scope('type_id'),
+                AllowedFilter::exact('is_active'),
+                AllowedFilter::partial('company.name'),
+                AllowedFilter::partial('code'),
+                AllowedFilter::exact('type_id'),
             ])
             ->where('is_default', false)
             ->defaultSort('-accounts.is_active', '-accounts.created_at')
@@ -97,8 +99,11 @@ class AccountRepository
     {
         $accounts = QueryBuilder::for(Account::class)
             ->allowedFilters([
-                AllowedFilter::scope('is_active'),
-                AllowedFilter::scope('type_id'),
+                AllowedFilter::partial('point.name'),
+                AllowedFilter::partial('point.company.name'),
+                AllowedFilter::exact('is_active'),
+                AllowedFilter::partial('code'),
+                AllowedFilter::exact('type_id'),
             ])
             ->where('is_default', false)
             ->defaultSort('-accounts.is_active', '-accounts.created_at')

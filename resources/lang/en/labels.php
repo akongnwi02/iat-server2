@@ -439,6 +439,13 @@ return [
             'drain'                 => 'Drain Account',
             'float'                 => 'Add Float',
             'request_payout'        => 'Request Payout',
+            'filter'     => [
+                'title' => 'Filter Accounts',
+                'code'   => 'Code',
+                'name'   => 'Account Name',
+                'company' => 'Company',
+                'active' => 'Active',
+            ],
             'deposit'               => [
                 'management' => 'Company Accounts',
                 'actions'    => 'Account Actions',
@@ -483,6 +490,18 @@ return [
                                 'total'            => 'movement|movements'
                             ],
                         ],
+                        'payments' => [
+                            'table' => [
+                                'amount'      => 'Amount',
+                                'cycle_month' => 'Month',
+                                'cycle_year'  => 'Year',
+                                'payment_ref' => 'Payment Reference',
+                                'method'      => 'Payment Method',
+                                'consumption' => 'Consumption',
+                                'bill_number' => 'Bill Number',
+                                'note'        => 'Note',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -503,6 +522,7 @@ return [
                     'titles'  => [
                         'overview'  => 'Overview',
                         'movements' => 'Movements',
+                        'payments' => 'Payments',
                     ],
                     'content' => [
                         'overview'  => [

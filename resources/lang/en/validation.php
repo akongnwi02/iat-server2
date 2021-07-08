@@ -404,12 +404,12 @@ return [
                 'cycle_year' => 'Cycle Year',
                 'cycle_month' => 'Cycle Month',
                 'payments' => [
-                    'amount' => 'Amount',
+                    'amount'      => 'Amount',
                     'payment_ref' => 'Payment Reference',
-                    'method' => 'Payment Method',
+                    'method'      => 'Payment Method',
                     'consumption' => 'Consumption',
                     'bill_number' => 'Bill Number',
-                    'note' => 'Note',
+                    'note'        => 'Note',
                 ]
             ],
             'account'        => [

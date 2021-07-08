@@ -176,6 +176,7 @@ return [
         ],
         'accounts'   => [
             'title' => 'Accounts',
+            'reset' => 'Reset Filter',
             
             'deposit'  => [
                 'management' => 'Company Account',
