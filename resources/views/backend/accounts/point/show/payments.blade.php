@@ -38,16 +38,3 @@
         </div>
     </div><!--col-->
 </div><!--row-->
-<div class="row">
-    <div class="col-7">
-        <div class="float-left">
-            {!! $movements->total() !!} {{ trans_choice('labels.backend.account.deposit.tabs.content.movements.table.total', $movements->total()) }}
-        </div>
-    </div><!--col-->
-
-    <div class="col-5">
-        <div class="float-right">
-            {!! $movements->render() !!}
-        </div>
-    </div><!--col-->
-</div><!--row-->
