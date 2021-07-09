@@ -236,7 +236,7 @@ return [
             'cannot_change_phone'    => 'You cannot change your phone number. This is you default notification means.',
             'cannot_change_username' => 'You cannot change your username. Please contact support',
             'no_picture'             => 'You must supply a profile image.',
-            
+
             'password' => [
                 'change_mismatch'      => 'That is not your old password.',
                 'reset_successful'     => 'Password reset successful',
@@ -270,7 +270,7 @@ return [
             'deactivated' => 'Your account has been deactivated.',
             'email_taken' => 'That e-mail address is already taken.',
             'phone_taken' => 'That phone number address is already taken.',
-            
+
             'password' => [
                 'change_mismatch' => 'That is not your old password.',
                 'reset_problem'   => 'There was a problem resetting your password. Please resend the password reset email.',

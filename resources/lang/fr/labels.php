@@ -61,6 +61,12 @@ return [
                 ],
             ],
             'users' => [
+                'filter' => [
+                    'full_name' => 'Name',
+                    'company'   => 'Company',
+                    'username'  => 'Username',
+                    'confirmed' => 'Confirmed',
+                ],
                 'active'              => 'Utilisateurs actifs',
                 'all_permissions'     => 'Toutes les permissions',
                 'change_password'     => 'Modifier le mot de passe',
@@ -169,10 +175,9 @@ return [
                                 'active'             => 'Actif',
                                 'code'               => 'Code',
                                 'logo'               => 'Logo',
-                                'company_rate'       => 'Taux spécifique à l\'entreprise (%)',
-                                'agent_rate'         => 'Taux spécifique à l\'agent (%)',
                                 'customercommission' => 'Frais de service client',
                                 'providercommission' => 'Frais de service fournisseur de service',
+                                'commissiondistribution' => 'Commission Distribution Strategy',
                                 'total'              => 'service|services'
                             ]
                         ],
@@ -440,6 +445,13 @@ return [
             'drain'                 => 'Décharger le compte',
             'float'                 => 'Ajouter la flotte',
             'request_payout'        => 'Demander un paiement',
+            'filter'     => [
+                'title' => 'Filter Accounts',
+                'code'   => 'Code',
+                'name'   => 'Account Name',
+                'company' => 'Company',
+                'active' => 'Active',
+            ],
             'deposit'               => [
                 'management' => 'Company Accounts',
                 'actions'    => 'Account Actions',
@@ -484,6 +496,18 @@ return [
                                 'total'            => 'movement|movements'
                             ],
                         ],
+                        'payments' => [
+                            'table' => [
+                                'amount'      => 'Amount',
+                                'cycle_month' => 'Month',
+                                'cycle_year'  => 'Year',
+                                'payment_ref' => 'Payment Reference',
+                                'method'      => 'Payment Method',
+                                'consumption' => 'Consumption',
+                                'bill_number' => 'Bill Number',
+                                'note'        => 'Note',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -504,6 +528,7 @@ return [
                     'titles'  => [
                         'overview'  => 'Aperçu',
                         'movements' => 'Mouvements',
+                        'payments' => 'Payments',
                     ],
                     'content' => [
                         'overview'  => [

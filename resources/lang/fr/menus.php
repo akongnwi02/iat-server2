@@ -176,7 +176,8 @@ return [
         ],
         'accounts' => [
             'title' => 'Comptes',
-            
+            'reset' => 'Reset Filter',
+
             'deposit' => [
                 'management' => 'Compte de dépôt',
                 'company' => 'Company Account',
@@ -215,7 +216,8 @@ return [
             'view' => 'View Payments',
             'electricity' => [
                 'management' => 'Electricity Points',
-                'edit' => 'Update Payment'
+                'edit' => 'Update Payment',
+                'create' => 'Create Payment',
             ]
         ]
     ],

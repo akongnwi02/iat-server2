@@ -123,6 +123,7 @@ return [
         'payment' => [
             'electricity' => [
                 'updated' => 'The bill payment was updated successfully',
+                'created' => 'The bill payment was created successfully',
                 'status_changed' => 'The bill payment status was changed successfully'
             ]
         ],

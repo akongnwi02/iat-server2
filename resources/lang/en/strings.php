@@ -114,13 +114,13 @@ return [
             'password_cause_of_email'   => 'You are receiving this email because we received a password reset request for your account.',
             'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
             'reset_password'            => 'Click here to reset your password',
-            
+
             'click_to_confirm'        => 'Click here to confirm your account:',
             'use_code_to_confirm'     => 'Use the code below to confirm your account:',
             'use_code_to_reset_email' => 'Use the code below to reset your password:',
             'use_code_to_confirm_sms' => 'Hello :first_name! Use the code :code to confirm your account on :app_name.',
             'use_code_to_reset_sms'   => 'Hello :first_name! Use the code :code to reset your password on :app_name.',
-            
+
             'login_sms' => 'Visit our website to log into your account.'
         ],
         'companies' => [

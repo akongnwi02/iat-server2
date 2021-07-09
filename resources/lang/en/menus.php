@@ -21,7 +21,7 @@ return [
         ],
         'access' => [
             'title' => 'Users',
-            
+
             'roles' => [
                 'all'        => 'All Roles',
                 'create'     => 'Create Role',
@@ -99,7 +99,7 @@ return [
             'dashboard' => 'Dashboard',
             'logs'      => 'Logs',
         ],
-        
+
         'sidebar'   => [
             'dashboard' => 'Dashboard',
             'sales'     => 'Sales',
@@ -115,7 +115,7 @@ return [
         ],
         'companies' => [
             'title' => 'Companies',
-            
+    
             'company' => [
                 'management' => 'Companies',
                 'create'     => 'Create Company',
@@ -140,7 +140,7 @@ return [
         
         'services' => [
             'title' => 'Service',
-            
+    
             'service'      => [
                 'management' => 'Services',
                 'create'     => 'Create Service',
@@ -177,7 +177,7 @@ return [
         'accounts'   => [
             'title' => 'Accounts',
             'reset' => 'Reset Filter',
-            
+
             'deposit'  => [
                 'management' => 'Company Account',
                 'company' => 'Company Account',

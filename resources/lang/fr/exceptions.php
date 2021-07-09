@@ -129,6 +129,11 @@ return [
                 'update_error'     => 'Une erreur est survenue lors de la mise à jour de cette commission. Veuillez réessayer.',
                 'invalid_pricings' => 'La valeur contient des données non valides',
             ],
+            'distribution' => [
+                'create_error' => 'There was an error creating the distribution',
+                'sum_error'    => 'The sum of the commission distributions must not be greater than 100%',
+                'update_error' => 'There was an error updating the distribution',
+            ],
             'method'     => [
                 'create_error' => 'There was a problem creating this payment method. Please try again.',
                 'update_error' => 'There was a problem updating this payment method. Please try again.',
@@ -167,6 +172,7 @@ return [
         'payment' => [
             'electricity' => [
                 'cycle_not_found' => 'The cycle for this payment does not exist in the system',
+                'supply_point_not_found' => 'The supply point for this payment was not found',
                 'no_payment_to_confirm' => 'No payments have been register for this supply point.',
                 'update_error' => 'There was a problem updating the payments. Please try again later!',
                 'status_error' => 'There was a problem updating the status of the payments. Please try again later!',
