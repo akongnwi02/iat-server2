@@ -151,7 +151,7 @@
 
                 <div class="col-5">
                     <div class="float-right">
-                        {!! $points->render() !!}
+                        {!! $points->appends(request()->except('page'))->render() !!}
                     </div>
                 </div><!--col-->
             </div><!--row-->
