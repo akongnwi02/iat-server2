@@ -5,6 +5,7 @@ namespace App\Repositories\Backend\Auth;
 use App\Models\Account\Account;
 use App\Models\Account\AccountType;
 use App\Models\Auth\User;
+use App\Models\Filters\User\FiltersUserName;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -58,7 +59,11 @@ class UserRepository extends BaseRepository
     {
         $users = QueryBuilder::for(User::class)
             ->allowedFilters([
-                AllowedFilter::scope('active'),
+                AllowedFilter::exact('active'),
+                AllowedFilter::exact('confirmed'),
+                AllowedFilter::partial('company.name'),
+                AllowedFilter::partial('username'),
+                AllowedFilter::custom('full_name', new FiltersUserName()),
             ])
             ->allowedSorts('users.active', 'users.created_at', 'users.username')
             ->defaultSort('-users.active', '-users.confirmed', '-users.created_at', 'users.username')

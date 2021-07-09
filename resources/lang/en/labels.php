@@ -61,6 +61,12 @@ return [
                 ],
             ],
             'users' => [
+                'filter' => [
+                    'full_name' => 'Name',
+                    'company'   => 'Company',
+                    'username'  => 'Username',
+                    'confirmed' => 'Confirmed',
+                ],
                 'active'              => 'Active Users',
                 'all_permissions'     => 'All Permissions',
                 'change_password'     => 'Change Password',
