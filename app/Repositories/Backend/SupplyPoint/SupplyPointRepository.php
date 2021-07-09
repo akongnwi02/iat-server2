@@ -149,4 +149,9 @@ class SupplyPointRepository
             \Log::error('There was an error auto updating the tariff for this supply point', $point->getAttributes());
         }
     }
+    
+    public function findByUuid($uuid)
+    {
+        return SupplyPoint::where('uuid', $uuid)->first();
+    }
 }

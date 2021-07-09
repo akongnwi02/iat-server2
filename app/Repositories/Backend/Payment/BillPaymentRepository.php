@@ -14,14 +14,59 @@ use App\Events\Backend\Payment\BillPaymentUnconfirmed;
 use App\Exceptions\GeneralException;
 use App\Models\Payment\BillPayment;
 use App\Models\SupplyPoint\SupplyPoint;
+use App\Repositories\Backend\SupplyPoint\SupplyPointRepository;
 
 class BillPaymentRepository
 {
     public $cycleRepository;
+    public $supplyPointRepository;
     
-    public function __construct(CycleRepository $cycleRepository)
+    public function __construct(CycleRepository $cycleRepository, SupplyPointRepository $supplyPointRepository)
     {
         $this->cycleRepository = $cycleRepository;
+        $this->supplyPointRepository = $supplyPointRepository;
+    }
+    
+    public function create($data)
+    {
+        $cycleYear = $data['cycle_year'];
+        $cycleMonth = $data['cycle_month'];
+        $cycle = $this->cycleRepository->findByYearAndMonth($cycleYear, $cycleMonth);
+        $point = $this->supplyPointRepository->findByUuid($data['supply_point_id']);
+    
+        if (!$cycle) {
+            throw new GeneralException(__('exceptions.backend.payment.electricity.cycle_not_found'));
+        }
+        
+        if (!$point) {
+            throw new GeneralException(__('exceptions.backend.payment.electricity.supply_point_not_found'));
+        }
+    
+        return \DB::transaction(function () use ($point, $data, $cycle) {
+        
+//            $point->billPayments()->where('cycle_id', $cycle->uuid)->delete();
+        
+            $billPayments = $data['payments'];
+        
+            foreach ($billPayments as $billPayment) {
+                $saved = $point->billPayments()->save(new BillPayment([
+                    'cycle_id' => $cycle->uuid,
+                    'supply_point_id' => $point->uuid,
+                    'type' => $point->type,
+                    'is_confirmed' => false,
+                    'amount' => $billPayment['amount'],
+                    'payment_ref' => $billPayment['payment_ref'],
+                    'method' => $billPayment['method'],
+                    'consumption' => $billPayment['consumption'],
+                    'bill_number' => $billPayment['bill_number'],
+                    'note' => $billPayment['note'],
+                ]));
+            
+                if (!$saved) {
+                    throw new GeneralException(__('exceptions.backend.payment.electricity.update_error'));
+                }
+            }
+        });
     }
     
     /**

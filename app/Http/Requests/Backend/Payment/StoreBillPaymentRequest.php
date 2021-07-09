@@ -2,24 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: devert
- * Date: 4/13/21
- * Time: 6:56 PM
+ * Date: 7/9/21
+ * Time: 1:34 AM
  */
 
 namespace App\Http\Requests\Backend\Payment;
 
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class UpdateBillPaymentRequest extends FormRequest
+class StoreBillPaymentRequest extends FormRequest
 {
     public function authorize()
     {
-        
-        $cycleYear = request()->input('cycle_year');
-        $cycleMonth = request()->input('cycle_month');
-        
-        return ! request()->point->getPaymentsConfirmedStatusForCycle($cycleYear, $cycleMonth);
+        return true;
     }
     
     public function attributes()
@@ -33,12 +30,14 @@ class UpdateBillPaymentRequest extends FormRequest
             'payments.*.note'        => __('validation.attributes.backend.payment.payments.note'),
             'cycle_year'             => __('validation.attributes.backend.payment.payments.cycle_year'),
             'cycle_month'            => __('validation.attributes.backend.payment.payments.cycle_month'),
+            'supply_point_id'        => __('validation.attributes.backend.payment.payments.supply_point'),
         ];
     }
     
     public function rules()
     {
         return [
+            'supply_point_id'        => [Rule::exists('supply_points', 'uuid')],
             'cycle_month'            => ['required', 'numeric', 'min:1','max:12'],
             'cycle_year'             => ['required', 'numeric', 'min:2000','max:3000'],
             'payments'               => ['required', 'array'],

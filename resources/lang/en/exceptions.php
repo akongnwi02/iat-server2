@@ -172,7 +172,8 @@ return [
         ],
         'payment' => [
             'electricity' => [
-                'cycle_not_found' => 'The cycle for this payment does not exist in the system',
+                'cycle_not_found' => 'The cycle for this payment has not been created yet',
+                'supply_point_not_found' => 'The supply point for this payment was not found',
                 'no_payment_to_confirm' => 'No payments have been register for this supply point.',
                 'update_error' => 'There was a problem updating the payments. Please try again later!',
                 'status_error' => 'There was a problem updating the status of the payments. Please try again later!',

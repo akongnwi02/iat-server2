@@ -38,7 +38,7 @@ class CycleRepository
     
         if ($cycle->save()) {
             $supplyPointRepository = new SupplyPointRepository();
-            $billPaymentRepository = new BillPaymentRepository($this);
+            $billPaymentRepository = new BillPaymentRepository($this, $supplyPointRepository);
             
             $supplyPoints = $supplyPointRepository->getAllSupplyPointsForCurrentUser()->get();
             

@@ -410,6 +410,9 @@ return [
                     'consumption' => 'Consumption',
                     'bill_number' => 'Bill Number',
                     'note'        => 'Note',
+                    'cycle_year'  => 'Year',
+                    'cycle_month' => 'Month',
+                    'supply_point' => 'Supply Point',
                 ]
             ],
             'account'        => [

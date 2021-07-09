@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Backend\BillPayment;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Payment\StoreBillPaymentRequest;
 use App\Http\Requests\Backend\Payment\UpdateBillPaymentRequest;
 use App\Models\SupplyPoint\SupplyPoint;
 use App\Repositories\Backend\Payment\BillPaymentRepository;
@@ -32,10 +33,39 @@ class ElectricityBIllPaymentController extends Controller
     
         return redirect()->route('admin.payments.electricity.index')
             ->withFlashSuccess(__('alerts.backend.payment.electricity.updated'));
-        
-        
-        
-        
+    }
+    
+    /**
+     * @param UpdateBillPaymentRequest $request
+     * @param BillPaymentRepository $billPaymentRepository
+     * @param SupplyPoint $point
+     * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     * @throws \Throwable
+     */
+    public function store(StoreBillPaymentRequest $request, BillPaymentRepository $billPaymentRepository)
+    {
+        $billPaymentRepository->create($request->input());
+    
+        return redirect()->route('admin.payments.electricity.index')
+            ->withFlashSuccess(__('alerts.backend.payment.electricity.created'));
+    }
+    
+    /**
+     * @param SupplyPointRepository $supplyPointRepository
+     * @return mixed
+     */
+    public function create(SupplyPointRepository $supplyPointRepository)
+    {
+        $cycleYear = @request()->cycle_year ?: now()->year;
+        $cycleMonth = @request()->cycle_month ?: now()->month;
+    
+        return view('backend.payments.electricity.create')
+            ->withPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
+                ->pluck('name', 'uuid')
+                ->toArray())
+            ->withCycleYear($cycleYear)
+            ->withCycleMonth($cycleMonth);
     }
     
     /**

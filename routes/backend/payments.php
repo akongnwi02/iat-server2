@@ -18,6 +18,14 @@ Route::group([
         ->name('electricity.index')
         ->middleware('permission:'.config('permission.permissions.read_bill_payments'));
     
+    Route::get('create', [ElectricityBIllPaymentController::class, 'create'])
+        ->name('electricity.create')
+        ->middleware('permission:' . config('permission.permissions.create_bill_payments'));
+    
+    Route::post('store', [ElectricityBIllPaymentController::class, 'store'])
+        ->name('electricity.store')
+        ->middleware('permission:' . config('permission.permissions.create_bill_payments'));
+    
     /*
     * Specific Bill Payment
     */
@@ -26,7 +34,7 @@ Route::group([
         Route::get('edit', [ElectricityBIllPaymentController::class, 'edit'])
             ->name('electricity.edit')
             ->middleware('permission:' . config('permission.permissions.update_bill_payments'));
-        
+
         Route::put('/', [ElectricityBIllPaymentController::class, 'update'])
             ->name('electricity.update')
             ->middleware('permission:' . config('permission.permissions.update_bill_payments'));

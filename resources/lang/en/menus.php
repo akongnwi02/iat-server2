@@ -216,7 +216,8 @@ return [
             'view' => 'View Payments',
             'electricity' => [
                 'management' => 'Electricity Points',
-                'edit' => 'Update Payment'
+                'edit' => 'Update Payment',
+                'create' => 'Create Payment',
             ]
         ]
     ],
