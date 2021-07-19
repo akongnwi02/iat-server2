@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        @lang('labels.backend.sales.management')
+                        @lang('labels.backend.sales.management') <small class="text-muted">{{ number_format($totalAmount, 2) . ' ' . $default_currency->code  }}</small>
                     </h4>
                 </div><!--col-->
 

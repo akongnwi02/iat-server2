@@ -30,6 +30,7 @@ class SalesController extends Controller
 
         return view('backend.sales.index')
             ->withSales($sales->paginate())
+            ->withTotalAmount($sales->sum('amount'))
             ->withStatuses(config('business.transaction.status'))
             ->withServices($services->pluck('name', 'uuid')->toArray())
             ->withCompanies(auth()->user()->company->is_default ? Company::all()->pluck('name', 'uuid')->toArray() : auth()->user()->company()->pluck('name', 'uuid')->toArray());
