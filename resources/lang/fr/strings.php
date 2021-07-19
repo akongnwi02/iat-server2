@@ -34,10 +34,10 @@ return [
                 'agents'                  => 'Agents',
                 'users'                   => 'Utilisateur|Utilisateurs',
                 'balance'                 => 'Solde du compte',
-                'float'           => 'Float Balance',
+                'float'           => 'solde de la Flotte',
                 'number'                  => 'Numéro de compte de l\'entreprise',
                 'commission'              => 'Solde de commission',
-                'system_commission'       => 'Commission du système',
+                'system_commission'       => 'Commission du Système',
                 'commission_today'        => 'Commission du jour',
                 'commission_today_help'   => 'Commission gagné aujourd\'hui',
                 'agents_balance'          => 'Solde des agents',
@@ -45,7 +45,7 @@ return [
                 'total_balance'           => 'Solde total',
                 'total_commission'        => 'Commission Total ',
                 'balance_help'            => 'Le solde du compte de l\'entreprise',
-                'float_balance_help'            => 'The company\'s float balance',
+                'float_balance_help'            => 'Le solde de la flotte de l\'entreprise',
                 'agents_balance_help'     => 'Le solde du compte de tous les agents',
                 'agents_commission_help'  => 'Le commissions de tous les agents',
                 'total_balance_help'      => 'Solde total de l\'agent et de l\'entreprise',
@@ -86,7 +86,7 @@ return [
             'you_have' => [
                 'messages'      => "{0} Vous n'avez pas de message|{1} Vous avez 1 message|[2,Inf] Vous avez :number messages",
                 'notifications' => "{0} Vous n'avez pas de notification|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
-                'tasks'         => "{0} Vous n'avez pas de tâche affectée|{1} Vous avez 1 tâche affectée|[2,Inf] Vous avez :number tâches affectées",
+                'tasks'         => "{0} Vous n'avez pas de tâche affectée|{1} Vous avez 1 tâche affectée|[2,Inf] Vous avez :number tasks",
             ],
         ],
         'search' => [
@@ -95,10 +95,10 @@ return [
             'title'      => 'Résultats de recherche',
             'results'    => 'Résultats de la recherche :query',
         ],
-        'welcome'   => 'Welcome to the Dashboard',
+        'welcome'   => 'Bienvenue dans le tableau de bord',
         'bill_payment' => [
-            'money_transfer' => 'Money Transfer',
-            'bill_settlement' => 'Bill Settlement',
+            'money_transfer' => 'Paiement en espèces',
+            'bill_settlement' => 'Règlement de la Facture',
         ]
     ],
     'emails' => [
@@ -150,8 +150,8 @@ return [
     'description' => [
         'points' => [
             'electricity' => [
-                'auto_price_margin' => 'The margin maintained between the provider\'s price and internal price when auto price adjustment is turned on.',
-                'price' => 'Only required when auto price calculation is turned off',
+                'auto_price_margin' => 'La marge maintenue entre le prix du fournisseur et le prix interne lorsque l\'ajustement automatique des prix est activé.',
+                'price' => 'Requis uniquement lorsque le calcul automatique du prix est désactivé',
             ]
         ]
     ],
@@ -182,18 +182,18 @@ return [
             'joined'        => 'A rejoint',
         ],
         'user'                    => [
-            'change_email_notice'         => 'If you change your e-mail you will have to confirm your new e-mail address.',
-            'change_phone_notice'         => 'If you change your phone number, you will have to confirm your new phone number',
-            'email_changed_notice'        => 'You must confirm your new e-mail address before you can log in again.',
-            'cannot_change_email_notice'  => 'You cannot change your e-mail address. This is your default notification means',
-            'cannot_change_phone_notice'  => 'You cannot change your phone number. This is your default notification means',
-            'profile_updated'             => 'Profile successfully updated.',
-            'password_updated'            => 'Password successfully updated.',
-            'pin_changed'                 => 'Your pin code was changed successfully.',
-            'pin_created'                 => 'Your pin code was created successfully.',
-            'topup_updated'               => 'Your Topup configuration has been updated successfully. You can now recharge your account',
-            'topup_account_change_notice' => 'Once a topup account is confirmed by the system, it cannot be changed except you contact support.',
-            'configure_topup'             => 'Please configure your account recharge methods'
+            'change_email_notice'         => 'Si vous changez d\'adresse e-mail, vous devrez confirmer votre nouvelle adresse.',
+            'change_phone_notice'         => 'Si vous changez de numéro de téléphone, vous devrez confirmer votre nouveau numéro de téléphone',
+            'email_changed_notice'        => 'Vous devez confirmer votre nouvelle adresse email pour pouvoir vous connecter à nouveau.',
+            'cannot_change_email_notice'  => 'Vous ne pouvez pas modifier votre adresse email. Il s\'agit de votre mode de notification par défaut',
+            'cannot_change_phone_notice'  => 'Vous ne pouvez pas modifier votre numéro de téléphone. Il s\'agit de votre mode de notification par défaut',
+            'profile_updated'             => 'Profil mis à jour avec succès.',
+            'password_updated'            => 'Mot de passe mis à jour avec succès.',
+            'pin_changed'                 => 'Votre code pin a été changé avec succès.',
+            'pin_created'                 => 'Votre code pin a été crée avec succès.',
+            'topup_updated'               => 'La configuration de votre recharge a été mise à jour avec succès. Vous pouvez maintenant recharger votre compte',
+            'topup_account_change_notice' => 'Une fois qu\'un compte de recharge est confirmé par le système, il ne peut pas être modifié, sauf si vous contactez le support.',
+            'configure_topup'             => 'Veuillez paramétrer les modes de recharge de votre compte'
         ],
         'welcome_to' => 'Bienvenue sur :place',
         'what_we_do'              => 'Ce que nous faisons',
@@ -250,17 +250,17 @@ return [
             ]
         ],
         'contact_us'              => [
-            'title'      => 'Love to Hear From You',
-            'text'       => 'We are now available twenty-four hours a day, seven days a week. Call us today and find out how we can help your business.',
-            'company'    => 'Company',
-            'address'    => 'Address',
-            'phone'      => 'Phone',
+            'title'      => 'Nous aimerions avoir de vos nouvelles',
+            'text'       => 'Nous sommes désormais disponibles vingt-quatre heures sur vingt-quatre, sept jours sur sept. Appelez-nous dès aujourd\'hui et voyez comment nous pouvons aider votre entreprise.',
+            'company'    => 'Entreprise',
+            'address'    => 'Adresse',
+            'phone'      => 'Téléphone',
             'email'      => 'Email',
-            'website'    => 'Website',
-            'work_hours' => 'Work Hours',
-            'monday'     => 'Monday',
-            'saturday'   => 'Saturday',
-            'to'         => 'to',
+            'website'    => 'Site web',
+            'work_hours' => 'Heures de Travail',
+            'monday'     => 'Lundi',
+            'saturday'   => 'Samedi',
+            'to'         => 'à',
         ]
     ],
 ];

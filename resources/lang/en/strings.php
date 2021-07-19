@@ -96,7 +96,7 @@ return [
         ],
         'welcome'   => 'Welcome to the Dashboard',
         'bill_payment' => [
-            'money_transfer' => 'Money Transfer',
+            'money_transfer' => 'Cash Payment',
             'bill_settlement' => 'Bill Settlement',
         ]
     ],

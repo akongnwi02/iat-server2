@@ -12,8 +12,8 @@ return [
     */
 
     '401' => [
-        'title' => 'Unauthenticated',
-        'description' => 'Sorry, you are not authenticated.'
+        'title' => 'Non authentifié',
+        'description' => 'Désole, vous n\'êtes pas authentifié.'
     ],
     
     '403' => [

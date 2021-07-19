@@ -24,13 +24,13 @@ return [
         'login'     => 'Connexion',
         'macros'    => 'Macros',
         'register'  => "S'enregistrer",
-        'force_topup' => 'Configure Topup',
+        'force_topup' => 'Configurer la Recharge',
 
         'user' => [
             'account'         => 'Mon compte',
             'administration'  => 'Administration',
             'change_password' => 'Changer mon mot de passe',
-            'change_pin'      => 'Change Code pin',
+            'change_pin'      => 'Changer le Code pin',
             'my_information'  => 'Mes informations',
             'profile'         => 'Profil',
             'topup'           => 'Paramètres de recharges',

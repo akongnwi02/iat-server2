@@ -24,7 +24,7 @@ return [
                 'needs_permission'  => 'Vous devez choisir au moins une autorisation pour ce rôle.',
                 'not_found'         => "Ce rôle n'existe pas.",
                 'update_error'      => 'Une erreur est survenue lors de la mise à jour du rôle. Veuillez réessayer.',
-                'name_exists'       => 'Un rôle existe déjà avec le nom : nom.',
+                'name_exists'       => 'Un rôle existe déjà avec le nom : name.',
             ],
             'users' => [
                 'already_confirmed'    => 'Le compte de cet utilisateur est déjà confirmé.',
@@ -48,7 +48,7 @@ return [
                 'restore_error'         => "Une erreur  est survenue lors de la restauration de l'utilisateur. Veuillez réessayer.",
                 'role_needed_create'    => 'Vous devez sélectionner au moins un rôle.',
                 'role_needed'           => 'Vous devez sélectionner au moins un rôle.',
-                'session_wrong_driver'  => 'Votre pilote de session doit être configuré avec une base de données pour utiliser cette fonctionalité.',
+                'session_wrong_driver'  => 'Votre pilote de session doit être configuré avec une base de données pour utiliser cette fonctionnalité.',
                 'social_delete_error' => "Une erreur est survenue lors de la suppression du compte de réseau social de l'utilisateur.",
                 'update_error'          => "Une erreur est survenue lors de la mise à jour de l'utilisateur. Veuillez réessayer.",
                 'transfer_error'          => 'Une erreur est survenue lors du transfert de cet utilisateur. Veuillez réessayer..',
@@ -66,17 +66,17 @@ return [
                 'cant_change_attribute' => 'Vous n\'êtes pas autorisé à modifier l\'attribut',
                 'cant_change_check_box' => 'Vous n\'êtes pas autorisé à modifier l\'une des valeurs des cases à cocher',
                 'invalid_service'       => 'Un service non valide a été fourni',
-                'invalid_method'       => 'An invalid payment method has been provided',
-                'login_error'           => 'Une erreur est survenue lors de la connexion de cette entreprise. Veuillez réessaye.',
+                'invalid_method'       => 'Un mode de paiement non valide a été fourni',
+                'login_error'           => 'Une erreur est survenue lors de la connexion de cette entreprise. Veuillez réessayer.',
                 'inactive'              => 'Une erreur est survenue lors du traitement de la requête. Cette entreprise est inactive',
             ],
             'service' => [
-                'mark_error'   => 'There was a problem updating the status of this service for this company. Please try again.',
-                'update_error' => 'There was a problem updating this service for this company. Please try again.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de ce service pour cette entreprise. Veuillez réessayer.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de ce service pour cette entreprise. Veuillez réessayer.',
             ],
             'method' => [
-                'mark_error'   => 'There was a problem updating the status of this payment method for this company. Please try again.',
-                'update_error' => 'There was a problem updating this payment method for this company. Please try again.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de ce mode de paiement pour cette entreprise. Veuillez réessayer.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de ce mode de paiement pour cette entreprise. Veuillez réessayer.',
             ]
         ],
         'account' => [
@@ -88,33 +88,33 @@ return [
         ],
         'accounting' => [
             'insufficient_provision_amount' => 'La valeur est supérieure au montant de la commission',
-            'insufficient_collected_amount' => 'La valeur est supérieure au montant collectcé',
+            'insufficient_collected_amount' => 'La valeur est supérieure au montant collecté',
             'provision_request_error' => 'Une erreur est survenue lors de la demande de provision. Veuillez réessayer.',
             'collection_payment_error' => 'Une erreur est survenue lors du paiement de la collecte. Veuillez réessayer.'
         ],
         'movement' => [
-            'create_error' => 'There was a problem performing this operation. Please try again.',
+            'create_error' => 'Une erreur est survenue pendant cette opération. Veuillez réessayer.',
         ],
         'meters' => [
             'electricity' => [
-                'activate' => 'There was a problem activating this meter. Please try again.',
-                'deactivate' => 'There was a problem deactivating this meter. Please try again.',
-                'update_error' => 'There was a problem updating this meter. Please try again.',
-                'create_error' => 'There was a problem registering this meter. Please try again.',
-                'already_active' => 'The meter is already active.',
-                'already_inactive' => 'The meter is already inactive.',
+                'activate' => 'Une erreur est survenue lors de l\'activation de ce compteur. Veuillez réessayer.',
+                'deactivate' => 'Une erreur est survenue lors de la désactivation de ce compteur. Veuillez réessayer.',
+                'update_error' => 'Une erreur est survenue lors de la miseà jour de ce compteur. Veuillez réessayer.',
+                'create_error' => 'Une erreur est survenue lors de l\'enregistrement de ce compteur. Veuillez réessayer.',
+                'already_active' => 'Le compteur est déjà activé.',
+                'already_inactive' => 'Le compteur est déjà désactivé.',
                 'vendor' => [
-                    'search_error' => 'There was a problem searching for this meter in the provider\'s system',
-                    'not_found' => 'This meter was not found n the vendor\'s system',
-                    'token_error' => 'There was a problem generating token for this meter in the provider\'s system',
-                    'auth_error' => 'There was a problem authenticating with the vendor system',
+                    'search_error' => 'Une erreur est survenue lors de la recherche de ce compteur dans le système du fournisseur.',
+                    'not_found' => 'Ce compteur n\'a pas été trouvé dans le système du marchand.',
+                    'token_error' => 'Une erreur est survenue lors de la génération d\'un jeton pour ce compteur dans le système du fournisseur.',
+                    'auth_error' => 'Il y a eu un problème d\'authentification avec le système du fournisseur',
                 ]
             ]
         ],
         'points' => [
             'electricity' => [
-                'update_error' => 'There was a problem updating the supply point. Please try again.',
-                'create_error' => 'There was a problem creating the supply point. Please try again.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour du point de vente. Veuillez réessayer.',
+                'create_error' => 'Une erreur est survenue lors de la création du point de vente. Veuillez réessayer.',
             ]
         ],
         'services' => [
@@ -130,82 +130,82 @@ return [
                 'invalid_pricings' => 'La valeur contient des données non valides',
             ],
             'distribution' => [
-                'create_error' => 'There was an error creating the distribution',
-                'sum_error'    => 'The sum of the commission distributions must not be greater than 100%',
-                'update_error' => 'There was an error updating the distribution',
+                'create_error' => 'Une erreur s\'est produite lors de la création de la distribution',
+                'sum_error'    => 'La somme des distributions de commissions ne doit pas être supérieure à 100%',
+                'update_error' => 'Une erreur s\'est produite lors de la mise à jour de la distribution',
             ],
             'method'     => [
-                'create_error' => 'There was a problem creating this payment method. Please try again.',
-                'update_error' => 'There was a problem updating this payment method. Please try again.',
-                'mark_error'   => 'There was a problem updating the status of this payment method. Please try again.',
-                'company_update_error' => 'The was a problem updating the assignments of this payment method',
+                'create_error' => 'Une erreur est survenue lors de la création de ce mode de paiement. Veuillez réessayer.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de ce mode de paiement. Veuillez réessayer.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de ce mode de paiement. Veuillez réessayer.',
+                'company_update_error' => 'Une erreur est survenue lors de la mise à jour des assignations de ce mode de paiement',
             ],
             'company' => [
-                'update_error' => 'The was a problem updating the assignments of this service'
+                'update_error' => 'Une erreur est survenue lors de la mise à jour des assignations de ce service'
             ],
             'price' => [
-                'update_error' => 'There was a problem updating this price. Please try again.',
-                'create_error' => 'There was a problem creating this price. Please try again.',
-                'mark_error'   => 'There was a problem updating the status of this category. Please try again.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de ce prix. Veuillez réessayer.',
+                'create_error' => 'Une erreur est survenue lors de la création de ce prix. Veuillez réessayer.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de cette catégorie. Veuillez réessayer.',
             ],
             'topup' => [
-                'update_error' => 'They was a problem updating the :method payment method. It has already been confirmed by the system. Please contact support.'
+                'update_error' => 'Une erreur est survenue lors de la mise à jour du :mode de paiement. Il a déjà été confirmé par le système. Veuillez contacter le support.'
             ]
         ],
         'administration' => [
             'currency' => [
-                'create_error' => 'There was a problem creating this currency. Please try again.',
-                'update_error' => 'There was a problem updating this currency. Please try again.',
-                'mark_error'   => 'There was a problem updating the status of this currency. Please try again.',
+                'create_error' => 'Une erreur est survenue lors de la création de cette monnaie. Veuillez réessayer.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de cette monnaie. Veuillez réessayer.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de cette monnaie. Veuillez réessayer.',
             ],
             'inventory' => [
-                'create_error' => 'There was a problem creating this inventory. Please try again.',
-                'update_error' => 'There was a problem updating this inventory. Please try again.',
-                'mark_error'   => 'There was a problem updating the status of this inventory. Please try again.',
+                'create_error' => 'Une erreur est survenue lors de la création de cet inventaire. Veuillez réessayer.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de cet inventaire. Veuillez réessayer.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de ce cycle. Veuillez réessayer.',
             ],
             'cycle' => [
-                'create_duplicate_error' => 'The cycle has already been created.',
-                'update_error' => 'There was a problem updating this cycle. Please try again.',
-                'mark_error'   => 'There was a problem updating the status of this cycle. Please try again.',
+                'create_duplicate_error' => 'Le cycle a déjà été créé.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour de ce cycle. Veuillez réessayer.',
+                'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de cet inventaire. Veuillez réessayer.',
             ]
         ],
         'payment' => [
             'electricity' => [
-                'cycle_not_found' => 'The cycle for this payment does not exist in the system',
-                'supply_point_not_found' => 'The supply point for this payment was not found',
-                'no_payment_to_confirm' => 'No payments have been register for this supply point.',
-                'update_error' => 'There was a problem updating the payments. Please try again later!',
-                'status_error' => 'There was a problem updating the status of the payments. Please try again later!',
+                'cycle_not_found' => 'Le cycle pour ce paiement n\'existe pas dans le système',
+                'supply_point_not_found' => 'Le point de vente pour ce paiement n\'a pas été trouvé',
+                'no_payment_to_confirm' => 'Aucun paiement n\'a été enregistré pour ce point de vente.',
+                'update_error' => 'Une erreur est survenue lors de la mise à jour des paiements. Veuillez réessayer plus tard!',
+                'status_error' => 'Une erreur est survenue lors de la mise à jour du statut des paiements. Veuillez réessayer plus tard!',
             ]
         ],
         'payout'   => [
-            'drain_error'      => 'There was an error draining the amount',
-            'transfer_error'   => 'There was a problem transferring the amount to the strongbox.',
-            'payout_error'     => 'There was a problem executing the payout. Please try again.',
-            'no_company_error' => 'The user belongs to no company',
-            'invalid_status'   => 'Invalid payout status.',
-            'status_error'     => 'There was a problem updating the status of the payout. Please try again.',
-            'state_error'     => 'There was a problem updating the status of the payout. The payout is in a final state.'
+            'drain_error'      => 'Une erreur est survenue lors du vidage du montant',
+            'transfer_error'   => 'Une erreur est survenue lors du transfert du montant dans le strongbox.',
+            'payout_error'     => 'Une erreur est survenue lors de l\'exécution du paiement. Veuillez réessayer.',
+            'no_company_error' => 'L\'utilisateur n\'appartient à aucune entreprise',
+            'invalid_status'   => 'Statut de paiement invalide.',
+            'status_error'     => 'Une erreur est survenue lors de la mise à jour du statut du paiement. Veuillez réessayer.',
+            'state_error'     => 'Une erreur est survenue lors de la mise à jour du statut du paiement. Le paiement est dans un état final.'
         ],
         'quote' => [
-            'create_error' => 'There was a problem creating this quote. Please try again.',
-            'update_error' => 'There was a problem updating this quote. Please try again.',
-            'mark_error'   => 'There was a problem updating the status of this quote. Please try again.',
+            'create_error' => 'Une erreur est survenue lors de la création de ce devis. Veuillez réessayer.',
+            'update_error' => 'Une erreur est survenue lors de la mise à jour de ce devis. Veuillez réessayer.',
+            'mark_error'   => 'Une erreur est survenue lors de la mise à jour du statut de ce devis. Veuillez réessayer.',
         ],
         'sales' => [
-            'service_forbidden' => 'You are not allowed to use this service',
-            'service_invalid' => 'This service is not a valid service',
-            'service_inactive' => 'This service is not active',
-            'meter_inactive' => 'This meter is not active',
-            'meter_unassigned' => 'This meter is not assigned to a supply point',
-            'quote_error' => 'Error generating quote for this transaction',
-            'category_invalid' => 'This meter does not belong to the selected service',
-            'min_amount' => 'The amount is less than the minimum amount required',
-            'max_amount' => 'The amount is greater than the maximum amount required',
-            'step_amount' => 'The amount is not a multiple of the step amount',
-            'quote_not_found' => 'The transaction must have been processed already or expired',
-            'account_inactive' => 'The company account is inactive. Hence sale cannot be performed.',
-            'register_error' => 'There was an error registering the sale.',
+            'service_forbidden' => 'Vous n\'êtes pas autorisé à utiliser ce service',
+            'service_invalid' => 'Ce service n\'est pas un service valide',
+            'service_inactive' => 'Ce service n\'est pas actif',
+            'meter_inactive' => 'Ce compteur n\'est pas actif',
+            'meter_unassigned' => 'Ce compteur n\'est pas assigné à un point de vente',
+            'quote_error' => 'Erreur de génération de devis pour cette transaction',
+            'category_invalid' => 'Ce compteur n\'appartient pas au service sélectionné',
+            'min_amount' => 'Le montant est inférieur au montant minimum requis',
+            'max_amount' => 'Le montant est supérieur au montant maximal requis',
+            'step_amount' => 'Le montant n\'est pas un multiple du montant de la tranche',
+            'quote_not_found' => 'La transaction doit avoir déjà été traitée ou avoir expirée',
+            'account_inactive' => 'Le compte de l\'entreprise est inactif. La transaction ne peut donc pas être effectuée.',
+            'register_error' => 'Une erreur s\'est produite lors de l\'enregistrement de la vente.',
         ],
     ],
     'frontend' => [
@@ -246,9 +246,9 @@ return [
             'pin' => [
                 'change_error' => 'Une erreur est survenue lors du changement de votre code pin. Veuillez réessayer plus tard.'
             ],
-            'registration_disabled' => 'Registration is currently closed.',
+            'registration_disabled' => 'Les enregistrements sont actuellement fermés.',
             'sms' => [
-                'send_error' => 'Oops! Sorry we are currently facing a problem with the SMS gateway'
+                'send_error' => 'Oups ! Désolé, nous rencontrons actuellement un problème avec la passerelle SMS'
             ]
         ],
     ],
@@ -285,7 +285,7 @@ return [
         ],
         'request' => [
             'bad' => [
-                'too_much_attempts'   => 'Vous adressez trop de demandes à notre serveur.',
+                'too_much_attempts'   => 'Vous envoyez un trop grand nombre de requêtes à notre serveur.',
                 'locale_unsupported' => 'Langue non prise en charge dans l\'en-tête de la requête \'Content-Language\'',
                 'invalid_accept'      => 'Le paramètre obligatoire d\'acceptation d\'application/json est absent de votre demande.',
                 'route_not_found'     => 'Cette route n\'existe pas ou vous n\'avez peut-être pas l\'autorisation de la consulter.',
@@ -298,7 +298,7 @@ return [
                 'unprocessable_entity' => 'Certaines informations fournies n\'ont pas pu être traitées.'
             ],
             'general_error' => [
-                'message' => 'Oups, un événement inattendu s\'est produit!'
+                'message' => 'Oups, une erreur inattendue s\'est produite!'
             ]
         ],
     ],

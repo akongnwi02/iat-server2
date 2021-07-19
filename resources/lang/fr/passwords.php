@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'password' => 'Les mots de passe doivent contenir au moins six caractères et doivent être identiques.',
+    'password' => 'Les mots de passe doivent avoir au moins six caractères et doivent être identiques.',
     'reset'    => 'Votre mot de passe a été réinitialisé!',
     'sent'     => 'Un email contenant un lien de réinitialisation vous a été envoyé !',
     'token'    => "Ce code de réinitialisation du mot de passe n'est pas valide.",

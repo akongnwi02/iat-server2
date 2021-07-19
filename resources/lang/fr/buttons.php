@@ -42,37 +42,37 @@ return [
                 'deactivate' => 'Désactiver le mode',
             ],
             'category' => [
-                'activate' => 'Activate Category',
-                'deactivate' => 'Deactivate Category',
+                'activate' => 'Activer la catégorie',
+                'deactivate' => 'Désactiver la catégorie',
             ]
         ],
         'meters' => [
             'electricity' => [
-                'activate' => 'Activate Meter',
-                'deactivate' => 'Deactivate Meter',
-                'clone' => 'Clone Meter',
+                'activate' => 'Activer le compteur',
+                'deactivate' => 'Désactiver  le compteur',
+                'clone' => 'Cloner le compteur',
             ]
         ],
         'points' => [
             'electricity' => [
-                'clone' => 'Clone Point',
-                'map'   => 'View on map',
-                'edit_map' => 'Update GPS',
+                'clone' => 'Point de clonage',
+                'map'   => 'Voir sur la carte',
+                'edit_map' => 'Mettre à jour le GPS',
             ]
         ],
         'administration' => [
             'currency' => [
-                'activate' => 'Activate Currency',
-                'deactivate' => 'Deactivate Currency'
+                'activate' => 'Activer la monnaie',
+                'deactivate' => 'Désactiver la monnaie'
             ],
             'cycle' => [
-                'complete' => 'Complete',
-                'reopen' => 'Re-open'
+                'complete' => 'Compléter',
+                'reopen' => 'Rouvrir'
             ]
         ],
         'companies' => [
             'company' => [
-                'activate'   => 'Actciver l\'entreprise',
+                'activate'   => 'Activer l\'entreprise',
                 'deactivate' => 'Désactiver l\'entreprise',
                 'login'      => 'Se connecter à cette entreprise'
             ],
@@ -83,22 +83,22 @@ return [
             ]
         ],
         'account' => [
-            'credit' => 'Credit',
-            'debit' => 'Debit',
-            'float' => 'Float',
+            'credit' => 'Crédit',
+            'debit' => 'Débit',
+            'float' => 'Flotte',
             'payout' => 'Paiement',
             
             'activate' => 'Débloquer un compte',
             'deactivate' => 'Bloquer un compte'
         ],
         'payout' => [
-            'cancel' => 'Cancel',
-            'approve' => 'Approve',
-            'reject' => 'Reject',
+            'cancel' => 'Annuler',
+            'approve' => 'Approuver',
+            'reject' => 'Rejeter',
         ],
         'quotes' => [
-            'approve' => 'Approve',
-            'reject' => 'Reject',
+            'approve' => 'Approuver',
+            'reject' => 'Rejeter',
         ]
     ],
 
@@ -110,26 +110,26 @@ return [
     ],
 
     'general' => [
-        'cancel' => 'Cancel',
-        'back'   => 'Back',
-        'continue' => 'Continue',
-        'submit'   => 'Submit',
-        'confirm' => 'Confirm',
-        'download' => 'Download',
-        'clone' => 'Clone',
+        'cancel' => 'Annuler',
+        'back'   => 'Retourner',
+        'continue' => 'Continuer',
+        'submit'   => 'Soumettre',
+        'confirm' => 'Confirmer',
+        'download' => 'Télécharger',
+        'clone' => 'Cloner',
 
         'crud' => [
-            'create' => 'Create',
-            'delete' => 'Delete',
-            'edit'   => 'Edit',
-            'update' => 'Update',
-            'view'   => 'View',
+            'create' => 'Créer',
+            'delete' => 'Supprimer',
+            'edit'   => 'Modifier',
+            'update' => 'Mettre à jour',
+            'view'   => 'Voir',
         ],
         
         'filter' => [
-            'filter' => 'Filter',
-            'reset' => 'Reset',
-            'clear' => 'Clear',
+            'filter' => 'Filtrer',
+            'reset' => 'Réinitialiser',
+            'clear' => 'Effacer',
         ],
 
         'save' => 'Sauvegarder',
