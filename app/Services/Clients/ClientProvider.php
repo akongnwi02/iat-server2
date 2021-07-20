@@ -12,6 +12,7 @@ use App\Exceptions\Api\ServerErrorException;
 use App\Models\Meter\Provider;
 use App\Services\Clients\ClientProviders\HexcellClient;
 use App\Services\Clients\ClientProviders\CalinClient;
+use App\Services\Clients\ClientProviders\StronClient;
 use App\Services\Constants\BusinessErrorCodes;
 
 trait ClientProvider
@@ -40,6 +41,14 @@ trait ClientProvider
                 $config['key']              = config('auth.meters.providers.calin.key');
                 $config['new_url']          = config('auth.meters.providers.calin.new_url');
                 return new CalinClient($config);
+    
+            case config('business.meter.provider.stron'):
+                $config['url'] = config('auth.meters.providers.stron.url');
+                $config['username'] = config('auth.meters.providers.stron.username');
+                $config['password'] = config('auth.meters.providers.stron.password');
+                $config['vending_password'] = config('auth.meters.providers.stron.vending_password');
+                $config['company_name'] = config('auth.meters.providers.stron.company_name');
+                return new StronClient($config);
                 
             default:
                 throw new ServerErrorException(BusinessErrorCodes::UNKNOWN_PROVIDER, "The provider is not yet implemented");

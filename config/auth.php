@@ -117,7 +117,11 @@ return [
                 'new_url'          => env('CALIN_URL_NEW'),
             ],
             'stron'   => [
-    
+                'url' => env('STRON_URL'),
+                'username' => env('STRON_USERNAME'),
+                'password' => env('STRON_PASSWORD'),
+                'vending_password' => env('STRON_VENDING_PASSWORD'),
+                'company_name' => env('STRON_COMPANY_NAME'),
             ],
         ]
     ]
