@@ -122,7 +122,8 @@ return [
                 'password' => env('STRON_PASSWORD'),
                 'vending_password' => env('STRON_VENDING_PASSWORD'),
                 'company_name' => env('STRON_COMPANY_NAME'),
+                'customer_id' => env('STRON_CUSTOMER_ID'),
             ],
-        ]
-    ]
+        ],
+    ],
 ];

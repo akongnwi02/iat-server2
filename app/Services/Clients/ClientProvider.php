@@ -48,6 +48,7 @@ trait ClientProvider
                 $config['password'] = config('auth.meters.providers.stron.password');
                 $config['vending_password'] = config('auth.meters.providers.stron.vending_password');
                 $config['company_name'] = config('auth.meters.providers.stron.company_name');
+                $config['customer_id'] = config('auth.meters.providers.stron.customer_id');
                 return new StronClient($config);
                 
             default:

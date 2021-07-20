@@ -8,6 +8,7 @@
 
 namespace App\Services\Clients\ClientProviders;
 
+use App\Exceptions\Api\NotFoundException;
 use App\Exceptions\GeneralException;
 use App\Services\Clients\AbstractClient;
 use GuzzleHttp\Exception\GuzzleException;
@@ -34,6 +35,7 @@ class StronClient extends AbstractClient
      * @param array $params
      * @return string
      * @throws GeneralException
+     * @throws NotFoundException
      */
     public function buy(array $params): string
     {
@@ -50,29 +52,28 @@ class StronClient extends AbstractClient
      * @param array $params
      * @return string
      * @throws GeneralException
+     * @throws NotFoundException
      */
     public function generateToken(array $params): string
     {
         $meter_id = $params['meterId'];
         $energy   = $params['energy'];
         $amount   = $params['amount'];
-        $apiToken = $this->getAccessToken();
-        $url  = $this->config['url'] . '/api/Vending';
+        
+        $url  = $this->config['url'] . '/api/VendingMeter';
+        
         $data = [
-            'CustomerId' => 'string',
+            'CompanyName' => $this->config['company_name'],
+            'UserName' => $this->config['username'],
+            'Password' => $this->config['password'],
             'MeterId' => $meter_id,
-            'Price' => $amount,
-            'Rate' => $energy,
-            'Amount' => "$amount",
-            'AmountTmp' => 'USD',
-            'Company' => $this->config['company_name'],
-            'Employee' => 'string',
-            'ApiToken' => $apiToken,
+            'is_vend_by_unit' => true,
+            'Amount' => "$energy",
         ];
         try {
             \Log::info("generating energy for $meter_id in provider's system", [
                 'url' => $url,
-                'body' => $data
+                'json' => $data
             ]);
             $response = $this->httpClient->post($url, [
                 'json' => $data
@@ -83,13 +84,22 @@ class StronClient extends AbstractClient
         }
         
         $rawRes = $response->getBody()->getContents();
+    
         \Log::debug('Response from stron client: ', ['response' => $rawRes]);
         
-        if ($response->getStatusCode() == 200) {
-            if (strlen($rawRes) > 10) {
-                $result = explode(',', $rawRes);
-                return $result[0];
+        $response = json_decode($rawRes);
+    
+        if (is_array($response)) {
+            if (count($response) > 0) {
+                $obj = $response[0];
+                if ($obj->Token) {
+                    if (strlen($obj->Token) > 10) {
+                        \Log::debug('Token returned successfully: ', ['Token' => $obj->Token]);
+                        return $obj->Token;
+                    }
+                }
             }
+            throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.not_found'));
         }
         
         throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.token_error'));
@@ -99,57 +109,77 @@ class StronClient extends AbstractClient
      * @param $meterCode
      * @return string
      * @throws GeneralException
+     * @throws NotFoundException
      */
     public function search($meterCode): string
     {
-        $url  = $this->config['url'] . '/POS_Preview';
-        $data = $this->getRequestData([
-            'meter_number'    => $meterCode,
-            'amount'          => 0,
-            'is_vend_by_unit' => true,
-        ]);
-        try {
-            \Log::info("searching for $meterCode in provider's system", [
-                'url' => $url,
-                'body' => $data
-            ]);
+        $params['meterId'] = $meterCode;
+        $params['energy'] = 0;
+        $params['amount'] = 0;
         
+        \Log::info("searching for $meterCode in provider's system by calling the vend endpoint with amount: 0", [
+            'params' => $params,
+        ]);
+    
+        $token = $this->generateToken($params);
+    
+        if ($token) {
+            return $meterCode;
+        }
+        throw new NotFoundException(__('exceptions.backend.meters.electricity.vendor.not_found'));
+    }
+    
+    /**
+     * @param $meterCode
+     * @param $codeType
+     * @return string
+     * @throws GeneralException
+     */
+    public function getMaintenanceCode($meterCode, $codeType): string
+    {
+        if ($codeType == 'clear_tamper') {
+            $stronEndpoint = '/api/ClearCredit';
+        } else {
+            $stronEndpoint = '/api/ClearTamper';
+        }
+    
+        $url = $this->config['url'] . $stronEndpoint;
+    
+        $data = [
+            'CompanyName' => $this->config['company_name'],
+            'UserName' => $this->config['username'],
+            'PassWord' => $this->config['password'],
+            'CustomerId' => $this->config['customer_id'],
+            'METER_ID' => $meterCode,
+        ];
+        
+        try {
+            \Log::info("generating maintenance code for $meterCode in provider's system", [
+                'url' => $url,
+                'json' => $data,
+            ]);
             $response = $this->httpClient->post($url, [
                 'json' => $data
             ]);
         } catch (GuzzleException $e) {
-            \Log::emergency("Meter search error for $meterCode", ['message' => $e->getMessage()]);
-            throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.search_error'));
+            \Log::emergency("Token generation error for metercode $meterCode, code type $codeType", [
+                'message' => $e->getMessage()
+            ]);
+            throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.token_error'));
         }
+
+        $rawRes = json_decode($response->getBody()->getContents());
+        \Log::debug('Response from stron client: ', ['response' => $rawRes]);
     
-        $rawRes = $response->getBody()->getContents();
-        \Log::debug('Response from calin client: ', ['response' => $rawRes]);
-    
-        $response = json_decode($rawRes);
-    
-        if ($response->result_code == 0) {
-            $searchResult = $response->result;
-            if (!$searchResult) {
-                \Log::warning("Meter code $meterCode not found");
-                throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.not_found'));
-            }
-            if (
-                !$searchResult->customer_name
-                && !$searchResult->customer_number
-                && !$searchResult->customer_addr
-            ) {
-                \Log::warning("Meter code $meterCode not found");
-                throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.not_found'));
-            } else {
-                return $meterCode;
+        if ($response->getStatusCode() == 200) {
+            if (strlen($rawRes) > 10) {
+                $result = explode(',', $rawRes);
+                return $result[0];
             }
         }
-        throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.search_error'));
-    }
     
-    public function getMaintenanceCode($meterCode, $type): string
-    {
-        // TODO: Implement getMaintenanceCode() method.
+        throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.token_error'));
+        
     }
     
     /**
