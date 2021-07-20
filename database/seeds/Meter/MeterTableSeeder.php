@@ -31,6 +31,20 @@ class MeterTableSeeder extends \Illuminate\Database\Seeder
             'last_vending_date' => now()->toDateTimeString(),
         ]);
         
+        Meter::create([
+            'meter_code' => '58100002730',
+            'identifier' => '58100002730',
+            'location' => 'ROOM A3',
+            'phone' => '653754334',
+            'email' => 'gentledivert@gmail.com',
+            'supply_point_id' => SupplyPoint::first()->uuid,
+            'provider_id' => Provider::where('name', config('business.meter.provider.stron'))->first()->uuid,
+            'type' => config('business.meter.type.electricity'),
+            'is_active' => true,
+            'blocked_reason' => 'requested by landlord',
+            'last_vending_date' => now()->toDateTimeString(),
+        ]);
+        
         Meter::reguard();
     }
 }
