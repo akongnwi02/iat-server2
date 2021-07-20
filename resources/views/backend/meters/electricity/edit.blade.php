@@ -44,12 +44,10 @@
                             ->for('provider_id') }}
 
                         <div class="col-md-10">
-                            {{ html()->text('provider_id')
+                            {{ html()->select('provider_id', [null => null] + $providers)
                                 ->class('form-control')
-                                ->placeholder(__('validation.attributes.backend.meters.electricity.provider'))
-                                ->attribute('maxlength', 191)
-                                ->value(@$meter->provider->name)
-                                ->disabled() }}
+                                ->required()
+                            }}
                         </div><!--col-->
                     </div><!--form-group-->
 

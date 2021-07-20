@@ -107,11 +107,20 @@ class ElectricMeterController extends Controller
      * @param MeterRepository $meterRepository
      * @param UpdateMeterRequest $request
      * @param Meter $meter
+     * @param ProviderRepository $providerRepository
      * @return mixed
      * @throws GeneralException
+     * @throws \App\Exceptions\Api\ServerErrorException
      */
-    public function update(MeterRepository $meterRepository, UpdateMeterRequest $request, Meter $meter)
+    public function update(MeterRepository $meterRepository, UpdateMeterRequest $request, Meter $meter, ProviderRepository $providerRepository)
     {
+        $data = request()->input();
+    
+        if($meter->provider_id != $data['provider_id']){
+            $provider = $providerRepository->findByUuid($data['provider_id']);
+            $data['identifier'] = $this->client($provider)->search($meter->meter_code);
+        }
+        
         $meterRepository->update($meter, $request->input());
     
         return redirect()->route('admin.meter.electricity.index')
@@ -134,12 +143,16 @@ class ElectricMeterController extends Controller
     /**
      * @param Meter $meter
      * @param SupplyPointRepository $supplyPointRepository
+     * @param ProviderRepository $providerRepository
      * @return mixed
      */
-    public function edit(Meter $meter, SupplyPointRepository $supplyPointRepository)
+    public function edit(Meter $meter, SupplyPointRepository $supplyPointRepository, ProviderRepository $providerRepository)
     {
         return view('backend.meters.electricity.edit')
             ->withMeter($meter)
+            ->withProviders($providerRepository->getAllProviders()
+                ->pluck('name', 'uuid')
+                ->toArray())
             ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
                 ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')

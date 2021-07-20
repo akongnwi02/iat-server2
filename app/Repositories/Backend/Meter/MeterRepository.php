@@ -88,10 +88,7 @@ class MeterRepository
      */
     public function update($meter, $data)
     {
-        $meter->supply_point_id = @$data['supply_point_id'];
-        $meter->phone = @$data['phone'];
-        $meter->email = @$data['email'];
-        $meter->location = @$data['location'];
+        $meter->fill($data);
     
         if ($meter->update()) {
         
