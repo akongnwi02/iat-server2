@@ -121,7 +121,7 @@ class ElectricMeterController extends Controller
             $data['identifier'] = $this->client($provider)->search($meter->meter_code);
         }
         
-        $meterRepository->update($meter, $request->input());
+        $meterRepository->update($meter, $data);
     
         return redirect()->route('admin.meter.electricity.index')
                 ->withFlashSuccess(__('alerts.backend.meters.electricity.updated'));
