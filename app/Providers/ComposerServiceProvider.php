@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Composers\Backend\DashboardComposer;
 use App\Http\Composers\Backend\Meter\FilterMeterComposer;
+use App\Http\Composers\Backend\Sales\FilterSaleComposer;
 use App\Http\Composers\Frontend\TopupAccountComposer;
 use Illuminate\Support\Facades\View;
 use App\Http\Composers\GlobalComposer;
@@ -57,6 +58,11 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             ['backend.meters.electricity.includes.header-buttons'],
             FilterMeterComposer::class
+        );
+        
+        View::composer(
+            ['backend.sales.includes.header-buttons'],
+            FilterSaleComposer::class
         );
     }
 

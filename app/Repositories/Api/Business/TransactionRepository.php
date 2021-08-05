@@ -225,7 +225,7 @@ class TransactionRepository
                 AllowedFilter::exact('service_id'),
                 AllowedFilter::exact('status'),
                 AllowedFilter::partial('user.username'),
-                AllowedFilter::partial('point.name'),
+                AllowedFilter::exact('point.uuid'),
                 AllowedFilter::partial('code'),
                 AllowedFilter::partial('destination'),
                 AllowedFilter::scope('start_date'),

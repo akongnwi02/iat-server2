@@ -26,14 +26,10 @@ class SalesController extends Controller
     public function index(TransactionRepository $transactionRepository, ServiceRepository $serviceRepository, CompanyRepository $companyRepository)
     {
         $sales = $transactionRepository->getAllSales()->with(['service', 'company', 'user']);
-        $services = auth()->user()->company->is_default ? Service::all() : auth()->user()->company->services();
 
         return view('backend.sales.index')
             ->withSales($sales->paginate())
-            ->withTotalAmount($sales->sum('amount'))
-            ->withStatuses(config('business.transaction.status'))
-            ->withServices($services->pluck('name', 'uuid')->toArray())
-            ->withCompanies(auth()->user()->company->is_default ? Company::all()->pluck('name', 'uuid')->toArray() : auth()->user()->company()->pluck('name', 'uuid')->toArray());
+            ->withTotalAmount($sales->sum('amount'));
     }
     
     public function download(TransactionRepository $transactionRepository)

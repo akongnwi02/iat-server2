@@ -66,7 +66,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@lang('labels.backend.sales.filter.supply_point')</span>
                     </div>
-                    <input value="{{ @request()->input()['filter']['point.name'] }}" name="filter[point.name]" type="text" class="form-control">
+                    {{ html()->select('filter[point.uuid]', [null => null] + $points)
+                        ->value(@request()->input()['filter']['point.uuid'])
+                        ->class('form-control')
+                    }}
                 </div>
 
                 <div class="input-group mb-3">
