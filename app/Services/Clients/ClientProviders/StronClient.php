@@ -138,9 +138,9 @@ class StronClient extends AbstractClient
     public function getMaintenanceCode($meterCode, $codeType): string
     {
         if ($codeType == 'clear_tamper') {
-            $stronEndpoint = '/api/ClearCredit';
-        } else {
             $stronEndpoint = '/api/ClearTamper';
+        } else {
+            $stronEndpoint = '/api/ClearCredit';
         }
     
         $url = $this->config['url'] . $stronEndpoint;
