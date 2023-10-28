@@ -122,9 +122,6 @@ class TransactionRepository
         
         $price = $supplyPoint->is_auto_price ? $supplyPoint->adjusted_price : $supplyPoint->price->amount;
         
-        $units = round(($amountWithVat / $price), 2);
-        
-        
         /*
          * get the commissions
          */
@@ -134,7 +131,9 @@ class TransactionRepository
          * calculate the fees
          */
         $customerServiceFee = $this->commissionRepository->calculateFee($customerServiceCommission, $data['amount']);
-        
+
+        $units = round((($amountWithVat - $customerServiceFee) / $price), 2);
+
         \Log::debug('The following service charge will be applied for this transaction', [
             'uuid'        => @$customerServiceCommission->uuid,
             'name'        => @$customerServiceCommission->name,
