@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard'     => 'web',
         'passwords' => 'users',
     ],
 
@@ -37,12 +37,12 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver' => 'jwt',
+            'driver'   => 'jwt',
             'provider' => 'users',
 
         ],
@@ -68,12 +68,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Auth\User::class,
+            'model'  => App\Models\Auth\User::class,
         ],
 
         // 'users' => [
         //     'driver' => 'database',
-             'table' => 'users',
+        'table' => 'users',
         // ],
     ],
 
@@ -95,8 +95,8 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
         ],
     ],
 
@@ -117,12 +117,16 @@ return [
                 'new_url'          => env('CALIN_URL_NEW'),
             ],
             'stron'   => [
-                'url' => env('STRON_URL'),
-                'username' => env('STRON_USERNAME'),
-                'password' => env('STRON_PASSWORD'),
+                'url'              => env('STRON_URL'),
+                'username'         => env('STRON_USERNAME'),
+                'password'         => env('STRON_PASSWORD'),
                 'vending_password' => env('STRON_VENDING_PASSWORD'),
-                'company_name' => env('STRON_COMPANY_NAME'),
-                'customer_id' => env('STRON_CUSTOMER_ID'),
+                'company_name'     => env('STRON_COMPANY_NAME'),
+                'customer_id'      => env('STRON_CUSTOMER_ID'),
+                'url_v2'           => env('STRON_URL_V2'),
+                'username_v2'      => env('STRON_USERNAME_V2'),
+                'password_v2'      => env('STRON_PASSWORD_V2'),
+                'company_name_v2'  => env('STRON_COMPANY_NAME_V2'),
             ],
         ],
     ],

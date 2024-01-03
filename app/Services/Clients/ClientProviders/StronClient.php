@@ -56,19 +56,22 @@ class StronClient extends AbstractClient
      */
     public function generateToken(array $params): string
     {
+
         $meter_id = $params['meterId'];
         $energy   = $params['energy'];
         $amount   = $params['amount'];
-        
-        $url  = $this->config['url'] . '/api/VendingMeter';
-        
+
+        $apiConfig = $this->getApiConfig($meter_id);
+
+        $url  = $apiConfig['api_url'] . '/api/VendingMeter';
+
         $data = [
-            'CompanyName' => $this->config['company_name'],
-            'UserName' => $this->config['username'],
-            'Password' => $this->config['password'],
-            'MeterId' => $meter_id,
+            'CompanyName'     => $apiConfig['companyName'],
+            'UserName'        => $apiConfig['username'],
+            'Password'        => $apiConfig['password'],
+            'MeterId'         => $meter_id,
             'is_vend_by_unit' => true,
-            'Amount' => "$energy",
+            'Amount'          => "$energy",
         ];
         try {
             \Log::info("generating energy for $meter_id in provider's system", [
@@ -142,15 +145,17 @@ class StronClient extends AbstractClient
         } else {
             $stronEndpoint = '/api/ClearCredit';
         }
-    
-        $url = $this->config['url'] . $stronEndpoint;
+
+        $apiConfig = $this->getApiConfig($meterCode);
+
+        $url = $apiConfig['api_url'] . $stronEndpoint;
     
         $data = [
-            'CompanyName' => $this->config['company_name'],
-            'UserName' => $this->config['username'],
-            'PassWord' => $this->config['password'],
-            'CustomerId' => $this->config['customer_id'],
-            'METER_ID' => $meterCode,
+            'CompanyName' => $apiConfig['companyName'],
+            'UserName'    => $apiConfig['username'],
+            'Password'    => $apiConfig['password'],
+            'CustomerId'  => $this->config['customer_id'],
+            'METER_ID'    => $meterCode,
         ];
         
         try {
@@ -194,51 +199,34 @@ class StronClient extends AbstractClient
             ]
         ]);
     }
-    
-    public function getRequestData(array $data = [])
-    {
-        return json_encode(array_merge([
-            'company_name' => $this->config['company_name'],
-            'user_name'    => $this->config['username'],
-            'password'     => $this->config['password'],
-        ], $data));
-    }
-    
+
     /**
-     * @return mixed
-     * @throws GeneralException
+     * @param $meterCode
+     * @return bool
      */
-    public function getAccessToken()
+    public function isV2Meter($meterCode)
     {
-        $url  = $this->config['url'] . '/api/Login';
-        $data = [
-            'Companyname'    => $this->config['company_name'],
-            'Username'       => $this->config['username'],
-            'Password' => $this->config['password'],
+        $prefix = "58101";
+        return (substr($meterCode, 0, strlen($prefix)) === $prefix);
+    }
+
+    public function getApiConfig($meterCode)
+    {
+        if ($this->isV2Meter($meterCode)) {
+            \Log::debug('Using config for Strong V2');
+            return [
+                'api_url' => $this->config['url_v2'],
+                'companyName' => $this->config['company_name_v2'],
+                'username' => $this->config['username_v2'],
+                'password' => $this->config['password_v2'],
+            ];
+        }
+        \Log::debug('Using config for Strong V1');
+        return [
+            'api_url' => $this->config['url'],
+            'companyName' => $this->config['company_name'],
+            'username' => $this->config['username'],
+            'password' => $this->config['password'],
         ];
-        try {
-            \Log::info("Getting new access token", [
-                'url' => $url,
-                'json' => $data
-            ]);
-        
-            $response = $this->httpClient->post($url, [
-                'json' => $data
-            ]);
-        } catch (GuzzleException $e) {
-            \Log::emergency("Unexpected error when generating access token", ['message' => $e->getMessage()]);
-            throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.auth_error'));
-        }
-    
-        $token = $response->getBody()->getContents();
-        \Log::debug('Response from stron server: ', ['response' => $token]);
-    
-        if ($response->getStatusCode() == 200) {
-            if (strlen($token) > 10) {
-                \Log::info("Token generated successfully. Token: $token");
-                return $token;
-            }
-        }
-        throw new GeneralException(__('exceptions.backend.meters.electricity.vendor.auth_error'));
     }
 }
