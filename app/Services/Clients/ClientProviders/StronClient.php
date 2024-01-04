@@ -206,8 +206,7 @@ class StronClient extends AbstractClient
      */
     public function isV2Meter($meterCode)
     {
-        $prefix = "58101";
-        return (substr($meterCode, 0, strlen($prefix)) === $prefix);
+        return (float)$meterCode >= 58101000000;
     }
 
     public function getApiConfig($meterCode)
