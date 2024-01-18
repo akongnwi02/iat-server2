@@ -19,7 +19,7 @@
 
     <!-- Check if the language is set to RTL, so apply the RTL layouts -->
     <!-- Otherwise apply the normal LTR layouts -->
-    {{ style(mix('css/backend.css')) }}
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/backend.css') }}">
 
     @stack('after-styles')
 </head>

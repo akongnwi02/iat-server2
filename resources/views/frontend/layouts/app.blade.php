@@ -21,7 +21,7 @@
 
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
-        {{ style(mix('css/frontend.css')) }}
+        <link rel="stylesheet" type="text/css" href="{{ mix('css/frontend.css') }}">
 
         @stack('after-styles')
     </head>
