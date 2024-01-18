@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <a href="{{ route('frontend.index') }}" class="navbar-brand"><img class="navbar-brand-full" width="89" height="25" src="{!! asset('img/backend/brand/logo_IAT.png') !!}" style="border-radius: 50%" alt="logo"></a>
+    <a href="{{ route('frontend.index') }}" class="navbar-brand"><img class="navbar-brand-full" width="89" height="25" src="{!! secure_asset('img/backend/brand/logo_IAT.png') !!}" style="border-radius: 50%" alt="logo"></a>
 
     <a href="{{ route('frontend.index') }}" class="navbar-brand">{{ app_name() }}</a>
 

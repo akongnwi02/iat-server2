@@ -3,8 +3,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="{{ asset('img/backend/brand/logo_IAT.png') }}" width="89" height="25" alt="AIT Logo">
-        <img class="navbar-brand-minimized" src="{{ asset('img/backend/brand/logo_IAT.png') }}" width="30" height="30" alt="AIT Logo">
+        <img class="navbar-brand-full" src="{{ secure_asset('img/backend/brand/logo_IAT.png') }}" width="89" height="25" alt="AIT Logo">
+        <img class="navbar-brand-minimized" src="{{ secure_asset('img/backend/brand/logo_IAT.png') }}" width="30" height="30" alt="AIT Logo">
     </a>
 
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">

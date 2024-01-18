@@ -40,19 +40,19 @@
                     <small class="text-muted"><i class="icon-home"></i>  creativeLabs HQ</small>
                     <div class="avatars-stack mt-2">
                         <div class="avatar avatar-xs">
-                        <img class="img-avatar" src="{{ asset('img/backend/avatars/2.jpg') }}" alt="admin@bootstrapmaster.com">
+                        <img class="img-avatar" src="{{ secure_asset('img/backend/avatars/2.jpg') }}" alt="admin@bootstrapmaster.com">
                         </div>
                         <div class="avatar avatar-xs">
-                        <img class="img-avatar" src="{{ asset('img/backend/avatars/3.jpg') }}" alt="admin@bootstrapmaster.com">
+                        <img class="img-avatar" src="{{ secure_asset('img/backend/avatars/3.jpg') }}" alt="admin@bootstrapmaster.com">
                         </div>
                         <div class="avatar avatar-xs">
-                        <img class="img-avatar" src="{{ asset('img/backend/avatars/4.jpg') }}" alt="admin@bootstrapmaster.com">
+                        <img class="img-avatar" src="{{ secure_asset('img/backend/avatars/4.jpg') }}" alt="admin@bootstrapmaster.com">
                         </div>
                         <div class="avatar avatar-xs">
-                        <img class="img-avatar" src="{{ asset('img/backend/avatars/5.jpg') }}" alt="admin@bootstrapmaster.com">
+                        <img class="img-avatar" src="{{ secure_asset('img/backend/avatars/5.jpg') }}" alt="admin@bootstrapmaster.com">
                         </div>
                         <div class="avatar avatar-xs">
-                        <img class="img-avatar" src="{{ asset('img/backend/avatars/6.jpg') }}" alt="admin@bootstrapmaster.com">
+                        <img class="img-avatar" src="{{ secure_asset('img/backend/avatars/6.jpg') }}" alt="admin@bootstrapmaster.com">
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             <div class="message">
                 <div class="py-3 pb-5 mr-3 float-left">
                 <div class="avatar">
-                    <img class="img-avatar" src="{{ asset('img/backend/avatars/7.jpg') }}" alt="admin@bootstrapmaster.com">
+                    <img class="img-avatar" src="{{ secure_asset('img/backend/avatars/7.jpg') }}" alt="admin@bootstrapmaster.com">
                     <span class="avatar-status badge-success"></span>
                 </div>
                 </div>
