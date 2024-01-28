@@ -99,11 +99,15 @@ trait AccountMethod
     public function getBalance()
     {
         $floatBalance = $this->getFloatBalance();
-        
+
+        if ($this->type->name == config('business.account.type.point')) {
+            return $floatBalance;
+        }
+        // if company account sum the balance of the individual supply points
         $supplyPointsBalance = $this->getPointsBalance();
         
         return $floatBalance + $supplyPointsBalance;
-        
+
     }
     
     public function getFloatBalance()
