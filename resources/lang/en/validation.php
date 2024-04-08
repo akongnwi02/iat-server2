@@ -252,8 +252,8 @@ return [
                     'address'             => 'Address',
                     'phone'               => 'Contact Phone',
                     'email'               => 'Contact Email',
-                    'external_identifier' => 'ENEO Contract Number',
-                    'meter_no' => 'ENEO Meter Number',
+                    'external_identifier' => 'Contract Number',
+                    'meter_no' => 'Meter Number',
                     'company'             => 'Company',
                     'type'                => 'Type',
                     'provider_price'      => 'Provider\'s Tariff (:currency)',
@@ -400,7 +400,7 @@ return [
             ],
             'payment' => [
                 'supply_point' => 'Supply Point',
-                'external_identifier' => 'ENEO Contract Number',
+                'external_identifier' => 'Contract Number',
                 'cycle_year' => 'Cycle Year',
                 'cycle_month' => 'Cycle Month',
                 'payments' => [

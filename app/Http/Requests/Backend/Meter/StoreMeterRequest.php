@@ -21,6 +21,7 @@ class StoreMeterRequest extends FormRequest
             'provider_id'     => __('validation.attributes.backend.meters.electricity.provider'),
             'meter_code'      => __('validation.attributes.backend.meters.electricity.meter_code'),
             'location'        => __('validation.attributes.backend.meters.electricity.location'),
+            'type'        => __('validation.attributes.backend.meters.electricity.type'),
             'phone'           => __('validation.attributes.backend.meters.electricity.phone'),
             'email'           => __('validation.attributes.backend.meters.electricity.email'),
         ];
@@ -34,6 +35,7 @@ class StoreMeterRequest extends FormRequest
             'provider_id'     => [Rule::exists('providers', 'uuid')],
             'email'           => 'nullable|email|max:191',
             'phone'           => ['nullable', 'max:191', 'string'],
+            'type'           =>  ['required', 'max:191', 'string'],
             'location'        => ['nullable', 'max:191', 'string'],
         ];
     }

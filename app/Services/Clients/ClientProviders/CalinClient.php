@@ -166,15 +166,13 @@ class CalinClient extends AbstractClient
      */
     public function getMaintenanceCode($meterCode, $codeType): string
     {
-        $url = $this->config['new_url'] . '/tokennew';
         if ($codeType == 'clear_tamper') {
-            $calinCodeType = 'ClearTampToken';
+            $url  = $this->config['url'] . '/Maintenance_ClearTamper';
         } else {
-            $calinCodeType = 'ClearCreditToken';
+            $url  = $this->config['url'] . '/Maintenance_ClearCredit';
         }
         $data = $this->getNewRequestData([
-            'meter_id'   => $meterCode,
-            'token_type' => $calinCodeType,
+            'meter_number' =>  $meterCode,
         ]);
         try {
             \Log::info("generating maintenance code for $meterCode in provider's system", [

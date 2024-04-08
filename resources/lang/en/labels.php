@@ -346,7 +346,7 @@ return [
             ]
         ],
         'points'    => [
-            'electricity' => 'Electricity Points',
+            'electricity' => 'Points',
             'water'       => 'Water Points',
             'create'      => 'Create Point',
             'edit'        => 'Edit Point',
@@ -363,7 +363,7 @@ return [
                 'phone'               => 'Contact Phone',
                 'email'               => 'Contact Email',
                 'type'                => 'Type',
-                'external_identifier' => 'ENEO Contract Number',
+                'external_identifier' => 'Contract Number',
                 'company'             => 'Company',
                 'provider_price'      => 'Provider\'s Tariff',
                 'adjusted_price'      => 'Adjusted Tariff',
@@ -823,7 +823,7 @@ return [
                     'amount_collected'    => 'Amount Collected',
                     'system_commission'   => 'System Commission',
                     'amount_paid'         => 'Amount Paid Out',
-                    'eneo_consumption'    => 'ENEO Consumption',
+                    'eneo_consumption'    => 'Consumption',
                     'iat_consumption'     => 'IAT Consumption',
                     'balance'             => 'Balance',
                     'new_tariff'          => 'Estimated New Tariff',

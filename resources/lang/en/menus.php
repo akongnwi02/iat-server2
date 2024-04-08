@@ -80,7 +80,7 @@ return [
             'main'        => 'Supply Points',
             'all'         => 'All Supply Points',
             'electricity' => [
-                'management' => 'Electricity Points',
+                'management' => 'Points',
                 'create'     => 'Register Point',
                 'edit'       => 'Edit Point',
                 'editMap'       => 'Update GPS',
@@ -215,7 +215,7 @@ return [
             'title' => 'Bill Payments',
             'view' => 'View Payments',
             'electricity' => [
-                'management' => 'Electricity Points',
+                'management' => 'Points',
                 'edit' => 'Update Payment',
                 'create' => 'Create Payment',
             ]

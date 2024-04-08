@@ -27,6 +27,7 @@ class UpdateMeterRequest extends FormRequest
             'phone'           => __('validation.attributes.backend.meters.electricity.phone'),
             'email'           => __('validation.attributes.backend.meters.electricity.email'),
             'location'        => __('validation.attributes.backend.meters.electricity.location'),
+            'type'        => __('validation.attributes.backend.meters.electricity.type'),
         ];
     }
     
@@ -38,6 +39,7 @@ class UpdateMeterRequest extends FormRequest
             'email'           => 'nullable|email|max:191',
             'phone'           => ['nullable', 'max:191', 'string'],
             'location'        => ['nullable', 'max:191', 'string'],
+            'type'        => ['required', 'max:191', 'string'],
         ];
     }
 }

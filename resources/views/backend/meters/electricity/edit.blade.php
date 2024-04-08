@@ -64,6 +64,18 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        {{ html()->label(__('validation.attributes.backend.meters.electricity.type'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('type') }}
+
+                        <div class="col-md-10">
+                            {{ html()->select('type', [null => null, 'water' => __('water'), 'electricity' => __('electricity'), 'gaz' => __('gaz')])
+                                ->class('form-control')
+                                }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         {{ html()->label(__('validation.attributes.backend.meters.electricity.location'))
                             ->class('col-md-2 form-control-label')
                             ->for('location') }}

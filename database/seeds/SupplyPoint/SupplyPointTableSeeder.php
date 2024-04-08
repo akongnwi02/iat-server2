@@ -24,7 +24,7 @@ class SupplyPointTableSeeder extends \Illuminate\Database\Seeder
             'phone' => '+12356',
             'email' => 'gentledivert@gmail.com',
             'address' => '123 church street',
-            'external_identifier' => 'ENEO Contract',
+            'external_identifier' => 'Contract',
             'is_auto_price' => false,
             'is_internal' => true,
             'adjusted_price' => 12,

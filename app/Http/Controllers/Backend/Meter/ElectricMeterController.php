@@ -37,7 +37,7 @@ class ElectricMeterController extends Controller
     {
         return view('backend.meters.electricity.index')
             ->withMeters($meterRepository->getAllMeters()
-                ->where('type', config('business.meter.type.electricity'))
+//                ->where('type', config('business.meter.type.electricity'))
                 ->paginate());
     
     }
@@ -49,7 +49,7 @@ class ElectricMeterController extends Controller
     public function download(MeterRepository $meterRepository)
     {
         $meters = $meterRepository->getAllMeters()
-            ->where('type', config('business.meter.type.electricity'))
+//            ->where('type', config('business.meter.type.electricity'))
             ->get();
     
         return (new MetersExport($meters));
@@ -136,7 +136,7 @@ class ElectricMeterController extends Controller
         return view('backend.meters.electricity.index')
             ->withMeters($meterRepository->getAllMeters()
                 ->whereNull('supply_point_id')
-                ->where('type', config('business.meter.type.electricity'))
+//                ->where('type', config('business.meter.type.electricity'))
                 ->paginate());
     }
     
@@ -154,7 +154,7 @@ class ElectricMeterController extends Controller
                 ->pluck('name', 'uuid')
                 ->toArray())
             ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
-                ->where('type', config('business.meter.type.electricity'))
+//                ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray());
     }
@@ -168,7 +168,7 @@ class ElectricMeterController extends Controller
     {
         return view('backend.meters.electricity.create')
             ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
-                ->where('type', config('business.meter.type.electricity'))
+//                ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray())
             ->withProviders($providerRepository->getAllProviders()
@@ -181,7 +181,7 @@ class ElectricMeterController extends Controller
         return view('backend.meters.electricity.create')
             ->withMeter($meter)
             ->withSupplyPoints($supplyPointRepository->getAllSupplyPointsForCurrentUser()
-                ->where('type', config('business.meter.type.electricity'))
+//                ->where('type', config('business.meter.type.electricity'))
                 ->pluck('name', 'uuid')
                 ->toArray())
             ->withProviders($providerRepository->getAllProviders()
@@ -204,7 +204,7 @@ class ElectricMeterController extends Controller
         $provider = $providerRepository->findByUuid($data['provider_id']);
         
         $data['identifier'] = $this->client($provider)->search($data['meter_code']);
-        $data['type'] = config('business.meter.type.electricity');
+//        $data['type'] = config('business.meter.type.electricity');
         
         $meterRepository->create($data);
     

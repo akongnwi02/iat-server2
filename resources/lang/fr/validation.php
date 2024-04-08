@@ -252,8 +252,8 @@ return [
                     'address'             => 'Adresse',
                     'phone'               => 'Contact Téléphonique',
                     'email'               => 'Adresse Email',
-                    'external_identifier' => 'Numéro de Contrat ENEO',
-                    'meter_no' => 'Numéro de Compteur ENEO',
+                    'external_identifier' => 'Numéro de Contrat',
+                    'meter_no' => 'Numéro de Compteur',
                     'company'             => 'Entreprise',
                     'type'                => 'Type',
                     'provider_price'      => 'Tarif du Fournisseur (:currency)',
@@ -400,7 +400,7 @@ return [
             ],
             'payment' => [
                 'supply_point' => 'Point de vente',
-                'external_identifier' => 'Numéro de Contrat ENEO',
+                'external_identifier' => 'Numéro de Contrat',
                 'cycle_year' => 'Cycle Annuel',
                 'cycle_month' => 'Cycle Mensuel',
                 'payments' => [
