@@ -243,7 +243,7 @@ return [
                 'currency_code' => 'Currency',
                 'service_number' => 'Service Number',
                 'meter_number' => 'Meter Number',
-                'amount' => 'Amount',
+                'amount' => 'Amount (XAF)',
             ],
             'points'         => [
                 'electricity' => [
