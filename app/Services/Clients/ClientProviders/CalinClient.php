@@ -49,6 +49,7 @@ class CalinClient extends AbstractClient
     {
         switch ($params['serviceCode']) {
             case 'IAT_ELEC_CREDIT':
+            case 'IAT_WATER_CREDIT':
                 return $this->generateToken($params);
                 break;
             default:
