@@ -21,10 +21,10 @@
                                 {{ html()->label(__('validation.attributes.backend.sales.service'))->for('service') }}
 
                                 <div class="col-md-10">
-                                    {{ html()->text('service')
-                                        ->class('form-control')
-                                        ->value($service->name)
-                                        ->disabled() }}
+                                    {{ html()->select('service_code', $services)
+                                         ->class('form-control')
+                                         ->required()
+                                    }}
                                 </div>
                             </div><!--form-group-->
                         </div><!--col-->
@@ -61,11 +61,6 @@
                     {{ html()->hidden('currency_code')
                         ->class('form-control')
                         ->value($default_currency->code)
-                        ->required()
-                    }}
-                    {{ html()->hidden('service_code')
-                        ->class('form-control')
-                        ->value($service->code)
                         ->required()
                     }}
                     </div><!--row-->

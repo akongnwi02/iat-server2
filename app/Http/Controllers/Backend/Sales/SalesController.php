@@ -47,16 +47,9 @@ class SalesController extends Controller
      */
     public function create(Request $request, ServiceRepository $serviceRepository)
     {
-        $serviceCode = $request->has('service_code') ? $request->input('service_code') : 'IAT_ELEC_CREDIT';
-    
-        switch ($serviceCode) {
-            case 'IAT_ELEC_CREDIT':
-                return view('backend.sales.create.credit')
-                    ->withService($serviceRepository->findByCode($serviceCode));
-                break;
-            default:
-                throw new GeneralException(__('exceptions.backend.sales.service_invalid'));
-        }
+        return view('backend.sales.create.credit')
+            ->withServices($serviceRepository->getAllActiveServices()
+            ->pluck('name', 'code'));
     }
     
     /**
