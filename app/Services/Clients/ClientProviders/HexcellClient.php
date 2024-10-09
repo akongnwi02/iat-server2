@@ -49,7 +49,7 @@ class HexcellClient extends AbstractClient
      * @return string
      * @throws GeneralException
      */
-    public function search($meterCode): string
+    public function search($meterCode, $meterType = null): string
     {
         $hexcellUrl = $this->config['url'];
     
@@ -169,7 +169,7 @@ class HexcellClient extends AbstractClient
      * @return string
      * @throws GeneralException
      */
-    public function getMaintenanceCode($meterCode, $codeType) : string
+    public function getMaintenanceCode($meterCode, $codeType, $meterType = null) : string
     {
         $hexcellUrl = $this->config['url'];
         if ($codeType == 'clear_tamper') {

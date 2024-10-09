@@ -203,7 +203,7 @@ class ElectricMeterController extends Controller
         
         $provider = $providerRepository->findByUuid($data['provider_id']);
         
-        $data['identifier'] = $this->client($provider)->search($data['meter_code']);
+        $data['identifier'] = $this->client($provider)->search($data['meter_code'], $data['type']);
 //        $data['type'] = config('business.meter.type.electricity');
         
         $meterRepository->create($data);
@@ -238,7 +238,7 @@ class ElectricMeterController extends Controller
     {
         $meter = $meterRepository->findByMeterCode($request->input('meter_code'));
         
-        $token = $this->client($meter->provider)->getMaintenanceCode($meter->meter_code, $request->input('type'));
+        $token = $this->client($meter->provider)->getMaintenanceCode($meter->meter_code, $request->input('type'), $meter->type);
 
         return view('backend.meters.electricity.maintain')
             ->withType($request->input('type'))

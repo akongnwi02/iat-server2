@@ -61,8 +61,9 @@ class StronClient extends AbstractClient
         $meter_id = $params['meterId'];
         $energy   = $params['energy'];
         $amount   = $params['amount'];
+        $meterType = $params['meterType'];
 
-        $apiConfig = $this->getApiConfig($meter_id);
+        $apiConfig = $this->getApiConfig($meter_id, $meterType);
 
         $url  = $apiConfig['api_url'] . '/api/VendingMeter';
 
@@ -115,11 +116,12 @@ class StronClient extends AbstractClient
      * @throws GeneralException
      * @throws NotFoundException
      */
-    public function search($meterCode): string
+    public function search($meterCode, $meterType = null): string
     {
         $params['meterId'] = $meterCode;
         $params['energy'] = 0;
         $params['amount'] = 0;
+        $params['meterType'] = $meterType;
         
         \Log::info("searching for $meterCode in provider's system by calling the vend endpoint with amount: 0", [
             'params' => $params,
@@ -139,7 +141,7 @@ class StronClient extends AbstractClient
      * @return string
      * @throws GeneralException
      */
-    public function getMaintenanceCode($meterCode, $codeType): string
+    public function getMaintenanceCode($meterCode, $codeType, $meterType = null): string
     {
         if ($codeType == 'clear_tamper') {
             $stronEndpoint = '/api/ClearTamper';
@@ -147,7 +149,7 @@ class StronClient extends AbstractClient
             $stronEndpoint = '/api/ClearCredit';
         }
 
-        $apiConfig = $this->getApiConfig($meterCode);
+        $apiConfig = $this->getApiConfig($meterCode, $meterType);
 
         $url = $apiConfig['api_url'] . $stronEndpoint;
     
@@ -205,14 +207,18 @@ class StronClient extends AbstractClient
      * @param $meterCode
      * @return bool
      */
-    public function isV2Meter($meterCode)
+    public function isV2Meter($meterCode, $meterType)
     {
+        if ($meterType == 'water') {
+            return (float)$meterCode >= 58000000000;
+        }
+        
         return (float)$meterCode >= 58101440000;
     }
 
-    public function getApiConfig($meterCode)
+    public function getApiConfig($meterCode, $meterType)
     {
-        if ($this->isV2Meter($meterCode)) {
+        if ($this->isV2Meter($meterCode, $meterType)) {
             \Log::debug('Using config for Strong V2');
             return [
                 'api_url' => $this->config['url_v2'],

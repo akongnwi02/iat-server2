@@ -62,7 +62,7 @@ class CalinClient extends AbstractClient
      * @return bool
      * @throws GeneralException
      */
-    public function search($meterCode): string
+    public function search($meterCode, $meterType = null): string
     {
         $url  = $this->config['url'] . '/POS_Preview';
         $data = $this->getRequestData([
@@ -165,7 +165,7 @@ class CalinClient extends AbstractClient
      * @return string
      * @throws GeneralException
      */
-    public function getMaintenanceCode($meterCode, $codeType): string
+    public function getMaintenanceCode($meterCode, $codeType, $meterType = null): string
     {
         if ($codeType == 'clear_tamper') {
             $url  = $this->config['url'] . '/Maintenance_ClearTamper';

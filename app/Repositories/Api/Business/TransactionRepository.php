@@ -194,7 +194,8 @@ class TransactionRepository
                 'meterId' => $transaction->meter->identifier,
                 'energy'  => $transaction->units,
                 'amount'  => $transaction->amount_with_vat,
-                'serviceCode' => $transaction->service_code
+                'serviceCode' => $transaction->service_code,
+                'meterType' => $transaction->meter->type
             ];
             
             $transaction->token = $this->client($transaction->meter->provider)->buy($params);
