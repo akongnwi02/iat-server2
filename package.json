@@ -1,70 +1,59 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "test": "cross-env NODE_ENV=test jest",
-        "tdd": "npm run test -- --watch --notify"
-    },
-    "devDependencies": {
-        "@coreui/coreui": "^2.0.4",
-        "@fortawesome/fontawesome-svg-core": "^1.2.2",
-        "@fortawesome/free-brands-svg-icons": "^5.2.0",
-        "@fortawesome/free-regular-svg-icons": "^5.2.0",
-        "@fortawesome/free-solid-svg-icons": "^5.2.0",
-        "@vue/test-utils": "^1.0.0-beta.10",
-        "axios": "^0.18",
-        "babel-jest": "^22.1.0",
-        "bootstrap": "^4.0.0",
-        "cross-env": "^5.1",
-        "jest": "^22.1.4",
-        "jest-vue-preprocessor": "^1.3.1",
-        "jquery": "^3.2",
-        "laravel-mix": "^2.0",
-        "less-loader": "^5.0.0",
-        "lodash": "^4.17.5",
-        "pace": "github:HubSpot/pace#v1.0.2",
-        "perfect-scrollbar": "^1.4.0",
-        "popper.js": "^1.12.4",
-        "simple-line-icons": "^2.4.1",
-        "sweetalert2": "^7.0.7",
-        "vue": "^2.5.7"
-    },
-    "jest": {
-        "testURL": "http://localhost",
-        "roots": [
-            "<rootDir>/tests/Javascript/"
-        ],
-        "moduleNameMapper": {
-            "^vue$": "vue/dist/vue.common.js"
-        },
-        "moduleFileExtensions": [
-            "js",
-            "vue"
-        ],
-        "transform": {
-            "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-            ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
-        }
-    },
-    "dependencies": {
-        "@vue/cli": "^4.2.2",
-        "buefy": "^0.8.15",
-        "es6-promise": "^4.2.8",
-        "laravel-echo": "^1.6.1",
-        "mdbvue": "^6.5.0",
-        "pusher-js": "^5.1.1",
-        "vue-i18n": "^8.15.4",
-        "vue-router": "^3.1.5",
-        "vuejs-paginate": "^2.1.0",
-        "vuex": "^3.1.2"
-    },
-    "engines": {
-        "node": "8"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development mix",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "widget:travel:v1": "cross-env SERVICE=travel VERSION=v1 npx mix --mix-config=webpack.widgets.mix.js",
+    "widget:build": "npx mix --mix-config=webpack.widgets.mix.js",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "@coreui/coreui": "^4.3.2",
+    "@coreui/icons": "^1.0.1",
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "@popperjs/core": "^2.11.8",
+    "@types/bootstrap": "^5.2.10",
+    "@vue/compiler-sfc": "^3.5.22",
+    "alpinejs": "^2.3.5",
+    "axios": "^1.13.1",
+    "bootstrap": "^5.3.8",
+    "cross-env": "^7.0",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "perfect-scrollbar": "^1.5.0",
+    "postcss": "^8.1",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "1.32.13",
+    "sass-loader": "^8.0.0",
+    "sweetalert2": "^9.8.2",
+    "vue": "^3.5.22",
+    "vue-loader": "^17.3.1",
+    "vue-template-compiler": "^0.1.0"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/vue-fontawesome": "^3.1.2",
+    "es6-promise": "^4.2.8",
+    "flag-icons": "^7.5.0",
+    "jquery": "^3.7.1",
+    "laravel-echo": "^1.11.3",
+    "mdb-vue-ui-kit": "^7.0.0",
+    "mitt": "^3.0.1",
+    "pace-js": "^1.2.4",
+    "simple-line-icons": "^2.5.5",
+    "socket.io-client": "^4.8.1",
+    "vue-i18n": "^9.14.5",
+    "vue-router": "^4.6.3",
+    "vue3-toastify": "^0.2.8",
+    "vuejs-paginate-next": "^1.0.2",
+    "vuex": "^4.1.0"
+  }
 }

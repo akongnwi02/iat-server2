@@ -22,7 +22,7 @@ build:
 	$(MAKE) up
 
 test:
-	docker exec $$(docker-compose ps -q workspace) sh -c "vendor/bin/phpunit"
+	docker exec $$(docker-compose ps -q core) sh -c "vendor/bin/phpunit"
 
 down:
 	docker-compose down --volumes --remove-orphans
@@ -36,33 +36,33 @@ up:
 	docker-compose up -d
 
 	echo "\nInstalling Composer Dependencies"
-	docker exec $$(docker-compose ps -q workspace) sh -c "composer install"
+	docker exec $$(docker-compose ps -q core) sh -c "composer install"
 	echo "Done"
 
 root:
-	docker exec -it -u root $$(docker-compose ps -q workspace) bash
+	docker exec -it -u root $$(docker-compose ps -q core) bash
 
 npm:
-	docker exec $$(docker-compose ps -q workspace) sh -c "npm run dev"
+	docker exec $$(docker-compose ps -q core) sh -c "npm run dev"
 
 clear:
-	docker exec $$(docker-compose ps -q workspace) sh -c "composer clear-all \
+	docker exec $$(docker-compose ps -q core) sh -c "composer clear-all \
 	    && truncate -s 0 storage/logs/*.log"
 
 
 ide-helper:
-	docker exec $$(docker-compose ps -q workspace) sh -c "php artisan ide-helper:generate \
+	docker exec $$(docker-compose ps -q core) sh -c "php artisan ide-helper:generate \
 		&& php artisan ide-helper:meta \
 		&& php artisan package:discover"
 
 migrate:
-	docker exec $$(docker-compose ps -q workspace) sh -c "php artisan migrate"
+	docker exec $$(docker-compose ps -q core) sh -c "php artisan migrate"
 
 seed:
-	docker exec $$(docker-compose ps -q workspace) sh -c "php artisan db:seed --force"
+	docker exec $$(docker-compose ps -q core) sh -c "php artisan db:seed --force"
 
 worker:
-	docker exec -it $$(docker-compose ps -q workspace) sh -c "php artisan queue:work --queue=process_purchase,verify_purchase,complete_purchase,process_order"
+	docker exec -it $$(docker-compose ps -q core) sh -c "php artisan queue:work --queue=process_purchase,verify_purchase,complete_purchase,process_order"
 
 deploy:
 	git push heroku develop:master

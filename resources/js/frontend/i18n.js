@@ -1,17 +1,35 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
-
-Vue.use( VueI18n );
+import { createI18n } from 'vue-i18n';
 
 const messages = {
     en: require('./locales/en.json'),
-    fr: require('./locales/fr.json')
+    fr: require('./locales/fr.json'),
 };
 
-// Create VueI18n instance with options
-export default new VueI18n({
-    locale: 'en',
-    fallbackLocale: 'en',
+// 🔹 Detect locale
+function detectLocale() {
+    // 1️⃣ User preference
+    const saved = localStorage.getItem('locale');
+    if (saved) return saved;
+
+    // 2️⃣ Browser language
+    const browserLang =
+        (navigator.languages && navigator.languages[0]) ||
+        navigator.language ||
+        'en';
+
+    const shortLang = browserLang.split('-')[0];
+
+    return ['en', 'fr'].includes(shortLang) ? shortLang : 'en';
+}
+
+const i18n = createI18n({
+    legacy: false, // composition API
+    locale: detectLocale(),
+    fallbackLocale: {
+        default: ['en'],
+    },
     messages,
-    silentFallbackWarn: false
+    warnHtmlMessage: false,
 });
+
+export default i18n;

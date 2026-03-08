@@ -2,6 +2,6 @@
 
 php /var/www/artisan migrate --force
 
-sed -i "s/80/$PORT/g" /etc/nginx/sites-available/default.conf
+sed -i "s/8080/$PORT/g" /etc/nginx/conf.d/default.conf
 
 /usr/bin/supervisord -n -c /var/www/supervisord.conf
