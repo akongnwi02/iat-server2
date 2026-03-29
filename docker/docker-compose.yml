@@ -8,11 +8,15 @@ volumes:
   mysql:
     driver: ${VOLUMES_DRIVER}
 
+  pgsql:
+    driver: ${VOLUMES_DRIVER}
 services:
 
   ### Workspace Utilities ##################################
   core:
-    image: iatcore:latest
+    build:
+      context: ../
+      dockerfile: Dockerfile_Deploy
     volumes:
       - ../:/var/www:cached
       - ./core/logs/nginx/:/var/log/nginx
@@ -26,7 +30,22 @@ services:
     networks:
       - backend
 
-
+  ### pgsql Database ###########################################
+  pgsql:
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: ${WORKSPACE_TIMEZONE}
+    volumes:
+      - pgsql:/var/lib/postgresql/data
+      # Optional init scripts
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    networks:
+      - backend
   ### MySQL Database ###########################################
   mysql:
     build:

@@ -29,7 +29,7 @@ class MaintainMeterRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'in:clear_credit,clear_tamper',
+            'type' => 'in:clear_credit,clear_tamper,change_key',
             'meter_code' => [Rule::exists('meters', 'meter_code')]
         ];
     }

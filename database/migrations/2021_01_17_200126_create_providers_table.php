@@ -16,6 +16,8 @@ class CreateProvidersTable extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->uuid('uuid')->primary()->unique();
             $table->string('name');
+            // the code will contain the sgc,krn and ti.e.g
+            //SGC6999215KRN1TI1
             $table->string('code')->nullable();
             $table->timestamps();
         });

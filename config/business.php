@@ -113,7 +113,8 @@ return [
         'provider' => [
             'calin' => 'Calin',
             'stron' => 'Stron',
-            'hexcell' => 'Hexcell'
+            'hexcell' => 'Hexcell',
+            'prism' => 'Prism',
         ]
     ]
 ];

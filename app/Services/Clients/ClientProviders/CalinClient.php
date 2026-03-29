@@ -242,5 +242,9 @@ class CalinClient extends AbstractClient
             'amount'   => 0,
         ], $data));
     }
-    
+
+    public function changeMeterKey(): array
+    {
+        throw new GeneralException('Function not implemented for this provider');
+    }
 }

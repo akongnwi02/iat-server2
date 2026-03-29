@@ -13,6 +13,7 @@
                     <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-1">
                         <a class="dropdown-item" href="{{ route('admin.meter.electricity.maintain', ['type' => 'clear_credit']) }}">{{ucwords(__('clear credit'))}}</a>
                         <a class="dropdown-item" href="{{ route('admin.meter.electricity.maintain', ['type' => 'clear_tamper']) }}">{{ucwords(__('clear tamper'))}}</a>
+                        <a class="dropdown-item" href="{{ route('admin.meter.electricity.change-key') }}">{{ucwords(__('change key'))}}</a>
                     </div>
                 </div><!--dropdown-->
                 <!--<a class="btn" href="#">Static Link</a>-->

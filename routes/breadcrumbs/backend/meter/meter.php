@@ -10,6 +10,11 @@ Breadcrumbs::for('admin.meter.electricity.maintain', function ($trail) {
     $trail->push(__('menus.backend.meter.electricity.maintain'), route('admin.meter.electricity.maintain'));
 });
 
+Breadcrumbs::for('admin.meter.electricity.change-key', function ($trail) {
+    $trail->parent('admin.meter.electricity.index');
+    $trail->push(__('menus.backend.meter.electricity.change_key'), route('admin.meter.electricity.change-key'));
+});
+
 Breadcrumbs::for('admin.meter.electricity.create', function ($trail) {
     $trail->parent('admin.meter.electricity.index');
     $trail->push(__('menus.backend.meter.electricity.create'), route('admin.meter.electricity.create'));

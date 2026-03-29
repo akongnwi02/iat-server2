@@ -245,4 +245,33 @@ class ElectricMeterController extends Controller
             ->withMeter($meter)
             ->withToken($token);
     }
+
+    public function changeKeyForm(Request $request)
+    {
+        return view('backend.meters.electricity.change-key-form');
+    }
+
+    public function changeKey(Request $request, MeterRepository $meterRepository)
+    {
+        $request->validate([
+            'meter_code' => ['required', Rule::exists('meters', 'meter_code')],
+            'fromSgc'    => ['required', 'numeric'],
+            'fromTi'     => ['required', 'numeric'],
+            'fromKrn'    => ['required', 'numeric'],
+        ]);
+
+        $meter = $meterRepository->findByMeterCode($request->input('meter_code'));
+
+        $tokens = $this->client($meter->provider)->changeMeterKey([
+            'meter_code' => $meter->meter_code,
+            'fromSgc'    => $request->input('fromSgc'),
+            'fromTi'     => $request->input('fromTi'),
+            'fromKrn'    => $request->input('fromKrn'),
+        ]);
+
+        return view('backend.meters.electricity.change-key')
+            ->withMeter($meter)
+            ->withTokenOne($tokens[0] ?? null)
+            ->withTokenTwo($tokens[1] ?? null);
+    }
 }

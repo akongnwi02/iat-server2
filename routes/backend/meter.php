@@ -40,11 +40,19 @@ Route::group([
     Route::get('electricity/maintain', [ElectricMeterController::class, 'maintainForm'])
         ->name('electricity.maintain')
         ->middleware('permission:'.config('permission.permissions.maintain_meters'));
-    
+
+    Route::get('electricity/change-key', [ElectricMeterController::class, 'changeKeyForm'])
+        ->name('electricity.change-key')
+        ->middleware('permission:'.config('permission.permissions.maintain_meters'));
+
+    Route::post('electricity/change-key', [ElectricMeterController::class, 'changeKey'])
+        ->name('electricity.change-key')
+        ->middleware('permission:'.config('permission.permissions.maintain_meters'));
+
     Route::post('electricity/maintain', [ElectricMeterController::class, 'maintain'])
         ->name('electricity.maintain')
         ->middleware('permission:'.config('permission.permissions.maintain_meters'));
-    
+
     /*
      * Specific Electricity Meter
      */

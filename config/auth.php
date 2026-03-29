@@ -128,6 +128,11 @@ return [
                 'password_v2'      => env('STRON_PASSWORD_V2'),
                 'company_name_v2'  => env('STRON_COMPANY_NAME_V2'),
             ],
+            'prism' => [
+                'url' => env('PRISM_URL'),
+                'username' => env('PRISM_USERNAME'),
+                'password' => env('PRISM_PASSWORD'),
+            ]
         ],
     ],
 ];

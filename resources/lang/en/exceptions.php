@@ -105,7 +105,7 @@ return [
                 'already_inactive' => 'The meter is already inactive.',
                 'vendor' => [
                     'search_error' => 'There was a problem searching for this meter in the provider\'s system',
-                    'not_found' => 'This meter was not found n the vendor\'s system',
+                    'not_found' => 'This meter was not found in the vendor\'s system',
                     'token_error' => 'There was a problem generating token for this meter in the provider\'s system',
                     'auth_error' => 'There was a problem authenticating with the vendor system',
                 ]

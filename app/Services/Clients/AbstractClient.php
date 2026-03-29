@@ -27,4 +27,6 @@ abstract class AbstractClient
     {
         return class_basename($this);
     }
+
+    public abstract function changeMeterKey(array $data): array;
 }

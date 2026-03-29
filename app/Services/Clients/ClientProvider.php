@@ -12,6 +12,7 @@ use App\Exceptions\Api\ServerErrorException;
 use App\Models\Meter\Provider;
 use App\Services\Clients\ClientProviders\HexcellClient;
 use App\Services\Clients\ClientProviders\CalinClient;
+use App\Services\Clients\ClientProviders\PrismClient;
 use App\Services\Clients\ClientProviders\StronClient;
 use App\Services\Constants\BusinessErrorCodes;
 
@@ -54,6 +55,12 @@ trait ClientProvider
                 $config['password_v2'] = config('auth.meters.providers.stron.password_v2');
                 $config['company_name_v2'] = config('auth.meters.providers.stron.company_name_v2');
                 return new StronClient($config);
+
+            case config('business.meter.provider.prism'):
+                $config['url'] = config('auth.meters.providers.prism.url');
+                $config['username'] = config('auth.meters.providers.prism.username');
+                $config['password'] = config('auth.meters.providers.prism.password');
+                return new PrismClient($config);
 
             default:
                 throw new ServerErrorException(BusinessErrorCodes::UNKNOWN_PROVIDER, "The provider is not yet implemented");

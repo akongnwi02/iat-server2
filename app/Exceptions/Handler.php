@@ -138,7 +138,6 @@ class Handler extends ExceptionHandler
     
             \Log::error('ExceptionHandler', array_merge($error, [
                 'exception' => (string)$exception,
-                'trace'     => $exception->getTrace(),
                 'previous'  => $exception->getPrevious()
             ]));
             

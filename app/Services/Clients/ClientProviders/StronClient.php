@@ -235,4 +235,9 @@ class StronClient extends AbstractClient
             'password' => $this->config['password'],
         ];
     }
+
+    public function changeMeterKey(array $data): array
+    {
+        throw new GeneralException('Function not implemented for this provider');
+    }
 }

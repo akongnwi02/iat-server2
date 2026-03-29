@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\LanguageController;
 
-Log::info('Incoming Request', ['input' => request()->input(), 'path' => request()->getRequestUri(), 'headers' => request()->header()]);
 
 /*
  * Global Routes

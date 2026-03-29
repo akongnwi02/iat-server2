@@ -237,5 +237,10 @@ class HexcellClient extends AbstractClient
             'cookies' => true,
         ]);
     }
+
+    public function changeMeterKey(array $data): array
+    {
+        throw new GeneralException('Function not implemented for this provider');
+    }
     
 }
