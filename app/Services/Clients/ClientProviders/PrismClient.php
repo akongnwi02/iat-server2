@@ -123,7 +123,7 @@ class PrismClient extends AbstractClient
                     'Accept' => 'application/xml',
                 ],
                 'form_params' => [
-                    'subclass' => 0,
+                    'subclass' => -1,
                     'meterId'  => $meterId,
                     'value'    => $value,
                 ],
